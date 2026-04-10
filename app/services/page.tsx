@@ -157,7 +157,7 @@ const services: Service[] = [
 
 function SubServiceItem({ item }: { item: SubService }) {
     return (
-        <div className="flex gap-3 py-3.5 border-b border-gray-100 last:border-0">
+        <div className="flex gap-3 py-3.5 border-l-2 border-l-[#ABBD4F] border-b border-b-gray-100 last:border-b-0 pl-4 rounded-lg mb-3">
             {item.icon}
             <div>
                 <p className="text-sm font-medium text-[#365693] mb-1">{item.title}</p>
@@ -180,7 +180,7 @@ function AccordionItem({ service }: { service: Service }) {
             {/* Header */}
             <button
                 onClick={() => isExpandable && setOpen((v) => !v)}
-                className={`w-full flex items-center gap-3.5 px-4 py-4 text-left bg-white transition-colors ${isExpandable ? "cursor-pointer hover:bg-gray-50" : "cursor-default"
+                className={`w-full flex items-center gap-3.5 px-4 py-4 text-left bg-white transition-colors ${open ? "bg-[#bac48c] " : ""} ${isExpandable ? "cursor-pointer hover:bg-gray-50" : "cursor-default"
                     }`}
                 aria-expanded={open}
             >
@@ -235,28 +235,28 @@ export default function ServicePage() {
             >
                 <div className="max-w-[900px] mx-auto">
                     <h1 className="text-[32px] font-bold text-white leading-tight mb-2">
-                        Get In Touch
+                        Our Services
                     </h1>
                     <p className="text-[#a4bde0] text-[13.5px] leading-relaxed max-w-[320px]">
-                        Let's discuss how we can support your precious metals business with expert financial and compliance advisory
+                        Comprehensive financial and compliance solutions tailored exclusively for the precious metals industry
                     </p>
                 </div>
             </div>
 
 
-            <div className="max-w-2xl mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto px-4 py-8">
                 {services.map((service) => (
                     <AccordionItem key={service.id} service={service} />
                 ))}
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2 bg-[#ABBD4F] py-8">
-                <h2 className="text-xl font-bold text-[#365693]">Need a Customized Solution?</h2>
+            <div className="flex flex-col items-center justify-center gap-4 bg-[#ABBD4F] py-8">
+                <h2 className="text-3xl font-bold text-[#365693]">Need a Customized Solution?</h2>
 
-                <p className="text-sm text-gray-500">Every precious metals business is unique. Let's discuss your specific needs.</p>
+                <p className="text-sm text-white">Every precious metals business is unique. Let's discuss your specific needs.</p>
                 <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#365693] text-white rounded-md hover:bg-[#2e4a82] transition-colors"
+                    className="inline-flex items-center gap-2 px-8 py-3 bg-[#365693] text-white rounded-lg hover:bg-[#2e4a82] transition-colors"
                 >
                     Contact Our Team
                     <IconSend />

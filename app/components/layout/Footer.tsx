@@ -18,7 +18,7 @@ export default function Footer() {
                                 alt="IEG Logo"
                                 width={120}
                                 height={40}
-                                className="h-10 w-auto object-contain"
+                                className="h-13 w-auto object-contain"
                             />
                             <Image
                                 src="/images/home/logo-text-white.svg"
@@ -48,8 +48,8 @@ export default function Footer() {
 
                     {/* Column 2: Quick Links */}
                     <div className="flex flex-col gap-5">
-                        <h3 className="text-[16px] font-bold text-white uppercase tracking-wider">Quick Links</h3>
-                        <ul className="flex flex-col gap-3">
+                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Quick Links</h3>
+                        <ul className="flex flex-col text-sm gap-3">
                             {["Home", "About", "Services", "Contact"].map((item) => (
                                 <li key={item}>
                                     <Link
@@ -65,13 +65,16 @@ export default function Footer() {
 
                     {/* Column 3: Our Services */}
                     <div className="flex flex-col gap-5">
-                        <h3 className="text-[16px] font-bold text-white uppercase tracking-wider">Our Services</h3>
-                        <ul className="flex flex-col gap-3">
+                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Our Services</h3>
+                        <ul className="flex flex-col text-sm gap-3">
                             {[
-                                "Audit & Assurance",
-                                "Risk Consulting",
+                                "Audit & Assurance Services",
+                                "Special Audits & Risk Consulting",
                                 "CFO Services",
-                                "Taxation Services"
+                                "Accounting & MIS Services",
+                                "Financial Advisory Services",
+                                "Taxation Services",
+                                "Digital Assets & Tokenization"
                             ].map((item) => (
                                 <li key={item}>
                                     <Link
@@ -87,7 +90,7 @@ export default function Footer() {
 
                     {/* Column 4: Contact Us */}
                     <div className="flex flex-col gap-5">
-                        <h3 className="text-[16px] font-bold text-white uppercase tracking-wider">Contact Us</h3>
+                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Contact Us</h3>
                         <ul className="flex flex-col gap-4">
                             <li className="flex items-center gap-3">
                                 <EmailIcon />
@@ -112,7 +115,8 @@ export default function Footer() {
                         {/* Download Brochure Button */}
                         <div className="mt-4">
                             <a
-                                href="#"
+                                href="/pdfs/IE-Brochure-2026.pdf"
+                                target="_blank"
                                 className="inline-flex items-center gap-3 px-6 py-2.5 border border-white rounded-full text-[14px] font-medium hover:bg-white hover:text-[#1e2e4b] transition-all duration-300 group"
                             >
                                 <DownloadIcon />

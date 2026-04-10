@@ -178,7 +178,7 @@ export default function ContactPage() {
                                 alt="IEG Logo"
                                 width={120}
                                 height={40}
-                                className="h-7 w-auto object-contain"
+                                className="h-13 w-auto object-contain"
                             />
                             <Image
                                 src="/images/home/logo-text-white.svg"
@@ -334,7 +334,7 @@ export default function ContactPage() {
             <div className="flex flex-col items-center justify-center gap-2 bg-[#ABBD4F] py-8">
                 <h2 className="text-xl font-bold text-[#365693]">Prefer to call directly?</h2>
                 <p className="text-2xl font-bold text-[#365693]">+971 50 370 8785</p>
-                <p className="text-sm text-gray-500">Our team is ready to discuss your precious metals business needs</p>
+                <p className="text-sm text-white">Our team is ready to discuss your precious metals business needs</p>
             </div>
         </div>
     );
