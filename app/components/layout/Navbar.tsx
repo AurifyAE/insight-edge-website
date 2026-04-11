@@ -2,6 +2,12 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+// ── Config ────────────────────────────────────────────────────────────────────
+
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpw8gL4fJ-Pwjgs8KTGrjWBnFVgSO10adjBYpN_Q6McxkhemuROfzIwGW-4bYsrw/exec";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -117,7 +123,6 @@ const NAV_LINKS = [
     { label: "Our Solutions", href: "/solutions", hasMega: "solutions" as const },
     { label: "Who We Serve", href: "/who-we-serve", hasMega: "who-we-serve" as const },
     { label: "Contact", href: "/contact" },
-    // { label: "Blogs & News", href: "/blogs" },
 ];
 
 // ── Animation variants ────────────────────────────────────────────────────────
@@ -160,37 +165,22 @@ function SolutionsMegaMenu() {
             className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-[1200px] bg-white border-t-2 border-[#8B9C32] shadow-2xl z-50 origin-top"
             style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
         >
-            {/* Top accent strip */}
             <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
-
             <div className="px-8 py-8 grid grid-cols-3 gap-x-10 gap-y-0">
                 {OUR_SOLUTIONS_COLUMNS.map((col, ci) => (
                     <div key={ci} className="flex flex-col gap-7">
-                        {/* Primary section */}
                         <Section heading={col.heading} items={col.items} startIndex={0} />
-
-                        {/* Sub-sections */}
                         {col.subSections?.map((sub, si) => (
-                            <Section
-                                key={si}
-                                heading={sub.heading}
-                                items={sub.items}
-                                startIndex={col.items.length + si * 4}
-                            />
+                            <Section key={si} heading={sub.heading} items={sub.items} startIndex={col.items.length + si * 4} />
                         ))}
                     </div>
                 ))}
             </div>
-
-            {/* Footer strip */}
             <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
                 <p className="text-[11px] text-gray-400 tracking-wide">
                     Comprehensive advisory across every touchpoint of your business
                 </p>
-                <a
-                    href="/services"
-                    className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1"
-                >
+                <a href="/services" className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1">
                     View all solutions
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -201,15 +191,7 @@ function SolutionsMegaMenu() {
     );
 }
 
-function Section({
-    heading,
-    items,
-    startIndex,
-}: {
-    heading: string;
-    items: string[];
-    startIndex: number;
-}) {
+function Section({ heading, items, startIndex }: { heading: string; items: string[]; startIndex: number }) {
     return (
         <div>
             <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#8B9C32] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20">
@@ -217,17 +199,8 @@ function Section({
             </p>
             <ul className="flex flex-col gap-0.5">
                 {items.map((item, ii) => (
-                    <motion.li
-                        key={item}
-                        custom={startIndex + ii}
-                        variants={itemVariants}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                        <a
-                            href="#"
-                            className="flex items-center gap-1.5 text-[12px] text-gray-600 hover:text-[#365693] transition-all duration-150 leading-snug py-0.5 group"
-                        >
+                    <motion.li key={item} custom={startIndex + ii} variants={itemVariants} initial="hidden" animate="visible">
+                        <a href="#" className="flex items-center gap-1.5 text-[12px] text-gray-600 hover:text-[#365693] transition-all duration-150 leading-snug py-0.5 group">
                             <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-[#8B9C32] transition-colors duration-150 shrink-0" />
                             {item}
                         </a>
@@ -252,81 +225,33 @@ function WhoWeServeMegaMenu() {
             style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
         >
             <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
-
             <div className="px-8 py-8 flex gap-16">
-                {/* Left: list */}
                 <div className="flex-1 max-w-xs">
                     <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#8B9C32] mb-3 pb-1.5 border-b border-[#8B9C32]/20">
                         Industry Segments
                     </p>
                     <ul className="flex flex-col gap-0.5">
                         {WHO_WE_SERVE_ITEMS.map((item, i) => (
-                            <motion.li
-                                key={item.label}
-                                custom={i}
-                                variants={itemVariants}
-                                initial="hidden"
-                                animate="visible"
-                            >
+                            <motion.li key={item.label} custom={i} variants={itemVariants} initial="hidden" animate="visible">
                                 <a
                                     href="#"
-                                    className={`flex items-center gap-2 text-[13px] leading-snug py-1.5 transition-all duration-150 group ${item.active
-                                        ? "font-semibold text-[#365693]"
-                                        : "text-gray-600 hover:text-[#365693]"
+                                    className={`flex items-center gap-2 text-[13px] leading-snug py-1.5 transition-all duration-150 group ${item.active ? "font-semibold text-[#365693]" : "text-gray-600 hover:text-[#365693]"
                                         }`}
                                 >
-                                    <span
-                                        className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-150 ${item.active
-                                            ? "bg-[#365693]"
-                                            : "bg-gray-300 group-hover:bg-[#8B9C32]"
-                                            }`}
-                                    />
+                                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-150 ${item.active ? "bg-[#365693]" : "bg-gray-300 group-hover:bg-[#8B9C32]"
+                                        }`} />
                                     {item.label}
                                 </a>
                             </motion.li>
                         ))}
                     </ul>
                 </div>
-
-                {/* Right: descriptive callout */}
-                {/* <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.12, duration: 0.22 }}
-                    className="flex-1 flex flex-col justify-center max-w-sm"
-                >
-                    <div className="rounded-xl bg-gradient-to-br from-[#f0f4fb] to-[#f7f9ee] p-6 border border-[#e2e8d8]">
-                        <p className="text-[11px] font-bold uppercase tracking-widest text-[#8B9C32] mb-2">
-                            Precious Metals & Luxury Assets
-                        </p>
-                        <p className="text-[13.5px] text-[#365693] font-semibold leading-snug mb-3">
-                            Exclusive advisory for every entity in the value chain
-                        </p>
-                        <p className="text-[12px] text-gray-500 leading-relaxed mb-4">
-                            From refiners to retailers, our specialized expertise covers compliance, risk,
-                            governance, and financial strategy for the full ecosystem.
-                        </p>
-                        <a
-                            href="/who-we-serve"
-                            className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors"
-                        >
-                            Explore all segments
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </motion.div> */}
             </div>
-
             <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
                 <p className="text-[11px] text-gray-400 tracking-wide">
                     Serving the global precious metals and luxury goods ecosystem
                 </p>
-                <a
-                    href="/who-we-serve"
-                    className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1"
-                >
+                <a href="/who-we-serve" className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1">
                     View all segments
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -337,37 +262,213 @@ function WhoWeServeMegaMenu() {
     );
 }
 
+// ── Types ─────────────────────────────────────────────────────────────────────
+
+type BrochureState = "idle" | "loading" | "success" | "error";
+
+// ── Shared Brochure Dropdown Content ─────────────────────────────────────────
+// Reused in both desktop and mobile — receives state as props
+
+interface BrochureDropdownContentProps {
+    brochureEmail: string;
+    setBrochureEmail: (v: string) => void;
+    brochureError: boolean;
+    setBrochureError: (v: boolean) => void;
+    brochureState: BrochureState;
+    handleBrochureSubmit: () => void;
+    /** "right-0" for desktop, "left-0 right-0 mx-auto" for mobile */
+    positionClass?: string;
+}
+
+function BrochureDropdownContent({
+    brochureEmail,
+    setBrochureEmail,
+    brochureError,
+    setBrochureError,
+    brochureState,
+    handleBrochureSubmit,
+    positionClass = "right-0",
+}: BrochureDropdownContentProps) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className={`absolute top-full mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 z-50 ${positionClass}`}
+            style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
+        >
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-[#f0f4fb] flex items-center justify-center shrink-0">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#365693" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                </div>
+                <div>
+                    <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
+                    <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
+                </div>
+            </div>
+
+            {/* Success */}
+            {brochureState === "success" && (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center gap-2 py-3 text-center"
+                >
+                    <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <p className="text-[13px] font-semibold text-[#1e3a6b]">Opening your brochure…</p>
+                    <p className="text-[11px] text-gray-400">Your email has been recorded.</p>
+                </motion.div>
+            )}
+
+            {/* Error */}
+            {brochureState === "error" && (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center gap-2 py-3 text-center"
+                >
+                    <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <p className="text-[13px] font-semibold text-[#1e3a6b]">Something went wrong</p>
+                    <p className="text-[11px] text-gray-400">Opening the brochure anyway…</p>
+                </motion.div>
+            )}
+
+            {/* Idle / Loading */}
+            {(brochureState === "idle" || brochureState === "loading") && (
+                <>
+                    <p className="text-[12px] text-gray-500 leading-relaxed mb-3">
+                        Enter your email to access the full brochure instantly.
+                    </p>
+                    <div className="flex flex-col gap-2">
+                        <input
+                            type="email"
+                            placeholder="your@email.com"
+                            value={brochureEmail}
+                            disabled={brochureState === "loading"}
+                            onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
+                            onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
+                            className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
+                                    ? "border-red-400 focus:ring-1 focus:ring-red-300"
+                                    : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
+                                }`}
+                        />
+                        {brochureError && (
+                            <p className="text-[11px] text-red-500">Please enter a valid email address.</p>
+                        )}
+                        <button
+                            onClick={handleBrochureSubmit}
+                            disabled={brochureState === "loading"}
+                            className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        >
+                            {brochureState === "loading" ? (
+                                <>
+                                    <svg className="animate-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" />
+                                    </svg>
+                                    Saving…
+                                </>
+                            ) : (
+                                "Download Now"
+                            )}
+                        </button>
+                    </div>
+                </>
+            )}
+        </motion.div>
+    );
+}
+
 // ── Main Navbar ───────────────────────────────────────────────────────────────
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeMega, setActiveMega] = useState<"solutions" | "who-we-serve" | null>(null);
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const [brochureOpen, setBrochureOpen] = useState(false);
-    const brochureRef = useRef<HTMLDivElement>(null);
+
+    // ── Brochure: separate open state for desktop vs mobile ──
+    const [desktopBrochureOpen, setDesktopBrochureOpen] = useState(false);
+    const [mobileBrochureOpen, setMobileBrochureOpen] = useState(false);
+
+    // ── Brochure: shared email/error/state ──
     const [brochureEmail, setBrochureEmail] = useState("");
     const [brochureError, setBrochureError] = useState(false);
+    const [brochureState, setBrochureState] = useState<BrochureState>("idle");
 
+    // ── Separate refs for desktop and mobile ──
+    const desktopBrochureRef = useRef<HTMLDivElement>(null);
+    const mobileBrochureRef = useRef<HTMLDivElement>(null);
+
+    // ── Single submit handler shared by both ──
+    const handleBrochureSubmit = useCallback(async () => {
+        if (!brochureEmail || !/\S+@\S+\.\S+/.test(brochureEmail)) {
+            setBrochureError(true);
+            return;
+        }
+
+        setBrochureError(false);
+        setBrochureState("loading");
+
+        try {
+            await fetch(APPS_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: brochureEmail,
+                    source: "navbar-brochure",
+                    submittedAt: new Date().toISOString(),
+                    page: typeof window !== "undefined" ? window.location.pathname : "/",
+                }),
+            });
+            setBrochureState("success");
+            setTimeout(() => {
+                setDesktopBrochureOpen(false);
+                setMobileBrochureOpen(false);
+                setBrochureState("idle");
+                setBrochureEmail("");
+                window.open("/pdfs/IE-Brochure-2026.pdf", "_blank");
+            }, 1200);
+        } catch {
+            setBrochureState("error");
+            setTimeout(() => {
+                setDesktopBrochureOpen(false);
+                setMobileBrochureOpen(false);
+                setBrochureState("idle");
+                window.open("/pdfs/IE-Brochure-2026.pdf", "_blank");
+            }, 1500);
+        }
+    }, [brochureEmail]);
+
+    // ── Outside click: handles both refs ──
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
-            if (brochureRef.current && !brochureRef.current.contains(e.target as Node)) {
-                setBrochureOpen(false);
+            if (desktopBrochureRef.current && !desktopBrochureRef.current.contains(e.target as Node)) {
+                setDesktopBrochureOpen(false);
+            }
+            if (mobileBrochureRef.current && !mobileBrochureRef.current.contains(e.target as Node)) {
+                setMobileBrochureOpen(false);
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
-
-    const handleBrochureSubmit = () => {
-        if (!brochureEmail || !/\S+@\S+\.\S+/.test(brochureEmail)) {
-            setBrochureError(true);
-            return;
-        }
-        setBrochureError(false);
-        setBrochureOpen(false);
-        window.open("/pdfs/IE-Brochure-2026.pdf", "_blank");
-    };
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -376,20 +477,32 @@ export default function Navbar() {
     }, []);
 
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 1024) setMenuOpen(false);
-        };
+        const handleResize = () => { if (window.innerWidth >= 1024) setMenuOpen(false); };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setActiveMega(null);
+            if (e.key === "Escape") {
+                setActiveMega(null);
+                setDesktopBrochureOpen(false);
+                setMobileBrochureOpen(false);
+            }
         };
         document.addEventListener("keydown", onKey);
         return () => document.removeEventListener("keydown", onKey);
     }, []);
+
+    // Close desktop brochure when mobile opens and vice versa
+    const toggleDesktopBrochure = () => {
+        setMobileBrochureOpen(false);
+        setDesktopBrochureOpen((p) => !p);
+    };
+    const toggleMobileBrochure = () => {
+        setDesktopBrochureOpen(false);
+        setMobileBrochureOpen((p) => !p);
+    };
 
     const openMega = useCallback((key: "solutions" | "who-we-serve") => {
         if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -403,6 +516,16 @@ export default function Navbar() {
     const cancelClose = useCallback(() => {
         if (closeTimer.current) clearTimeout(closeTimer.current);
     }, []);
+
+    // Shared brochure props
+    const brochureProps = {
+        brochureEmail,
+        setBrochureEmail,
+        brochureError,
+        setBrochureError,
+        brochureState,
+        handleBrochureSubmit,
+    };
 
     return (
         <>
@@ -422,11 +545,7 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            <header
-                className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${scrolled || activeMega ? "shadow-md" : "shadow-sm"
-                    }`}
-            >
-                {/* Outer nav — full width for mega positioning */}
+            <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${scrolled || activeMega ? "shadow-md" : "shadow-sm"}`}>
                 <div className="relative">
                     <nav className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-[70px]">
@@ -434,58 +553,40 @@ export default function Navbar() {
                             {/* ── Logo ── */}
                             <a href="/" className="flex items-center gap-3 shrink-0">
                                 <img src="/images/home/logo.svg" alt="IEG Icon" className="h-8 w-auto" />
-                                <img
-                                    src="/images/home/logo-text.svg"
-                                    alt="Insight Edge Global"
-                                    className="h-3 w-auto hidden sm:block"
-                                />
+                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" className="h-3 w-auto hidden sm:block" />
                             </a>
 
                             {/* ── Desktop Nav ── */}
                             <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1">
                                 {NAV_LINKS.map(({ label, href, hasMega }) => {
-                                    const isActive = hasMega ? activeMega === hasMega : false;
+                                    const isPathActive = pathname === href;
+                                    const isMegaActive = hasMega ? activeMega === hasMega : false;
+                                    const isActive = isPathActive || isMegaActive;
                                     return (
                                         <li key={label}>
-                                            <a
-                                                href={hasMega ? undefined : href}
-                                                onMouseEnter={() =>
-                                                    hasMega ? openMega(hasMega) : scheduleClose()
-                                                }
+                                            <Link
+                                                href={href}
+                                                onMouseEnter={() => hasMega ? openMega(hasMega) : scheduleClose()}
                                                 onMouseLeave={scheduleClose}
-                                                onClick={() =>
-                                                    hasMega && setActiveMega(isActive ? null : hasMega)
-                                                }
-                                                className={`relative flex items-center gap-1 px-3 py-2 text-[13.5px] font-medium tracking-wide transition-colors duration-200 rounded-sm cursor-pointer select-none
-                          ${isActive
-                                                        ? "text-[#365693]"
-                                                        : "text-[#4A5565] hover:text-[#365693]"
+                                                onClick={() => hasMega && setActiveMega(isMegaActive ? null : hasMega)}
+                                                className={`relative flex items-center gap-1 px-3 py-2 text-[13.5px] tracking-wide transition-colors duration-200 rounded-sm cursor-pointer select-none ${isActive ? "text-[#365693] font-bold" : "text-[#4A5565] font-medium hover:text-[#365693]"
                                                     }`}
                                             >
                                                 {label}
                                                 {hasMega && (
                                                     <motion.svg
-                                                        animate={{ rotate: isActive ? 180 : 0 }}
+                                                        animate={{ rotate: isMegaActive ? 180 : 0 }}
                                                         transition={{ duration: 0.2 }}
-                                                        width="11"
-                                                        height="11"
-                                                        viewBox="0 0 12 12"
-                                                        fill="none"
+                                                        width="11" height="11" viewBox="0 0 12 12" fill="none"
                                                         className="opacity-50 mt-0.5"
                                                     >
-                                                        <path
-                                                            d="M2 4l4 4 4-4"
-                                                            stroke="currentColor"
-                                                            strokeWidth="1.7"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                        />
+                                                        <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                                                     </motion.svg>
                                                 )}
                                                 {isActive && (
-                                                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#365693] rounded-full" />
+                                                    <span className="absolute bottom-1 left-3 right-3 h-[2px] bg-[#365693] rounded-full" />
                                                 )}
-                                            </a>
+                                            </Link>
                                         </li>
                                     );
                                 })}
@@ -493,12 +594,6 @@ export default function Navbar() {
 
                             {/* ── Desktop Right ── */}
                             <div className="hidden lg:flex items-center gap-3">
-                                {/* <button
-                                    aria-label="Search"
-                                    className="p-2 text-[#3a3a3a] hover:text-[#1b3a6b] transition-colors"
-                                >
-                                    <SearchIcon />
-                                </button> */}
                                 <a
                                     href="/contact"
                                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm"
@@ -506,71 +601,18 @@ export default function Navbar() {
                                     Connect with an Expert
                                 </a>
 
-                                {/* Download Brochure with dropdown */}
-                                <div className="relative" ref={brochureRef}>
+                                {/* Desktop brochure */}
+                                <div className="relative" ref={desktopBrochureRef}>
                                     <button
-                                        onClick={() => setBrochureOpen((p) => !p)}
+                                        onClick={toggleDesktopBrochure}
                                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full hover:bg-[#ABBD4F] hover:text-white border border-[#ABBD4F] text-[#283F67] text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm"
                                     >
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                                            <polyline points="7 10 12 15 17 10" />
-                                            <line x1="12" y1="15" x2="12" y2="3" />
-                                        </svg>
+                                        <DownloadIcon />
                                         Download Brochure
                                     </button>
-
                                     <AnimatePresence>
-                                        {brochureOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                                                transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                                                className="absolute top-full right-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 z-50"
-                                                style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
-                                            >
-                                                {/* Header */}
-                                                <div className="flex items-center gap-3 mb-3">
-                                                    <div className="w-8 h-8 rounded-lg bg-[#f0f4fb] flex items-center justify-center shrink-0">
-                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#365693" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                                                            <polyline points="14 2 14 8 20 8" />
-                                                        </svg>
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
-                                                        <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
-                                                    </div>
-                                                </div>
-
-                                                <p className="text-[12px] text-gray-500 leading-relaxed mb-3">
-                                                    Enter your email to access the full brochure instantly.
-                                                </p>
-
-                                                <div className="flex flex-col gap-2">
-                                                    <input
-                                                        type="email"
-                                                        placeholder="your@email.com"
-                                                        value={brochureEmail}
-                                                        onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
-                                                        onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
-                                                        className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all ${brochureError
-                                                            ? "border-red-400 focus:ring-1 focus:ring-red-300"
-                                                            : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
-                                                            }`}
-                                                    />
-                                                    {brochureError && (
-                                                        <p className="text-[11px] text-red-500">Please enter a valid email address.</p>
-                                                    )}
-                                                    <button
-                                                        onClick={handleBrochureSubmit}
-                                                        className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200"
-                                                    >
-                                                        Download Now
-                                                    </button>
-                                                </div>
-                                            </motion.div>
+                                        {desktopBrochureOpen && (
+                                            <BrochureDropdownContent {...brochureProps} positionClass="right-0" />
                                         )}
                                     </AnimatePresence>
                                 </div>
@@ -578,12 +620,6 @@ export default function Navbar() {
 
                             {/* ── Mobile Right ── */}
                             <div className="flex lg:hidden items-center gap-2">
-                                <button
-                                    aria-label="Search"
-                                    className="p-2 text-[#3a3a3a] hover:text-[#1b3a6b] transition-colors"
-                                >
-                                    <SearchIcon />
-                                </button>
                                 <button
                                     aria-label={menuOpen ? "Close menu" : "Open menu"}
                                     onClick={() => setMenuOpen((p) => !p)}
@@ -595,7 +631,7 @@ export default function Navbar() {
                         </div>
                     </nav>
 
-                    {/* ── Mega menus — full width relative to header ── */}
+                    {/* ── Mega menus ── */}
                     <div onMouseEnter={cancelClose} onMouseLeave={scheduleClose}>
                         <AnimatePresence>
                             {activeMega === "solutions" && <SolutionsMegaMenu />}
@@ -617,32 +653,141 @@ export default function Navbar() {
                         >
                             <div className="bg-white border-t border-gray-100 px-4 pt-3 pb-5 shadow-lg">
                                 <ul className="flex flex-col gap-1 mb-4">
-                                    {NAV_LINKS.map(({ label, href }) => (
-                                        <li key={label}>
-                                            <a
-                                                href={href}
-                                                onClick={() => setMenuOpen(false)}
-                                                className="block px-3 py-2.5 rounded-md text-[14px] font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb] transition-colors duration-200"
-                                            >
-                                                {label}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {NAV_LINKS.map(({ label, href }) => {
+                                        const isActive = pathname === href;
+                                        return (
+                                            <li key={label}>
+                                                <Link
+                                                    href={href}
+                                                    onClick={() => setMenuOpen(false)}
+                                                    className={`block px-3 py-2.5 rounded-md text-[14px] transition-colors duration-200 ${isActive
+                                                            ? "font-bold text-[#365693] bg-[#f0f4fb]"
+                                                            : "font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb]"
+                                                        }`}
+                                                >
+                                                    {label}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
+
                                 <a
                                     href="/contact"
                                     onClick={() => setMenuOpen(false)}
-                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm"
+                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm mb-2"
                                 >
                                     Connect with an Expert
                                 </a>
-                                <a
-                                    href="/contact"
-                                    onClick={() => setMenuOpen(false)}
-                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm"
-                                >
-                                    Connect with an Expert
-                                </a>
+
+                                {/* Mobile brochure — opens upward to avoid overflow */}
+                                <div className="relative" ref={mobileBrochureRef}>
+                                    <button
+                                        onClick={toggleMobileBrochure}
+                                        className="flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full hover:bg-[#ABBD4F] hover:text-white border border-[#ABBD4F] text-[#283F67] text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm"
+                                    >
+                                        <DownloadIcon />
+                                        Download Brochure
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {mobileBrochureOpen && (
+                                            // Opens upward on mobile (bottom-full) to stay inside viewport
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                                                transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                                                className="absolute bottom-full left-0 right-0 mb-2 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 z-50"
+                                                style={{ boxShadow: "0 -8px 32px 0 rgba(30,50,90,0.13)" }}
+                                            >
+                                                {/* Header */}
+                                                <div className="flex items-center gap-3 mb-3">
+                                                    <div className="w-8 h-8 rounded-lg bg-[#f0f4fb] flex items-center justify-center shrink-0">
+                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#365693" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                                            <polyline points="14 2 14 8 20 8" />
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
+                                                        <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
+                                                    </div>
+                                                </div>
+
+                                                {/* Success */}
+                                                {brochureState === "success" && (
+                                                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center gap-2 py-3 text-center">
+                                                        <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                <polyline points="20 6 9 17 4 12" />
+                                                            </svg>
+                                                        </div>
+                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Opening your brochure…</p>
+                                                        <p className="text-[11px] text-gray-400">Your email has been recorded.</p>
+                                                    </motion.div>
+                                                )}
+
+                                                {/* Error */}
+                                                {brochureState === "error" && (
+                                                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center gap-2 py-3 text-center">
+                                                        <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                <circle cx="12" cy="12" r="10" />
+                                                                <line x1="12" y1="8" x2="12" y2="12" />
+                                                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                                                            </svg>
+                                                        </div>
+                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Something went wrong</p>
+                                                        <p className="text-[11px] text-gray-400">Opening the brochure anyway…</p>
+                                                    </motion.div>
+                                                )}
+
+                                                {/* Idle / Loading */}
+                                                {(brochureState === "idle" || brochureState === "loading") && (
+                                                    <>
+                                                        <p className="text-[12px] text-gray-500 leading-relaxed mb-3">
+                                                            Enter your email to access the full brochure instantly.
+                                                        </p>
+                                                        <div className="flex flex-col gap-2">
+                                                            <input
+                                                                type="email"
+                                                                placeholder="your@email.com"
+                                                                value={brochureEmail}
+                                                                disabled={brochureState === "loading"}
+                                                                onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
+                                                                onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
+                                                                className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
+                                                                        ? "border-red-400 focus:ring-1 focus:ring-red-300"
+                                                                        : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
+                                                                    }`}
+                                                            />
+                                                            {brochureError && (
+                                                                <p className="text-[11px] text-red-500">Please enter a valid email address.</p>
+                                                            )}
+                                                            <button
+                                                                onClick={handleBrochureSubmit}
+                                                                disabled={brochureState === "loading"}
+                                                                className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                                            >
+                                                                {brochureState === "loading" ? (
+                                                                    <>
+                                                                        <svg className="animate-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                                                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" />
+                                                                        </svg>
+                                                                        Saving…
+                                                                    </>
+                                                                ) : (
+                                                                    "Download Now"
+                                                                )}
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             </div>
                         </motion.div>
                     )}
@@ -654,38 +799,19 @@ export default function Navbar() {
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
 
-function SearchIcon() {
+function DownloadIcon() {
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
         </svg>
     );
 }
 
 function HamburgerIcon() {
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="3" y1="6" x2="21" y2="6" />
             <line x1="3" y1="12" x2="21" y2="12" />
             <line x1="3" y1="18" x2="21" y2="18" />
@@ -695,17 +821,7 @@ function HamburgerIcon() {
 
 function CloseIcon() {
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
