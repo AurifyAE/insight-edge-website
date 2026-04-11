@@ -33,8 +33,8 @@ const trustItems: TrustItem[] = [
 const cardVariants: Variants = {
     hidden: {
         opacity: 0,
-        y: 40,
-        scale: 0.92,
+        y: 60,
+        scale: 0.4,
     },
     visible: (i: number) => ({
         opacity: 1,
@@ -54,7 +54,7 @@ const dividerVariants: Variants = {
         scaleY: 1,
         opacity: 1,
         transition: {
-            delay: i * 0.15 + 0.3,
+            delay: i * 0.3 + 0.3,
             duration: 0.5,
             ease: "easeOut",
         },
@@ -65,7 +65,7 @@ const TrustSection: React.FC = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(sectionRef, {
         once: true,       // animate only the first time
-        margin: "-80px",  // trigger slightly before fully in view
+        margin: "-150px",  // trigger slightly before fully in view
     });
 
     return (
@@ -139,22 +139,22 @@ const TrustCard: React.FC<TrustCardProps> = ({ item }) => {
         <div className="group flex flex-1 flex-col items-center gap-4 text-center">
 
             {/* Outer soft halo + white circle */}
-            <div className="relative flex h-52 w-52 items-center justify-center">
+            <div className="relative flex h-72 w-72 items-center justify-center">
                 {/* Halo rings */}
                 <div className="absolute inset-[-8px] rounded-full bg-white/50" />
                 <div className="absolute inset-[-4px] rounded-full bg-white/70" />
 
                 {/* Main icon circle */}
-                <div className="relative flex flex-col h-52 w-52 items-center justify-center rounded-full bg-white shadow-[0_6px_32px_0_rgba(90,130,50,0.12)] transition-shadow duration-300 group-hover:shadow-[0_10px_40px_0_rgba(90,130,50,0.22)] gap-2">
+                <div className="relative flex flex-col h-72 w-72 items-center justify-center rounded-full bg-[#283F67] shadow-[0_6px_32px_0_rgba(90,130,50,0.12)] transition-shadow duration-300 group-hover:shadow-[0_10px_40px_0_rgba(90,130,50,0.22)] gap-2">
                     <img
                         src={item.icon}
                         alt={item.alt}
                         className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <span className="font-bold text-[#1b2e45] text-[1.4rem] leading-snug tracking-tight">
+                    <span className="font-bold text-[#C6DB5A] text-[1.4rem] leading-snug tracking-tight">
                         {item.stat}
                     </span>
-                    <p className="whitespace-pre-line text-[0.82rem] leading-[1.7] text-[#6b7f96]">
+                    <p className="whitespace-pre-line text-[0.82rem] leading-[1.7] text-white">
                         {item.description}
                     </p>
                 </div>

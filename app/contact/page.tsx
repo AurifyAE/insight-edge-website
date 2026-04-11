@@ -16,6 +16,7 @@ function IconEmail() {
         </svg>
     );
 }
+
 function IconPhone() {
     return (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -24,6 +25,7 @@ function IconPhone() {
         </svg>
     );
 }
+
 function IconWeb() {
     return (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -34,6 +36,7 @@ function IconWeb() {
         </svg>
     );
 }
+
 function IconLocation() {
     return (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -43,9 +46,10 @@ function IconLocation() {
         </svg>
     );
 }
+
 function IconSend() {
     return (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="22" y1="2" x2="11" y2="13" />
             <polygon points="22 2 15 22 11 13 2 9 22 2" />
@@ -54,45 +58,38 @@ function IconSend() {
 }
 
 /* ─────────────────────────────────────────────
-   CONTACT INFO CARD
+   COMPONENTS
 ───────────────────────────────────────────── */
+
 function InfoCard({
     icon,
     title,
-    line1,
-    line2,
+    value,
+    subValue
 }: {
-    icon: React.ReactNode;
-    title: string;
-    line1: string;
-    line2?: string;
+    icon: React.ReactNode,
+    title: string,
+    value: string,
+    subValue?: string
 }) {
     return (
-        <div className="flex items-start gap-3 border border-gray-200 rounded-lg px-4 py-3 bg-white">
-            <span className="mt-0.5 text-[#4a6baa]">{icon}</span>
+        <div className="flex items-start gap-4 p-5 bg-[#F8FAFC] border-l-4 border-l-[#ABBD4F] rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div className="text-[#365693] mt-1 shrink-0">
+                {icon}
+            </div>
             <div>
-                <p className="text-[12.5px] font-semibold text-[#365693] leading-tight mb-0.5">{title}</p>
-                <p className="text-[12px] text-gray-600 leading-snug">{line1}</p>
-                {line2 && <p className="text-[11.5px] text-gray-500 leading-snug mt-0.5">{line2}</p>}
+                <h4 className="text-[14px] font-bold text-[#365693] mb-1">{title}</h4>
+                <p className="text-[14px] text-gray-700 font-medium">{value}</p>
+                {subValue && <p className="text-[12px] text-gray-500 mt-1 leading-relaxed">{subValue}</p>}
             </div>
         </div>
     );
 }
 
-/* ─────────────────────────────────────────────
-   INPUT / TEXTAREA STYLES
-───────────────────────────────────────────── */
-const inputBase =
-    "w-full border border-gray-300 rounded-md px-3 py-2 text-[12.5px] text-gray-800 placeholder-gray-400 bg-white focus:outline-none focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20 transition-colors duration-150";
-
-/* ─────────────────────────────────────────────
-   LABEL
-───────────────────────────────────────────── */
 function Label({ children, required }: { children: React.ReactNode; required?: boolean }) {
     return (
-        <label className="block text-[12px] font-medium text-gray-800 mb-1">
-            {children}
-            {required && <span className="text-gray-800 ml-0.5"> *</span>}
+        <label className="block text-[13px] font-bold text-[#365693] mb-1.5 uppercase tracking-wide">
+            {children} {required && <span className="text-red-500">*</span>}
         </label>
     );
 }
@@ -100,6 +97,7 @@ function Label({ children, required }: { children: React.ReactNode; required?: b
 /* ─────────────────────────────────────────────
    PAGE
 ───────────────────────────────────────────── */
+
 export default function ContactPage() {
     const [form, setForm] = useState({
         fullName: "",
@@ -111,180 +109,194 @@ export default function ContactPage() {
     });
     const [submitted, setSubmitted] = useState(false);
 
-    function handleChange(
+    const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) {
-        setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
-    }
+    ) => {
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
 
-    function handleSubmit(e: React.FormEvent) {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitted(true);
-    }
+    };
+
+    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[14px] text-gray-800 focus:outline-none focus:border-[#365693] focus:ring-2 focus:ring-[#365693]/10 transition-all bg-white";
 
     return (
-        <div className="min-h-screen bg-[#f2f4f7]">
+        <div className="min-h-screen bg-white">
 
             {/* ── HERO BANNER ─────────────────────────────── */}
             <div
-                style={{
-                    background: "linear-gradient(135deg, #2e4a82 0%, #3a5a9b 60%, #2e5a8e 100%)",
-                }}
-                className="px-8 pt-30 pb-12"
+                className="bg-[#365693] px-8 pt-32 pb-16"
             >
-                <div className="max-w-5xl mx-auto">
-                    <h1 className="text-[32px] font-bold text-white leading-tight mb-2">
+                <div className="max-w-6xl mx-auto">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Get In Touch
                     </h1>
-                    <p className="text-[#a4bde0] text-[13.5px] leading-relaxed max-w-[320px]">
+                    <p className="text-[#ABBD4F] text-sm md:text-base font-medium max-w-lg leading-relaxed">
                         Let's discuss how we can support your precious metals business with expert financial and compliance advisory
                     </p>
                 </div>
             </div>
 
             {/* ── BODY ────────────────────────────────────── */}
-            <div className="max-w-5xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8">
+            <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
                 {/* ════════════════════════════════════
-            LEFT COLUMN
-        ════════════════════════════════════ */}
-                <div className="flex flex-col gap-5">
+                    LEFT COLUMN
+                ════════════════════════════════════ */}
+                <div className="flex flex-col gap-10">
 
-                    {/* Section heading */}
-                    <h2 className="text-[16px] font-bold text-[#365693]">Contact Information</h2>
+                    <div>
+                        <h2 className="text-2xl font-bold text-[#365693] mb-8">Contact Information</h2>
 
-                    {/* Info cards */}
-                    <div className="flex flex-col gap-2.5">
-                        <InfoCard icon={<IconEmail />} title="Email" line1="info@insightedge.global" />
-                        <InfoCard icon={<IconPhone />} title="Phone" line1="+971 50 370 8785" />
-                        <InfoCard icon={<IconWeb />} title="Website" line1="www.insightedge.global" />
-                        <InfoCard
-                            icon={<IconLocation />}
-                            title="Location"
-                            line1="United Arab Emirates"
-                            line2="Serving precious metals businesses across UAE mainland and free zones"
-                        />
+                        <div className="flex flex-col gap-4">
+                            <InfoCard
+                                icon={<IconEmail />}
+                                title="Email"
+                                value="info@insightedge.global"
+                            />
+                            <InfoCard
+                                icon={<IconPhone />}
+                                title="Phone"
+                                value="+971 50 370 8785"
+                            />
+                            <InfoCard
+                                icon={<IconWeb />}
+                                title="Website"
+                                value="www.insightedge.global"
+                            />
+                            <InfoCard
+                                icon={<IconLocation />}
+                                title="Location"
+                                value="United Arab Emirates"
+                                subValue="Office number A17-18, Metha plaza building 12B Oud Metha Rd. Oud Metha. Dubai UAE."
+                            />
+                        </div>
                     </div>
 
-                    {/* IEG brand card */}
-                    <div
-                        className="rounded-xl px-5 py-5 mt-1"
-                        style={{ background: "linear-gradient(150deg, #2e4a82 0%, #253e70 100%)" }}
-                    >
-                        {/* Badge */}
-                        <Link href="/" className="flex flex-col items-start gap-2 cursor-pointer mb-4">
-                            <Image
-                                src="/images/home/logo-white.svg"
-                                alt="IEG Logo"
-                                width={120}
-                                height={40}
-                                className="h-13 w-auto object-contain"
-                            />
-                            <Image
-                                src="/images/home/logo-text-white.svg"
-                                alt="Insight Edge Global"
-                                width={160}
-                                height={15}
-                                className="h-2 w-auto object-contain"
-                            />
-                        </Link>
-                        <h3 className="text-[14.5px] font-bold text-white leading-snug mb-3">
-                            Safeguarding Value Through Financial Expertise
-                        </h3>
-                        <p className="text-[11.5px] text-[#a4bde0] leading-relaxed mb-4">
-                            UAE-registered &amp; approved audit firm, 100% dedicated to the precious metals sector with 360° end-to-end financial &amp; compliance coverage.
-                        </p>
-                        <ul className="flex flex-col gap-1.5">
-                            {[
-                                "Exclusive focus on precious metals industry",
-                                "DMCC, LBMA & OECD standards expertise",
-                                "AML/CFT specialists for DNFBP entities",
-                            ].map((pt) => (
-                                <li key={pt} className="flex items-start gap-2 text-[11.5px] text-[#c2d5ef]">
-                                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#8fa832] shrink-0" />
-                                    {pt}
-                                </li>
-                            ))}
-                        </ul>
+                    {/* Brand card */}
+                    <div className="bg-[#365693] rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                        <div className="relative z-10">
+                            {/* Logo */}
+                            <div className="flex flex-col items-start gap-2 mb-6">
+                                <Image
+                                    src="/images/home/logo-white.svg"
+                                    alt="IEG Logo"
+                                    width={100}
+                                    height={35}
+                                    className="h-10 w-auto object-contain"
+                                />
+                                <Image
+                                    src="/images/home/logo-text-white.svg"
+                                    alt="Insight Edge Global"
+                                    width={140}
+                                    height={12}
+                                    className="h-2 w-auto object-contain"
+                                />
+                            </div>
+
+                            <p className="text-[12px] font-bold text-[#ABBD4F] uppercase tracking-[0.2em] mb-3">
+                                Insight Edge Global
+                            </p>
+                            <h3 className="text-[22px] font-bold leading-tight mb-4">
+                                Safeguarding Value Through Financial Expertise
+                            </h3>
+                            <p className="text-[14px] text-white/80 leading-relaxed mb-6">
+                                UAE-registered & approved audit firm, 100% dedicated to the precious metals sector with 360° end-to-end financial & compliance coverage.
+                            </p>
+                            <ul className="flex flex-col gap-3">
+                                {[
+                                    "Exclusive focus on precious metals industry",
+                                    "DMCC, LBMA & OECD standards expertise",
+                                    "AML/CFT specialists for DNFBP entities"
+                                ].map((pt, idx) => (
+                                    <li key={idx} className="flex items-start gap-3 text-[14px] text-white/90">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#ABBD4F] mt-2 shrink-0" />
+                                        {pt}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        {/* Subtle decorative glow */}
+                        <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
                     </div>
                 </div>
 
                 {/* ════════════════════════════════════
-            RIGHT COLUMN — FORM
-        ════════════════════════════════════ */}
+                    RIGHT COLUMN — FORM
+                ════════════════════════════════════ */}
                 <div className="flex flex-col gap-4">
-
-                    <h2 className="text-[16px] font-bold text-[#365693]">Send Us a Message</h2>
+                    <h2 className="text-2xl font-bold text-[#365693] mb-8">Send Us a Message</h2>
 
                     {submitted ? (
-                        <div className="flex flex-col items-center justify-center gap-3 py-20 border border-gray-200 rounded-xl bg-white text-center">
-                            <div className="w-12 h-12 rounded-full bg-[#365693]/10 flex items-center justify-center">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    stroke="#365693" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <div className="flex flex-col items-center justify-center gap-6 py-20 border border-gray-100 rounded-3xl bg-[#F8FAFC] text-center shadow-sm">
+                            <div className="w-20 h-20 rounded-full bg-[#ABBD4F] flex items-center justify-center shadow-lg shadow-[#ABBD4F]/20">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                    stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </div>
-                            <p className="text-[15px] font-bold text-[#365693]">Message Sent!</p>
-                            <p className="text-[12.5px] text-gray-500">We'll respond to your inquiry within 24 hours.</p>
+                            <div>
+                                <h3 className="text-2xl font-bold text-[#365693] mb-2">Message Sent!</h3>
+                                <p className="text-gray-600">We'll respond to your inquiry within 24 hours.</p>
+                            </div>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
-                            {/* Full Name */}
-                            <div>
-                                <Label required>Full Name</Label>
-                                <input
-                                    type="text"
-                                    name="fullName"
-                                    value={form.fullName}
-                                    onChange={handleChange}
-                                    placeholder="Your name"
-                                    required
-                                    className={inputBase}
-                                />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <Label required>Full Name</Label>
+                                    <input
+                                        type="text"
+                                        name="fullName"
+                                        value={form.fullName}
+                                        onChange={handleChange}
+                                        placeholder="Your name"
+                                        required
+                                        className={inputCls}
+                                    />
+                                </div>
+                                <div>
+                                    <Label required>Email Address</Label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={form.email}
+                                        onChange={handleChange}
+                                        placeholder="your@email.com"
+                                        required
+                                        className={inputCls}
+                                    />
+                                </div>
                             </div>
 
-                            {/* Email */}
-                            <div>
-                                <Label required>Email Address</Label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={form.email}
-                                    onChange={handleChange}
-                                    placeholder="your@email.com"
-                                    required
-                                    className={inputBase}
-                                />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <Label>Phone Number</Label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={form.phone}
+                                        onChange={handleChange}
+                                        placeholder="+971 XX XXX XXXX"
+                                        className={inputCls}
+                                    />
+                                </div>
+                                <div>
+                                    <Label>Company Name</Label>
+                                    <input
+                                        type="text"
+                                        name="company"
+                                        value={form.company}
+                                        onChange={handleChange}
+                                        placeholder="Your company"
+                                        className={inputCls}
+                                    />
+                                </div>
                             </div>
 
-                            {/* Phone */}
-                            <div>
-                                <Label>Phone Number</Label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    value={form.phone}
-                                    onChange={handleChange}
-                                    placeholder="+971 XX XXX XXXX"
-                                    className={inputBase}
-                                />
-                            </div>
-
-                            {/* Company */}
-                            <div>
-                                <Label>Company Name</Label>
-                                <input
-                                    type="text"
-                                    name="company"
-                                    value={form.company}
-                                    onChange={handleChange}
-                                    placeholder="Your company"
-                                    className={inputBase}
-                                />
-                            </div>
-
-                            {/* Service of Interest */}
                             <div>
                                 <Label>Service of Interest</Label>
                                 <input
@@ -292,12 +304,11 @@ export default function ContactPage() {
                                     name="service"
                                     value={form.service}
                                     onChange={handleChange}
-                                    placeholder=""
-                                    className={inputBase}
+                                    placeholder="e.g. AML Compliance, Audit"
+                                    className={inputCls}
                                 />
                             </div>
 
-                            {/* Message */}
                             <div>
                                 <Label required>Message</Label>
                                 <textarea
@@ -307,21 +318,19 @@ export default function ContactPage() {
                                     placeholder="Tell us about your requirements..."
                                     required
                                     rows={5}
-                                    className={`${inputBase} resize-none`}
+                                    className={`${inputCls} resize-none`}
                                 />
                             </div>
 
-                            {/* Submit */}
-                            <div className="flex flex-col items-stretch gap-2 mt-1">
+                            <div className="pt-2">
                                 <button
                                     type="submit"
-                                    className="flex items-center justify-center gap-2 w-full py-3 rounded-md text-white text-[13.5px] font-semibold tracking-wide transition-opacity duration-150 hover:opacity-90"
-                                    style={{ background: "linear-gradient(90deg, #2e4a82 0%, #3a5a9b 100%)" }}
+                                    className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#365693] hover:bg-[#2a4172] text-white text-[16px] font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#365693]/20 active:scale-[0.98]"
                                 >
                                     Send Message
                                     <IconSend />
                                 </button>
-                                <p className="text-center text-[11px] text-gray-500 mt-0.5">
+                                <p className="text-center text-[12px] text-gray-400 mt-4 italic">
                                     * Required fields. We'll respond to your inquiry within 24 hours.
                                 </p>
                             </div>
@@ -331,10 +340,20 @@ export default function ContactPage() {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2 bg-[#ABBD4F] py-8">
-                <h2 className="text-xl font-bold text-[#365693]">Prefer to call directly?</h2>
-                <p className="text-2xl font-bold text-[#365693]">+971 50 370 8785</p>
-                <p className="text-sm text-white">Our team is ready to discuss your precious metals business needs</p>
+            {/* Bottom CTA Strip */}
+            <div className="bg-[#ABBD4F] py-12 px-6">
+                <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div className="text-[#365693] text-center md:text-left">
+                        <h2 className="text-2xl font-bold mb-2">Prefer to call directly?</h2>
+                        <p className="text-lg opacity-80">Our team is ready to discuss your precious metals business needs</p>
+                    </div>
+                    <a
+                        href="tel:+971503708785"
+                        className="text-2xl md:text-3xl font-black text-[#365693] hover:scale-105 transition-transform duration-200"
+                    >
+                        +971 50 370 8785
+                    </a>
+                </div>
             </div>
         </div>
     );

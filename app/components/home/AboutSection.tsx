@@ -22,7 +22,7 @@ interface ChallengeCard {
 
 const AMLIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-        <rect width="48" height="48" rx="10" fill="#F0F4FF" />
+        <rect width="48" height="48" rx="10" fill="#F6FDD3" />
         <path d="M14 34V28M20 34V22M26 34V26M32 34V20" stroke="#365693" strokeWidth="2.5" strokeLinecap="round" />
         <path d="M32 20L38 14" stroke="#ABBD4F" strokeWidth="2.5" strokeLinecap="round" />
         <path d="M36 14H38V16" stroke="#ABBD4F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -31,7 +31,7 @@ const AMLIcon = () => (
 
 const InventoryIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-        <rect width="48" height="48" rx="10" fill="#F0F4FF" />
+        <rect width="48" height="48" rx="10" fill="#F6FDD3" />
         <circle cx="24" cy="24" r="10" stroke="#365693" strokeWidth="2.5" />
         <path d="M24 18V24L28 28" stroke="#365693" strokeWidth="2.5" strokeLinecap="round" />
         <path d="M17 12L14 9M31 12L34 9" stroke="#ABBD4F" strokeWidth="2" strokeLinecap="round" />
@@ -41,7 +41,7 @@ const InventoryIcon = () => (
 
 const PriceIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-        <rect width="48" height="48" rx="10" fill="#F0F4FF" />
+        <rect width="48" height="48" rx="10" fill="#F6FDD3" />
         <path d="M10 34L18 24L24 30L32 18L38 22" stroke="#365693" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M34 14H40V20" stroke="#ABBD4F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -49,7 +49,7 @@ const PriceIcon = () => (
 
 const VATIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-        <rect width="48" height="48" rx="10" fill="#F5F7E8" />
+        <rect width="48" height="48" rx="10" fill="#F6FDD3" />
         <path d="M16 16H32V32H16V16Z" stroke="#ABBD4F" strokeWidth="2" />
         <path d="M21 20H27" stroke="#365693" strokeWidth="2" strokeLinecap="round" />
         <path d="M21 24H27" stroke="#365693" strokeWidth="2" strokeLinecap="round" />
@@ -61,7 +61,7 @@ const VATIcon = () => (
 
 const TransferIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-        <rect width="48" height="48" rx="10" fill="#F5F7E8" />
+        <rect width="48" height="48" rx="10" fill="#F6FDD3" />
         <path d="M14 20H34M30 16L34 20L30 24" stroke="#365693" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M34 28H14M18 24L14 28L18 32" stroke="#ABBD4F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -129,7 +129,7 @@ function ChallengeCard({
                 delay: columnDelay + cardIndexInColumn * 0.15,
                 ease: [0.22, 1, 0.36, 1],
             }}
-            className="flex items-start gap-3 bg-white rounded-2xl p-4 shadow-sm border border-gray-100"
+            className="flex items-start gap-3 bg-[#F6FDD3] rounded-2xl p-4 shadow-sm border border-gray-100"
             style={{ minWidth: 200, maxWidth: 240 }}
         >
             <div className="shrink-0">{card.icon}</div>
@@ -191,6 +191,7 @@ export default function AboutSection() {
                             </div>
                             {/* 100% Stat */}
                             <motion.div
+                                className="z-10"
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -212,6 +213,7 @@ export default function AboutSection() {
 
                             {/* 10% Stat */}
                             <motion.div
+                                className="z-10"
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.6, delay: 0.2 }}

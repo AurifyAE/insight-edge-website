@@ -40,7 +40,7 @@ export default function AffiliateSection() {
                     {affiliates.map((item, index) => (
                         <div
                             key={index}
-                            className="flex items-center justify-center w-full h-20 grayscale hover:grayscale-0 transition duration-300"
+                            className="flex items-center justify-center w-full h-20"
                         >
                             <Image
                                 src={item.src}

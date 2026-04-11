@@ -14,8 +14,6 @@ const OUR_SOLUTIONS_COLUMNS = [
             "Forensic Audit",
             "Inventory Verification",
             "Supply Chain Audit",
-            "Internal Audit Services",
-            "Inventory Verification",
             "UAE Ministry of Economy Review",
         ],
         subSections: [
@@ -190,7 +188,7 @@ function SolutionsMegaMenu() {
                     Comprehensive advisory across every touchpoint of your business
                 </p>
                 <a
-                    href="/solutions"
+                    href="/services"
                     className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1"
                 >
                     View all solutions
@@ -346,6 +344,30 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [activeMega, setActiveMega] = useState<"solutions" | "who-we-serve" | null>(null);
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const [brochureOpen, setBrochureOpen] = useState(false);
+    const brochureRef = useRef<HTMLDivElement>(null);
+    const [brochureEmail, setBrochureEmail] = useState("");
+    const [brochureError, setBrochureError] = useState(false);
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (brochureRef.current && !brochureRef.current.contains(e.target as Node)) {
+                setBrochureOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const handleBrochureSubmit = () => {
+        if (!brochureEmail || !/\S+@\S+\.\S+/.test(brochureEmail)) {
+            setBrochureError(true);
+            return;
+        }
+        setBrochureError(false);
+        setBrochureOpen(false);
+        window.open("/pdfs/IE-Brochure-2026.pdf", "_blank");
+    };
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -483,6 +505,75 @@ export default function Navbar() {
                                 >
                                     Connect with an Expert
                                 </a>
+
+                                {/* Download Brochure with dropdown */}
+                                <div className="relative" ref={brochureRef}>
+                                    <button
+                                        onClick={() => setBrochureOpen((p) => !p)}
+                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full hover:bg-[#ABBD4F] hover:text-white border border-[#ABBD4F] text-[#283F67] text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm"
+                                    >
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                            <polyline points="7 10 12 15 17 10" />
+                                            <line x1="12" y1="15" x2="12" y2="3" />
+                                        </svg>
+                                        Download Brochure
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {brochureOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                                                transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                                                className="absolute top-full right-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 z-50"
+                                                style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
+                                            >
+                                                {/* Header */}
+                                                <div className="flex items-center gap-3 mb-3">
+                                                    <div className="w-8 h-8 rounded-lg bg-[#f0f4fb] flex items-center justify-center shrink-0">
+                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#365693" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                                            <polyline points="14 2 14 8 20 8" />
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
+                                                        <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
+                                                    </div>
+                                                </div>
+
+                                                <p className="text-[12px] text-gray-500 leading-relaxed mb-3">
+                                                    Enter your email to access the full brochure instantly.
+                                                </p>
+
+                                                <div className="flex flex-col gap-2">
+                                                    <input
+                                                        type="email"
+                                                        placeholder="your@email.com"
+                                                        value={brochureEmail}
+                                                        onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
+                                                        onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
+                                                        className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all ${brochureError
+                                                            ? "border-red-400 focus:ring-1 focus:ring-red-300"
+                                                            : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
+                                                            }`}
+                                                    />
+                                                    {brochureError && (
+                                                        <p className="text-[11px] text-red-500">Please enter a valid email address.</p>
+                                                    )}
+                                                    <button
+                                                        onClick={handleBrochureSubmit}
+                                                        className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200"
+                                                    >
+                                                        Download Now
+                                                    </button>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             </div>
 
                             {/* ── Mobile Right ── */}
@@ -538,6 +629,13 @@ export default function Navbar() {
                                         </li>
                                     ))}
                                 </ul>
+                                <a
+                                    href="/contact"
+                                    onClick={() => setMenuOpen(false)}
+                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm"
+                                >
+                                    Connect with an Expert
+                                </a>
                                 <a
                                     href="/contact"
                                     onClick={() => setMenuOpen(false)}

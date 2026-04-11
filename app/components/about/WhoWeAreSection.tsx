@@ -178,15 +178,13 @@ export default function WhoWeAreSection() {
     };
 
     return (
-        <section className="py-16 lg:py-24 bg-white">
+        <section className="py-16 lg:pt-24 bg-white">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <h2
-                    className="font-bold mb-6"
+                    className="font-bold mb-6 text-[#1e3a6e]"
                     style={{
                         fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-                        color: "#1e3a6e",
-                        fontFamily: "Inter, sans-serif",
                     }}
                 >
                     Who We Are
@@ -219,18 +217,13 @@ export default function WhoWeAreSection() {
                 </div>
 
                 {/* ── Our Mission Card ── */}
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto pt-20">
                     <div
                         className="rounded-2xl border border-[#e2e8f0] bg-white px-8 py-7"
                         style={{ borderLeft: "4px solid #ABBD4F" }}
                     >
                         <h3
-                            className="font-semibold mb-3"
-                            style={{
-                                fontSize: 16,
-                                color: "#1e3a6e",
-                                fontFamily: "Inter, sans-serif",
-                            }}
+                            className="font-semibold mb-3 text-2xl text-[#1e3a6e]"
                         >
                             Our Mission
                         </h3>

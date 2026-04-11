@@ -205,7 +205,7 @@ export default function ServicesSection() {
 
             {/* ── Header ── */}
             <motion.div
-                className="relative z-10 text-center mb-10"
+                className="relative z-10 text-center mb-20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, ease: "easeOut" }}
@@ -219,7 +219,7 @@ export default function ServicesSection() {
                 >
                     Our Services
                 </h2>
-                <p className="text-sm text-slate-500 max-w-[300px] mx-auto leading-relaxed">
+                <p className="text-sm text-slate-500 max-w-[500px] mx-auto leading-relaxed">
                     Comprehensive financial and compliance solutions tailored exclusively
                     for the precious metals industry
                 </p>
