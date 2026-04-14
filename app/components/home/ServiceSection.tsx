@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 interface Service {
     id: number;
@@ -71,24 +71,18 @@ const services: Service[] = [
     },
 ];
 
-/**
- * Each card starts at (0,0) — the absolute center of the stage —
- * and animates to its final (x, y) scatter position.
- *
- * Positions are offsets from the stage center (50%, 50%).
- * CARD_W = 210px, CARD_H = 140px
- */
+// ─── Desktop scatter config (unchanged) ───────────────────────────────────────
 const CARD_W = 210;
 const CARD_H = 140;
 
 const cardPositions: { x: number; y: number; zIndex: number }[] = [
-    { x: -380, y: -160, zIndex: 2 }, // 01 — top-left
-    { x: -20, y: -200, zIndex: 2 }, // 02 — top-right
-    { x: 350, y: -160, zIndex: 3 }, // 03 — center (Financial Advisory, on top)
-    { x: -380, y: 150, zIndex: 2 }, // 04 — center-left (Taxation, behind 03)
-    { x: -20, y: 10, zIndex: 2 }, // 05 — bottom-left
-    { x: -20, y: 200, zIndex: 2 }, // 06 — bottom-right
-    { x: 350, y: 150, zIndex: 2 }, // 07 — bottom-right
+    { x: -380, y: -160, zIndex: 2 },
+    { x: -20, y: -200, zIndex: 2 },
+    { x: 350, y: -160, zIndex: 3 },
+    { x: -380, y: 150, zIndex: 2 },
+    { x: -20, y: 10, zIndex: 2 },
+    { x: -20, y: 200, zIndex: 2 },
+    { x: 350, y: 150, zIndex: 2 },
 ];
 
 function ServiceCard({
@@ -101,16 +95,7 @@ function ServiceCard({
     isAnimated: boolean;
 }) {
     const pos = cardPositions[index];
-
-    const iconGradient =
-        service.iconBg === "emerald"
-            ? "linear-gradient(135deg,#365693,#7491C9)"
-            : "linear-gradient(135deg,#365693,#7491C9)";
-
-    const accentGradient =
-        service.iconBg === "emerald"
-            ? "linear-gradient(180deg,#10b981,#059669)"
-            : "linear-gradient(180deg,#3b82f6,#1d4ed8)";
+    const iconGradient = "linear-gradient(135deg,#365693,#7491C9)";
 
     return (
         <motion.div
@@ -143,17 +128,9 @@ function ServiceCard({
                 className="relative w-72 bg-white rounded-2xl p-5 overflow-hidden group cursor-pointer border-l-4 border-l-[#ABBD4F] grid grid-cols-4"
                 style={{
                     boxShadow: "0 4px 28px rgba(0,0,0,0.08)",
-                    // border: "1px solid rgba(226,232,240,0.7)",
                     minHeight: CARD_H,
                 }}
             >
-                {/* Left accent bar (shown on hover) */}
-                {/* <span
-                    className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: accentGradient }}
-                /> */}
-
-                {/* Icon badge */}
                 <div className="col-span-1 flex justify-center">
                     <div
                         className="w-8 h-8 rounded-lg flex items-center justify-center mb-3"
@@ -164,7 +141,6 @@ function ServiceCard({
                         </span>
                     </div>
                 </div>
-
                 <div className="col-span-3 flex flex-col gap-2">
                     <h3 className="text-[13px] font-semibold text-[#365693] leading-snug mb-1.5">
                         {service.title}
@@ -178,6 +154,146 @@ function ServiceCard({
     );
 }
 
+// ─── Mobile Carousel ──────────────────────────────────────────────────────────
+function MobileCarousel() {
+    const [current, setCurrent] = useState(0);
+    const [direction, setDirection] = useState(0);
+    const touchStartX = useRef<number | null>(null);
+    const iconGradient = "linear-gradient(135deg,#365693,#7491C9)";
+
+    const paginate = (dir: number) => {
+        setDirection(dir);
+        setCurrent((prev) => (prev + dir + services.length) % services.length);
+    };
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX.current === null) return;
+        const diff = touchStartX.current - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) paginate(diff > 0 ? 1 : -1);
+        touchStartX.current = null;
+    };
+
+    const variants = {
+        enter: (dir: number) => ({
+            x: dir > 0 ? 280 : -280,
+            opacity: 0,
+            scale: 0.92,
+        }),
+        center: { x: 0, opacity: 1, scale: 1 },
+        exit: (dir: number) => ({
+            x: dir > 0 ? -280 : 280,
+            opacity: 0,
+            scale: 0.92,
+        }),
+    };
+
+    const service = services[current];
+
+    return (
+        <div className="flex flex-col items-center gap-6 px-4">
+            {/* Card viewport */}
+            <div
+                className="relative w-full max-w-sm overflow-hidden"
+                style={{ height: 180 }}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+            >
+                <AnimatePresence custom={direction} mode="popLayout">
+                    <motion.div
+                        key={service.id}
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0 flex items-center justify-center"
+                    >
+                        <div
+                            className="w-3/4 bg-white rounded-2xl p-5 border-l-4 border-l-[#ABBD4F] grid grid-cols-4"
+                            style={{
+                                boxShadow: "0 4px 28px rgba(0,0,0,0.10)",
+                                minHeight: 140,
+                            }}
+                        >
+                            <div className="col-span-1 flex justify-start pt-0.5">
+                                <div
+                                    className="w-9 h-9 rounded-lg flex items-center justify-center"
+                                    style={{ background: iconGradient }}
+                                >
+                                    <span className="text-[#ABBD4F] text-[10px] font-extrabold tracking-wider">
+                                        {service.icon}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="col-span-3 flex flex-col gap-2">
+                                <h3 className="text-[14px] font-semibold text-[#365693] leading-snug">
+                                    {service.title}
+                                </h3>
+                                <p className="text-[12px] text-[#4A5565] leading-relaxed">
+                                    {service.description}
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+
+            {/* Controls row */}
+            <div className="flex items-center gap-5">
+                {/* Prev */}
+                <button
+                    onClick={() => paginate(-1)}
+                    aria-label="Previous"
+                    className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm active:scale-95 transition-transform"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="#365693" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+
+                {/* Pill dots */}
+                <div className="flex gap-1.5">
+                    {services.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => {
+                                setDirection(i > current ? 1 : -1);
+                                setCurrent(i);
+                            }}
+                            aria-label={`Go to slide ${i + 1}`}
+                            className="rounded-full transition-all duration-300"
+                            style={{
+                                width: i === current ? 20 : 7,
+                                height: 7,
+                                background: i === current ? "#365693" : "#CBD5E1",
+                            }}
+                        />
+                    ))}
+                </div>
+
+                {/* Next */}
+                <button
+                    onClick={() => paginate(1)}
+                    aria-label="Next"
+                    className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm active:scale-95 transition-transform"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="#365693" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    );
+}
+
+// ─── Main Section ─────────────────────────────────────────────────────────────
 export default function ServicesSection() {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -192,7 +308,7 @@ export default function ServicesSection() {
 
     return (
         <section className="relative w-full overflow-hidden py-20 bg-white">
-            {/* ── Background image ── */}
+            {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/images/home/service-bg-img.png"
@@ -203,7 +319,7 @@ export default function ServicesSection() {
                 />
             </div>
 
-            {/* ── Header ── */}
+            {/* Header */}
             <motion.div
                 className="relative z-10 text-center mb-20"
                 initial={{ opacity: 0, y: 20 }}
@@ -212,10 +328,7 @@ export default function ServicesSection() {
             >
                 <h2
                     className="font-bold tracking-tight mb-2"
-                    style={{
-                        fontSize: "clamp(1.6rem,3vw,2rem)",
-                        color: "#1e293b",
-                    }}
+                    style={{ fontSize: "clamp(1.6rem,3vw,2rem)", color: "#1e293b" }}
                 >
                     Our Services
                 </h2>
@@ -225,10 +338,10 @@ export default function ServicesSection() {
                 </p>
             </motion.div>
 
-            {/* ── Cards Stage ── */}
+            {/* ── DESKTOP: scatter layout (hidden below md) ── */}
             <div
                 ref={ref}
-                className="relative mx-auto"
+                className="relative mx-auto hidden md:block"
                 style={{ width: "100%", height: 500 }}
             >
                 {services.map((service, index) => (
@@ -241,7 +354,12 @@ export default function ServicesSection() {
                 ))}
             </div>
 
-            {/* ── CTA Button ── */}
+            {/* ── MOBILE: carousel (hidden at md and above) ── */}
+            <div className="relative z-10 block md:hidden">
+                <MobileCarousel />
+            </div>
+
+            {/* CTA Button */}
             <motion.div
                 className="relative z-10 flex justify-center mt-20"
                 initial={{ opacity: 0, y: 12 }}
@@ -272,11 +390,7 @@ export default function ServicesSection() {
                         stroke="currentColor"
                         strokeWidth={2.2}
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </button>
             </motion.div>

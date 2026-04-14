@@ -31,13 +31,10 @@ export default function WhoWeAre() {
                         Who We Are
                     </h2>
                     <p className="text-[15px] text-gray-600 leading-relaxed mb-5">
-                        Insight Edge Global LLC is a UAE-registered audit and advisory firm
-                        with exclusive focus on the precious metals industry — from gold and
-                        silver trading to refining, logistics, and storage.
+                        Insight Edge Global LLC is a UAE-registered audit and advisory firm with exclusive focus on the precious metals industry from gold and silver trading to refining, logistics, and storage.
                     </p>
                     <p className="text-[15px] text-gray-600 leading-relaxed">
-                        We deliver the depth of a Big-4 practice with the agility and
-                        sector-specific knowledge that only a specialist firm can provide.
+                        We deliver the depth and rigor of leading global advisory practices, combined with the agility and sector-focused expertise that only a specialist firm can offer.
                     </p>
                 </div>
 
@@ -79,13 +76,9 @@ export default function WhoWeAre() {
                         Our Mission
                     </h3>
                     <p
-                        className="text-[#364153]"
-                        style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 680 }}
+                        className="text-[#364153] text-[15px] leading-relaxed max-w-[680px]"
                     >
-                        To make complex financial and compliance processes transparent, efficient,
-                        and secure — helping precious metals businesses stay ahead in an ever-evolving,
-                        tightly regulated market. We bring clarity, accuracy, and confidence to every
-                        engagement.
+                        To make complex financial and compliance processes transparent, efficient, and secure - helping precious metals businesses stay ahead in an ever-evolving, tightly regulated market. We bring clarity, accuracy, and confidence to every engagement.
                     </p>
                 </div>
             </div>

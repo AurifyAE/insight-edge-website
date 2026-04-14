@@ -451,7 +451,7 @@ function AccordionItem({ service, openId, setOpenId }: { service: Service, openI
                     </div>
                     <div className="flex items-center justify-center">
                         {service.features && (
-                            <div className="flex gap-8 px-4 pb-4 py-4">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 pb-4">
                                 {service.features.map((feature, i) => (
                                     <div className="w-40 h-40 rounded-full flex flex-col items-center justify-center bg-[#C1DC3A] px-6">
                                         <p className="text-lg font-bold text-[#283F67] text-center">{feature.title}</p>

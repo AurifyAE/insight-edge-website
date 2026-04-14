@@ -73,7 +73,7 @@ const TrustSection: React.FC = () => {
 
             {/* Left BG layer */}
             <div
-                className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 h-auto w-[20%] select-none"
+                className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 h-auto w-[20%] select-none hidden lg:block"
                 aria-hidden="true"
             >
                 <img
@@ -86,7 +86,7 @@ const TrustSection: React.FC = () => {
 
             {/* Right BG layer */}
             <div
-                className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-auto w-[20%] select-none"
+                className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-auto w-[20%] select-none hidden lg:block"
                 aria-hidden="true"
             >
                 <img
@@ -96,11 +96,13 @@ const TrustSection: React.FC = () => {
                 />
             </div>
 
+
             {/* Cards row */}
             <div
                 ref={sectionRef}
-                className="relative z-10 mx-auto flex max-w-4xl items-stretch justify-center px-6"
+                className="relative z-10 mx-auto flex flex-col lg:flex-row max-w-4xl items-center lg:items-stretch justify-center px-6 gap-16 lg:gap-0"
             >
+
                 {trustItems.map((item, index) => (
                     <React.Fragment key={item.stat}>
                         <motion.div
@@ -139,13 +141,14 @@ const TrustCard: React.FC<TrustCardProps> = ({ item }) => {
         <div className="group flex flex-1 flex-col items-center gap-4 text-center">
 
             {/* Outer soft halo + white circle */}
-            <div className="relative flex h-72 w-72 items-center justify-center">
+            <div className="relative flex h-60 w-60 sm:h-72 sm:w-72 items-center justify-center">
                 {/* Halo rings */}
                 <div className="absolute inset-[-8px] rounded-full bg-white/50" />
                 <div className="absolute inset-[-4px] rounded-full bg-white/70" />
 
                 {/* Main icon circle */}
-                <div className="relative flex flex-col h-72 w-72 items-center justify-center rounded-full bg-[#283F67] shadow-[0_6px_32px_0_rgba(90,130,50,0.12)] transition-shadow duration-300 group-hover:shadow-[0_10px_40px_0_rgba(90,130,50,0.22)] gap-2">
+                <div className="relative flex flex-col h-60 w-60 sm:h-72 sm:w-72 items-center justify-center rounded-full bg-[#283F67] shadow-[0_6px_32px_0_rgba(90,130,50,0.12)] transition-shadow duration-300 group-hover:shadow-[0_10px_40px_0_rgba(90,130,50,0.22)] gap-2">
+
                     <img
                         src={item.icon}
                         alt={item.alt}

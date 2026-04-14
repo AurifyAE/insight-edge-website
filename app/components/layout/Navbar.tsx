@@ -10,6 +10,11 @@ import Link from "next/link";
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpw8gL4fJ-Pwjgs8KTGrjWBnFVgSO10adjBYpN_Q6McxkhemuROfzIwGW-4bYsrw/exec";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
+const SOLUTIONS_VISUAL_COLUMNS = [
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+];
 
 const OUR_SOLUTIONS_COLUMNS = [
     {
@@ -22,25 +27,7 @@ const OUR_SOLUTIONS_COLUMNS = [
             "Supply Chain Audit",
             "UAE Ministry of Economy Review",
         ],
-        subSections: [
-            {
-                heading: "Financial Advisory Services",
-                items: [
-                    "Financial Due Diligence & Business Valuation",
-                    "Feasibility Studies & Business Planning",
-                    "Treasury, Hedging & Market Risk Advisory",
-                ],
-            },
-            {
-                heading: "Digital Assets & Tokenization",
-                items: [
-                    "Bullion Tokenization Advisory",
-                    "Blockchain Custody & Governance",
-                    "AI Governance & Technology Risk",
-                    "Cybersecurity & Data Integrity",
-                ],
-            },
-        ],
+
     },
     {
         heading: "Accounting & MIS",
@@ -50,29 +37,7 @@ const OUR_SOLUTIONS_COLUMNS = [
             "Inventory Verification",
             "Payroll & IFRS Implementation",
         ],
-        subSections: [
-            {
-                heading: "Taxation Services",
-                items: [
-                    "Corporate Tax Advisory",
-                    "VAT Compliance & Advisory",
-                    "Transfer Pricing Advisory",
-                    "BEPS, PE & Tax Risk Management",
-                ],
-            },
-            {
-                heading: "Compliance & Responsible Business",
-                items: [
-                    "AML / CFT Compliance",
-                    "Regulatory Licensing",
-                    "AML Inspection Support",
-                    "Regulatory Compliance",
-                    "Responsible Sourcing",
-                    "Ethical Business Conduct",
-                    "Supply Chain Due Diligence",
-                ],
-            },
-        ],
+
     },
     {
         heading: "Special Audits & Risk Consulting",
@@ -84,27 +49,64 @@ const OUR_SOLUTIONS_COLUMNS = [
             "M&A Risk Management",
             "AI / Tech Governance & Risk",
         ],
-        subSections: [
-            {
-                heading: "Business Strategy Advisory",
-                items: [
-                    "Sourcing & Procurement Services",
-                    "Corporate Training Services",
-                    "SCA Compliance Advisory",
-                ],
-            },
-            {
-                heading: "Outsourced CFO Services",
-                items: [
-                    "Financial Strategy & Transformation",
-                    "Treasury & Working Capital Optimization",
-                    "Debt, Credit & Financing Advisory",
-                    "Integrated Performance Management",
-                    "M&A and Business Expansion Support",
-                ],
-            },
+
+    },
+    {
+        heading: "Financial Advisory Services",
+        items: [
+            "Financial Due Diligence & Business Valuation",
+            "Feasibility Studies & Business Planning",
+            "Treasury, Hedging & Market Risk Advisory",
         ],
     },
+    {
+        heading: "Taxation Services",
+        items: [
+            "Corporate Tax Advisory",
+            "VAT Compliance & Advisory",
+            "Transfer Pricing Advisory",
+            "BEPS, PE & Tax Risk Management",
+        ],
+    },
+    {
+        heading: "Business Strategy Advisory",
+        items: [
+            "Sourcing & Procurement Services",
+            "Corporate Training Services",
+            "SCA Compliance Advisory",
+        ],
+    },
+    {
+        heading: "Digital Assets & Tokenization",
+        items: [
+            "Bullion Tokenization Advisory",
+            "Blockchain Custody & Governance",
+            "AI Governance & Technology Risk",
+            "Cybersecurity & Data Integrity",
+        ],
+    },
+    {
+        heading: "Compliance & Responsible Business",
+        items: [
+            "AML / CFT Compliance",
+            "Regulatory Licensing",
+            "AML Inspection Support",
+            "Regulatory Compliance",
+            "Responsible Sourcing",
+            "Ethical Business Conduct",
+            "Supply Chain Due Diligence",
+        ],
+    },
+    {
+        heading: "Outsourced CFO Services",
+        items: [
+            "Financial Strategy & Transformation",
+            "Treasury & Working Capital Optimization",
+            "Debt, Credit & Financing Advisory",
+            "Integrated Performance Management",
+            "M&A and Business Expansion Support",
+        ],
+    }
 ];
 
 const WHO_WE_SERVE_ITEMS = [
@@ -166,15 +168,28 @@ function SolutionsMegaMenu() {
             style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
         >
             <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
-            <div className="px-8 py-8 grid grid-cols-3 gap-x-10 gap-y-0">
-                {OUR_SOLUTIONS_COLUMNS.map((col, ci) => (
-                    <div key={ci} className="flex flex-col gap-7">
-                        <Section heading={col.heading} items={col.items} startIndex={0} />
-                        {col.subSections?.map((sub, si) => (
-                            <Section key={si} heading={sub.heading} items={sub.items} startIndex={col.items.length + si * 4} />
-                        ))}
-                    </div>
-                ))}
+            <div className="px-8 py-8 grid grid-cols-3 gap-x-10">
+                {SOLUTIONS_VISUAL_COLUMNS.map((colIndices, ci) => {
+                    // running counter for stagger delay across sections in this column
+                    let runningIndex = ci * 20;
+                    return (
+                        <div key={ci} className="flex flex-col gap-7">
+                            {colIndices.map((dataIdx) => {
+                                const col = OUR_SOLUTIONS_COLUMNS[dataIdx];
+                                const section = (
+                                    <Section
+                                        key={dataIdx}
+                                        heading={col.heading}
+                                        items={col.items}
+                                        startIndex={runningIndex}
+                                    />
+                                );
+                                runningIndex += col.items.length;
+                                return section;
+                            })}
+                        </div>
+                    );
+                })}
             </div>
             <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
                 <p className="text-[11px] text-gray-400 tracking-wide">
@@ -194,7 +209,7 @@ function SolutionsMegaMenu() {
 function Section({ heading, items, startIndex }: { heading: string; items: string[]; startIndex: number }) {
     return (
         <div>
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#8B9C32] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20">
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20">
                 {heading}
             </p>
             <ul className="flex flex-col gap-0.5">
@@ -227,7 +242,7 @@ function WhoWeServeMegaMenu() {
             <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
             <div className="px-8 py-8 flex gap-16">
                 <div className="flex-1 max-w-xs">
-                    <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#8B9C32] mb-3 pb-1.5 border-b border-[#8B9C32]/20">
+                    <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-3 pb-1.5 border-b border-[#8B9C32]/20">
                         Industry Segments
                     </p>
                     <ul className="flex flex-col gap-0.5">
@@ -363,8 +378,8 @@ function BrochureDropdownContent({
                             onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
                             onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
                             className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
-                                    ? "border-red-400 focus:ring-1 focus:ring-red-300"
-                                    : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
+                                ? "border-red-400 focus:ring-1 focus:ring-red-300"
+                                : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
                                 }`}
                         />
                         {brochureError && (
@@ -553,7 +568,7 @@ export default function Navbar() {
                             {/* ── Logo ── */}
                             <a href="/" className="flex items-center gap-3 shrink-0">
                                 <img src="/images/home/logo.svg" alt="IEG Icon" className="h-8 w-auto" />
-                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" className="h-3 w-auto hidden sm:block" />
+                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" className="h-3 w-auto" />
                             </a>
 
                             {/* ── Desktop Nav ── */}
@@ -653,24 +668,16 @@ export default function Navbar() {
                         >
                             <div className="bg-white border-t border-gray-100 px-4 pt-3 pb-5 shadow-lg">
                                 <ul className="flex flex-col gap-1 mb-4">
-                                    {NAV_LINKS.map(({ label, href }) => {
-                                        const isActive = pathname === href;
-                                        return (
-                                            <li key={label}>
-                                                <Link
-                                                    href={href}
-                                                    onClick={() => setMenuOpen(false)}
-                                                    className={`block px-3 py-2.5 rounded-md text-[14px] transition-colors duration-200 ${isActive
-                                                            ? "font-bold text-[#365693] bg-[#f0f4fb]"
-                                                            : "font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb]"
-                                                        }`}
-                                                >
-                                                    {label}
-                                                </Link>
-                                            </li>
-                                        );
-                                    })}
+                                    {NAV_LINKS.map((link) => (
+                                        <MobileNavItem
+                                            key={link.label}
+                                            link={link}
+                                            pathname={pathname}
+                                            onCloseMenu={() => setMenuOpen(false)}
+                                        />
+                                    ))}
                                 </ul>
+
 
                                 <a
                                     href="/contact"
@@ -758,8 +765,8 @@ export default function Navbar() {
                                                                 onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
                                                                 onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
                                                                 className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
-                                                                        ? "border-red-400 focus:ring-1 focus:ring-red-300"
-                                                                        : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
+                                                                    ? "border-red-400 focus:ring-1 focus:ring-red-300"
+                                                                    : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
                                                                     }`}
                                                             />
                                                             {brochureError && (
@@ -825,5 +832,159 @@ function CloseIcon() {
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
+    );
+}
+
+// ── Mobile Menu Components ───────────────────────────────────────────────────
+
+function MobileNavItem({
+    link,
+    pathname,
+    onCloseMenu,
+}: {
+    link: typeof NAV_LINKS[number];
+    pathname: string;
+    onCloseMenu: () => void;
+}) {
+    const [isOpen, setIsOpen] = useState(false);
+    const isActive = pathname === link.href;
+
+    if (!link.hasMega) {
+        return (
+            <li>
+                <Link
+                    href={link.href}
+                    onClick={onCloseMenu}
+                    className={`block px-3 py-2.5 rounded-md text-[14px] transition-colors duration-200 ${isActive
+                        ? "font-bold text-[#365693] bg-[#f0f4fb]"
+                        : "font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb]"
+                        }`}
+                >
+                    {link.label}
+                </Link>
+            </li>
+        );
+    }
+
+    return (
+        <li>
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-[14px] transition-colors duration-200 ${isOpen || isActive
+                    ? "font-bold text-[#365693] bg-[#f0f4fb]"
+                    : "font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb]"
+                    }`}
+            >
+                {link.label}
+                <motion.svg
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    width="12" height="12" viewBox="0 0 12 12" fill="none"
+                    className="opacity-50"
+                >
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </motion.svg>
+            </button>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pl-4 pr-2 py-1 flex flex-col gap-1 border-l-2 border-[#365693]/10 ml-3 mt-1">
+                            {link.hasMega === "solutions" && (
+                                OUR_SOLUTIONS_COLUMNS.map((col, ci) => (
+                                    <MobileNestedDropdown
+                                        key={ci}
+                                        label={col.heading}
+                                        items={col.items}
+                                        onCloseMenu={onCloseMenu}
+                                    />
+                                ))
+                            )}
+                            {link.hasMega === "who-we-serve" && (
+                                <MobileNestedDropdown
+                                    label="Industry Segments"
+                                    items={WHO_WE_SERVE_ITEMS.map(item => item.label)}
+                                    onCloseMenu={onCloseMenu}
+                                />
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </li>
+    );
+}
+
+function MobileNestedDropdown({
+    label,
+    items,
+    subSections,
+    onCloseMenu,
+}: {
+    label: string;
+    items?: string[];
+    subSections?: { heading: string; items: string[] }[];
+    onCloseMenu: () => void;
+}) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="flex flex-col">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`flex items-center justify-between py-2 text-[13px] font-semibold transition-colors ${isOpen ? "text-[#365693]" : "text-gray-700 hover:text-[#365693]"
+                    }`}
+            >
+                {label}
+                <motion.svg
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    width="10" height="10" viewBox="0 0 12 12" fill="none"
+                    className="opacity-40"
+                >
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </motion.svg>
+            </button>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                    >
+                        <div className="flex flex-col gap-1.5 pl-3 py-1 border-l border-gray-100 ml-1">
+                            {items?.map((item) => (
+                                <a
+                                    key={item}
+                                    href="#"
+                                    onClick={(e) => { e.preventDefault(); onCloseMenu(); }}
+                                    className="text-[12.5px] text-gray-500 hover:text-[#365693] py-1 transition-colors flex items-center gap-2"
+                                >
+                                    <span className="w-1 h-1 rounded-full bg-gray-300" />
+                                    {item}
+                                </a>
+                            ))}
+                            {subSections?.map((sub, si) => (
+                                <MobileNestedDropdown
+                                    key={si}
+                                    label={sub.heading}
+                                    items={sub.items}
+                                    onCloseMenu={onCloseMenu}
+                                />
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     );
 }

@@ -100,101 +100,83 @@ function GridLeft() {
 
 export default function HeroSection() {
     return (
-        <section className="relative w-full overflow-hidden min-h-[480px] lg:min-h-[720px] mt-18">
+        <section className="relative w-full overflow-hidden mt-15 lg:mt-18">
 
-            <div className="absolute inset-0">
-                {/* <video className="w-full h-full object-cover opacity-50" src="/videos/hero-video.mp4" autoPlay loop muted /> */}
-                <Image src="/images/home/hero-bg.jpg" width={1920} height={1080} alt="Hero Background" className="w-full h-full object-cover" />
+            {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}
+
+            {/* Background image — hidden on mobile, shown from md up */}
+            <div className="hidden md:block absolute inset-0">
+                <Image
+                    src="/images/home/hero-bg.jpg"
+                    width={1920}
+                    height={1080}
+                    alt="Hero Background"
+                    className="w-full h-full object-cover"
+                    priority
+                />
+                {/* Dark overlay so text card sits on a predictable bg */}
+                <div className="absolute inset-0 bg-[#1a2e5a]/30" />
             </div>
 
-            {/* ── Left: Text card ── */}
-            <div className="absolute bottom-0 right-0 -translate-x-1/2 z-10 w-full lg:w-[52%] flex items-end justify-end py-12 lg:py-0">
-                <div
-                    className="relative bg-[#C6DB5A] rounded-t-[40px] px-7 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-16 max-w-[520px] w-full shadow-lg border-t-12 border-t-[#283F67]"
-                >
+            {/* Mobile image — in-flow, visible only on mobile */}
+            <div className="block md:hidden w-full h-[240px] sm:h-[300px] relative">
+                <Image
+                    src="/images/home/hero-bg.jpg"
+                    fill
+                    alt="Hero Background"
+                    className="object-cover object-center"
+                    priority
+                />
+            </div>
 
-                    {/* Headline */}
-                    <h1 className="text-[#283F67] font-bold text-[26px] sm:text-[30px] lg:text-5xl leading-tight tracking-tight mb-4">
-                        Safeguarding Value Through
-                        Financial Expertise
-                    </h1>
+            {/* ── Layout shell ── */}
+            <div className="relative md:min-h-[640px] lg:min-h-[720px] max-w-[1200px] mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end justify-end">
 
-                    {/* Sub-headline */}
-                    <p className="text-[#283F67] text-[13.5px] sm:text-base leading-relaxed mb-8 max-w-[340px]">
-                        Exclusive Financial &amp; Compliance Advisory for the
-                        Precious Metals Industry
-                    </p>
+                {/* ── Text card ── */}
+                <div className="w-full md:w-[52%] lg:w-[48%] md:mb-0">
+                    <div className="
+                bg-[#C6DB5A]
+                border-t-[12px] border-t-[#283F67]
+                rounded-t-[32px] md:rounded-t-[32px]
+                px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14
+                shadow-lg
+            ">
+                        {/* Headline */}
+                        <h1 className="
+                    text-[#283F67] font-bold leading-tight tracking-tight mb-3
+                    text-[22px] sm:text-[26px] lg:text-[44px]
+                ">
+                            Safeguarding Value Through
+                            Financial Expertise
+                        </h1>
 
-                    {/* Buttons */}
-                    <div className="flex flex-wrap gap-3">
-                        <a
-                            href="/services"
-                            className="
-                  inline-flex items-center justify-center
-                  px-8 py-3 rounded-xl
-                  bg-[#1b3a6b] hover:bg-[#152d55]
-                  text-white text-[13.5px] font-semibold
-                  transition-colors duration-200
-                  whitespace-nowrap
-                "
-                        >
-                            Our Services
-                        </a>
-                        <a
-                            href="/contact"
-                            className="
-                  inline-flex items-center justify-center
-                  px-8 py-3 rounded-xl
-                  border border-white/80 hover:bg-white/10
-                  text-white text-[13.5px] font-semibold
-                  transition-colors duration-200
-                  whitespace-nowrap
-                "
-                        >
-                            Get in Touch
-                        </a>
+                        {/* Sub-headline */}
+                        <p className="
+                    text-[#364f20] leading-relaxed mb-7
+                    text-[13px] sm:text-[14px] lg:text-base
+                    max-w-[320px]
+                ">
+                            Exclusive Financial &amp; Compliance Advisory for the
+                            Precious Metals Industry
+                        </p>
+
+                        {/* Buttons */}
+                        <div className="flex flex-wrap gap-3">
+                            <a
+                                href="/services"
+                                className="inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#1b3a6b] hover:bg-[#152d55] text-white text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
+                            >
+                                Our Services
+                            </a>
+                            <a
+                                href="/contact"
+                                className="inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
+                            >
+                                Get in Touch
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            {/* ── Background stock-chart line (decorative SVG) ── */}
-            <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-                {/* <GridLeft />
-                <GridRight /> */}
-            </div>
-
-            {/* ── Layout container ── */}
-            <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:flex-row items-end min-h-[480px] lg:min-h-[560px]">
-
-
-
-
-                {/* ── Right: Hero image ── */}
-                {/* <div
-                    className="
-            relative w-full lg:w-[56%]
-            flex justify-center lg:justify-end items-end
-            lg:absolute lg:right-0 lg:bottom-0 lg:top-0
-            pointer-events-none select-none z-10
-          "
-                >
-                    <div className="relative w-full max-w-[520px] lg:max-w-none lg:h-full flex items-end lg:items-end justify-center lg:justify-end">
-                        <Image
-                            src="/images/home/hero-image.png"
-                            alt="Financial experts reviewing documents"
-                            width={620}
-                            height={560}
-                            priority
-                            className="
-                object-contain object-bottom
-                w-full
-                max-h-[340px] sm:max-h-[420px] lg:max-h-[640px]
-                drop-shadow-xl
-              "
-                        />
-                    </div>
-                </div> */}
-
             </div>
         </section>
     );
