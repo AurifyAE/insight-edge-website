@@ -179,7 +179,7 @@ export default function AboutSection() {
 
 
                         {/* Top Stats Row */}
-                        <div className="relative z-10 flex items-center justify-center gap-10 pt-2 min-h-[220px]">
+                        <div className="relative z-10 flex items-center justify-center gap-5 md:gap-10 pt-2 min-h-[220px]">
                             <div className="absolute inset-0 z-0 opacity-40">
                                 <Image
                                     src="/images/home/world-map.svg"
@@ -206,7 +206,7 @@ export default function AboutSection() {
                                 >
                                     100%
                                 </p>
-                                <p className="text-[13px] text-[#ABBD4F] font-semibold mt-1 leading-tight text-center">
+                                <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Complete<br />Client satisfaction
                                 </p>
                             </motion.div>
@@ -228,8 +228,28 @@ export default function AboutSection() {
                                 >
                                     10%
                                 </p>
-                                <p className="text-[13px] text-[#ABBD4F] font-semibold mt-1 leading-tight text-center">
+                                <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Innovation &amp;<br />Valuable insights
+                                </p>
+                            </motion.div>
+                            <motion.div
+                                className="z-10 block lg:hidden"
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                            >
+                                <p
+                                    className="font-extrabold leading-none text-center z-10"
+                                    style={{
+                                        fontSize: "clamp(2rem, 5vw, 3rem)",
+                                        color: "#1e293b",
+                                        fontFamily: "Inter, sans-serif",
+                                    }}
+                                >
+                                    10M
+                                </p>
+                                <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
+                                    Highly Efficient &amp;<br />Financial Strategies
                                 </p>
                             </motion.div>
                         </div>
@@ -239,7 +259,7 @@ export default function AboutSection() {
                             initial={{ opacity: 0, scale: 0.92 }}
                             animate={isInView ? { opacity: 1, scale: 1 } : {}}
                             transition={{ duration: 0.7, delay: 0.3 }}
-                            className="relative z-10 mt-8 rounded-2xl p-8 max-w-[85%]"
+                            className="relative z-10 mt-8 rounded-2xl p-8 w-full lg:max-w-[85%]"
                             style={{
                                 background: "linear-gradient(135deg, #1e3a6e 0%, #2c5282 60%, #365693 100%)",
                                 boxShadow: "0 8px 40px rgba(30,58,110,0.25)",
@@ -261,7 +281,7 @@ export default function AboutSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.6, delay: 0.45 }}
-                            className="relative z-10 min-h-[220px] flex flex-col items-center justify-center"
+                            className="hidden relative z-10 min-h-[220px] lg:flex flex-col items-center justify-center"
                         >
                             <div className="absolute inset-0 z-0 opacity-40">
                                 <Image
@@ -282,7 +302,7 @@ export default function AboutSection() {
                             >
                                 10M
                             </p>
-                            <p className="text-[13px] text-[#ABBD4F] font-semibold mt-1 leading-tight text-center">
+                            <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
                                 Highly Efficient &amp;<br />Financial Strategies
                             </p>
                         </motion.div>
@@ -290,7 +310,7 @@ export default function AboutSection() {
 
                     {/* ── RIGHT SIDE — Two Staggered Card Columns ── */}
                     <div className="flex-1 flex items-center">
-                        <div className="flex gap-4 w-full justify-center lg:justify-start">
+                        <div className="flex gap-4 w-full justify-center lg:justify-start mx-auto">
 
                             {/* Column 1 — appears first */}
                             <div className="flex flex-col gap-4 justify-around">
@@ -309,7 +329,7 @@ export default function AboutSection() {
                             <ConnectorLine isInView={isInView} />
 
                             {/* Column 2 — delayed */}
-                            <div className="flex flex-col gap-4 justify-around mt-16">
+                            <div className="flex flex-col gap-4 justify-start lg:justify-around lg:mt-16">
                                 {col2Cards.map((card, i) => (
                                     <ChallengeCard
                                         key={card.id}

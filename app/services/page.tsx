@@ -500,7 +500,7 @@ export default function ServicePage() {
                 ))}
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-4 bg-[#ABBD4F] py-8">
+            <div className="flex flex-col items-center justify-center gap-4 bg-[#ABBD4F] text-center px-4 py-8">
                 <h2 className="text-3xl font-bold text-[#365693]">Need a Customized Solution?</h2>
 
                 <p className="text-sm text-white">Every precious metals business is unique. Let's discuss your specific needs.</p>

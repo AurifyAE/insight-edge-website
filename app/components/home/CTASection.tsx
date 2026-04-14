@@ -19,7 +19,7 @@ export default function CTASection() {
                 </p>
 
                 {/* Button */}
-                <button className="inline-flex items-center gap-2 bg-blue-900 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-blue-800 transition">
+                <button className="inline-flex items-center gap-2 bg-[#283F67] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#283F67]/80 transition">
                     Contact Us Today
                     <ArrowRight size={16} />
                 </button>

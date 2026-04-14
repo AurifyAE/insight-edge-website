@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 interface Service {
     id: number;
@@ -154,141 +154,56 @@ function ServiceCard({
     );
 }
 
-// ─── Mobile Carousel ──────────────────────────────────────────────────────────
-function MobileCarousel() {
-    const [current, setCurrent] = useState(0);
-    const [direction, setDirection] = useState(0);
-    const touchStartX = useRef<number | null>(null);
+
+// ─── Mobile Card List ──────────────────────────────────────────────────────────
+function MobileCardList({ isInView }: { isInView: boolean }) {
     const iconGradient = "linear-gradient(135deg,#365693,#7491C9)";
 
-    const paginate = (dir: number) => {
-        setDirection(dir);
-        setCurrent((prev) => (prev + dir + services.length) % services.length);
-    };
-
-    const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.touches[0].clientX;
-    };
-
-    const handleTouchEnd = (e: React.TouchEvent) => {
-        if (touchStartX.current === null) return;
-        const diff = touchStartX.current - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) paginate(diff > 0 ? 1 : -1);
-        touchStartX.current = null;
-    };
-
-    const variants = {
-        enter: (dir: number) => ({
-            x: dir > 0 ? 280 : -280,
-            opacity: 0,
-            scale: 0.92,
-        }),
-        center: { x: 0, opacity: 1, scale: 1 },
-        exit: (dir: number) => ({
-            x: dir > 0 ? -280 : 280,
-            opacity: 0,
-            scale: 0.92,
-        }),
-    };
-
-    const service = services[current];
-
     return (
-        <div className="flex flex-col items-center gap-6 px-4">
-            {/* Card viewport */}
-            <div
-                className="relative w-full max-w-sm overflow-hidden"
-                style={{ height: 180 }}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-            >
-                <AnimatePresence custom={direction} mode="popLayout">
+        <div className="flex flex-col gap-3.5 px-4">
+            {services.map((service, index) => {
+                const fromLeft = index % 2 === 0;
+                return (
                     <motion.div
                         key={service.id}
-                        custom={direction}
-                        variants={variants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-0 flex items-center justify-center"
+                        initial={{
+                            opacity: 0,
+                            x: fromLeft ? -40 : 40,
+                        }}
+                        animate={
+                            isInView
+                                ? { opacity: 1, x: 0 }
+                                : { opacity: 0, x: fromLeft ? -40 : 40 }
+                        }
+                        transition={{
+                            duration: 0.45,
+                            delay: isInView ? index * 0.08 : 0,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="bg-white rounded-2xl p-4 border-l-4 border-l-[#ABBD4F] grid grid-cols-[44px_1fr] gap-3"
+                        style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
                     >
-                        <div
-                            className="w-3/4 bg-white rounded-2xl p-5 border-l-4 border-l-[#ABBD4F] grid grid-cols-4"
-                            style={{
-                                boxShadow: "0 4px 28px rgba(0,0,0,0.10)",
-                                minHeight: 140,
-                            }}
-                        >
-                            <div className="col-span-1 flex justify-start pt-0.5">
-                                <div
-                                    className="w-9 h-9 rounded-lg flex items-center justify-center"
-                                    style={{ background: iconGradient }}
-                                >
-                                    <span className="text-[#ABBD4F] text-[10px] font-extrabold tracking-wider">
-                                        {service.icon}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="col-span-3 flex flex-col gap-2">
-                                <h3 className="text-[14px] font-semibold text-[#365693] leading-snug">
-                                    {service.title}
-                                </h3>
-                                <p className="text-[12px] text-[#4A5565] leading-relaxed">
-                                    {service.description}
-                                </p>
+                        <div className="flex items-start justify-center pt-0.5">
+                            <div
+                                className="w-9 h-9 rounded-[10px] flex items-center justify-center flex-shrink-0"
+                                style={{ background: iconGradient }}
+                            >
+                                <span className="text-[#ABBD4F] text-[10px] font-extrabold tracking-wider">
+                                    {service.icon}
+                                </span>
                             </div>
                         </div>
+                        <div>
+                            <h3 className="text-[13px] font-semibold text-[#365693] mb-1 leading-snug">
+                                {service.title}
+                            </h3>
+                            <p className="text-[11.5px] text-[#4A5565] leading-relaxed">
+                                {service.description}
+                            </p>
+                        </div>
                     </motion.div>
-                </AnimatePresence>
-            </div>
-
-            {/* Controls row */}
-            <div className="flex items-center gap-5">
-                {/* Prev */}
-                <button
-                    onClick={() => paginate(-1)}
-                    aria-label="Previous"
-                    className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm active:scale-95 transition-transform"
-                >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="#365693" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                </button>
-
-                {/* Pill dots */}
-                <div className="flex gap-1.5">
-                    {services.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => {
-                                setDirection(i > current ? 1 : -1);
-                                setCurrent(i);
-                            }}
-                            aria-label={`Go to slide ${i + 1}`}
-                            className="rounded-full transition-all duration-300"
-                            style={{
-                                width: i === current ? 20 : 7,
-                                height: 7,
-                                background: i === current ? "#365693" : "#CBD5E1",
-                            }}
-                        />
-                    ))}
-                </div>
-
-                {/* Next */}
-                <button
-                    onClick={() => paginate(1)}
-                    aria-label="Next"
-                    className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm active:scale-95 transition-transform"
-                >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="#365693" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M9 18l6-6-6-6" />
-                    </svg>
-                </button>
-            </div>
+                );
+            })}
         </div>
     );
 }
@@ -307,7 +222,9 @@ export default function ServicesSection() {
     }, [isInView]);
 
     return (
-        <section className="relative w-full overflow-hidden py-20 bg-white">
+        <section
+            ref={ref}
+            className="relative w-full overflow-hidden overflow-x-hidden py-20 bg-white">
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -340,9 +257,7 @@ export default function ServicesSection() {
 
             {/* ── DESKTOP: scatter layout (hidden below md) ── */}
             <div
-                ref={ref}
-                className="relative mx-auto hidden md:block"
-                style={{ width: "100%", height: 500 }}
+                className="w-full h-[500px] relative mx-auto hidden lg:block"
             >
                 {services.map((service, index) => (
                     <ServiceCard
@@ -355,8 +270,8 @@ export default function ServicesSection() {
             </div>
 
             {/* ── MOBILE: carousel (hidden at md and above) ── */}
-            <div className="relative z-10 block md:hidden">
-                <MobileCarousel />
+            <div className="relative z-10 block lg:hidden">
+                <MobileCardList isInView={isInView} />
             </div>
 
             {/* CTA Button */}

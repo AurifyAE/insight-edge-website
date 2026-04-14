@@ -69,7 +69,7 @@ const TrustSection: React.FC = () => {
     });
 
     return (
-        <section className="relative w-full overflow-hidden bg-[#eef2f8] py-30">
+        <section className="relative w-full overflow-hidden bg-[#eef2f8] py-10 md:py-20 lg:py-30">
 
             {/* Left BG layer */}
             <div
@@ -100,7 +100,7 @@ const TrustSection: React.FC = () => {
             {/* Cards row */}
             <div
                 ref={sectionRef}
-                className="relative z-10 mx-auto flex flex-col lg:flex-row max-w-4xl items-center lg:items-stretch justify-center px-6 gap-16 lg:gap-0"
+                className="relative z-10 mx-auto flex flex-col lg:flex-row max-w-4xl items-center lg:items-stretch justify-center px-6 gap-8 lg:gap-0"
             >
 
                 {trustItems.map((item, index) => (

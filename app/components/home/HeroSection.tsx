@@ -133,7 +133,7 @@ export default function HeroSection() {
             <div className="relative md:min-h-[640px] lg:min-h-[720px] max-w-[800px] mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end justify-end">
 
                 {/* ── Text card ── */}
-                <div className="w-full md:w-[52%] lg:w-[70%] md:mb-0">
+                <div className="w-full lg:w-[52%] lg:w-[70%] md:mb-0">
                     <div className="
                 bg-[#C6DB5A]
                 border-t-[12px] border-t-[#283F67]

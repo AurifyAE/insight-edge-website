@@ -262,7 +262,7 @@ function WhoWeServeMegaMenu() {
                     </ul>
                 </div>
             </div>
-            <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
+            {/* <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
                 <p className="text-[11px] text-gray-400 tracking-wide">
                     Serving the global precious metals and luxury goods ecosystem
                 </p>
@@ -272,7 +272,7 @@ function WhoWeServeMegaMenu() {
                         <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </a>
-            </div>
+            </div> */}
         </motion.div>
     );
 }
@@ -897,14 +897,29 @@ function MobileNavItem({
                     >
                         <div className="pl-4 pr-2 py-1 flex flex-col gap-1 border-l-2 border-[#365693]/10 ml-3 mt-1">
                             {link.hasMega === "solutions" && (
-                                OUR_SOLUTIONS_COLUMNS.map((col, ci) => (
-                                    <MobileNestedDropdown
-                                        key={ci}
-                                        label={col.heading}
-                                        items={col.items}
-                                        onCloseMenu={onCloseMenu}
-                                    />
-                                ))
+                                <div className="flex flex-col gap-1">
+                                    {OUR_SOLUTIONS_COLUMNS.map((col, ci) => (
+                                        <MobileNestedDropdown
+                                            key={ci}
+                                            label={col.heading}
+                                            items={col.items}
+                                            onCloseMenu={onCloseMenu}
+                                        />
+                                    ))}
+                                    {/* View All Solutions Button */}
+                                    <div className="pt-4 mt-2 border-t border-gray-100" >
+                                        <a
+                                            href="/services"
+                                            onClick={onCloseMenu}
+                                            className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#365693] hover:bg-[#365693]/80 text-white text-[13px] font-semibold tracking-wide transition-colors duration-300 shadow-sm"
+                                        >
+                                            View all solutions
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
                             )}
                             {link.hasMega === "who-we-serve" && (
                                 <MobileNestedDropdown
@@ -917,7 +932,7 @@ function MobileNavItem({
                     </motion.div>
                 )}
             </AnimatePresence>
-        </li>
+        </li >
     );
 }
 

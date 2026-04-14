@@ -157,7 +157,7 @@ export default function Footer() {
                             ].map((item) => (
                                 <li key={item}>
                                     <Link
-                                        href="/solutions"
+                                        href="/services"
                                         className="text-[14px] text-gray-300 hover:text-white transition-colors"
                                     >
                                         {item}
@@ -280,8 +280,8 @@ export default function Footer() {
                                                         }}
                                                         onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
                                                         className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
-                                                                ? "border-red-400 focus:ring-1 focus:ring-red-300"
-                                                                : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
+                                                            ? "border-red-400 focus:ring-1 focus:ring-red-300"
+                                                            : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
                                                             }`}
                                                     />
                                                     {brochureError && (
