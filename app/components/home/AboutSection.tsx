@@ -226,7 +226,7 @@ export default function AboutSection() {
                                         fontFamily: "Inter, sans-serif",
                                     }}
                                 >
-                                    10%
+                                    100%
                                 </p>
                                 <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Innovation &amp;<br />Valuable insights
@@ -246,7 +246,7 @@ export default function AboutSection() {
                                         fontFamily: "Inter, sans-serif",
                                     }}
                                 >
-                                    10M
+                                    100%
                                 </p>
                                 <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Highly Efficient &amp;<br />Financial Strategies
@@ -300,7 +300,7 @@ export default function AboutSection() {
                                     fontFamily: "Inter, sans-serif",
                                 }}
                             >
-                                10M
+                                100%
                             </p>
                             <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
                                 Highly Efficient &amp;<br />Financial Strategies
