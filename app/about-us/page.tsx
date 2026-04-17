@@ -3,6 +3,9 @@ import WhoWeServeSection from "@/app/components/about/WhoWeServeSection";
 import WhoWeAre from "../components/about/WhoWeAre";
 import { TrendingUp } from "lucide-react";
 import WhySpecialist from "../components/about/WhySpecialist";
+import { generateMetadata } from "@/seo.config";
+
+export const metadata = generateMetadata("about");
 
 export default function AboutPage() {
     return (

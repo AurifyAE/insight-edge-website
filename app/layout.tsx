@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
+import { defaultMetadata } from "@/seo.config";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -11,8 +12,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Insight Edge Global",
-  description: "Insight Edge Global - Data-driven advisory and analytics.",
+  ...defaultMetadata,
+  title: {
+    default: "Insight Edge Global | Precious Metals Audit & Advisory UAE",
+    template: "%s | Insight Edge Global",
+  },
 };
 
 export default function RootLayout({

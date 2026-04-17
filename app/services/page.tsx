@@ -4,6 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle, ChevronDown } from "lucide-react";
 import { div } from "framer-motion/client";
+import { generateMetadata } from "@/seo.config";
+
+export const metadata = generateMetadata("services");
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
