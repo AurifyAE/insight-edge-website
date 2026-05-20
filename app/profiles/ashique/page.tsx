@@ -156,15 +156,16 @@ export default function AshiquePage() {
                 {/* ------------------------------------------------------------------ */}
                 {/* Top white section                                                   */}
                 {/* ------------------------------------------------------------------ */}
-                <div className="bg-gradient-to-b from-slate-50 to-[#ECECEC] pt-4 pb-0 px-6 flex flex-col items-center relative">
-                    {/* Logo */}
+                <div className="bg-[#f8f9fa] pt-4 pb-0 px-6 flex flex-col items-center relative gap-4">
+                    <div className="flex flex-col items-center gap-6">
+                        {/* Logo */}
                     <div className="mb-5">
-                        <Image src={logo} alt="InsightEdge logo" width={128} height={128} />
+                        <Image src={logo} alt="InsightEdge logo" width={96} height={96} />
                     </div>
 
                     {/* Profile photo */}
-                    <div className="relative mt-5 mb-0">
-                        <div className="w-40 h-36 relative z-10">
+                    <div className="relative">
+                        <div className="w-40 h-36 relative z-30">
                             <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 rounded-tr-4xl rounded-bl-4xl ring-4 ring-white shadow-2xl flex items-end justify-center">
                                 <Image
                                     src={ashiquePhoto}
@@ -176,9 +177,10 @@ export default function AshiquePage() {
                             </div>
                         </div>
                     </div>
+                    </div>
 
                     {/* Name & title */}
-                    <div className="text-center mt-8 z-10 relative">
+                    <div className="text-center z-30 relative">
                         <h1 className="text-lg font-bold text-[#1D3E71] tracking-tight">
                             CA Muhammed Ashique
                         </h1>
@@ -188,8 +190,8 @@ export default function AshiquePage() {
                     </div>
 
                     {/* Curved bottom decoration */}
-                    <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-full h-18 rounded-b-full overflow-hidden">
-                        <div className="w-full h-full bg-gradient-to-r from-[#ECECEC] to-[#ECECEC]" />
+                    <div className="absolute -bottom-15 left-1/2 transform -translate-x-1/2 w-[150%] h-[80%] rounded-b-full overflow-hidden z-20">
+                        <div className="w-full h-full bg-gradient-to-r from-slate-50 to-slate-100" />
                     </div>
                 </div>
 
