@@ -19,7 +19,7 @@ const icons = {
 };
 
 const logo = "/profile/icons/insight-edge-logo.svg";
-const ashiquePhoto = "/profile/images/ashique.png";
+const ashiquePhoto = "/profile/images/ashique-photo.png";
 
 // ---------------------------------------------------------------------------
 // ActionBtn sub-component
@@ -159,24 +159,24 @@ export default function AshiquePage() {
                 <div className="bg-[#f8f9fa] pt-4 pb-0 px-6 flex flex-col items-center relative gap-4">
                     <div className="flex flex-col items-center gap-6">
                         {/* Logo */}
-                    <div className="mb-5">
-                        <Image src={logo} alt="InsightEdge logo" width={96} height={96} />
-                    </div>
+                        <div className="mb-5">
+                            <Image src={logo} alt="InsightEdge logo" width={96} height={96} />
+                        </div>
 
-                    {/* Profile photo */}
-                    <div className="relative">
-                        <div className="w-40 h-36 relative z-30">
-                            <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400 rounded-tr-4xl rounded-bl-4xl ring-4 ring-white shadow-2xl flex items-end justify-center">
-                                <Image
-                                    src={ashiquePhoto}
-                                    alt="CA Muhammed Ashique"
-                                    width={120}
-                                    height={100}
-                                    className=""
-                                />
+                        {/* Profile photo */}
+                        <div className="relative">
+                            <div className="w-40 h-36 relative z-30">
+                                <div className="w-full h-full bg-gradient-to-br from-[#3d5d97] to-[#2B4677] rounded-tr-4xl rounded-bl-4xl shadow-2xl flex items-end justify-center">
+                                    <Image
+                                        src={ashiquePhoto}
+                                        alt="CA Muhammed Ashique"
+                                        width={160}
+                                        height={120}
+                                        className=""
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
 
                     {/* Name & title */}
