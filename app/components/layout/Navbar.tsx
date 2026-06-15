@@ -560,7 +560,9 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${scrolled || activeMega ? "shadow-md" : "shadow-sm"}`}>
+            <header
+                className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${scrolled || activeMega ? "shadow-md" : "shadow-sm"}`}
+            >
                 <div className="relative">
                     <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-[70px]">
@@ -599,7 +601,7 @@ export default function Navbar() {
                                                     </motion.svg>
                                                 )}
                                                 {isActive && (
-                                                    <span className="absolute bottom-1 left-3 right-3 h-[2px] bg-[#365693] rounded-full" />
+                                                    <span className="absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-[#365693]" />
                                                 )}
                                             </Link>
                                         </li>
@@ -611,7 +613,7 @@ export default function Navbar() {
                             <div className="hidden lg:flex items-center gap-3">
                                 <a
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#8B9C32] hover:bg-[#ABBD4F] text-white"
                                 >
                                     Connect with an Expert
                                 </a>
@@ -620,7 +622,7 @@ export default function Navbar() {
                                 <div className="relative" ref={desktopBrochureRef}>
                                     <button
                                         onClick={toggleDesktopBrochure}
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full hover:bg-[#ABBD4F] hover:text-white border border-[#ABBD4F] text-[#283F67] text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm"
+                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#ABBD4F] text-[#283F67] hover:bg-[#ABBD4F] hover:text-white"
                                     >
                                         <DownloadIcon />
                                         Download Brochure
@@ -638,7 +640,7 @@ export default function Navbar() {
                                 <button
                                     aria-label={menuOpen ? "Close menu" : "Open menu"}
                                     onClick={() => setMenuOpen((p) => !p)}
-                                    className="p-2 text-[#3a3a3a] hover:text-[#1b3a6b] transition-colors"
+                                    className="p-2 transition-colors text-[#3a3a3a] hover:text-[#1b3a6b]"
                                 >
                                     {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
                                 </button>
@@ -666,7 +668,7 @@ export default function Navbar() {
                             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                             className="lg:hidden overflow-hidden"
                         >
-                            <div className="bg-white border-t border-gray-100 px-4 pt-3 pb-5 shadow-lg">
+                            <div className="border-t px-4 pt-3 pb-5 shadow-lg bg-white border-gray-100">
                                 <ul className="flex flex-col gap-1 mb-4">
                                     {NAV_LINKS.map((link) => (
                                         <MobileNavItem
@@ -682,7 +684,7 @@ export default function Navbar() {
                                 <a
                                     href="/contact"
                                     onClick={() => setMenuOpen(false)}
-                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm mb-2"
+                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm mb-2 bg-[#8B9C32] hover:bg-[#ABBD4F] text-white"
                                 >
                                     Connect with an Expert
                                 </a>
@@ -691,7 +693,7 @@ export default function Navbar() {
                                 <div className="relative" ref={mobileBrochureRef}>
                                     <button
                                         onClick={toggleMobileBrochure}
-                                        className="flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full hover:bg-[#ABBD4F] hover:text-white border border-[#ABBD4F] text-[#283F67] text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm"
+                                        className="flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full text-[14px] font-semibold tracking-wide transition-colors duration-200 shadow-sm border border-[#ABBD4F] text-[#283F67] hover:bg-[#ABBD4F] hover:text-white"
                                     >
                                         <DownloadIcon />
                                         Download Brochure

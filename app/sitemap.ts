@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { pageSEO } from "@/seo.config";
+import { servicesData } from "@/app/lib/services-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date();
@@ -35,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "monthly",
             priority: 0.9,
         },
+        ...servicesData.map((service) => ({
+            url: `${pageSEO.services.url}/${service.id}`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+        })),
         {
             url: pageSEO.contact.url,
             lastModified: now,
