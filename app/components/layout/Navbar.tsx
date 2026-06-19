@@ -19,6 +19,7 @@ const SOLUTIONS_VISUAL_COLUMNS = [
 const OUR_SOLUTIONS_COLUMNS = [
     {
         heading: "Audit & Assurance",
+        href: "/services/audit-assurance",
         items: [
             "Statutory / External Audit",
             "Internal Audit Services",
@@ -31,6 +32,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Accounting & MIS",
+        href: "/services/accounting-mis",
         items: [
             "Accounting & Financial Close",
             "ERP & Accounting Software",
@@ -41,6 +43,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Special Audits & Risk Consulting",
+        href: "/services/special-audits-risk",
         items: [
             "Standard Operating Procedures (SOPs)",
             "Internal Controls & Governance",
@@ -53,6 +56,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Financial Advisory Services",
+        href: "/services/financial-advisory",
         items: [
             "Financial Due Diligence & Business Valuation",
             "Feasibility Studies & Business Planning",
@@ -61,6 +65,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Taxation Services",
+        href: "/services/taxation",
         items: [
             "Corporate Tax Advisory",
             "VAT Compliance & Advisory",
@@ -70,6 +75,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Business Strategy Advisory",
+        href: "/services/business-strategy",
         items: [
             "Sourcing & Procurement Services",
             "Corporate Training Services",
@@ -78,6 +84,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Digital Assets & Tokenization",
+        href: "/services/digital-assets",
         items: [
             "Bullion Tokenization Advisory",
             "Blockchain Custody & Governance",
@@ -87,6 +94,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Compliance & Responsible Business",
+        href: "/services/compliance-responsible",
         items: [
             "AML / CFT Compliance",
             "Regulatory Licensing",
@@ -99,6 +107,7 @@ const OUR_SOLUTIONS_COLUMNS = [
     },
     {
         heading: "Outsourced CFO Services",
+        href: "/services/cfo-services",
         items: [
             "Financial Strategy & Transformation",
             "Treasury & Working Capital Optimization",
@@ -109,21 +118,21 @@ const OUR_SOLUTIONS_COLUMNS = [
     }
 ];
 
-const WHO_WE_SERVE_ITEMS = [
-    { label: "Gold & Silver Refiners", active: true },
-    { label: "Luxury Watch Dealers" },
-    { label: "Bullion Trading Companies" },
-    { label: "Jewellery Wholesalers & Retailers" },
-    { label: "Jewellery Manufacturers" },
-    { label: "International Precious Traders" },
-    { label: "Family-Owned Trading Houses" },
-    { label: "Online Luxury Asset Marketplaces" },
-];
+// const WHO_WE_SERVE_ITEMS = [
+//     { label: "Gold & Silver Refiners", active: true },
+//     { label: "Luxury Watch Dealers" },
+//     { label: "Bullion Trading Companies" },
+//     { label: "Jewellery Wholesalers & Retailers" },
+//     { label: "Jewellery Manufacturers" },
+//     { label: "International Precious Traders" },
+//     { label: "Family-Owned Trading Houses" },
+//     { label: "Online Luxury Asset Marketplaces" },
+// ];
 
 const NAV_LINKS = [
     { label: "About Us", href: "/about-us" },
     { label: "Our Solutions", href: "/solutions", hasMega: "solutions" as const },
-    { label: "Who We Serve", href: "/who-we-serve", hasMega: "who-we-serve" as const },
+    { label: "Who We Serve", href: "/who-we-serve" },
     { label: "Contact", href: "/contact" },
 ];
 
@@ -180,6 +189,7 @@ function SolutionsMegaMenu() {
                                     <Section
                                         key={dataIdx}
                                         heading={col.heading}
+                                        href={col.href}
                                         items={col.items}
                                         startIndex={runningIndex}
                                     />
@@ -206,12 +216,18 @@ function SolutionsMegaMenu() {
     );
 }
 
-function Section({ heading, items, startIndex }: { heading: string; items: string[]; startIndex: number }) {
+function Section({ heading, href, items, startIndex }: { heading: string; href?: string; items: string[]; startIndex: number }) {
     return (
         <div>
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20">
-                {heading}
-            </p>
+            {href ? (
+                <Link href={href} className="block text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20 hover:text-[#8B9C32] transition-colors">
+                    {heading}
+                </Link>
+            ) : (
+                <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20">
+                    {heading}
+                </p>
+            )}
             <ul className="flex flex-col gap-0.5">
                 {items.map((item, ii) => (
                     <motion.li key={item} custom={startIndex + ii} variants={itemVariants} initial="hidden" animate="visible">
@@ -228,54 +244,54 @@ function Section({ heading, items, startIndex }: { heading: string; items: strin
 
 // ── Mega Menu: Who We Serve ───────────────────────────────────────────────────
 
-function WhoWeServeMegaMenu() {
-    return (
-        <motion.div
-            key="who-mega"
-            variants={megaVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-[1200px] bg-white border-t-2 border-[#8B9C32] shadow-2xl z-50 origin-top"
-            style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
-        >
-            <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
-            <div className="px-8 py-8 flex gap-16">
-                <div className="flex-1 max-w-xs">
-                    <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-3 pb-1.5 border-b border-[#8B9C32]/20">
-                        Industry Segments
-                    </p>
-                    <ul className="flex flex-col gap-0.5">
-                        {WHO_WE_SERVE_ITEMS.map((item, i) => (
-                            <motion.li key={item.label} custom={i} variants={itemVariants} initial="hidden" animate="visible">
-                                <a
-                                    href="#"
-                                    className={`flex items-center gap-2 text-[13px] leading-snug py-1.5 transition-all duration-150 group ${item.active ? "font-semibold text-[#365693]" : "text-gray-600 hover:text-[#365693]"
-                                        }`}
-                                >
-                                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-150 ${item.active ? "bg-[#365693]" : "bg-gray-300 group-hover:bg-[#8B9C32]"
-                                        }`} />
-                                    {item.label}
-                                </a>
-                            </motion.li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-            {/* <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
-                <p className="text-[11px] text-gray-400 tracking-wide">
-                    Serving the global precious metals and luxury goods ecosystem
-                </p>
-                <a href="/who-we-serve" className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1">
-                    View all segments
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </a>
-            </div> */}
-        </motion.div>
-    );
-}
+// function WhoWeServeMegaMenu() {
+//     return (
+//         <motion.div
+//             key="who-mega"
+//             variants={megaVariants}
+//             initial="hidden"
+//             animate="visible"
+//             exit="exit"
+//             className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-[1200px] bg-white border-t-2 border-[#8B9C32] shadow-2xl z-50 origin-top"
+//             style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
+//         >
+//             <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
+//             <div className="px-8 py-8 flex gap-16">
+//                 <div className="flex-1 max-w-xs">
+//                     <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-3 pb-1.5 border-b border-[#8B9C32]/20">
+//                         Industry Segments
+//                     </p>
+//                     <ul className="flex flex-col gap-0.5">
+//                         {WHO_WE_SERVE_ITEMS.map((item, i) => (
+//                             <motion.li key={item.label} custom={i} variants={itemVariants} initial="hidden" animate="visible">
+//                                 <a
+//                                     href="#"
+//                                     className={`flex items-center gap-2 text-[13px] leading-snug py-1.5 transition-all duration-150 group ${item.active ? "font-semibold text-[#365693]" : "text-gray-600 hover:text-[#365693]"
+//                                         }`}
+//                                 >
+//                                     <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-150 ${item.active ? "bg-[#365693]" : "bg-gray-300 group-hover:bg-[#8B9C32]"
+//                                         }`} />
+//                                     {item.label}
+//                                 </a>
+//                             </motion.li>
+//                         ))}
+//                     </ul>
+//                 </div>
+//             </div>
+//             {/* <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
+//                 <p className="text-[11px] text-gray-400 tracking-wide">
+//                     Serving the global precious metals and luxury goods ecosystem
+//                 </p>
+//                 <a href="/who-we-serve" className="text-[12px] font-semibold text-[#365693] hover:text-[#8B9C32] transition-colors flex items-center gap-1">
+//                     View all segments
+//                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+//                         <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+//                     </svg>
+//                 </a>
+//             </div> */}
+//         </motion.div>
+//     );
+// }
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -652,7 +668,7 @@ export default function Navbar() {
                     <div onMouseEnter={cancelClose} onMouseLeave={scheduleClose}>
                         <AnimatePresence>
                             {activeMega === "solutions" && <SolutionsMegaMenu />}
-                            {activeMega === "who-we-serve" && <WhoWeServeMegaMenu />}
+                            {/* {activeMega === "who-we-serve" && <WhoWeServeMegaMenu />} */}
                         </AnimatePresence>
                     </div>
                 </div>
@@ -923,13 +939,13 @@ function MobileNavItem({
                                     </div>
                                 </div>
                             )}
-                            {link.hasMega === "who-we-serve" && (
+                            {/* {link.hasMega === "who-we-serve" && (
                                 <MobileNestedDropdown
                                     label="Industry Segments"
                                     items={WHO_WE_SERVE_ITEMS.map(item => item.label)}
                                     onCloseMenu={onCloseMenu}
                                 />
-                            )}
+                            )} */}
                         </div>
                     </motion.div>
                 )}
