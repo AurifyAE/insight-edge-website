@@ -1,4 +1,33 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+// ── Slides ────────────────────────────────────────────────────────────────────
+
+const SLIDES = [
+    {
+        bg: "/images/home/hero-bg.jpg",
+        title: "Safeguarding Value Through Financial Expertise",
+        description:
+            "Exclusive Financial & Compliance Advisory for the Precious Metals Industry",
+        buttons: [
+            { label: "Our Services", href: "/services", variant: "solid" as const },
+            { label: "Get in Touch", href: "/contact", variant: "outline" as const },
+        ],
+    },
+    {
+        bg: "/images/home/hero-bg.jpg",
+        title: "Trusted Advisory for the Gold & Bullion Trade",
+        description:
+            "Specialized Audit, Tax, and Risk Consulting Built Around the Precious Metals Supply Chain",
+        buttons: [
+            { label: "About Us", href: "/about-us", variant: "solid" as const },
+            { label: "Connect with an Expert", href: "/contact", variant: "outline" as const },
+        ],
+    },
+];
 
 function GridRight() {
     return (
@@ -99,29 +128,53 @@ function GridLeft() {
 }
 
 export default function HeroSection() {
+    const [active, setActive] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setActive((p) => (p + 1) % SLIDES.length);
+        }, 6000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const slide = SLIDES[active];
+
     return (
         <section className="relative w-full overflow-hidden mt-15 lg:mt-18">
 
             {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}
 
             {/* Background image — hidden on mobile, shown from md up */}
-            <div className="hidden md:block absolute inset-0">
-                <Image
-                    src="/images/home/hero-bg.jpg"
-                    width={1920}
-                    height={1080}
-                    alt="Hero Background"
-                    className="w-full h-full object-cover"
-                    priority
-                />
+            <div className="hidden md:block absolute inset-0 mx-4 rounded-t-2xl mt-9 overflow-hidden">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={active}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute inset-0"
+                    >
+                        <Image
+                            src={slide.bg}
+                            width={1920}
+                            height={1080}
+                            alt="Hero Background"
+                            className="w-full h-full object-cover"
+                            priority
+                        />
+                    </motion.div>
+                </AnimatePresence>
                 {/* Dark overlay so text card sits on a predictable bg */}
                 <div className="absolute inset-0 bg-[#1a2e5a]/20" />
+                {/* Bottom fade so the section blends into the content below */}
+                <div className="absolute inset-x-0 bottom-0 h-96 bg-linear-to-t from-white to-transparent" />
             </div>
 
             {/* Mobile image — in-flow, visible only on mobile */}
             <div className="block md:hidden w-full h-[240px] sm:h-[300px] relative">
                 <Image
-                    src="/images/home/hero-bg.jpg"
+                    src={slide.bg}
                     fill
                     alt="Hero Background"
                     className="object-cover object-center"
@@ -130,53 +183,68 @@ export default function HeroSection() {
             </div>
 
             {/* ── Layout shell ── */}
-            <div className="relative md:min-h-[640px] lg:min-h-[720px] max-w-[800px] mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end justify-end">
+            <div className="relative md:min-h-[640px] lg:min-h-[800px] max-w-7xl mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end justify-start">
 
                 {/* ── Text card ── */}
-                <div className="w-full lg:w-[52%] lg:w-[70%] md:mb-0">
-                    <div className="
-                bg-[#C6DB5A]
-                border-t-[12px] border-t-[#283F67]
-                rounded-t-[32px] md:rounded-t-[32px]
-                px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14
-                shadow-lg
-            ">
-                        {/* Headline */}
-                        <h1 className="
-                    text-[#283F67] font-bold leading-tight tracking-tight mb-3
-                    text-[22px] sm:text-[26px] lg:text-[44px]
+                <div className="w-1/2 md:mb-0">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={active}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -12 }}
+                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                            className="px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14 flex flex-col gap-4 mb-40"
+                        >
+                            {/* Headline */}
+                            <h1 className="
+                    text-[#1E2E4B] font-bold leading-tight tracking-tight
+                    text-[22px] sm:text-[26px] lg:text-4xl text-pretty
                 ">
-                            Safeguarding Value Through
-                            Financial Expertise
-                        </h1>
+                                {slide.title}
+                            </h1>
 
-                        {/* Sub-headline */}
-                        <p className="
-                    text-[#364f20] leading-relaxed mb-7
+                            {/* Sub-headline */}
+                            <p className="
+                    text-[#454748] leading-relaxed
                     text-[13px] sm:text-[14px] lg:text-base
-                    max-w-[320px]
+                    lg:max-w-md
                 ">
-                            Exclusive Financial &amp; Compliance Advisory for the
-                            Precious Metals Industry
-                        </p>
+                                {slide.description}
+                            </p>
 
-                        {/* Buttons */}
-                        <div className="flex flex-wrap gap-3">
-                            <a
-                                href="/services"
-                                className="inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#1b3a6b] hover:bg-[#152d55] text-white text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
-                            >
-                                Our Services
-                            </a>
-                            <a
-                                href="/contact"
-                                className="inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
-                            >
-                                Get in Touch
-                            </a>
-                        </div>
-                    </div>
+                            {/* Buttons */}
+                            <div className="flex flex-wrap gap-3">
+                                {slide.buttons.map((btn) => (
+                                    <a
+                                        key={btn.label}
+                                        href={btn.href}
+                                        className={
+                                            btn.variant === "solid"
+                                                ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#C6DB5A] text-white text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
+                                        }
+                                    >
+                                        {btn.label}
+                                    </a>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
+            </div>
+
+            {/* ── Slide indicators ── */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {SLIDES.map((_, i) => (
+                    <button
+                        key={i}
+                        aria-label={`Go to slide ${i + 1}`}
+                        onClick={() => setActive(i)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#C6DB5A]" : "w-1.5 bg-[#1E2E4B]/60 hover:bg-[#1E2E4B]/80"
+                            }`}
+                    />
+                ))}
             </div>
         </section>
     );

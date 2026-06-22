@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { defaultMetadata } from "@/seo.config";
+import QuickContactBar from "@/app/components/layout/QuickContactBar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <main className="grow">{children}</main>
+        <QuickContactBar />
       </body>
     </html>
   );

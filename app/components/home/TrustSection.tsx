@@ -1,169 +1,114 @@
 "use client";
 import React, { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
+import { BadgeCheck, Gem, Globe2, ShieldCheck } from "lucide-react";
 
 interface TrustItem {
-    icon: string;
-    alt: string;
-    stat: string;
+    icon: React.ElementType;
+    title: string;
     description: string;
 }
 
 const trustItems: TrustItem[] = [
     {
-        icon: "/icons/home/certified.svg",
-        alt: "Certified",
-        stat: "Certified",
-        description: "UAE Registered &\nApproved Audit Firm",
+        icon: BadgeCheck,
+        title: "Certified Excellence",
+        description: "UAE registered & approved audit firm.",
     },
     {
-        icon: "/icons/home/precious-metals.svg",
-        alt: "Precious Metals",
-        stat: "100%",
-        description: "Dedicated to Precious\nMetals Sector",
+        icon: Gem,
+        title: "Sector Specialists",
+        description: "100% dedicated to the precious metals industry.",
     },
     {
-        icon: "/icons/home/compliance-coverage.svg",
-        alt: "Compliance Coverage",
-        stat: "360°",
-        description: "End-to-End Financial &\nCompliance Coverage",
+        icon: ShieldCheck,
+        title: "Full Coverage",
+        description: "360° end-to-end financial & compliance support.",
+    },
+    {
+        icon: Globe2,
+        title: "Global Standards",
+        description: "Advisory aligned with OECD & international best practice.",
     },
 ];
 
-const cardVariants: Variants = {
-    hidden: {
-        opacity: 0,
-        y: 60,
-        scale: 0.4,
-    },
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 24 },
     visible: (i: number) => ({
         opacity: 1,
         y: 0,
-        scale: 1,
         transition: {
-            delay: i * 0.15,
-            duration: 0.6,
-            ease: [0.22, 1, 0.36, 1], // custom spring-like easing
-        },
-    }),
-};
-
-const dividerVariants: Variants = {
-    hidden: { scaleY: 0, opacity: 0 },
-    visible: (i: number) => ({
-        scaleY: 1,
-        opacity: 1,
-        transition: {
-            delay: i * 0.3 + 0.3,
+            delay: i * 0.1,
             duration: 0.5,
-            ease: "easeOut",
+            ease: [0.22, 1, 0.36, 1],
         },
     }),
 };
 
 const TrustSection: React.FC = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(sectionRef, {
-        once: true,       // animate only the first time
-        margin: "-150px",  // trigger slightly before fully in view
-    });
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section className="relative w-full overflow-hidden bg-[#eef2f8] py-10 md:py-20 lg:py-30">
-
-            {/* Left BG layer */}
-            <div
-                className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 h-auto w-[20%] select-none hidden lg:block"
-                aria-hidden="true"
-            >
-                <img
-                    src="/images/home/bg-layer.svg"
-                    alt=""
-                    className="h-full w-full object-cover object-right"
-                    style={{ transform: "scaleX(-1)" }}
-                />
-            </div>
-
-            {/* Right BG layer */}
-            <div
-                className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-auto w-[20%] select-none hidden lg:block"
-                aria-hidden="true"
-            >
-                <img
-                    src="/images/home/bg-layer.svg"
-                    alt=""
-                    className="h-full w-full object-cover object-left"
-                />
-            </div>
-
-
-            {/* Cards row */}
-            <div
-                ref={sectionRef}
-                className="relative z-10 mx-auto flex flex-col lg:flex-row max-w-4xl items-center lg:items-stretch justify-center px-6 gap-8 lg:gap-0"
-            >
-
-                {trustItems.map((item, index) => (
-                    <React.Fragment key={item.stat}>
-                        <motion.div
-                            className="flex flex-1"
-                            custom={index}
-                            initial="hidden"
-                            animate={isInView ? "visible" : "hidden"}
-                            variants={cardVariants}
+        <section ref={sectionRef} className="w-full py-16 md:py-20 lg:py-24">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                    {/* ── Left: heading + CTA ── */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <h2 className="text-white font-bold leading-tight tracking-tight text-[28px] sm:text-[34px] lg:text-5xl">
+                            {/* Your Trusted Precious Metals Advisory Partner. */}
+                            Lorem ipsum dolor sit amet,
+                        </h2>
+                        <p className="mt-4 text-[#C5C7C8] text-sm sm:text-base leading-relaxed max-w-md">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem eligendi voluptatibus odit, laboriosam veniam mollitia officia dicta, harum adipisci provident delectus suscipit. Nostrum corporis quisquam ea id, quidem voluptatum aliquam!
+                            {/* Insight Edge Global is a UAE-based audit, assurance, tax, and
+                            advisory firm built exclusively around the precious metals
+                            industry - helping gold refiners, traders, and jewellers stay
+                            compliant and confident. */}
+                        </p>
+                        <Link
+                            href="/about-us"
+                            className="mt-7 inline-flex items-center justify-center rounded-xl border border-[#C6DB5A] px-7 py-3 text-[13.5px] font-semibold text-[#C6DB5A] transition-colors duration-200 hover:bg-[#C6DB5A] hover:text-[#1E2E4B]"
                         >
-                            <TrustCard item={item} />
-                        </motion.div>
+                            About Us
+                        </Link>
+                    </motion.div>
 
-                        {/* Vertical divider */}
-                        {index < trustItems.length - 1 && (
-                            <motion.div
-                                className="mx-8 hidden w-px self-stretch bg-gradient-to-b from-transparent via-[#c5d4b0] to-transparent sm:block origin-top"
-                                custom={index}
-                                initial="hidden"
-                                animate={isInView ? "visible" : "hidden"}
-                                variants={dividerVariants}
-                            />
-                        )}
-                    </React.Fragment>
-                ))}
-            </div>
-        </section>
-    );
-};
-
-interface TrustCardProps {
-    item: TrustItem;
-}
-
-const TrustCard: React.FC<TrustCardProps> = ({ item }) => {
-    return (
-        <div className="group flex flex-1 flex-col items-center gap-4 text-center">
-
-            {/* Outer soft halo + white circle */}
-            <div className="relative flex h-60 w-60 sm:h-72 sm:w-72 items-center justify-center">
-                {/* Halo rings */}
-                <div className="absolute inset-[-8px] rounded-full bg-white/50" />
-                <div className="absolute inset-[-4px] rounded-full bg-white/70" />
-
-                {/* Main icon circle */}
-                <div className="relative flex flex-col h-60 w-60 sm:h-72 sm:w-72 items-center justify-center rounded-full bg-[#283F67] shadow-[0_6px_32px_0_rgba(90,130,50,0.12)] transition-shadow duration-300 group-hover:shadow-[0_10px_40px_0_rgba(90,130,50,0.22)] gap-2">
-
-                    <img
-                        src={item.icon}
-                        alt={item.alt}
-                        className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <span className="font-bold text-[#C6DB5A] text-[1.4rem] leading-snug tracking-tight">
-                        {item.stat}
-                    </span>
-                    <p className="whitespace-pre-line text-[0.82rem] leading-[1.7] text-white">
-                        {item.description}
-                    </p>
+                    {/* ── Right: 2x2 feature grid ── */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+                        {trustItems.map((item, i) => {
+                            const Icon = item.icon;
+                            return (
+                                <motion.div
+                                    key={item.title}
+                                    custom={i}
+                                    initial="hidden"
+                                    animate={isInView ? "visible" : "hidden"}
+                                    variants={fadeUp}
+                                    className="group rounded-2xl p-5 -m-5 transition-colors duration-300 hover:bg-[#32405c]"
+                                >
+                                    <Icon
+                                        className="h-7 w-7 text-white"
+                                        strokeWidth={1.5}
+                                    />
+                                    <h3 className="mt-3 text-white font-semibold text-[15px] sm:text-base">
+                                        {item.title}
+                                    </h3>
+                                    <p className="mt-1.5 text-[#AAABAC] text-[13px] sm:text-sm leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
-
-        </div>
+        </section>
     );
 };
 

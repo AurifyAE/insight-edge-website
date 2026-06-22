@@ -136,6 +136,8 @@ const NAV_LINKS = [
     { label: "Contact", href: "/contact" },
 ];
 
+const MARQUEE_SERVICES = OUR_SOLUTIONS_COLUMNS.map((col) => col.heading);
+
 // ── Animation variants ────────────────────────────────────────────────────────
 
 const megaVariants: Variants = {
@@ -424,6 +426,46 @@ function BrochureDropdownContent({
     );
 }
 
+// ── Top Utility Banner ───────────────────────────────────────────────────────
+
+function TopBanner() {
+    return (
+        <div className="hidden lg:flex items-center bg-[#1e3a6b] text-white text-[13px] px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
+            <div className="flex items-center gap-5 shrink-0">
+                <a href="tel:+971503708785" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
+                    <PhoneIcon />
+                    +971 50 370 8785
+                </a>
+                <a href="mailto:info@insightedge.global" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
+                    <MailIcon />
+                    info@insightedge.global
+                </a>
+            </div>
+            <div className="relative flex-1 min-w-0 md:mx-50 overflow-hidden mask-fade-x">
+                <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
+                    {[...MARQUEE_SERVICES, ...MARQUEE_SERVICES].map((service, i) => (
+                        <span key={i} className="flex items-center gap-2 text-white/80">
+                            <span className="w-1 h-1 rounded-full bg-[#ABBD4F] shrink-0" />
+                            {service}
+                        </span>
+                    ))}
+                </div>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+                {/* <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#ABBD4F] transition-colors">
+                    <LinkedInIcon />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#ABBD4F] transition-colors">
+                    <InstagramIcon />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#ABBD4F] transition-colors">
+                    <FacebookIcon />
+                </a> */}
+            </div>
+        </div>
+    );
+}
+
 // ── Main Navbar ───────────────────────────────────────────────────────────────
 
 export default function Navbar() {
@@ -570,15 +612,16 @@ export default function Navbar() {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                         className="fixed inset-0 bg-black/25 z-40"
-                        style={{ top: "70px" }}
+                        style={{ top: "106px" }}
                         onClick={() => setActiveMega(null)}
                     />
                 )}
             </AnimatePresence>
 
             <header
-                className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${scrolled || activeMega ? "shadow-md" : "shadow-sm"}`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${scrolled || activeMega ? "shadow-md" : ""}`}
             >
+                <TopBanner />
                 <div className="relative">
                     <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-[70px]">
@@ -602,7 +645,7 @@ export default function Navbar() {
                                                 onMouseEnter={() => hasMega ? openMega(hasMega) : scheduleClose()}
                                                 onMouseLeave={scheduleClose}
                                                 onClick={() => hasMega && setActiveMega(isMegaActive ? null : hasMega)}
-                                                className={`relative flex items-center gap-1 px-3 py-2 text-[13.5px] tracking-wide transition-colors duration-200 rounded-sm cursor-pointer select-none ${isActive ? "text-[#365693] font-bold" : "text-[#4A5565] font-medium hover:text-[#365693]"
+                                                className={`relative flex items-center gap-1 px-3 py-2 text-[15px] tracking-wide transition-colors duration-200 rounded-sm cursor-pointer select-none ${isActive ? "text-[#365693] font-bold" : "text-[#4A5565] font-medium hover:text-[#365693]"
                                                     }`}
                                             >
                                                 {label}
@@ -629,7 +672,7 @@ export default function Navbar() {
                             <div className="hidden lg:flex items-center gap-3">
                                 <a
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#8B9C32] hover:bg-[#ABBD4F] text-white"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#8B9C32] hover:bg-[#ABBD4F] text-white"
                                 >
                                     Connect with an Expert
                                 </a>
@@ -638,7 +681,7 @@ export default function Navbar() {
                                 <div className="relative" ref={desktopBrochureRef}>
                                     <button
                                         onClick={toggleDesktopBrochure}
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#ABBD4F] text-[#283F67] hover:bg-[#ABBD4F] hover:text-white"
+                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#ABBD4F] text-[#283F67] hover:bg-[#ABBD4F] hover:text-white"
                                     >
                                         <DownloadIcon />
                                         Download Brochure
@@ -830,6 +873,49 @@ function DownloadIcon() {
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+    );
+}
+
+function PhoneIcon() {
+    return (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+        </svg>
+    );
+}
+
+function MailIcon() {
+    return (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" />
+            <polyline points="22 6 12 13 2 6" />
+        </svg>
+    );
+}
+
+function LinkedInIcon() {
+    return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+        </svg>
+    );
+}
+
+function InstagramIcon() {
+    return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+    );
+}
+
+function FacebookIcon() {
+    return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.16 8.44 9.94v-7.03H7.9v-2.91h2.54V9.86c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.78 8.43-4.94 8.43-9.94z" />
         </svg>
     );
 }
