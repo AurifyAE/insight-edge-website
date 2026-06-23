@@ -144,7 +144,7 @@ export default function HeroSection() {
 
             {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}
 
-            {/* Background image — hidden on mobile, shown from md up */}
+            {/* Background image - hidden on mobile, shown from md up */}
             <div className="hidden md:block absolute inset-0 mx-4 rounded-t-2xl mt-9 overflow-hidden">
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -166,12 +166,12 @@ export default function HeroSection() {
                     </motion.div>
                 </AnimatePresence>
                 {/* Dark overlay so text card sits on a predictable bg */}
-                <div className="absolute inset-0 bg-[#1a2e5a]/20" />
+                <div className="absolute inset-0 bg-white/20" />
                 {/* Bottom fade so the section blends into the content below */}
-                <div className="absolute inset-x-0 bottom-0 h-96 bg-linear-to-t from-white to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-[480px] bg-linear-to-t from-white to-transparent" />
             </div>
 
-            {/* Mobile image — in-flow, visible only on mobile */}
+            {/* Mobile image - in-flow, visible only on mobile */}
             <div className="block md:hidden w-full h-[240px] sm:h-[300px] relative">
                 <Image
                     src={slide.bg}
@@ -199,7 +199,7 @@ export default function HeroSection() {
                             {/* Headline */}
                             <h1 className="
                     text-[#1E2E4B] font-bold leading-tight tracking-tight
-                    text-[22px] sm:text-[26px] lg:text-4xl text-pretty
+                    text-[22px] sm:text-[26px] lg:text-5xl text-pretty
                 ">
                                 {slide.title}
                             </h1>
@@ -207,7 +207,7 @@ export default function HeroSection() {
                             {/* Sub-headline */}
                             <p className="
                     text-[#454748] leading-relaxed
-                    text-[13px] sm:text-[14px] lg:text-base
+                    text-sm sm:text-[14px] lg:text-base
                     lg:max-w-md
                 ">
                                 {slide.description}
@@ -221,8 +221,8 @@ export default function HeroSection() {
                                         href={btn.href}
                                         className={
                                             btn.variant === "solid"
-                                                ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#C6DB5A] text-white text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
-                                                : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-[13.5px] font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-white text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
                                         }
                                     >
                                         {btn.label}

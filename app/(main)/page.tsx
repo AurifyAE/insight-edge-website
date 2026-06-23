@@ -42,7 +42,16 @@ export default function Home() {
       <WhyChoose />
       {/* <ServicesSection /> */}
       {/* <AboutSection /> */}
-      <AffiliateSection />
+      <div
+        className="relative mx-4 rounded-2xl bg-[#1E2E4B] bg-cover bg-center"
+        style={{ backgroundImage: "url(/images/home/bg-img-1.jpeg)" }}
+      >
+        <div className="absolute inset-0 rounded-2xl bg-[#1E2E4B]/95" />
+        <div className="relative z-10">
+
+          <AffiliateSection />
+          </div>
+        </div>
       <Testimonials />
       <FAQSection />
       <CTASection />

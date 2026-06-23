@@ -13,7 +13,7 @@ export default function ChecklistGrid({ groups }: { groups: ChecklistGroup[] }) 
                     )}
                     <ul className="space-y-2">
                         {group.items.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-[#44474D]">
+                            <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-[#44474D]">
                                 <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#576500]" strokeWidth={2} />
                                 <span>{item}</span>
                             </li>

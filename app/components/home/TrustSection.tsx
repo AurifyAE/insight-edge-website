@@ -73,7 +73,7 @@ const TrustSection: React.FC = () => {
                         </p>
                         <Link
                             href="/about-us"
-                            className="mt-7 inline-flex items-center justify-center rounded-xl border border-[#C6DB5A] px-7 py-3 text-[13.5px] font-semibold text-[#C6DB5A] transition-colors duration-200 hover:bg-[#C6DB5A] hover:text-[#1E2E4B]"
+                            className="mt-7 inline-flex items-center justify-center rounded-xl border border-[#C6DB5A] px-7 py-3 text-sm font-semibold text-[#C6DB5A] transition-colors duration-200 hover:bg-[#C6DB5A] hover:text-[#1E2E4B]"
                         >
                             About Us
                         </Link>
@@ -96,10 +96,10 @@ const TrustSection: React.FC = () => {
                                         className="h-7 w-7 text-white"
                                         strokeWidth={1.5}
                                     />
-                                    <h3 className="mt-3 text-white font-semibold text-[15px] sm:text-base">
+                                    <h3 className="mt-3 text-white font-semibold text-base sm:text-lg">
                                         {item.title}
                                     </h3>
-                                    <p className="mt-1.5 text-[#AAABAC] text-[13px] sm:text-sm leading-relaxed">
+                                    <p className="mt-1.5 text-[#AAABAC] text-sm sm:text-base leading-relaxed">
                                         {item.description}
                                     </p>
                                 </motion.div>

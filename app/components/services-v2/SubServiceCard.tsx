@@ -32,7 +32,7 @@ export default function SubServiceCard({ item }: { item: SubService }) {
             )}
 
             {item.description && (
-                <p className="mt-3 text-[13.5px] leading-relaxed text-[#44474D]">{item.description}</p>
+                <p className="mt-3 text-sm leading-relaxed text-[#44474D]">{item.description}</p>
             )}
 
             {item.chips && <ChipGroup chips={item.chips} />}

@@ -43,13 +43,13 @@ export default function ExtraSections({ sections }: { sections: ExtraSection[] }
                     {Array.isArray(section.body) ? (
                         <div className="mt-3 space-y-3">
                             {section.body.map((paragraph, i) => (
-                                <p key={i} className="text-[13.5px] leading-relaxed text-[#44474D]">
+                                <p key={i} className="text-sm leading-relaxed text-[#44474D]">
                                     {paragraph}
                                 </p>
                             ))}
                         </div>
                     ) : (
-                        <p className="mt-3 text-[13.5px] leading-relaxed text-[#44474D]">{section.body}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-[#44474D]">{section.body}</p>
                     )}
                 </div>
             ))}

@@ -52,10 +52,10 @@ export default function WhySpecialist() {
                                     <Icon size={18} className="text-[#ABBD4F]" strokeWidth={1.5} />
                                 </div>
                                 <div>
-                                    <p className="text-[14px] font-semibold text-[#365693] mb-0.5">
+                                    <p className="text-sm md:text-base font-semibold text-[#365693] mb-0.5">
                                         {title}
                                     </p>
-                                    <p className="text-[13px] text-g[#4A5565] leading-snug">
+                                    <p className="text-sm text-g[#4A5565] leading-snug">
                                         {description}
                                     </p>
                                 </div>

@@ -268,7 +268,7 @@ function Section({ heading, href, items, startIndex }: { heading: string; href?:
 //                             <motion.li key={item.label} custom={i} variants={itemVariants} initial="hidden" animate="visible">
 //                                 <a
 //                                     href="#"
-//                                     className={`flex items-center gap-2 text-[13px] leading-snug py-1.5 transition-all duration-150 group ${item.active ? "font-semibold text-[#365693]" : "text-gray-600 hover:text-[#365693]"
+//                                     className={`flex items-center gap-2 text-sm leading-snug py-1.5 transition-all duration-150 group ${item.active ? "font-semibold text-[#365693]" : "text-gray-600 hover:text-[#365693]"
 //                                         }`}
 //                                 >
 //                                     <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-150 ${item.active ? "bg-[#365693]" : "bg-gray-300 group-hover:bg-[#8B9C32]"
@@ -300,7 +300,7 @@ function Section({ heading, href, items, startIndex }: { heading: string; href?:
 type BrochureState = "idle" | "loading" | "success" | "error";
 
 // ── Shared Brochure Dropdown Content ─────────────────────────────────────────
-// Reused in both desktop and mobile — receives state as props
+// Reused in both desktop and mobile - receives state as props
 
 interface BrochureDropdownContentProps {
     brochureEmail: string;
@@ -340,7 +340,7 @@ function BrochureDropdownContent({
                     </svg>
                 </div>
                 <div>
-                    <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
+                    <p className="text-sm font-semibold text-[#1e3a6b]">Get the Brochure</p>
                     <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
                 </div>
             </div>
@@ -357,7 +357,7 @@ function BrochureDropdownContent({
                             <polyline points="20 6 9 17 4 12" />
                         </svg>
                     </div>
-                    <p className="text-[13px] font-semibold text-[#1e3a6b]">Opening your brochure…</p>
+                    <p className="text-sm font-semibold text-[#1e3a6b]">Opening your brochure…</p>
                     <p className="text-[11px] text-gray-400">Your email has been recorded.</p>
                 </motion.div>
             )}
@@ -376,7 +376,7 @@ function BrochureDropdownContent({
                             <line x1="12" y1="16" x2="12.01" y2="16" />
                         </svg>
                     </div>
-                    <p className="text-[13px] font-semibold text-[#1e3a6b]">Something went wrong</p>
+                    <p className="text-sm font-semibold text-[#1e3a6b]">Something went wrong</p>
                     <p className="text-[11px] text-gray-400">Opening the brochure anyway…</p>
                 </motion.div>
             )}
@@ -395,7 +395,7 @@ function BrochureDropdownContent({
                             disabled={brochureState === "loading"}
                             onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
                             onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
-                            className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
+                            className={`w-full border rounded-lg px-3 py-2 text-sm text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
                                 ? "border-red-400 focus:ring-1 focus:ring-red-300"
                                 : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
                                 }`}
@@ -406,7 +406,7 @@ function BrochureDropdownContent({
                         <button
                             onClick={handleBrochureSubmit}
                             disabled={brochureState === "loading"}
-                            className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-sm font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
                             {brochureState === "loading" ? (
                                 <>
@@ -430,7 +430,7 @@ function BrochureDropdownContent({
 
 function TopBanner() {
     return (
-        <div className="hidden lg:flex items-center bg-[#1e3a6b] text-white text-[13px] px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
+        <div className="hidden lg:flex items-center bg-[#1e3a6b] text-white text-sm px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
             <div className="flex items-center gap-5 shrink-0">
                 <a href="tel:+971503708785" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
                     <PhoneIcon />
@@ -672,7 +672,7 @@ export default function Navbar() {
                             <div className="hidden lg:flex items-center gap-3">
                                 <a
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#8B9C32] hover:bg-[#ABBD4F] text-white"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#C6DB5A] hover:bg-[#D8ED6A] text-white"
                                 >
                                     Connect with an Expert
                                 </a>
@@ -681,7 +681,7 @@ export default function Navbar() {
                                 <div className="relative" ref={desktopBrochureRef}>
                                     <button
                                         onClick={toggleDesktopBrochure}
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#ABBD4F] text-[#283F67] hover:bg-[#ABBD4F] hover:text-white"
+                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#283F67] text-[#283F67] hover:bg-[#283F67] hover:text-white"
                                     >
                                         <DownloadIcon />
                                         Download Brochure
@@ -748,7 +748,7 @@ export default function Navbar() {
                                     Connect with an Expert
                                 </a>
 
-                                {/* Mobile brochure — opens upward to avoid overflow */}
+                                {/* Mobile brochure - opens upward to avoid overflow */}
                                 <div className="relative" ref={mobileBrochureRef}>
                                     <button
                                         onClick={toggleMobileBrochure}
@@ -778,7 +778,7 @@ export default function Navbar() {
                                                         </svg>
                                                     </div>
                                                     <div>
-                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
+                                                        <p className="text-sm font-semibold text-[#1e3a6b]">Get the Brochure</p>
                                                         <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
                                                     </div>
                                                 </div>
@@ -791,7 +791,7 @@ export default function Navbar() {
                                                                 <polyline points="20 6 9 17 4 12" />
                                                             </svg>
                                                         </div>
-                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Opening your brochure…</p>
+                                                        <p className="text-sm font-semibold text-[#1e3a6b]">Opening your brochure…</p>
                                                         <p className="text-[11px] text-gray-400">Your email has been recorded.</p>
                                                     </motion.div>
                                                 )}
@@ -806,7 +806,7 @@ export default function Navbar() {
                                                                 <line x1="12" y1="16" x2="12.01" y2="16" />
                                                             </svg>
                                                         </div>
-                                                        <p className="text-[13px] font-semibold text-[#1e3a6b]">Something went wrong</p>
+                                                        <p className="text-sm font-semibold text-[#1e3a6b]">Something went wrong</p>
                                                         <p className="text-[11px] text-gray-400">Opening the brochure anyway…</p>
                                                     </motion.div>
                                                 )}
@@ -825,7 +825,7 @@ export default function Navbar() {
                                                                 disabled={brochureState === "loading"}
                                                                 onChange={(e) => { setBrochureEmail(e.target.value); setBrochureError(false); }}
                                                                 onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
-                                                                className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
+                                                                className={`w-full border rounded-lg px-3 py-2 text-sm text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
                                                                     ? "border-red-400 focus:ring-1 focus:ring-red-300"
                                                                     : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
                                                                     }`}
@@ -836,7 +836,7 @@ export default function Navbar() {
                                                             <button
                                                                 onClick={handleBrochureSubmit}
                                                                 disabled={brochureState === "loading"}
-                                                                className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                                                className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-sm font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                                             >
                                                                 {brochureState === "loading" ? (
                                                                     <>
@@ -1015,7 +1015,7 @@ function MobileNavItem({
                                         <a
                                             href="/services"
                                             onClick={onCloseMenu}
-                                            className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#365693] hover:bg-[#365693]/80 text-white text-[13px] font-semibold tracking-wide transition-colors duration-300 shadow-sm"
+                                            className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#365693] hover:bg-[#365693]/80 text-white text-sm font-semibold tracking-wide transition-colors duration-300 shadow-sm"
                                         >
                                             View all solutions
                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1057,7 +1057,7 @@ function MobileNestedDropdown({
         <div className="flex flex-col">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-between py-2 text-[13px] font-semibold transition-colors ${isOpen ? "text-[#365693]" : "text-gray-700 hover:text-[#365693]"
+                className={`flex items-center justify-between py-2 text-sm font-semibold transition-colors ${isOpen ? "text-[#365693]" : "text-gray-700 hover:text-[#365693]"
                     }`}
             >
                 {label}

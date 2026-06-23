@@ -179,7 +179,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* ════════════════════════════════════
-                    RIGHT COLUMN — FORM (Client Component)
+                    RIGHT COLUMN - FORM (Client Component)
                 ════════════════════════════════════ */}
                 <ContactForm />
             </div>

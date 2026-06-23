@@ -221,7 +221,7 @@ export default function Footer() {
                                                 </svg>
                                             </div>
                                             <div>
-                                                <p className="text-[13px] font-semibold text-[#1e3a6b]">Get the Brochure</p>
+                                                <p className="text-sm font-semibold text-[#1e3a6b]">Get the Brochure</p>
                                                 <p className="text-[11px] text-gray-400">IE Brochure 2026 · PDF</p>
                                             </div>
                                         </div>
@@ -238,7 +238,7 @@ export default function Footer() {
                                                         <polyline points="20 6 9 17 4 12" />
                                                     </svg>
                                                 </div>
-                                                <p className="text-[13px] font-semibold text-[#1e3a6b]">Opening your brochure…</p>
+                                                <p className="text-sm font-semibold text-[#1e3a6b]">Opening your brochure…</p>
                                                 <p className="text-[11px] text-gray-400">Your email has been recorded.</p>
                                             </motion.div>
                                         )}
@@ -257,7 +257,7 @@ export default function Footer() {
                                                         <line x1="12" y1="16" x2="12.01" y2="16" />
                                                     </svg>
                                                 </div>
-                                                <p className="text-[13px] font-semibold text-[#1e3a6b]">Something went wrong</p>
+                                                <p className="text-sm font-semibold text-[#1e3a6b]">Something went wrong</p>
                                                 <p className="text-[11px] text-gray-400">Opening the brochure anyway…</p>
                                             </motion.div>
                                         )}
@@ -279,7 +279,7 @@ export default function Footer() {
                                                             setBrochureError(false);
                                                         }}
                                                         onKeyDown={(e) => e.key === "Enter" && handleBrochureSubmit()}
-                                                        className={`w-full border rounded-lg px-3 py-2 text-[13px] text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
+                                                        className={`w-full border rounded-lg px-3 py-2 text-sm text-gray-800 outline-none transition-all disabled:opacity-60 ${brochureError
                                                             ? "border-red-400 focus:ring-1 focus:ring-red-300"
                                                             : "border-gray-200 focus:border-[#365693] focus:ring-1 focus:ring-[#365693]/20"
                                                             }`}
@@ -290,7 +290,7 @@ export default function Footer() {
                                                     <button
                                                         onClick={handleBrochureSubmit}
                                                         disabled={brochureState === "loading"}
-                                                        className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-[13px] font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                                        className="w-full py-2 rounded-full bg-[#8B9C32] hover:bg-[#ABBD4F] text-white text-sm font-semibold transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                                     >
                                                         {brochureState === "loading" ? (
                                                             <>
@@ -315,7 +315,7 @@ export default function Footer() {
 
                 {/* ── Sub Footer ── */}
                 <div className="mt-16 pt-8 border-t border-gray-700/50 flex flex-col items-center gap-4 text-center">
-                    <p className="text-[13px] text-gray-400">
+                    <p className="text-sm text-gray-400">
                         &copy; 2026 Insight Edge Global LLC. All rights reserved.
                     </p>
                     <p className="text-[12px] text-gray-500 font-medium">

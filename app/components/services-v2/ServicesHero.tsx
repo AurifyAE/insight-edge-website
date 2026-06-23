@@ -72,7 +72,7 @@ export default function ServicesHero() {
                         </h1>
                     </div>
 
-                    <p className="hero-statement mt-6 max-w-[480px] text-[15px] leading-relaxed text-[#44474D] sm:text-[16px]">
+                    <p className="hero-statement mt-6 max-w-[480px] text-sm leading-relaxed text-[#44474D] sm:text-base">
                         {heroContent.statement}
                     </p>
                 </div>

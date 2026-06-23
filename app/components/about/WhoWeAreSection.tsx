@@ -232,7 +232,7 @@ export default function WhoWeAreSection() {
                             style={{ fontSize: 14, lineHeight: 1.7, maxWidth: 680 }}
                         >
                             To make complex financial and compliance processes transparent, efficient,
-                            and secure — helping precious metals businesses stay ahead in an ever-evolving,
+                            and secure - helping precious metals businesses stay ahead in an ever-evolving,
                             tightly regulated market. We bring clarity, accuracy, and confidence to every
                             engagement.
                         </p>

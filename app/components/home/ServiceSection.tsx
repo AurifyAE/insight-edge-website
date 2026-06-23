@@ -142,7 +142,7 @@ function ServiceCard({
                     </div>
                 </div>
                 <div className="col-span-3 flex flex-col gap-2">
-                    <h3 className="text-[13px] font-semibold text-[#365693] leading-snug mb-1.5">
+                    <h3 className="text-sm font-semibold text-[#365693] leading-snug mb-1.5">
                         {service.title}
                     </h3>
                     <p className="text-[11.5px] text-[#4A5565] leading-relaxed">
@@ -194,7 +194,7 @@ function MobileCardList({ isInView }: { isInView: boolean }) {
                             </div>
                         </div>
                         <div>
-                            <h3 className="text-[13px] font-semibold text-[#365693] mb-1 leading-snug">
+                            <h3 className="text-sm font-semibold text-[#365693] mb-1 leading-snug">
                                 {service.title}
                             </h3>
                             <p className="text-[11.5px] text-[#4A5565] leading-relaxed">

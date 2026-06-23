@@ -33,7 +33,7 @@ export default function ServicesPageNav({ activeId }: { activeId: string }) {
                                     <li key={service.id}>
                                         <Link
                                             href={`/services/${service.id}`}
-                                            className={`group flex items-baseline gap-2.5 py-2 text-[13px] leading-snug transition-colors ${
+                                            className={`group flex items-baseline gap-2.5 py-2 text-sm leading-snug transition-colors ${
                                                 isActive ? "text-[#1E2E4B] font-semibold" : "text-[#75777E] hover:text-[#1E2E4B]"
                                             }`}
                                         >

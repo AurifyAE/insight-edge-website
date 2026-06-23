@@ -46,7 +46,7 @@ export default function WhyChoose() {
 
     return (
         <section ref={sectionRef} className="w-full bg-white py-16 md:py-20 lg:py-24">
-            <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-center">
                     {/* ── Left: image ── */}
                     <motion.div
@@ -57,7 +57,7 @@ export default function WhyChoose() {
                     >
                         <Image
                             src="/images/home/bg-img-1.jpeg"
-                            alt="Insight Edge Global — precious metals advisory"
+                            alt="Insight Edge Global - precious metals advisory"
                             fill
                             className="object-cover"
                         />
@@ -111,7 +111,7 @@ export default function WhyChoose() {
                                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#283F67]/8">
                                             <Icon className="h-4.5 w-4.5 text-[#283F67]" strokeWidth={1.75} />
                                         </div>
-                                        <p className="text-[13px] sm:text-[13.5px] font-medium leading-snug text-[#1E2E4B]">
+                                        <p className="text-sm sm:text-base font-medium leading-snug text-[#1E2E4B]">
                                             {point.label}
                                         </p>
                                     </motion.div>

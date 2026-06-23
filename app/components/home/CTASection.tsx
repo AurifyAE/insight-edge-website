@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function CTASection() {
     return (
-        <section className="w-full bg-[#ABBD4F] py-16">
+        <section className="w-full bg-[#C6DB5A] py-16">
             <div className="max-w-4xl mx-auto px-4 text-center">
 
                 {/* Heading */}

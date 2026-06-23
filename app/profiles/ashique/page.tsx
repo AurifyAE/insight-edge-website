@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 // ---------------------------------------------------------------------------
-// Icon / image paths — adjust these to match your actual public or asset paths
+// Icon / image paths - adjust these to match your actual public or asset paths
 // ---------------------------------------------------------------------------
 const icons = {
     call: "/profile/icons/phone.svg",
@@ -196,7 +196,7 @@ export default function AshiquePage() {
                 </div>
 
                 {/* ------------------------------------------------------------------ */}
-                {/* Dark section — action grid                                          */}
+                {/* Dark section - action grid                                          */}
                 {/* ------------------------------------------------------------------ */}
                 <div
                     className="px-8 py-10 pt-20"

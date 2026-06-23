@@ -52,13 +52,13 @@ const WhoWeServeSection: React.FC = () => {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section ref={sectionRef} className="w-full bg-white py-16 px-4">
+        <section ref={sectionRef} className="w-full bg-white py-24 px-4">
             {/* Header */}
             <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-3xl font-bold text-[#365693] mb-3 tracking-tight">
+                <h2 className="text-4xl font-bold text-[#365693] mb-3 tracking-tight">
                     Who We Serve
                 </h2>
-                <p className="text-[#4A5565] text-base leading-relaxed">
+                <p className="text-[#4A5565] text-sm md:text-base leading-relaxed">
                     Exclusive advisory services for every entity in the precious metals and luxury
                     <br className="hidden sm:block" /> assets value chain
                 </p>
@@ -95,7 +95,7 @@ const WhoWeServeSection: React.FC = () => {
                             </div>
 
                             {/* Label */}
-                            <p className="relative z-10 text-center text-xs font-semibold leading-snug text-white px-3">
+                            <p className="relative z-10 text-center text-sm md:text-base font-semibold leading-snug text-white px-5">
                                 {service.label}
                             </p>
                         </motion.button>

@@ -126,7 +126,7 @@ export default function Testimonials() {
         return stopAutoplay;
     }, [paused, startAutoplay, stopAutoplay]);
 
-    // Manual navigate — resets timer
+    // Manual navigate - resets timer
     const navigate = useCallback(
         (idx: number) => {
             const clamped = Math.max(0, Math.min(total - 1, idx));

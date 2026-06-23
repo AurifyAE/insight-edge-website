@@ -197,7 +197,7 @@ export default function KeyChallengesSection() {
                                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                                 className="font-(family-name:--font-heading) text-white text-6xl font-bold mt-3"
                             >
-                                {openIndex === null ? "—" : String(openIndex + 1).padStart(2, "0")}
+                                {openIndex === null ? "-" : String(openIndex + 1).padStart(2, "0")}
                             </motion.p>
                         </AnimatePresence>
                         <AnimatePresence mode="wait">

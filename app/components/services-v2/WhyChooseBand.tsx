@@ -80,7 +80,7 @@ export default function WhyChooseBand() {
                         </p>
                         <Link
                             href="/contact"
-                            className="group inline-flex items-center gap-2 rounded-sm bg-[#C6DB5A] px-7 py-3 text-[13px] font-semibold text-[#1E2E4B] transition-colors hover:bg-[#d5ea67]"
+                            className="group inline-flex items-center gap-2 rounded-sm bg-[#C6DB5A] px-7 py-3 text-sm font-semibold text-[#1E2E4B] transition-colors hover:bg-[#d5ea67]"
                         >
                             Contact Our Team
                             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

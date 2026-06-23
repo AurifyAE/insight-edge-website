@@ -20,7 +20,7 @@ function IconSend() {
 ───────────────────────────────────────────── */
 function Label({ children, required }: { children: React.ReactNode; required?: boolean }) {
     return (
-        <label className="block text-[13px] font-bold text-[#365693] mb-1.5 uppercase tracking-wide">
+        <label className="block text-sm font-bold text-[#365693] mb-1.5 uppercase tracking-wide">
             {children} {required && <span className="text-red-500">*</span>}
         </label>
     );
@@ -153,7 +153,7 @@ export default function ContactForm() {
                     <div className="pt-2">
                         <button
                             type="submit"
-                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#365693] hover:bg-[#2a4172] text-white text-[16px] font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#365693]/20 active:scale-[0.98]"
+                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#365693] hover:bg-[#2a4172] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#365693]/20 active:scale-[0.98]"
                         >
                             Send Message
                             <IconSend />

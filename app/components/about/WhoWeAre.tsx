@@ -25,20 +25,20 @@ export default function WhoWeAre() {
         <section className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-                {/* Left — text */}
+                {/* Left - text */}
                 <div>
                     <h2 className="text-3xl font-bold text-[#1e3a6b] mb-6">
                         Who We Are
                     </h2>
-                    <p className="text-[15px] text-gray-600 leading-relaxed mb-5">
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-5">
                         Insight Edge Global LLC is a UAE-registered audit and advisory firm with exclusive focus on the precious metals industry from gold and silver trading to refining, logistics, and storage.
                     </p>
-                    <p className="text-[15px] text-gray-600 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                         We deliver the depth and rigor of leading global advisory practices, combined with the agility and sector-focused expertise that only a specialist firm can offer.
                     </p>
                 </div>
 
-                {/* Right — core values card */}
+                {/* Right - core values card */}
                 <div className="rounded-2xl bg-gradient-to-b from-[#365693] to-[#2A4575] p-8">
                     <h3 className="text-2xl font-semibold text-[#ABBD4F] mb-7">
                         Our Core Values
@@ -50,10 +50,10 @@ export default function WhoWeAre() {
                                     <Icon size={24} className="text-[#ABBD4F]" strokeWidth={1.5} />
                                 </div>
                                 <div>
-                                    <p className="text-[14px] font-semibold text-white mb-0.5">
+                                    <p className="text-base font-semibold text-white mb-0.5">
                                         {title}
                                     </p>
-                                    <p className="text-[13px] text-blue-200/70 leading-snug">
+                                    <p className="text-sm text-blue-200/70 leading-snug">
                                         {description}
                                     </p>
                                 </div>
@@ -76,7 +76,7 @@ export default function WhoWeAre() {
                         Our Mission
                     </h3>
                     <p
-                        className="text-[#364153] text-[15px] leading-relaxed max-w-[680px]"
+                        className="text-[#364153] text-sm md:text-base leading-relaxed max-w-[680px]"
                     >
                         To make complex financial and compliance processes transparent, efficient, and secure - helping precious metals businesses stay ahead in an ever-evolving, tightly regulated market. We bring clarity, accuracy, and confidence to every engagement.
                     </p>

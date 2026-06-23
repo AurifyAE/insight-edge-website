@@ -3,7 +3,7 @@
 /**
  * Ambient, slowly-drifting lime accent glow used as a shared background
  * accent across the light services pages. Purely decorative, very low
- * opacity to preserve the minimal/spacious aesthetic — sits behind
+ * opacity to preserve the minimal/spacious aesthetic - sits behind
  * content with pointer-events disabled.
  */
 export default function GoldGlow({ className = "" }: { className?: string }) {

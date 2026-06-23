@@ -34,19 +34,19 @@ const services: Service[] = [
         id: 1,
         title: "Audit & Assurance Services",
         subtitle:
-            "The highest level of independent assurance — tailored exclusively for the precious metals sector",
+            "The highest level of independent assurance - tailored exclusively for the precious metals sector",
         subServices: [
             {
                 icon: <CheckCircle className={ICON_CLASS} />,
                 title: "Statutory / External Audit",
                 description:
-                    "Independent examination of financial statements ensuring accuracy, regulatory compliance, and a true & fair view — meeting requirements under Federal Decree Law No. 47 of 2022 and UAE Commercial Companies Law.",
+                    "Independent examination of financial statements ensuring accuracy, regulatory compliance, and a true & fair view - meeting requirements under Federal Decree Law No. 47 of 2022 and UAE Commercial Companies Law.",
             },
             {
                 icon: <CheckCircle className={ICON_CLASS} />,
                 title: "Internal Audit Services",
                 description:
-                    "Strategic and consultative internal audits covering financial analysis, operational efficiency, risk management, and corporate governance — tailored for DMCC, mainland, and free zone entities.",
+                    "Strategic and consultative internal audits covering financial analysis, operational efficiency, risk management, and corporate governance - tailored for DMCC, mainland, and free zone entities.",
             },
             {
                 icon: <CheckCircle className={ICON_CLASS} />,
@@ -64,13 +64,13 @@ const services: Service[] = [
                 icon: <CheckCircle className={ICON_CLASS} />,
                 title: "Supply Chain Audit",
                 description:
-                    "End-to-end supply chain audit services for precious metals businesses — verifying sourcing integrity, supplier compliance, and adherence to OECD, DMCC, and LBMA standards.",
+                    "End-to-end supply chain audit services for precious metals businesses - verifying sourcing integrity, supplier compliance, and adherence to OECD, DMCC, and LBMA standards.",
             },
             {
                 icon: <CheckCircle className={ICON_CLASS} />,
                 title: "UAE Ministry of Economy Review",
                 description:
-                    "Specialist support for Ministry of Economy compliance reviews and inspections — including DNFBP registration obligations, AML/CFT regulatory requirements.",
+                    "Specialist support for Ministry of Economy compliance reviews and inspections - including DNFBP registration obligations, AML/CFT regulatory requirements.",
             },
         ],
     },
@@ -336,7 +336,7 @@ const services: Service[] = [
                 icon: <CheckCircle className={ICON_CLASS} />,
                 title: "AI Governance & Technology Risk",
                 description:
-                    "AI and advanced analytics are transforming pricing, risk management, and compliance monitoring in precious metals. We implement AI governance frameworks that enable innovation while maintaining control, accountability, and regulatory alignment—treating AI as a risk and governance issue, not just a performance tool.",
+                    "AI and advanced analytics are transforming pricing, risk management, and compliance monitoring in precious metals. We implement AI governance frameworks that enable innovation while maintaining control, accountability, and regulatory alignment-treating AI as a risk and governance issue, not just a performance tool.",
             },
             {
                 icon: <CheckCircle className={ICON_CLASS} />,

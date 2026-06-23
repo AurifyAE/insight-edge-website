@@ -94,7 +94,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
 
                 <Link
                     href="/services"
-                    className="relative inline-flex items-center gap-2 text-[13px] text-[#44474D] transition-colors hover:text-[#576500]"
+                    className="relative inline-flex items-center gap-2 text-sm text-[#44474D] transition-colors hover:text-[#576500]"
                 >
                     <ArrowLeft className="h-4 w-4" />
                     All Services
@@ -130,7 +130,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                                 className="relative overflow-hidden rounded-sm border border-[#1E2E4B]/[0.06] bg-white p-4 shadow-[0_10px_30px_-18px_rgba(30,46,75,0.12)]"
                             >
                                 <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#C6DB5A] to-[#576500]" />
-                                <p className="font-(family-name:--font-heading) text-[13px] font-semibold text-[#576500]">
+                                <p className="font-(family-name:--font-heading) text-sm font-semibold text-[#576500]">
                                     {feature.title}
                                 </p>
                                 <p className="mt-1 text-[12px] leading-snug text-[#44474D]">
@@ -155,7 +155,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                         <div className="relative mt-2 h-px w-12 bg-[#C6DB5A]" />
                         <ul className="relative mt-4 space-y-2">
                             {data.highlights.map((point) => (
-                                <li key={point} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-white/80">
+                                <li key={point} className="flex items-start gap-2.5 text-sm leading-relaxed text-white/80">
                                     <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-[#C6DB5A]" />
                                     {point}
                                 </li>

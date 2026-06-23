@@ -206,7 +206,7 @@ export default function AboutSection() {
                                 >
                                     100%
                                 </p>
-                                <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
+                                <p className=" text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Complete<br />Client satisfaction
                                 </p>
                             </motion.div>
@@ -228,7 +228,7 @@ export default function AboutSection() {
                                 >
                                     100%
                                 </p>
-                                <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
+                                <p className=" text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Innovation &amp;<br />Valuable insights
                                 </p>
                             </motion.div>
@@ -248,7 +248,7 @@ export default function AboutSection() {
                                 >
                                     100%
                                 </p>
-                                <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
+                                <p className=" text-[#365693] font-semibold mt-1 leading-tight text-center">
                                     Highly Efficient &amp;<br />Financial Strategies
                                 </p>
                             </motion.div>
@@ -271,7 +271,7 @@ export default function AboutSection() {
                             >
                                 Why Choose<br />Insight Edge<br />Global?
                             </h2>
-                            <p className="text-[13.5px] text-blue-100 leading-relaxed">
+                            <p className="text-sm text-blue-100 leading-relaxed">
                                 The precious metals industry presents unique financial and regulatory complexities, including:
                             </p>
                         </motion.div>
@@ -302,17 +302,17 @@ export default function AboutSection() {
                             >
                                 100%
                             </p>
-                            <p className="text-[13px] text-[#365693] font-semibold mt-1 leading-tight text-center">
+                            <p className=" text-[#365693] font-semibold mt-1 leading-tight text-center">
                                 Highly Efficient &amp;<br />Financial Strategies
                             </p>
                         </motion.div>
                     </div>
 
-                    {/* ── RIGHT SIDE — Two Staggered Card Columns ── */}
+                    {/* ── RIGHT SIDE - Two Staggered Card Columns ── */}
                     <div className="flex-1 flex items-center">
                         <div className="flex gap-4 w-full justify-center lg:justify-start mx-auto">
 
-                            {/* Column 1 — appears first */}
+                            {/* Column 1 - appears first */}
                             <div className="flex flex-col gap-4 justify-around">
                                 {col1Cards.map((card, i) => (
                                     <ChallengeCard
@@ -328,7 +328,7 @@ export default function AboutSection() {
                             {/* Connector */}
                             <ConnectorLine isInView={isInView} />
 
-                            {/* Column 2 — delayed */}
+                            {/* Column 2 - delayed */}
                             <div className="flex flex-col gap-4 justify-start lg:justify-around lg:mt-16">
                                 {col2Cards.map((card, i) => (
                                     <ChallengeCard
