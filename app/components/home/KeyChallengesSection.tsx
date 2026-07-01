@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
+import Image from "next/image";
 
 interface Challenge {
     title: string;
     description: string;
+    image: string;
 }
 
 const CHALLENGES: Challenge[] = [
@@ -14,56 +16,67 @@ const CHALLENGES: Challenge[] = [
         title: "Gold as a Currency Asset",
         description:
             "Managing gold-denominated transactions and valuation fluctuations creates significant accounting and reporting complexities.",
+        image: "/images/services/financial-advisory.jpg",
     },
     {
         title: "Unfixed Gold Trading Exposure",
         description:
             "Price volatility and unsettled contracts can impact profitability, risk management, and financial transparency.",
+        image: "/images/services/financial-advisory-service.jpg",
     },
     {
         title: "IFRS Compliance Challenges",
         description:
             "Traditional bookkeeping practices often fall short when dealing with precious metals inventory, valuation, and financial reporting requirements.",
+        image: "/images/services/executives-preparing-meeting.jpg",
     },
     {
         title: "RCM, Import & Re-Export Complexities",
         description:
             "Reverse Charge Mechanism (RCM), import-for-re-export transactions, dore bars, and varying purity standards create unique taxation, invoicing, and bookkeeping challenges.",
+        image: "/images/services/Business-strategy-advisory.jpg",
     },
     {
         title: "Non-Standard Invoicing Practices",
         description:
             "Many businesses still operate with inconsistent invoicing structures, making compliance, reconciliation, and audit readiness increasingly difficult.",
+        image: "/images/services/audit-and-assurance.jpg",
     },
     {
         title: "E-Invoicing Readiness",
         description:
             "As regulatory frameworks evolve, businesses need standardized digital invoicing systems that align with international best practices and future compliance requirements.",
+        image: "/images/services/E-invoicing.jpg",
     },
     {
         title: "OECD-Aligned Responsible Sourcing",
         description:
             "Increasing regulatory and stakeholder expectations require businesses to demonstrate robust due diligence, supply chain traceability, risk assessment, and responsible sourcing practices aligned with OECD guidance.",
+        image: "/images/services/complaince-and-responsible.jpg",
     },
     {
         title: "Supply Chain Traceability & Transparency",
         description:
             "Tracking material origin, ownership changes, and movement across the supply chain remains a significant operational challenge.",
+        image: "/images/services/audit-and-assurance-2.jpg",
     },
     {
         title: "Regulatory & Cross-Border Compliance",
         description:
             "Businesses must navigate evolving local and international regulations, customs requirements, sanctions screening, and reporting obligations.",
+        image: "/images/services/justice-law-concept-gavel-sounding-block-hand-s-male-judge-courtroom-working-with-document-law-books-report-case-table-modern-office.jpg",
     },
     {
         title: "Data Fragmentation Across Operations",
         description:
             "Disconnected trading, refining, inventory, finance, and compliance systems often result in limited visibility and inefficient decision-making.",
+        image: "/images/services/digitalization-and-tokenisation.jpg",
     },
     {
         title: "Audit Readiness & Documentation Control",
         description:
             "Maintaining accurate records and supporting documentation for audits, compliance reviews, and stakeholder reporting remains a persistent challenge.",
+        image: "/images/services/special-CFO-services.jpg",
     },
 ];
 
@@ -168,6 +181,7 @@ export default function KeyChallengesSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
     const total = CHALLENGES.length;
     const progress = openIndex === null ? 0 : (openIndex + 1) / total;
+    const activeChallenge = openIndex === null ? CHALLENGES[0] : CHALLENGES[openIndex];
 
     return (
         <section className="max-w-6xl mx-auto px-6 py-16 lg:px-8 lg:py-24">
@@ -181,10 +195,36 @@ export default function KeyChallengesSection() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-14">
+            <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-10 lg:gap-14">
                 {/* ── Live preview panel ── */}
-                <div className="hidden lg:flex flex-col justify-between rounded-2xl bg-[#1E2E4B] p-7 sticky top-28 h-[360px] overflow-hidden">
-                    <div className="relative z-10">
+                <div className="hidden lg:flex flex-col justify-between rounded-2xl overflow-hidden sticky top-28 h-[480px]">
+                    {/* Image layer — crossfades between challenges */}
+                    <div className="absolute inset-0">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeChallenge.image}
+                                initial={{ opacity: 0, scale: 1.04 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.97 }}
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                className="absolute inset-0"
+                            >
+                                <Image
+                                    src={activeChallenge.image}
+                                    alt={activeChallenge.title}
+                                    fill
+                                    sizes="280px"
+                                    className="object-cover"
+                                />
+                            </motion.div>
+                        </AnimatePresence>
+                        {/* blue overlay + gradient for legibility */}
+                        <div className="absolute inset-0 bg-[#1E2E4B]/60" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E4B]/80 via-transparent to-transparent" />
+                    </div>
+
+                    {/* Top: challenge label + number */}
+                    <div className="relative z-10 p-7">
                         <p className="text-[#C6DB5A] text-xs font-semibold tracking-widest uppercase">
                             Challenge
                         </p>
@@ -195,11 +235,15 @@ export default function KeyChallengesSection() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                className="font-(family-name:--font-heading) text-white text-6xl font-bold mt-3"
+                                className="font-(family-name:--font-heading) text-white text-6xl font-bold mt-3 drop-shadow-md"
                             >
                                 {openIndex === null ? "-" : String(openIndex + 1).padStart(2, "0")}
                             </motion.p>
                         </AnimatePresence>
+                    </div>
+
+                    {/* Bottom: title + progress */}
+                    <div className="relative z-10 p-7 pt-0">
                         <AnimatePresence mode="wait">
                             <motion.p
                                 key={openIndex ?? "none"}
@@ -207,16 +251,14 @@ export default function KeyChallengesSection() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -8 }}
                                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                className="text-white/80 text-sm leading-snug mt-4"
+                                className="text-white/90 text-sm font-semibold leading-snug mb-4 drop-shadow-sm"
                             >
                                 {openIndex === null ? "Select a challenge" : CHALLENGES[openIndex].title}
                             </motion.p>
                         </AnimatePresence>
-                    </div>
 
-                    {/* Progress bar */}
-                    <div className="relative z-10">
-                        <div className="h-1 w-full rounded-full bg-white/10 overflow-hidden">
+                        {/* Progress bar */}
+                        <div className="h-1 w-full rounded-full bg-white/20 overflow-hidden">
                             <motion.div
                                 className="h-full rounded-full bg-[#C6DB5A]"
                                 animate={{ width: `${progress * 100}%` }}
@@ -227,9 +269,6 @@ export default function KeyChallengesSection() {
                             {openIndex === null ? "0" : openIndex + 1} / {total}
                         </p>
                     </div>
-
-                    {/* Decorative glow */}
-                    <div className="pointer-events-none absolute -right-10 -bottom-10 h-44 w-44 rounded-full bg-[#C6DB5A]/15 blur-3xl" />
                 </div>
 
                 {/* ── Accordion list ── */}

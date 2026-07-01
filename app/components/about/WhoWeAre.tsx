@@ -27,7 +27,7 @@ export default function WhoWeAre() {
 
                 {/* Left - text */}
                 <div>
-                    <h2 className="text-3xl font-bold text-[#1e3a6b] mb-6">
+                    <h2 className="text-3xl font-bold text-[#1E2E4B] mb-6">
                         Who We Are
                     </h2>
                     <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-5">
@@ -39,7 +39,7 @@ export default function WhoWeAre() {
                 </div>
 
                 {/* Right - core values card */}
-                <div className="rounded-2xl bg-gradient-to-b from-[#365693] to-[#2A4575] p-8">
+                <div className="rounded-2xl bg-gradient-to-b from-[#1E2E4B] to-[#283F67] p-8">
                     <h3 className="text-2xl font-semibold text-[#ABBD4F] mb-7">
                         Our Core Values
                     </h3>
@@ -71,7 +71,7 @@ export default function WhoWeAre() {
                     style={{ borderLeft: "4px solid #ABBD4F" }}
                 >
                     <h3
-                        className="font-semibold mb-3 text-2xl text-[#1e3a6e]"
+                        className="font-semibold mb-3 text-2xl text-[#1E2E4B]"
                     >
                         Our Mission
                     </h3>

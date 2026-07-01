@@ -63,11 +63,11 @@ function InfoCard({
 }) {
     return (
         <div className="flex items-start gap-4 p-5 bg-[#F8FAFC] border-l-4 border-l-[#ABBD4F] rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="text-[#365693] mt-1 shrink-0">
+            <div className="text-[#1E2E4B] mt-1 shrink-0">
                 {icon}
             </div>
             <div>
-                <h4 className="text-[14px] font-bold text-[#365693] mb-1">{title}</h4>
+                <h4 className="text-[14px] font-bold text-[#1E2E4B] mb-1">{title}</h4>
                 <p className="text-[14px] text-gray-700 font-medium">{value}</p>
                 {subValue && <p className="text-[12px] text-gray-500 mt-1 leading-relaxed">{subValue}</p>}
             </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
         <div className="min-h-screen bg-white">
 
             {/* ── HERO BANNER ─────────────────────────────── */}
-            <div className="bg-[#365693] px-8 pt-32 pb-16">
+            <div className="bg-[#1E2E4B] px-8 pt-32 pb-16">
                 <div className="max-w-6xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Get In Touch
@@ -103,7 +103,7 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-10">
 
                     <div>
-                        <h2 className="text-2xl font-bold text-[#365693] mb-8">Contact Information</h2>
+                        <h2 className="text-2xl font-bold text-[#1E2E4B] mb-8">Contact Information</h2>
 
                         <div className="flex flex-col gap-4">
                             <InfoCard
@@ -131,7 +131,7 @@ export default function ContactPage() {
                     </div>
 
                     {/* Brand card */}
-                    <div className="bg-[#365693] rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                    <div className="bg-gradient-to-b from-[#1E2E4B] to-[#283F67] rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
                         <div className="relative z-10">
                             {/* Logo */}
                             <div className="flex flex-col items-start gap-2 mb-6">
@@ -187,13 +187,13 @@ export default function ContactPage() {
             {/* Bottom CTA Strip */}
             <div className="bg-[#ABBD4F] py-12 px-6">
                 <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="text-[#365693] text-center md:text-left">
+                    <div className="text-[#1E2E4B] text-center md:text-left">
                         <h2 className="text-2xl font-bold mb-2">Prefer to call directly?</h2>
                         <p className="text-lg opacity-80">Our team is ready to discuss your precious metals business needs</p>
                     </div>
                     <a
                         href="tel:+971503708785"
-                        className="text-2xl md:text-3xl font-black text-[#365693] hover:scale-105 transition-transform duration-200"
+                        className="text-2xl md:text-3xl font-black text-[#1E2E4B] hover:scale-105 transition-transform duration-200"
                     >
                         +971 50 370 8785
                     </a>

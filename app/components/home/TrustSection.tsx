@@ -93,7 +93,7 @@ const TrustSection: React.FC = () => {
                                     className="group rounded-2xl p-5 -m-5 transition-colors duration-300 hover:bg-[#32405c]"
                                 >
                                     <Icon
-                                        className="h-7 w-7 text-white"
+                                        className="h-7 w-7 text-[#C6DB5A]"
                                         strokeWidth={1.5}
                                     />
                                     <h3 className="mt-3 text-white font-semibold text-base sm:text-lg">

@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const SLIDES = [
     {
-        bg: "/images/home/hero-bg.jpg",
+        bg: "/images/services/audit-and-assurance.jpg",
         title: "Specialized Financial & Compliance Solutions for the Precious Metals Industry",
         description:
             "Helping bullion traders, refineries, manufacturers, and jewellery businesses stay compliant, reduce risk, and achieve sustainable growth.",
@@ -18,28 +18,77 @@ const SLIDES = [
         ],
     },
     {
-        bg: "/images/home/hero-bg.jpg",
+        bg: "/images/services/Business-strategy-advisory.jpg",
         title: "Corporate Tax Compliance for the Precious Metals Industry",
         description: [
             "Filing Deadline: 30 September 2026*",
             "Gold traders, bullion dealers, refineries, and jewellery businesses face complex tax, inventory, and reporting obligations. Ensure your Corporate Tax return is filed accurately and on time.",
         ],
         buttons: [
-            { label: "Book a Consultation", href: "/about-us", variant: "solid" as const },
+            { label: "Book a Consultation", href: "/services/corporate-tax", variant: "solid" as const },
             { label: "Contact Us", href: "/contact", variant: "outline" as const },
+        ],
+        rightPanel: [
+            { amount: "AED 500", period: "per month", note: "Late filing penalty (first 12 months)" },
+            { amount: "AED 1,000", period: "per month", note: "Late filing penalty (after 12 months)" },
+            { amount: "AED 10,000", period: "one-time", note: "Penalty for late registration" },
+            { amount: "14%", period: "per annum", note: "Annual charge on unpaid tax amounts" },
         ],
     },
     {
-        bg: "/images/home/hero-bg.jpg",
+        bg: "/images/services/E-invoicing.jpg",
         title: "UAE E-Invoicing is Coming to the Precious Metals Industry",
         description:
-            "Mandatory from 1 January 2027 for businesses with revenue above AED 50 million Mandatory from 1 July 2027 for all other businesses in scope ",
+            "Mandatory from 1 January 2027 for businesses with revenue above AED 50 million. Mandatory from 1 July 2027 for all other businesses in scope.",
         buttons: [
-            { label: "Book Your E-Invoicing Readiness Assessment", href: "/services", variant: "solid" as const },
-            
+            { label: "Book Your E-Invoicing Readiness Assessment", href: "/services/e-invoicing", variant: "solid" as const },
         ],
     },
 ];
+
+type PenaltyItem = { amount: string; period: string; note: string };
+
+function PenaltyCard({ item, index }: { item: PenaltyItem; index: number }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45, delay: 0.15 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4, transition: { duration: 0.22, ease: "easeOut" } }}
+            className="group relative overflow-hidden rounded-xl border border-white/30 bg-white/15 backdrop-blur-md p-4 shadow-[0_8px_32px_-8px_rgba(30,46,75,0.22)] cursor-default"
+            style={{ WebkitBackdropFilter: "blur(12px)" }}
+        >
+            {/* top accent bar */}
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-linear-to-r from-[#C6DB5A] to-[#576500]" />
+
+            {/* shimmer sweep on hover */}
+            <motion.div
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent"
+                initial={false}
+                whileHover={{ x: ["0%", "200%"] }}
+                transition={{ duration: 0.55, ease: "easeInOut" }}
+                aria-hidden="true"
+            />
+
+            {/* inner glow ring that brightens on hover */}
+            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/20 transition-all duration-300 group-hover:ring-white/40 group-hover:shadow-[inset_0_0_20px_rgba(198,219,90,0.08)]" />
+
+            <motion.p
+                className="font-bold text-white text-[24px] leading-none tracking-tight drop-shadow-sm"
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+                {item.amount}
+            </motion.p>
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-[#C6DB5A]">
+                {item.period}
+            </p>
+            <p className="mt-2 text-[12px] leading-snug text-white/80">
+                {item.note}
+            </p>
+        </motion.div>
+    );
+}
 
 function GridRight() {
     return (
@@ -154,7 +203,7 @@ export default function HeroSection() {
     return (
         <section className="relative w-full overflow-hidden mt-15 lg:mt-18">
 
-            {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}tt
+            {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}
 
             {/* Background image - hidden on mobile, shown from md up */}
             <div className="hidden md:block absolute inset-0 mx-4 rounded-t-2xl mt-9 overflow-hidden">
@@ -184,7 +233,7 @@ export default function HeroSection() {
             </div>
 
             {/* Mobile image - in-flow, visible only on mobile */}
-            <div className="block md:hidden w-full h-[240px] sm:h-[300px] relative">
+            <div className="block md:hidden w-full h-[200px] sm:h-[240px] relative">
                 <Image
                     src={slide.bg}
                     fill
@@ -195,62 +244,66 @@ export default function HeroSection() {
             </div>
 
             {/* ── Layout shell ── */}
-            <div className="relative md:min-h-[640px] lg:min-h-[800px] max-w-7xl mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end justify-start">
+            <div className="relative md:min-h-[480px] lg:min-h-[580px] max-w-7xl mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end">
 
-                {/* ── Text card ── */}
-                <div className="w-1/2 md:mb-0">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={active}
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -12 }}
-                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                            className="px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14 flex flex-col gap-4 mb-50"
-                        >
-                            {/* Headline */}
-                            <h1 className="
-                    text-[#1E2E4B] font-bold leading-tight tracking-tight
-                    text-[22px] sm:text-[26px] lg:text-4xl text-pretty
-                ">
-                                {slide.title}
-                            </h1>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={active}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className={`w-full flex items-end mb-8 lg:mb-12 gap-8 ${slide.rightPanel ? "lg:flex-row" : ""}`}
+                    >
+                        {/* ── Text card ── */}
+                        <div className={slide.rightPanel ? "flex-1 min-w-0" : "w-full lg:w-1/2"}>
+                            <div className="px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-0 flex flex-col gap-4">
+                                {/* Headline */}
+                                <h1 className="text-[#1E2E4B] font-bold leading-tight tracking-tight text-[22px] sm:text-[26px] lg:text-4xl text-pretty">
+                                    {slide.title}
+                                </h1>
 
-                            {/* Sub-headline */}
-                            <div className="
-                    text-[#454748] leading-relaxed
-                    text-sm sm:text-[14px] lg:text-base
-                    lg:max-w-md space-y-1.5
-                ">
-                                {Array.isArray(slide.description)
-                                    ? slide.description.map((line, i) => (
-                                        <p key={i} className={i === 0 ? "font-semibold text-[#1E2E4B]" : ""}>
-                                            {line}
-                                        </p>
-                                    ))
-                                    : <p>{slide.description}</p>
-                                }
+                                {/* Sub-headline */}
+                                <div className="text-[#454748] leading-relaxed text-sm sm:text-[14px] lg:text-base lg:max-w-md space-y-1.5">
+                                    {Array.isArray(slide.description)
+                                        ? slide.description.map((line, i) => (
+                                            <p key={i} className={i === 0 ? "font-semibold text-[#1E2E4B]" : ""}>
+                                                {line}
+                                            </p>
+                                        ))
+                                        : <p>{slide.description}</p>
+                                    }
+                                </div>
+
+                                {/* Buttons */}
+                                <div className="flex flex-wrap gap-3">
+                                    {slide.buttons.map((btn) => (
+                                        <a
+                                            key={btn.label}
+                                            href={btn.href}
+                                            className={
+                                                btn.variant === "solid"
+                                                    ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                    : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                            }
+                                        >
+                                            {btn.label}
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
+                        </div>
 
-                            {/* Buttons */}
-                            <div className="flex flex-wrap gap-3">
-                                {slide.buttons.map((btn) => (
-                                    <a
-                                        key={btn.label}
-                                        href={btn.href}
-                                        className={
-                                            btn.variant === "solid"
-                                                ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
-                                                : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
-                                        }
-                                    >
-                                        {btn.label}
-                                    </a>
+                        {/* ── Right panel: penalty cards (slide 2 only) ── */}
+                        {slide.rightPanel && (
+                            <div className="hidden lg:grid grid-cols-2 gap-3 shrink-0 w-[420px] xl:w-[480px] px-4 pb-2">
+                                {slide.rightPanel.map((item, i) => (
+                                    <PenaltyCard key={item.note} item={item} index={i} />
                                 ))}
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+                        )}
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
             {/* ── Slide indicators ── */}

@@ -11,7 +11,7 @@ export default function AboutPage() {
     return (
         <div className="">
             <div
-                className="bg-[#365693] px-8 pt-32 pb-16"
+                className="bg-[#1E2E4B] px-8 pt-32 pb-16"
             >
                 <div className="max-w-6xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -27,7 +27,7 @@ export default function AboutPage() {
             <WhySpecialist />
             <WhoWeServeSection />
 
-            <div className="bg-gradient-to-b from-[#365693] to-[#2A4575] py-20">
+            <div className="bg-gradient-to-b from-[#1E2E4B] to-[#283F67] py-20">
                 <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-4">
                     <TrendingUp className="w-20 h-20 text-[#ABBD4F]" />
                     <h2 className="text-3xl sm:text-4xl font-bold text-white">

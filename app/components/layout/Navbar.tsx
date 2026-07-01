@@ -131,7 +131,7 @@ const OUR_SOLUTIONS_COLUMNS = [
 
 const NAV_LINKS = [
     { label: "About Us", href: "/about-us" },
-    { label: "Our Solutions", href: "/solutions", hasMega: "solutions" as const },
+    { label: "Our Solutions", href: "", hasMega: "solutions" as const },
     { label: "Who We Serve", href: "/who-we-serve" },
     { label: "Contact", href: "/contact" },
 ];

@@ -9,9 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import type { ServiceSectionData } from "@/app/lib/services-data";
 import SubServiceCard from "./SubServiceCard";
 import ExtraSections from "./ExtraSections";
-import TokenizationAnimation from "./TokenizationAnimation";
 import HedgingChartAnimation from "./HedgingChartAnimation";
-import ComplianceShieldAnimation from "./ComplianceShieldAnimation";
 import RateBands from "./RateBands";
 import ServiceFaqs from "./ServiceFaqs";
 import ServiceTimeline from "./ServiceTimeline";
@@ -128,9 +126,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E4B]/30 via-transparent to-transparent" />
                 </div>
 
-                {data.id === "digital-assets" && <TokenizationAnimation />}
                 {data.id === "financial-advisory" && <HedgingChartAnimation />}
-                {data.id === "special-audits-risk" && <ComplianceShieldAnimation />}
 
                 {data.rateBands && <RateBands bands={data.rateBands} />}
 

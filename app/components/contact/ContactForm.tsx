@@ -20,7 +20,7 @@ function IconSend() {
 ───────────────────────────────────────────── */
 function Label({ children, required }: { children: React.ReactNode; required?: boolean }) {
     return (
-        <label className="block text-sm font-bold text-[#365693] mb-1.5 uppercase tracking-wide">
+        <label className="block text-sm font-bold text-[#1E2E4B] mb-1.5 uppercase tracking-wide">
             {children} {required && <span className="text-red-500">*</span>}
         </label>
     );
@@ -51,11 +51,11 @@ export default function ContactForm() {
         setSubmitted(true);
     };
 
-    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[14px] text-gray-800 focus:outline-none focus:border-[#365693] focus:ring-2 focus:ring-[#365693]/10 transition-all bg-white";
+    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[14px] text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
 
     return (
         <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-[#365693] mb-8">Send Us a Message</h2>
+            <h2 className="text-2xl font-bold text-[#1E2E4B] mb-8">Send Us a Message</h2>
 
             {submitted ? (
                 <div className="flex flex-col items-center justify-center gap-6 py-20 border border-gray-100 rounded-3xl bg-[#F8FAFC] text-center shadow-sm">
@@ -66,7 +66,7 @@ export default function ContactForm() {
                         </svg>
                     </div>
                     <div>
-                        <h3 className="text-2xl font-bold text-[#365693] mb-2">Message Sent!</h3>
+                        <h3 className="text-2xl font-bold text-[#1E2E4B] mb-2">Message Sent!</h3>
                         <p className="text-gray-600">We'll respond to your inquiry within 24 hours.</p>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ export default function ContactForm() {
                     <div className="pt-2">
                         <button
                             type="submit"
-                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#365693] hover:bg-[#2a4172] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#365693]/20 active:scale-[0.98]"
+                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98]"
                         >
                             Send Message
                             <IconSend />

@@ -4,12 +4,11 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView, Variants } from "framer-motion";
 import {
-    Users,
-    Clock,
-    ShieldCheck,
-    ClipboardCheck,
-    Footprints,
-    Eye,
+    AlertTriangle,
+    Layers,
+    TrendingDown,
+    Receipt,
+    ArrowLeftRight,
     type LucideIcon,
 } from "lucide-react";
 
@@ -19,12 +18,11 @@ interface Point {
 }
 
 const POINTS: Point[] = [
-    { icon: Users, label: "Specialist precious metals industry expertise" },
-    { icon: Clock, label: "Up-to-date insight on UAE & OECD developments" },
-    { icon: ShieldCheck, label: "Partner-led engagements with senior oversight" },
-    { icon: ClipboardCheck, label: "Defined scope, timelines, and deliverables" },
-    { icon: Footprints, label: "Risk-based, practical approach" },
-    { icon: Eye, label: "Clear and transparent reporting" },
+    { icon: AlertTriangle, label: "High-value transactions with significant AML/CFT exposure" },
+    { icon: Layers, label: "Complex inventory valuation across bullion, scrap, and jewellery" },
+    { icon: TrendingDown, label: "Global price volatility impacting margins, hedging strategies, and profitability" },
+    { icon: Receipt, label: "Specialized VAT and Corporate Tax treatment for gold and luxury assets" },
+    { icon: ArrowLeftRight, label: "Transfer pricing considerations in related party metal trading" },
 ];
 
 const fadeUp: Variants = {
@@ -72,7 +70,7 @@ export default function WhyChoose() {
                             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                             className="inline-block rounded-full bg-[#283F67]/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#283F67]"
                         >
-                            Why Insight Edge
+                            Why Choose Us?
                         </motion.span>
 
                         <motion.h2
@@ -81,8 +79,8 @@ export default function WhyChoose() {
                             transition={{ duration: 0.55, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
                             className="mt-4 text-[#1E2E4B] font-bold leading-tight tracking-tight text-[28px] sm:text-[34px] lg:text-[40px]"
                         >
-                            Aligned with{" "}
-                            <span className="text-[#7A9329]">Evolving UAE & OECD Standards</span>
+                            Why Choose{" "}
+                            <span className="text-[#7A9329]">Insight Edge Global?</span>
                         </motion.h2>
 
                         <motion.p
@@ -91,9 +89,8 @@ export default function WhyChoose() {
                             transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                             className="mt-4 text-[#454748] text-sm sm:text-base leading-relaxed max-w-lg"
                         >
-                            Insight Edge Global delivers audit, tax, and advisory services
-                            grounded in deep precious metals sector knowledge and a clear
-                            understanding of UAE regulatory and compliance requirements.
+                            The precious metals industry presents unique financial and regulatory
+                            complexities, including:
                         </motion.p>
 
                         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">

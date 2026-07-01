@@ -55,7 +55,7 @@ const WhoWeServeSection: React.FC = () => {
         <section ref={sectionRef} className="w-full bg-white py-24 px-4">
             {/* Header */}
             <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-4xl font-bold text-[#365693] mb-3 tracking-tight">
+                <h2 className="text-4xl font-bold text-[#1E2E4B] mb-3 tracking-tight">
                     Who We Serve
                 </h2>
                 <p className="text-[#4A5565] text-sm md:text-base leading-relaxed">
