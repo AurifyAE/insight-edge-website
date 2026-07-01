@@ -56,7 +56,7 @@ export default function WhyChoose() {
                         className="relative aspect-[4/5] sm:aspect-[5/5] overflow-hidden rounded-3xl lg:order-first"
                     >
                         <Image
-                            src="/images/home/bg-img-1.jpeg"
+                            src="/images/services/audit-and-assurance.jpg"
                             alt="Insight Edge Global - precious metals advisory"
                             fill
                             className="object-cover"

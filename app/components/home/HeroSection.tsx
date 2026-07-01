@@ -9,22 +9,34 @@ import { AnimatePresence, motion } from "framer-motion";
 const SLIDES = [
     {
         bg: "/images/home/hero-bg.jpg",
-        title: "Safeguarding Value Through Financial Expertise",
+        title: "Specialized Financial & Compliance Solutions for the Precious Metals Industry",
         description:
-            "Exclusive Financial & Compliance Advisory for the Precious Metals Industry",
+            "Helping bullion traders, refineries, manufacturers, and jewellery businesses stay compliant, reduce risk, and achieve sustainable growth.",
         buttons: [
-            { label: "Our Services", href: "/services", variant: "solid" as const },
-            { label: "Get in Touch", href: "/contact", variant: "outline" as const },
+            { label: "Book a Consultation", href: "/services", variant: "solid" as const },
+            { label: "Contact Us", href: "/contact", variant: "outline" as const },
         ],
     },
     {
         bg: "/images/home/hero-bg.jpg",
-        title: "Trusted Advisory for the Gold & Bullion Trade",
-        description:
-            "Specialized Audit, Tax, and Risk Consulting Built Around the Precious Metals Supply Chain",
+        title: "Corporate Tax Compliance for the Precious Metals Industry",
+        description: [
+            "Filing Deadline: 30 September 2026*",
+            "Gold traders, bullion dealers, refineries, and jewellery businesses face complex tax, inventory, and reporting obligations. Ensure your Corporate Tax return is filed accurately and on time.",
+        ],
         buttons: [
-            { label: "About Us", href: "/about-us", variant: "solid" as const },
-            { label: "Connect with an Expert", href: "/contact", variant: "outline" as const },
+            { label: "Book a Consultation", href: "/about-us", variant: "solid" as const },
+            { label: "Contact Us", href: "/contact", variant: "outline" as const },
+        ],
+    },
+    {
+        bg: "/images/home/hero-bg.jpg",
+        title: "UAE E-Invoicing is Coming to the Precious Metals Industry",
+        description:
+            "Mandatory from 1 January 2027 for businesses with revenue above AED 50 million Mandatory from 1 July 2027 for all other businesses in scope ",
+        buttons: [
+            { label: "Book Your E-Invoicing Readiness Assessment", href: "/services", variant: "solid" as const },
+            
         ],
     },
 ];
@@ -142,7 +154,7 @@ export default function HeroSection() {
     return (
         <section className="relative w-full overflow-hidden mt-15 lg:mt-18">
 
-            {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}
+            {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}tt
 
             {/* Background image - hidden on mobile, shown from md up */}
             <div className="hidden md:block absolute inset-0 mx-4 rounded-t-2xl mt-9 overflow-hidden">
@@ -194,24 +206,31 @@ export default function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -12 }}
                             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                            className="px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14 flex flex-col gap-4 mb-40"
+                            className="px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14 flex flex-col gap-4 mb-50"
                         >
                             {/* Headline */}
                             <h1 className="
                     text-[#1E2E4B] font-bold leading-tight tracking-tight
-                    text-[22px] sm:text-[26px] lg:text-5xl text-pretty
+                    text-[22px] sm:text-[26px] lg:text-4xl text-pretty
                 ">
                                 {slide.title}
                             </h1>
 
                             {/* Sub-headline */}
-                            <p className="
+                            <div className="
                     text-[#454748] leading-relaxed
                     text-sm sm:text-[14px] lg:text-base
-                    lg:max-w-md
+                    lg:max-w-md space-y-1.5
                 ">
-                                {slide.description}
-                            </p>
+                                {Array.isArray(slide.description)
+                                    ? slide.description.map((line, i) => (
+                                        <p key={i} className={i === 0 ? "font-semibold text-[#1E2E4B]" : ""}>
+                                            {line}
+                                        </p>
+                                    ))
+                                    : <p>{slide.description}</p>
+                                }
+                            </div>
 
                             {/* Buttons */}
                             <div className="flex flex-wrap gap-3">
@@ -221,7 +240,7 @@ export default function HeroSection() {
                                         href={btn.href}
                                         className={
                                             btn.variant === "solid"
-                                                ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-white text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
                                                 : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
                                         }
                                     >

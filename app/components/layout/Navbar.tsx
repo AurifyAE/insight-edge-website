@@ -430,37 +430,39 @@ function BrochureDropdownContent({
 
 function TopBanner() {
     return (
-        <div className="hidden lg:flex items-center bg-[#1e3a6b] text-white text-sm px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
-            <div className="flex items-center gap-5 shrink-0">
-                <a href="tel:+971503708785" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
-                    <PhoneIcon />
-                    +971 50 370 8785
-                </a>
-                <a href="mailto:info@insightedge.global" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
-                    <MailIcon />
-                    info@insightedge.global
-                </a>
-            </div>
-            <div className="relative flex-1 min-w-0 md:mx-50 overflow-hidden mask-fade-x">
-                <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
-                    {[...MARQUEE_SERVICES, ...MARQUEE_SERVICES].map((service, i) => (
-                        <span key={i} className="flex items-center gap-2 text-white/80">
-                            <span className="w-1 h-1 rounded-full bg-[#ABBD4F] shrink-0" />
-                            {service}
-                        </span>
-                    ))}
+        <div className="hidden bg-[#1e3a6b] lg:block">
+            <div className="max-w-7xl mx-auto flex items-center text-white text-sm px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
+                <div className="flex items-center gap-5 shrink-0">
+                    <a href="tel:+971503708785" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
+                        <PhoneIcon />
+                        +971 50 370 8785
+                    </a>
+                    <a href="mailto:info@insightedge.global" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
+                        <MailIcon />
+                        info@insightedge.global
+                    </a>
                 </div>
-            </div>
-            <div className="flex items-center gap-3 shrink-0">
-                {/* <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#ABBD4F] transition-colors">
-                    <LinkedInIcon />
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#ABBD4F] transition-colors">
-                    <InstagramIcon />
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#ABBD4F] transition-colors">
-                    <FacebookIcon />
-                </a> */}
+                <div className="relative flex-1 min-w-0 md:mx-50 overflow-hidden mask-fade-x">
+                    <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
+                        {[...MARQUEE_SERVICES, ...MARQUEE_SERVICES].map((service, i) => (
+                            <span key={i} className="flex items-center gap-2 text-white/80">
+                                <span className="w-1 h-1 rounded-full bg-[#ABBD4F] shrink-0" />
+                                {service}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <div className="flex items-center gap-3 shrink-0">
+                    {/* <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#ABBD4F] transition-colors">
+                        <LinkedInIcon />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#ABBD4F] transition-colors">
+                        <InstagramIcon />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#ABBD4F] transition-colors">
+                        <FacebookIcon />
+                    </a> */}
+                </div>
             </div>
         </div>
     );
@@ -672,7 +674,7 @@ export default function Navbar() {
                             <div className="hidden lg:flex items-center gap-3">
                                 <a
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#C6DB5A] hover:bg-[#D8ED6A] text-white"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67]"
                                 >
                                     Connect with an Expert
                                 </a>

@@ -24,16 +24,35 @@ export interface ExtraSection {
     body: string | string[];
 }
 
+export interface RateBand {
+    rate: string;
+    label: string;
+}
+
+export interface Faq {
+    question: string;
+    answer: string;
+}
+
+export interface Milestone {
+    date: string;
+    description: string;
+}
+
 export interface ServiceSectionData {
     number: string;
     id: string;
     title: string;
     shortIntro: string;
     intro: string;
+    image: string;
     subServices: SubService[];
     features?: ServiceFeature[];
     extraSections?: ExtraSection[];
     highlights?: string[];
+    rateBands?: RateBand[];
+    faqs?: Faq[];
+    timeline?: Milestone[];
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -42,6 +61,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "01",
         id: "audit-assurance",
+        image: "/images/services/audit-and-assurance.jpg",
         title: "Audit & Assurance Services",
         shortIntro:
             "Specialized audit and assurance for the UAE precious metals industry - statutory audits, reviews, and agreed-upon procedures tailored to gold, silver, and other metal transactions.",
@@ -112,6 +132,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "02",
         id: "special-audits-risk",
+        image: "/images/services/audit-and-assurance-2.jpg",
         title: "Special Audits & Risk Consulting",
         shortIntro:
             "Internal audit, forensic investigation, SOPs, and AML/CFT compliance designed to safeguard assets and drive operational excellence across the precious metals value chain.",
@@ -195,6 +216,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "03",
         id: "cfo-services",
+        image: "/images/services/special-CFO-services.jpg",
         title: "CFO Services",
         shortIntro:
             "Outsourced and part-time CFO expertise for precious metal trading, refining, logistics, and storage businesses - at a fraction of the cost of a full-time hire.",
@@ -248,6 +270,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "04",
         id: "accounting-mis",
+        image: "/images/services/executives-preparing-meeting.jpg",
         title: "Accounting & MIS Services",
         shortIntro:
             "Precise, technology-driven accounting and MIS support for trading, refining, logistics, and storage entities - from bookkeeping and reconciliation to ERP design and IFRS compliance.",
@@ -354,6 +377,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "05",
         id: "financial-advisory",
+        image: "/images/services/financial-advisory.jpg",
         title: "Financial Advisory Services",
         shortIntro:
             "End-to-end corporate finance, valuation, feasibility, and treasury/hedging advisory for navigating price volatility and regulatory complexity in the precious metals trade.",
@@ -425,6 +449,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "06",
         id: "taxation",
+        image: "/images/services/justice-law-concept-gavel-sounding-block-hand-s-male-judge-courtroom-working-with-document-law-books-report-case-table-modern-office.jpg",
         title: "Taxation Services",
         shortIntro:
             "Corporate tax, VAT, BEPS, transfer pricing, PE risk, and tax dispute support - keeping trading houses, refineries, and logistics providers compliant and tax-efficient.",
@@ -548,6 +573,7 @@ export const servicesData: ServiceSectionData[] = [
     {
         number: "07",
         id: "digital-assets",
+        image: "/images/services/digitalization-and-tokenisation.jpg",
         title: "Digital Assets, Bullion Tokenization & Technology Governance",
         shortIntro:
             "Secure, compliant innovation for bullion tokenization, blockchain custody, AI governance, and cybersecurity - bridging physical bullion with digital infrastructure.",
@@ -623,6 +649,350 @@ export const servicesData: ServiceSectionData[] = [
             "Exclusive focus on the precious metals industry",
             "Strong understanding of UAE Good Delivery Rules and industry pricing mechanisms",
             "Practical, institutionally credible frameworks for bullion-backed digital assets",
+        ],
+    },
+    {
+        number: "08",
+        id: "corporate-tax",
+        image: "/images/services/Business-strategy-advisory.jpg",
+        title: "Corporate Tax Services",
+        shortIntro:
+            "Industry-specific Corporate Tax advisory and compliance for bullion traders, refineries, manufacturers, wholesalers, and retailers across the UAE.",
+        intro:
+            "The UAE Corporate Tax regime has transformed the compliance landscape for precious metals businesses. From bullion traders and gold dealers to refineries, jewellery manufacturers, wholesalers, and retailers, businesses must navigate complex tax obligations while maintaining operational efficiency. At Insight Edge Global, we specialize exclusively in the Precious Metals & Jewellery Industry, helping businesses manage Corporate Tax obligations, optimize tax positions, strengthen documentation, and remain fully compliant with Federal Tax Authority (FTA) requirements.",
+        rateBands: [
+            { rate: "0%", label: "Taxable Income up to AED 375,000" },
+            { rate: "9%", label: "Taxable Income exceeding AED 375,000" },
+        ],
+        subServices: [
+            {
+                title: "Corporate Tax Registration",
+                icon: "FileSignature",
+                description:
+                    "End-to-end Corporate Tax registration and TRN acquisition with the Federal Tax Authority.",
+            },
+            {
+                title: "Corporate Tax Health Check",
+                icon: "Stethoscope",
+                description:
+                    "Comprehensive review of your current tax position, accounting practices, inventory valuation methods, and compliance readiness.",
+            },
+            {
+                title: "Corporate Tax Return Preparation & Filing",
+                icon: "FileText",
+                description:
+                    "Accurate preparation and submission of Corporate Tax returns, ensuring compliance with UAE regulations and industry-specific requirements.",
+            },
+            {
+                title: "Precious Metals Tax Impact Assessment",
+                icon: "Gem",
+                description:
+                    "Evaluate how Corporate Tax affects bullion trading, refining, manufacturing, wholesale, and retail operations.",
+            },
+            {
+                title: "Free Zone Corporate Tax Advisory",
+                icon: "Landmark",
+                description:
+                    "Assessment of Qualifying Free Zone Person eligibility and maintenance of compliance requirements.",
+            },
+            {
+                title: "Transfer Pricing & Related Party Transactions",
+                icon: "ArrowLeftRight",
+                description:
+                    "Preparation of transfer pricing documentation and review of intercompany transactions to meet arm's length requirements.",
+            },
+            {
+                title: "Tax Accounting & Deferred Tax Advisory",
+                icon: "Calculator",
+                description:
+                    "Support for IFRS-compliant tax accounting, deferred tax calculations, and financial statement disclosures.",
+            },
+            {
+                title: "Tax Audit & FTA Support",
+                icon: "Gavel",
+                description:
+                    "Representation and assistance during FTA reviews, audits, investigations, and voluntary disclosure processes.",
+            },
+            {
+                title: "Tax Risk Management",
+                icon: "ShieldAlert",
+                description:
+                    "Identification and mitigation of compliance risks before they become costly regulatory issues.",
+            },
+        ],
+        features: [
+            { title: "Industry Expertise", description: "Bullion trading, refining, manufacturing & supply chains" },
+            { title: "Regulatory Knowledge", description: "Corporate Tax regulations, FTA guidance & Cabinet Decisions" },
+            { title: "Data-Driven Analysis", description: "Inventory, trading margins & transaction flows" },
+            { title: "Audit-Ready Documentation", description: "Working papers built to withstand regulatory scrutiny" },
+        ],
+        extraSections: [
+            {
+                heading: "Why Corporate Tax Matters for Precious Metals Businesses",
+                body: [
+                    "The precious metals industry faces unique tax and reporting challenges: high-volume trading transactions, precious metal inventory valuation complexities, hedging and price fluctuation impacts, related-party and international transactions, refining and manufacturing cost allocations, import, export, and re-export structures, Free Zone tax considerations, and transfer pricing documentation requirements.",
+                    "Proper tax planning and compliance are essential to avoid penalties, protect margins, and support sustainable growth.",
+                ],
+            },
+            {
+                heading: "Why Corporate Tax Compliance Is Critical",
+                body: [
+                    "Avoid Penalties - failure to register, file, or maintain proper records can result in significant penalties and compliance risks.",
+                    "Protect Profitability - proper tax planning helps preserve margins in an industry heavily impacted by commodity price fluctuations.",
+                    "Reduce Audit Risk - strong documentation and compliant reporting reduce exposure to regulatory disputes and tax adjustments.",
+                    "Improve Governance - establishing robust tax controls strengthens overall financial management and stakeholder confidence.",
+                    "Support Business Expansion - a strong compliance framework enables smoother growth, financing, and international business operations.",
+                ],
+            },
+        ],
+        highlights: [
+            "Built for the Precious Metals Industry - unlike general consulting firms, we focus on the unique financial, regulatory, and operational challenges of the precious metals and jewellery sector",
+            "Industry-Focused Specialists - our team understands bullion trading, refining operations, manufacturing processes, inventory controls, and industry reporting requirements",
+            "End-to-End Compliance Support - from tax registration and impact assessments to filing, audits, and ongoing advisory",
+            "Integrated Advisory Approach - Corporate Tax, VAT, IFRS, Internal Audit, ERP Advisory, E-Invoicing, and Compliance Services under one roof",
+            "Trusted Industry Partner - helping precious metals businesses navigate evolving regulations with confidence and clarity",
+        ],
+        faqs: [
+            {
+                question: "Does Corporate Tax apply to bullion and gold trading businesses?",
+                answer:
+                    "Yes. Corporate Tax applies to taxable income generated by bullion trading, jewellery businesses, refineries, manufacturers, wholesalers, and retailers operating in the UAE.",
+            },
+            {
+                question: "How does Corporate Tax affect precious metals inventory?",
+                answer:
+                    "Inventory valuation methods, stock movements, unrealized gains, and cost allocation practices can significantly impact taxable income calculations.",
+            },
+            {
+                question: "Can Free Zone precious metals businesses benefit from 0% Corporate Tax?",
+                answer:
+                    "Potentially, provided they meet the requirements applicable to Qualifying Free Zone Persons and maintain compliance with relevant regulations.",
+            },
+            {
+                question: "Are transfer pricing rules applicable to precious metals businesses?",
+                answer:
+                    "Yes. Businesses with related-party transactions must comply with UAE transfer pricing requirements and maintain appropriate documentation.",
+            },
+            {
+                question: "What records should precious metals businesses maintain?",
+                answer:
+                    "Businesses should maintain complete accounting records, inventory reports, transaction documentation, sourcing records, contracts, and supporting tax documentation.",
+            },
+        ],
+    },
+    {
+        number: "09",
+        id: "e-invoicing",
+        image: "/images/services/E-invoicing.jpg",
+        title: "E-Invoicing Services",
+        shortIntro:
+            "Readiness assessment, ERP evaluation, and implementation support for the UAE's mandatory Peppol-based e-invoicing framework, tailored to bullion, refining, and jewellery operations.",
+        intro:
+            "The UAE is introducing a mandatory e-invoicing framework that will fundamentally change how precious metals businesses issue, exchange, and report invoices. For bullion traders, gold dealers, refineries, jewellery manufacturers, wholesalers, and retailers, e-invoicing is more than a technology upgrade - it is a compliance requirement that impacts taxation, inventory controls, transaction transparency, and financial reporting. Insight Edge Global helps precious metals businesses assess readiness, upgrade systems, implement compliant processes, and prepare for the UAE's e-invoicing mandate.",
+        subServices: [
+            {
+                title: "E-Invoicing Readiness Assessment",
+                icon: "ClipboardCheck",
+                description:
+                    "Comprehensive review of your ERP, accounting systems, invoicing processes, master data, and compliance readiness.",
+            },
+            {
+                title: "ERP & Accounting System Evaluation",
+                icon: "Cpu",
+                description:
+                    "Assessment of whether your current ERP can support UAE e-invoicing requirements, structured invoice formats, and integration requirements.",
+            },
+            {
+                title: "Invoice Process Mapping",
+                icon: "ListTree",
+                description:
+                    "Review and redesign of invoice workflows across trading, refining, manufacturing, wholesale, and retail operations.",
+            },
+            {
+                title: "Master Data Cleansing",
+                icon: "FolderTree",
+                description: "Validation and standardization of customer, supplier, and product master data.",
+                checklist: [
+                    {
+                        items: [
+                            "Customer master data",
+                            "Supplier records",
+                            "TRN information",
+                            "Product and inventory classifications",
+                            "VAT categories",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "E-Invoicing Compliance Framework",
+                icon: "ShieldCheck",
+                description:
+                    "Development of internal controls, approval workflows, and governance structures to support ongoing compliance.",
+            },
+            {
+                title: "System Integration Advisory",
+                icon: "ArrowLeftRight",
+                description:
+                    "Support for integration between ERP systems, invoicing platforms, and accredited service providers.",
+            },
+            {
+                title: "E-Invoicing Implementation Support",
+                icon: "Rocket",
+                description:
+                    "End-to-end guidance during implementation, testing, deployment, and post-go-live stabilization.",
+            },
+            {
+                title: "Compliance Monitoring",
+                icon: "Gauge",
+                description: "Ongoing support to ensure invoice accuracy, data quality, and regulatory compliance.",
+            },
+            {
+                title: "E-Invoicing Challenges for Precious Metal Refineries",
+                icon: "Flame",
+                description:
+                    "Provisional invoices, toll refining, export compliance, and price fluctuations create unique invoicing demands for refineries.",
+                checklist: [
+                    {
+                        items: [
+                            "Managing invoices based on metal purity, assay results, and fine weight",
+                            "Handling provisional invoices, credit notes, and final settlement adjustments",
+                            "Supporting toll refining where only refining services are invoiced",
+                            "Managing export compliance, VAT, and customs documentation",
+                            "Accounting for precious metal price fluctuations during invoicing",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "E-Invoicing Challenges for Bullion Trading",
+                icon: "TrendingUp",
+                description:
+                    "Real-time pricing and high-value transactions require precise capture of spot value, premiums, and contract terms.",
+                checklist: [
+                    {
+                        items: [
+                            "Real-time pricing linked to gold and silver market rates",
+                            "Capturing spot value, premiums, insurance, logistics, and brokerage charges",
+                            "Ensuring compliance for high-value bullion transactions",
+                            "Managing varying VAT treatments, reverse charge, and export rules",
+                            "Supporting forward contracts and different contract, invoice, and delivery dates",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "E-Invoicing Challenges for Jewellery & Precious Metal Manufacturing",
+                icon: "Hammer",
+                description:
+                    "Job work, batch tracking, and multi-component pricing add complexity to manufacturing invoices.",
+                checklist: [
+                    {
+                        items: [
+                            "Separating raw material, making charges, gemstones, and wastage in invoices",
+                            "Managing job work where customer-owned metal is used",
+                            "Tracking production losses, metal reconciliation, and inventory",
+                            "Integrating ERP with batch, lot, and purity tracking",
+                            "Handling multiple tax categories within a single invoice",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "E-Invoicing Challenges for Jewellery Retailers & Wholesalers",
+                icon: "Store",
+                description:
+                    "Multi-branch synchronization and varied transaction types make retail and wholesale invoicing especially complex.",
+                checklist: [
+                    {
+                        items: [
+                            "Managing complex invoices with gold, diamonds, gemstones, making charges, and discounts",
+                            "Supporting jewellery exchange, buyback, and trade-in transactions",
+                            "Synchronizing invoices across multiple branches and showrooms",
+                            "Handling repair orders, custom jewellery, and advance payments efficiently",
+                        ],
+                    },
+                ],
+            },
+        ],
+        features: [
+            { title: "Transaction Transparency", description: "Full visibility across trading, refining, manufacturing & retail" },
+            { title: "Reduced Compliance Risk", description: "Minimized errors in VAT reporting & documentation" },
+            { title: "Audit Readiness", description: "Structured, traceable, and easily retrievable invoice records" },
+            { title: "Stronger Financial Controls", description: "Improved governance across inventory, sales & finance" },
+        ],
+        timeline: [
+            { date: "1 July 2026", description: "Voluntary pilot and testing phase begins." },
+            {
+                date: "30 October 2026",
+                description: "Businesses with annual revenue exceeding AED 50 million must appoint an Accredited Service Provider (ASP).",
+            },
+            {
+                date: "1 January 2027",
+                description: "Mandatory e-invoicing go-live for businesses with annual revenue exceeding AED 50 million.",
+            },
+            {
+                date: "31 March 2027",
+                description: "Businesses with annual revenue below AED 50 million must appoint an Accredited Service Provider (ASP).",
+            },
+            {
+                date: "1 July 2027",
+                description: "Mandatory e-invoicing go-live for businesses with annual revenue below AED 50 million.",
+            },
+        ],
+        extraSections: [
+            {
+                heading: "Why E-Invoicing Matters for Precious Metals Businesses",
+                body: "The precious metals sector handles high-value transactions, multiple purity standards, inventory intensive operations, imports, exports, and complex VAT treatments. Under the UAE's e-invoicing framework, businesses will need to ensure that invoice data is generated, transmitted, and stored in structured electronic formats through approved channels rather than traditional PDF or paper-based processes. Accurate invoice data will become critical for VAT reporting, audit readiness, and regulatory compliance. The UAE framework is based on the Peppol network and structured PINT AE invoice standards.",
+            },
+            {
+                heading: "Preparing for UAE E-Invoicing",
+                body: [
+                    "Businesses should begin preparations now by assessing current invoicing processes, reviewing ERP capabilities, standardizing master data, evaluating system integrations, establishing internal compliance controls, identifying process gaps, and conducting readiness assessments.",
+                    "Early preparation helps reduce implementation costs and operational disruptions.",
+                ],
+            },
+            {
+                heading: "Why Precious Metals Businesses Should Prepare Now",
+                body: [
+                    "E-invoicing readiness is not simply a software upgrade. Precious metals businesses must ensure ERP and accounting system compatibility, product master data standardization, VAT classification accuracy, precious metal inventory integration, customer and supplier TRN validation, import and export transaction mapping, and structured invoice generation under PINT AE standards.",
+                    "Delaying preparation can result in costly system changes, implementation bottlenecks, compliance risks, and operational disruption.",
+                ],
+            },
+        ],
+        highlights: [
+            "Built for the Precious Metals Industry - we understand the operational realities of bullion trading, refining, jewellery manufacturing, wholesale distribution, and retail operations",
+            "Financial & Technology Expertise - accounting, taxation, compliance, ERP, and industry expertise under one roof",
+            "End-to-End Support - from readiness assessments to implementation and ongoing compliance management",
+            "Regulatory-Focused Approach - helping businesses align with evolving UAE tax and digital compliance requirements",
+            "Industry-Specific Solutions - tailored frameworks designed around the unique requirements of precious metals businesses",
+        ],
+        faqs: [
+            {
+                question: "What is changing under UAE E-Invoicing?",
+                answer:
+                    "Businesses will gradually move from traditional invoices and PDFs to structured electronic invoices exchanged through approved digital channels.",
+            },
+            {
+                question: "Will precious metals businesses be affected?",
+                answer:
+                    "Yes. Bullion traders, refineries, manufacturers, wholesalers, and retailers should assess their readiness and system capabilities.",
+            },
+            {
+                question: "Do existing ERP systems need upgrades?",
+                answer:
+                    "Many businesses will require system enhancements, integrations, or process redesigns to meet e-invoicing requirements.",
+            },
+            {
+                question: "How does e-invoicing impact VAT compliance?",
+                answer:
+                    "Invoice data becomes more standardized and digitally traceable, increasing the importance of accurate VAT treatment and reporting.",
+            },
+            {
+                question: "When should businesses start preparing?",
+                answer:
+                    "Immediately. Early assessment and planning reduce implementation risks and compliance challenges.",
+            },
         ],
     },
 ];

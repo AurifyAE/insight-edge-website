@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import type { ServiceSectionData } from "@/app/lib/services-data";
 import SubServiceCard from "./SubServiceCard";
@@ -11,6 +12,9 @@ import ExtraSections from "./ExtraSections";
 import TokenizationAnimation from "./TokenizationAnimation";
 import HedgingChartAnimation from "./HedgingChartAnimation";
 import ComplianceShieldAnimation from "./ComplianceShieldAnimation";
+import RateBands from "./RateBands";
+import ServiceFaqs from "./ServiceFaqs";
+import ServiceTimeline from "./ServiceTimeline";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,9 +116,23 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                     </p>
                 </div>
 
+                <div className="relative mt-10 aspect-[16/7] w-full overflow-hidden rounded-xl">
+                    <Image
+                        src={data.image}
+                        alt={data.title}
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 1200px"
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E4B]/30 via-transparent to-transparent" />
+                </div>
+
                 {data.id === "digital-assets" && <TokenizationAnimation />}
                 {data.id === "financial-advisory" && <HedgingChartAnimation />}
                 {data.id === "special-audits-risk" && <ComplianceShieldAnimation />}
+
+                {data.rateBands && <RateBands bands={data.rateBands} />}
 
                 <div className="service-grid relative mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {data.subServices.map((item) => (
@@ -143,6 +161,8 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
 
                 {data.extraSections && <ExtraSections sections={data.extraSections} />}
 
+                {data.timeline && <ServiceTimeline milestones={data.timeline} />}
+
                 {data.highlights && (
                     <div className="relative mt-10 overflow-hidden rounded-lg border border-[#1E2E4B]/10 bg-gradient-to-br from-[#1E2E4B] to-[#283F67] p-6 sm:p-8">
                         <div
@@ -163,6 +183,8 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                         </ul>
                     </div>
                 )}
+
+                {data.faqs && <ServiceFaqs faqs={data.faqs} />}
             </div>
         </section>
     );

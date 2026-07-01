@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import * as Icons from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
@@ -15,36 +16,6 @@ gsap.registerPlugin(ScrollTrigger);
 const EASE = [0.22, 1, 0.36, 1] as const;
 const VISUAL_BLOCK_INACTIVE = 336;
 const VISUAL_BLOCK_ACTIVE = 176;
-
-const DOT_COLORS = ["#283F67", "#7FA0C9", "#C6DB5A", "#9DB8E0", "#586F94"];
-
-function DotCluster({ seed }: { seed: number }) {
-    const dots = Array.from({ length: 9 }, (_, i) => {
-        const x = ((i * 37 + seed * 13) % 100);
-        const y = ((i * 53 + seed * 29) % 100);
-        const color = DOT_COLORS[(i + seed) % DOT_COLORS.length];
-        const size = 8 + ((i + seed) % 3) * 3;
-        return { x, y, color, size, key: i };
-    });
-
-    return (
-        <div className="pointer-events-none absolute inset-0">
-            {dots.map((dot) => (
-                <span
-                    key={dot.key}
-                    className="absolute rounded-sm opacity-70"
-                    style={{
-                        left: `${15 + dot.x * 0.7}%`,
-                        top: `${15 + dot.y * 0.6}%`,
-                        width: dot.size,
-                        height: dot.size,
-                        backgroundColor: dot.color,
-                    }}
-                />
-            ))}
-        </div>
-    );
-}
 
 export default function ServicesOverviewGrid() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -114,45 +85,41 @@ export default function ServicesOverviewGrid() {
                                 className="relative shrink-0 overflow-hidden rounded-xl"
                                 animate={{
                                     height: isActive ? VISUAL_BLOCK_ACTIVE : VISUAL_BLOCK_INACTIVE,
-                                    backgroundColor: isActive ? "#283F67" : "rgba(0,0,0,0)",
                                 }}
                                 transition={{ duration: 0.6, ease: EASE }}
                             >
+                                <Image
+                                    src={service.image}
+                                    alt={service.title}
+                                    fill
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    className="object-cover"
+                                />
+
+                                <motion.div
+                                    className="absolute inset-0 bg-[#1E2E4B]"
+                                    animate={{ opacity: isActive ? 0.45 : 0.25 }}
+                                    transition={{ duration: 0.6, ease: EASE }}
+                                />
+
                                 <motion.span
-                                    className="absolute left-3 top-3 z-10 origin-top-left font-(family-name:--font-heading) text-4xl font-semibold"
-                                    animate={{
-                                        scale: isActive ? 0.39 : 1,
-                                        color: isActive ? "rgba(255,255,255,0.7)" : "#A8A89F",
-                                    }}
+                                    className="absolute left-3 top-3 z-10 origin-top-left font-(family-name:--font-heading) text-4xl font-semibold text-white/80"
+                                    animate={{ scale: isActive ? 0.39 : 1 }}
                                     transition={{ duration: 0.6, ease: EASE }}
                                     aria-hidden="true"
                                 >
                                     {service.number}
                                 </motion.span>
 
-                                {/* Inactive: scattered dots */}
-                                <motion.div
-                                    className="absolute inset-0"
-                                    animate={{
-                                        opacity: isActive ? 0 : 1,
-                                        x: isActive ? -16 : 0,
-                                    }}
-                                    transition={{ duration: 0.6, ease: EASE }}
-                                >
-                                    <DotCluster seed={index} />
-                                </motion.div>
-
-                                {/* Active: gradient block with icon - pops in from center */}
+                                {/* Active: icon badge - pops in from center */}
                                 <motion.div
                                     className="absolute inset-0 flex items-center justify-center"
                                     animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0 }}
                                     transition={{ duration: 0.45, ease: isActive ? [0.34, 1.56, 0.64, 1] : EASE }}
-                                    style={{
-                                        background:
-                                            "radial-gradient(circle at 30% 30%, #C6DB5A 0%, #283F67 75%)",
-                                    }}
                                 >
-                                    <Icon className="h-10 w-10 text-white/90" strokeWidth={1.5} />
+                                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#C6DB5A]/90">
+                                        <Icon className="h-8 w-8 text-[#1E2E4B]" strokeWidth={1.5} />
+                                    </div>
                                 </motion.div>
                             </motion.div>
 
