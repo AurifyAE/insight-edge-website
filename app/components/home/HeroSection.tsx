@@ -48,42 +48,35 @@ const SLIDES = [
 
 type PenaltyItem = { amount: string; period: string; note: string };
 
+const PENALTY_SPANS = ["col-span-2", "col-span-3", "col-span-3", "col-span-2"];
+
 function PenaltyCard({ item, index }: { item: PenaltyItem; index: number }) {
     return (
         <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.45, delay: 0.15 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.12 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: "easeOut" } }}
-            className="group relative overflow-hidden rounded-xl border border-white/30 bg-white/15 backdrop-blur-md p-4 shadow-[0_8px_32px_-8px_rgba(30,46,75,0.22)] cursor-default"
-            style={{ WebkitBackdropFilter: "blur(12px)" }}
+            className={`group relative overflow-hidden rounded-xl bg-[#1E2E4B]/75 backdrop-blur-sm p-4 cursor-default ${PENALTY_SPANS[index]}`}
+            style={{ WebkitBackdropFilter: "blur(4px)" }}
         >
-            {/* top accent bar */}
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-linear-to-r from-[#C6DB5A] to-[#576500]" />
-
             {/* shimmer sweep on hover */}
             <motion.div
-                className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent"
-                initial={false}
-                whileHover={{ x: ["0%", "200%"] }}
-                transition={{ duration: 0.55, ease: "easeInOut" }}
+                className="pointer-events-none absolute inset-0"
+                style={{ background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%)" }}
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "200%" }}
+                transition={{ duration: 0.65, ease: "easeInOut" }}
                 aria-hidden="true"
             />
 
-            {/* inner glow ring that brightens on hover */}
-            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/20 transition-all duration-300 group-hover:ring-white/40 group-hover:shadow-[inset_0_0_20px_rgba(198,219,90,0.08)]" />
-
-            <motion.p
-                className="font-bold text-white text-[24px] leading-none tracking-tight drop-shadow-sm"
-                whileHover={{ scale: 1.06 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-            >
+            <p className="font-bold text-[#C6DB5A] text-[22px] leading-none tracking-tight">
                 {item.amount}
-            </motion.p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-[#C6DB5A]">
+            </p>
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-white/50">
                 {item.period}
             </p>
-            <p className="mt-2 text-[12px] leading-snug text-white/80">
+            <p className="mt-2.5 text-[12px] leading-snug text-white/80">
                 {item.note}
             </p>
         </motion.div>
@@ -295,13 +288,33 @@ export default function HeroSection() {
                         </div>
 
                         {/* ── Right panel: penalty cards (slide 2 only) ── */}
-                        {slide.rightPanel && (
-                            <div className="hidden lg:grid grid-cols-2 gap-3 shrink-0 w-[420px] xl:w-[480px] px-4 pb-2">
-                                {slide.rightPanel.map((item, i) => (
-                                    <PenaltyCard key={item.note} item={item} index={i} />
-                                ))}
-                            </div>
-                        )}
+                        <AnimatePresence>
+                            {slide.rightPanel && (
+                                <motion.div
+                                    key="penalty-panel"
+                                    initial={{ opacity: 0, x: 48, filter: "blur(6px)" }}
+                                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                                    exit={{ opacity: 0, x: 48, filter: "blur(6px)" }}
+                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                    className="hidden lg:flex flex-col shrink-0 w-[420px] xl:w-[480px] px-4 pb-2"
+                                >
+                                    <motion.p
+                                        initial={{ opacity: 0, y: -6 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -6 }}
+                                        transition={{ duration: 0.3, delay: 0.1 }}
+                                        className="text-[10px] font-semibold uppercase tracking-widest text-[#1E2E4B]/50 mb-3"
+                                    >
+                                        Non-compliance penalties
+                                    </motion.p>
+                                    <div className="grid grid-cols-5 gap-2">
+                                        {slide.rightPanel.map((item, i) => (
+                                            <PenaltyCard key={item.note} item={item} index={i} />
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </motion.div>
                 </AnimatePresence>
             </div>
