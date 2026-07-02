@@ -558,17 +558,6 @@ export const servicesData: ServiceSectionData[] = [
         ],
         extraSections: [
             {
-                heading: "Why E-Invoicing Matters for Precious Metals Businesses",
-                body: "The precious metals sector handles high-value transactions, multiple purity standards, inventory intensive operations, imports, exports, and complex VAT treatments. Under the UAE's e-invoicing framework, businesses will need to ensure that invoice data is generated, transmitted, and stored in structured electronic formats through approved channels rather than traditional PDF or paper-based processes. Accurate invoice data will become critical for VAT reporting, audit readiness, and regulatory compliance. The UAE framework is based on the Peppol network and structured PINT AE invoice standards.",
-            },
-            {
-                heading: "Preparing for UAE E-Invoicing",
-                body: [
-                    "Businesses should begin preparations now by assessing current invoicing processes, reviewing ERP capabilities, standardizing master data, evaluating system integrations, establishing internal compliance controls, identifying process gaps, and conducting readiness assessments.",
-                    "Early preparation helps reduce implementation costs and operational disruptions.",
-                ],
-            },
-            {
                 heading: "Why Precious Metals Businesses Should Prepare Now",
                 body: [
                     "E-invoicing readiness is not simply a software upgrade. Precious metals businesses must ensure ERP and accounting system compatibility, product master data standardization, VAT classification accuracy, precious metal inventory integration, customer and supplier TRN validation, import and export transaction mapping, and structured invoice generation under PINT AE standards.",

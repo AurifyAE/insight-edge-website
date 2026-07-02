@@ -10,112 +10,52 @@ import Link from "next/link";
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpw8gL4fJ-Pwjgs8KTGrjWBnFVgSO10adjBYpN_Q6McxkhemuROfzIwGW-4bYsrw/exec";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
-const SOLUTIONS_VISUAL_COLUMNS = [
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-];
-
-const OUR_SOLUTIONS_COLUMNS = [
+const SOLUTIONS_ORDERED = [
     {
         heading: "Audit & Assurance",
         href: "/services/audit-assurance",
-        items: [
-            "Statutory / External Audit",
-            "Internal Audit Services",
-            "Forensic Audit",
-            "Inventory Verification",
-            "Supply Chain Audit",
-            "UAE Ministry of Economy Review",
-        ],
-
+        items: ["Statutory / External Audit", "Internal Audit Services", "Forensic Audit", "Inventory Verification", "Supply Chain Audit", "UAE Ministry of Economy Review"],
     },
     {
-        heading: "Accounting & MIS",
-        href: "/services/accounting-mis",
-        items: [
-            "Accounting & Financial Close",
-            "ERP & Accounting Software",
-            "Inventory Verification",
-            "Payroll & IFRS Implementation",
-        ],
-
+        heading: "Corporate Tax Advisory",
+        href: "/services/corporate-tax",
+        items: ["Corporate Tax Registration", "Corporate Tax Return Filing", "Tax Accounting & Deferred Tax", "Transfer Pricing Compliance", "Tax Health Check & Advisory"],
+    },
+    {
+        heading: "E-Invoicing Services",
+        href: "/services/e-invoicing",
+        items: ["E-Invoicing Readiness Assessment", "ERP & Accounting System Evaluation", "Invoice Process Mapping", "Master Data Cleansing", "E-Invoicing Compliance Framework", "System Integration Advisory", "E-Invoicing Implementation Support", "Compliance Monitoring"],
     },
     {
         heading: "Special Audits & Risk Consulting",
         href: "/services/special-audits-risk",
-        items: [
-            "Standard Operating Procedures (SOPs)",
-            "Internal Controls & Governance",
-            "Corporate Governance",
-            "Supply Chain Risk Management",
-            "M&A Risk Management",
-            "AI / Tech Governance & Risk",
-        ],
-
+        items: ["Standard Operating Procedures (SOPs)", "Internal Controls & Governance", "Corporate Governance", "Supply Chain Risk Management", "M&A Risk Management", "AI / Tech Governance & Risk"],
+    },
+    {
+        heading: "CFO Services",
+        href: "/services/cfo-services",
+        items: ["Financial Strategy & Transformation", "Treasury & Working Capital Optimization", "Debt, Credit & Financing Advisory", "Integrated Performance Management", "M&A and Business Expansion Support"],
+    },
+    {
+        heading: "Accounting & MIS Services",
+        href: "/services/accounting-mis",
+        items: ["Accounting & Financial Close", "ERP & Accounting Software", "Inventory Verification", "Payroll & IFRS Implementation"],
     },
     {
         heading: "Financial Advisory Services",
         href: "/services/financial-advisory",
-        items: [
-            "Financial Due Diligence & Business Valuation",
-            "Feasibility Studies & Business Planning",
-            "Treasury, Hedging & Market Risk Advisory",
-        ],
+        items: ["Financial Due Diligence & Business Valuation", "Feasibility Studies & Business Planning", "Treasury, Hedging & Market Risk Advisory"],
     },
     {
         heading: "Taxation Services",
         href: "/services/taxation",
-        items: [
-            "Corporate Tax Advisory",
-            "VAT Compliance & Advisory",
-            "Transfer Pricing Advisory",
-            "BEPS, PE & Tax Risk Management",
-        ],
-    },
-    {
-        heading: "Business Strategy Advisory",
-        href: "/services/business-strategy",
-        items: [
-            "Sourcing & Procurement Services",
-            "Corporate Training Services",
-            "SCA Compliance Advisory",
-        ],
+        items: ["Corporate Tax Advisory", "VAT Compliance & Advisory", "Transfer Pricing Advisory", "BEPS, PE & Tax Risk Management"],
     },
     {
         heading: "Digital Assets & Tokenization",
         href: "/services/digital-assets",
-        items: [
-            "Bullion Tokenization Advisory",
-            "Blockchain Custody & Governance",
-            "AI Governance & Technology Risk",
-            "Cybersecurity & Data Integrity",
-        ],
+        items: ["Bullion Tokenization Advisory", "Blockchain Custody & Governance", "AI Governance & Technology Risk", "Cybersecurity & Data Integrity"],
     },
-    {
-        heading: "Compliance & Responsible Business",
-        href: "/services/compliance-responsible",
-        items: [
-            "AML / CFT Compliance",
-            "Regulatory Licensing",
-            "AML Inspection Support",
-            "Regulatory Compliance",
-            "Responsible Sourcing",
-            "Ethical Business Conduct",
-            "Supply Chain Due Diligence",
-        ],
-    },
-    {
-        heading: "Outsourced CFO Services",
-        href: "/services/cfo-services",
-        items: [
-            "Financial Strategy & Transformation",
-            "Treasury & Working Capital Optimization",
-            "Debt, Credit & Financing Advisory",
-            "Integrated Performance Management",
-            "M&A and Business Expansion Support",
-        ],
-    }
 ];
 
 // const WHO_WE_SERVE_ITEMS = [
@@ -133,10 +73,9 @@ const NAV_LINKS = [
     { label: "About Us", href: "/about-us" },
     { label: "Our Solutions", href: "", hasMega: "solutions" as const },
     { label: "Who We Serve", href: "/who-we-serve" },
-    { label: "Contact", href: "/contact" },
 ];
 
-const MARQUEE_SERVICES = OUR_SOLUTIONS_COLUMNS.map((col) => col.heading);
+const MARQUEE_SERVICES = SOLUTIONS_ORDERED.map((col) => col.heading);
 
 // ── Animation variants ────────────────────────────────────────────────────────
 
@@ -156,18 +95,11 @@ const megaVariants: Variants = {
     },
 };
 
-const itemVariants: Variants = {
-    hidden: { opacity: 0, x: -4 },
-    visible: (i: number) => ({
-        opacity: 1,
-        x: 0,
-        transition: { delay: i * 0.02, duration: 0.18, ease: "easeOut" },
-    }),
-};
-
 // ── Mega Menu: Our Solutions ──────────────────────────────────────────────────
 
 function SolutionsMegaMenu() {
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
     return (
         <motion.div
             key="solutions-mega"
@@ -175,35 +107,78 @@ function SolutionsMegaMenu() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-[1200px] bg-white border-t-2 border-[#8B9C32] shadow-2xl z-50 origin-top"
+            className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-[900px] bg-white border-t-2 border-[#8B9C32] shadow-2xl z-50 origin-top"
             style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
         >
-            <div className="h-0.5 w-full bg-gradient-to-r from-[#365693] via-[#8B9C32] to-[#365693] opacity-30" />
-            <div className="px-8 py-8 grid grid-cols-3 gap-x-10">
-                {SOLUTIONS_VISUAL_COLUMNS.map((colIndices, ci) => {
-                    // running counter for stagger delay across sections in this column
-                    let runningIndex = ci * 20;
-                    return (
-                        <div key={ci} className="flex flex-col gap-7">
-                            {colIndices.map((dataIdx) => {
-                                const col = OUR_SOLUTIONS_COLUMNS[dataIdx];
-                                const section = (
-                                    <Section
-                                        key={dataIdx}
-                                        heading={col.heading}
-                                        href={col.href}
-                                        items={col.items}
-                                        startIndex={runningIndex}
-                                    />
-                                );
-                                runningIndex += col.items.length;
-                                return section;
-                            })}
-                        </div>
-                    );
-                })}
+            <div className="flex">
+                {/* Service title list */}
+                <ul className="w-64 shrink-0 border-r border-gray-100 py-3">
+                    {SOLUTIONS_ORDERED.map((service, i) => (
+                        <li key={service.heading}>
+                            <Link
+                                href={service.href}
+                                className={`flex items-center justify-between px-5 py-2.5 text-[13px] font-medium transition-colors duration-150 ${hoveredIndex === i ? "bg-[#f4f7ec] text-[#1E2E4B]" : "text-[#44474D] hover:bg-[#f4f7ec] hover:text-[#1E2E4B]"}`}
+                                onMouseEnter={() => setHoveredIndex(i)}
+                                onMouseLeave={() => setHoveredIndex(null)}
+                            >
+                                <span className="flex items-center gap-3">
+                                    <span className={`text-[10px] font-semibold tabular-nums transition-colors ${hoveredIndex === i ? "text-[#576500]" : "text-[#1E2E4B]/25"}`}>
+                                        {String(i + 1).padStart(2, "0")}
+                                    </span>
+                                    {service.heading}
+                                </span>
+                                <svg className={`h-3 w-3 shrink-0 transition-opacity ${hoveredIndex === i ? "opacity-100 text-[#576500]" : "opacity-0"}`} viewBox="0 0 14 14" fill="none">
+                                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+
+                {/* Sub-items panel */}
+                <div className="flex-1 px-8 py-6 min-h-[300px] flex flex-col justify-start">
+                    <AnimatePresence mode="wait">
+                        {hoveredIndex !== null ? (
+                            <motion.div
+                                key={hoveredIndex}
+                                initial={{ opacity: 0, x: 8 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.15, ease: "easeOut" }}
+                            >
+                                <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#576500] mb-4">
+                                    {SOLUTIONS_ORDERED[hoveredIndex].heading}
+                                </p>
+                                <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
+                                    {SOLUTIONS_ORDERED[hoveredIndex].items.map((item) => (
+                                        <li key={item}>
+                                            <Link
+                                                href={SOLUTIONS_ORDERED[hoveredIndex].href}
+                                                className="flex items-center gap-2 text-[12.5px] text-[#44474D] hover:text-[#1E2E4B] transition-colors duration-150 py-0.5"
+                                            >
+                                                <span className="w-1 h-1 rounded-full bg-[#C6DB5A] shrink-0" />
+                                                {item}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        ) : (
+                            <motion.p
+                                key="placeholder"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="text-[12px] text-[#1E2E4B]/25 mt-1"
+                            >
+                                Hover a service to explore
+                            </motion.p>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
-            <div className="border-t border-gray-100 px-8 py-3 flex items-center justify-between bg-gray-50/60">
+
+            <div className="border-t border-gray-100 px-6 py-3 flex items-center justify-between bg-gray-50/60">
                 <p className="text-[11px] text-gray-400 tracking-wide">
                     Comprehensive advisory across every touchpoint of your business
                 </p>
@@ -215,32 +190,6 @@ function SolutionsMegaMenu() {
                 </a>
             </div>
         </motion.div>
-    );
-}
-
-function Section({ heading, href, items, startIndex }: { heading: string; href?: string; items: string[]; startIndex: number }) {
-    return (
-        <div>
-            {href ? (
-                <Link href={href} className="block text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20 hover:text-[#8B9C32] transition-colors">
-                    {heading}
-                </Link>
-            ) : (
-                <p className="text-[10.5px] font-bold uppercase tracking-[0.12em] text-[#365693] mb-2.5 pb-1.5 border-b border-[#8B9C32]/20">
-                    {heading}
-                </p>
-            )}
-            <ul className="flex flex-col gap-0.5">
-                {items.map((item, ii) => (
-                    <motion.li key={item} custom={startIndex + ii} variants={itemVariants} initial="hidden" animate="visible">
-                        <a href="#" className="flex items-center gap-1.5 text-[12px] text-gray-600 hover:text-[#365693] transition-all duration-150 leading-snug py-0.5 group">
-                            <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-[#8B9C32] transition-colors duration-150 shrink-0" />
-                            {item}
-                        </a>
-                    </motion.li>
-                ))}
-            </ul>
-        </div>
     );
 }
 
@@ -431,7 +380,7 @@ function BrochureDropdownContent({
 function TopBanner() {
     return (
         <div className="hidden bg-[#1e3a6b] lg:block">
-            <div className="max-w-7xl mx-auto flex items-center text-white text-sm px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
+            <div className="max-w-7xl mx-auto flex justify-between items-center text-white text-sm px-4 sm:px-6 lg:px-8 h-9 overflow-hidden">
                 <div className="flex items-center gap-5 shrink-0">
                     <a href="tel:+971503708785" className="flex items-center gap-1.5 hover:text-[#ABBD4F] transition-colors">
                         <PhoneIcon />
@@ -442,7 +391,7 @@ function TopBanner() {
                         info@insightedge.global
                     </a>
                 </div>
-                <div className="relative flex-1 min-w-0 md:mx-50 overflow-hidden mask-fade-x">
+                <div className="relative flex-1 min-w-0 ml-20 overflow-hidden mask-fade-x">
                     <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
                         {[...MARQUEE_SERVICES, ...MARQUEE_SERVICES].map((service, i) => (
                             <span key={i} className="flex items-center gap-2 text-white/80">
@@ -452,17 +401,7 @@ function TopBanner() {
                         ))}
                     </div>
                 </div>
-                <div className="flex items-center gap-3 shrink-0">
-                    {/* <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#ABBD4F] transition-colors">
-                        <LinkedInIcon />
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#ABBD4F] transition-colors">
-                        <InstagramIcon />
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#ABBD4F] transition-colors">
-                        <FacebookIcon />
-                    </a> */}
-                </div>
+                
             </div>
         </div>
     );
@@ -676,7 +615,7 @@ export default function Navbar() {
                                     href="/contact"
                                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67]"
                                 >
-                                    Connect with an Expert
+                                    Contact Us
                                 </a>
 
                                 {/* Desktop brochure */}

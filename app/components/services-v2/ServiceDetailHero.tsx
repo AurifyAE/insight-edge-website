@@ -109,12 +109,9 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                         </h1>
                     </div>
                     <div className="mt-2 h-px w-16 bg-[#C6DB5A]" />
-                    <p className="section-intro mt-6 text-[14.5px] leading-relaxed text-[#44474D] sm:text-[15px]">
-                        {data.intro}
-                    </p>
                 </div>
 
-                <div className="relative mt-10 aspect-[16/7] w-full overflow-hidden rounded-xl">
+                <div className="relative mt-8 aspect-16/7 w-full overflow-hidden rounded-xl">
                     <Image
                         src={data.image}
                         alt={data.title}
@@ -123,8 +120,14 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                         sizes="(max-width: 1024px) 100vw, 1200px"
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E4B]/30 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#1E2E4B]/30 via-transparent to-transparent" />
                 </div>
+
+                {data.timeline && <ServiceTimeline milestones={data.timeline} />}
+
+                <p className="section-intro mt-8 text-[14.5px] leading-relaxed text-[#44474D] sm:text-[15px] max-w-[1200px]">
+                    {data.intro}
+                </p>
 
                 {data.id === "financial-advisory" && <HedgingChartAnimation />}
 
@@ -156,8 +159,6 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                 )}
 
                 {data.extraSections && <ExtraSections sections={data.extraSections} />}
-
-                {data.timeline && <ServiceTimeline milestones={data.timeline} />}
 
                 {data.highlights && (
                     <div className="relative mt-10 overflow-hidden rounded-lg border border-[#1E2E4B]/10 bg-gradient-to-br from-[#1E2E4B] to-[#283F67] p-6 sm:p-8">

@@ -6,7 +6,7 @@ import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { servicesData } from "@/app/lib/services-data";
 
 export default function ServicesPageNav({ activeId }: { activeId: string }) {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
