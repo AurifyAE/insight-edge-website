@@ -19,7 +19,7 @@ export default function ServiceTimeline({ milestones }: { milestones: Milestone[
                         )}
                         <span className="relative z-10 mt-1.5 h-3.5 w-3.5 flex-shrink-0 rounded-full border-2 border-[#576500] bg-[#C6DB5A]" />
                         <div>
-                            <p className="font-(family-name:--font-heading) text-sm font-semibold text-[#1E2E4B] sm:text-[15px]">
+                            <p className="font-(family-name:--font-heading) text-sm font-semibold text-[#1E2E4B] sm:text-base">
                                 {milestone.date}
                             </p>
                             <p className="mt-1 text-sm leading-relaxed text-[#44474D]">{milestone.description}</p>

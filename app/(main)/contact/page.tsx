@@ -67,8 +67,8 @@ function InfoCard({
                 {icon}
             </div>
             <div>
-                <h4 className="text-[14px] font-bold text-[#1E2E4B] mb-1">{title}</h4>
-                <p className="text-[14px] text-gray-700 font-medium">{value}</p>
+                <h4 className="text-[15px] font-bold text-[#1E2E4B] mb-1">{title}</h4>
+                <p className="text-[15px] text-gray-700 font-medium">{value}</p>
                 {subValue && <p className="text-[12px] text-gray-500 mt-1 leading-relaxed">{subValue}</p>}
             </div>
         </div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
                             <h3 className="text-[22px] font-bold leading-tight mb-4">
                                 Safeguarding Value Through Financial Expertise
                             </h3>
-                            <p className="text-[14px] text-white/80 leading-relaxed mb-6">
+                            <p className="text-[15px] text-white/80 leading-relaxed mb-6">
                                 UAE-registered &amp; approved audit firm, 100% dedicated to the precious metals sector with 360° end-to-end financial &amp; compliance coverage.
                             </p>
                             <ul className="flex flex-col gap-3">
@@ -166,7 +166,7 @@ export default function ContactPage() {
                                     "DMCC, LBMA & OECD standards expertise",
                                     "AML/CFT specialists for DNFBP entities"
                                 ].map((pt, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-[14px] text-white/90">
+                                    <li key={idx} className="flex items-start gap-3 text-[15px] text-white/90">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#ABBD4F] mt-2 shrink-0" />
                                         {pt}
                                     </li>

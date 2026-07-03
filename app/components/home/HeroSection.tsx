@@ -196,10 +196,8 @@ export default function HeroSection() {
     return (
         <section className="relative w-full overflow-hidden mt-15 lg:mt-18">
 
-            {/* ── Mobile: stacked layout. Desktop: background image with overlaid card ── */}
-
-            {/* Background image - hidden on mobile, shown from md up */}
-            <div className="hidden md:block absolute inset-0 mx-4 rounded-t-2xl mt-9 overflow-hidden">
+            {/* ── Shared background image (mobile + desktop) ── */}
+            <div className="absolute inset-0 md:mx-4 md:rounded-t-2xl md:mt-9 overflow-hidden">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={active}
@@ -211,33 +209,23 @@ export default function HeroSection() {
                     >
                         <Image
                             src={slide.bg}
-                            width={1920}
-                            height={1080}
+                            fill
                             alt="Hero Background"
-                            className="w-full h-full object-cover"
+                            className="object-cover object-center"
                             priority
                         />
                     </motion.div>
                 </AnimatePresence>
-                {/* Dark overlay so text card sits on a predictable bg */}
-                <div className="absolute inset-0 bg-white/20" />
-                {/* Bottom fade so the section blends into the content below */}
-                <div className="absolute inset-x-0 bottom-0 h-[480px] bg-linear-to-t from-white to-transparent" />
-            </div>
-
-            {/* Mobile image - in-flow, visible only on mobile */}
-            <div className="block md:hidden w-full h-[200px] sm:h-[240px] relative">
-                <Image
-                    src={slide.bg}
-                    fill
-                    alt="Hero Background"
-                    className="object-cover object-center"
-                    priority
-                />
+                {/* Top navy fade */}
+                <div className="absolute inset-x-0 top-0 h-48 bg-linear-to-b from-[#1E2E4B]/60 to-transparent" />
+                {/* Bottom white fade */}
+                <div className="absolute inset-x-0 bottom-0 h-[480px] bg-linear-to-t from-white via-white/80 to-transparent" />
+                {/* Subtle mid overlay for text area legibility */}
+                <div className="absolute inset-0 bg-white/10" />
             </div>
 
             {/* ── Layout shell ── */}
-            <div className="relative md:min-h-[480px] lg:min-h-[580px] max-w-7xl mx-auto lg:px-8 -mt-10 lg:mt-0 flex items-end">
+            <div className="relative min-h-[480px] sm:min-h-[520px] md:min-h-[480px] lg:min-h-[580px] max-w-7xl mx-auto lg:px-8 flex items-end">
 
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -246,18 +234,18 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -12 }}
                         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                        className={`w-full flex items-end mb-8 lg:mb-12 gap-8 ${slide.rightPanel ? "lg:flex-row" : ""}`}
+                        className={`w-full flex items-end mb-10 md:mb-8 lg:mb-12 gap-8 ${slide.rightPanel ? "lg:flex-row" : ""}`}
                     >
                         {/* ── Text card ── */}
                         <div className={slide.rightPanel ? "flex-1 min-w-0" : "w-full lg:w-1/2"}>
-                            <div className="px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-0 flex flex-col gap-4">
+                            <div className="px-5 py-0 sm:px-8 lg:px-12 flex flex-col gap-3 md:gap-4">
                                 {/* Headline */}
-                                <h1 className="text-[#1E2E4B] font-bold leading-tight tracking-tight text-[22px] sm:text-[26px] lg:text-4xl text-pretty">
+                                <h1 className="text-[#1E2E4B] font-bold leading-tight tracking-tight text-[20px] sm:text-[24px] lg:text-4xl text-pretty">
                                     {slide.title}
                                 </h1>
 
                                 {/* Sub-headline */}
-                                <div className="text-[#454748] leading-relaxed text-sm sm:text-[14px] lg:text-base lg:max-w-md space-y-1.5">
+                                <div className="text-[#454748] leading-relaxed text-[13px] sm:text-sm lg:text-base lg:max-w-md space-y-1.5">
                                     {Array.isArray(slide.description)
                                         ? slide.description.map((line, i) => (
                                             <p key={i} className={i === 0 ? "font-semibold text-[#1E2E4B]" : ""}>
@@ -269,15 +257,15 @@ export default function HeroSection() {
                                 </div>
 
                                 {/* Buttons */}
-                                <div className="flex flex-wrap gap-3">
+                                <div className="flex flex-wrap gap-2.5 mt-1">
                                     {slide.buttons.map((btn) => (
                                         <a
                                             key={btn.label}
                                             href={btn.href}
                                             className={
                                                 btn.variant === "solid"
-                                                    ? "inline-flex items-center justify-center px-7 py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
-                                                    : "inline-flex items-center justify-center px-7 py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                    ? "inline-flex items-center justify-center px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                    : "inline-flex items-center justify-center px-5 py-2.5 md:px-7 md:py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
                                             }
                                         >
                                             {btn.label}
@@ -287,7 +275,7 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* ── Right panel: penalty cards (slide 2 only) ── */}
+                        {/* ── Right panel: penalty cards (slide 2 only, desktop) ── */}
                         <AnimatePresence>
                             {slide.rightPanel && (
                                 <motion.div

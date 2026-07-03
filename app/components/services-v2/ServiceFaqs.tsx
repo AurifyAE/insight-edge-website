@@ -25,7 +25,7 @@ export default function ServiceFaqs({ faqs }: { faqs: Faq[] }) {
                                 className="flex w-full items-start justify-between gap-4 px-6 py-4 text-left"
                                 aria-expanded={isOpen}
                             >
-                                <span className="text-[14.5px] font-semibold leading-snug text-[#1E2E4B] sm:text-[15px]">
+                                <span className="text-[14.5px] font-semibold leading-snug text-[#1E2E4B] sm:text-base">
                                     {faq.question}
                                 </span>
                                 <ChevronDown

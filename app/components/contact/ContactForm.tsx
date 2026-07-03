@@ -51,7 +51,7 @@ export default function ContactForm() {
         setSubmitted(true);
     };
 
-    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[14px] text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
+    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
 
     return (
         <div className="flex flex-col gap-4">

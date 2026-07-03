@@ -125,7 +125,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
 
                 {data.timeline && <ServiceTimeline milestones={data.timeline} />}
 
-                <p className="section-intro mt-8 text-[14.5px] leading-relaxed text-[#44474D] sm:text-[15px] max-w-[1200px]">
+                <p className="section-intro mt-8 text-[14.5px] leading-relaxed text-[#44474D] sm:text-base max-w-[1200px]">
                     {data.intro}
                 </p>
 

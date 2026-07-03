@@ -14,8 +14,8 @@ import { servicesData } from "@/app/lib/services-data";
 gsap.registerPlugin(ScrollTrigger);
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const VISUAL_BLOCK_INACTIVE = 336;
-const VISUAL_BLOCK_ACTIVE = 176;
+const VISUAL_BLOCK_INACTIVE = 360;
+const VISUAL_BLOCK_ACTIVE = 200;
 
 export default function ServicesOverviewGrid() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -64,14 +64,14 @@ export default function ServicesOverviewGrid() {
                 const isActive = activeIndex === index;
 
                 return (
-                    <Link
+                    <div
                         key={service.id}
-                        href={`/services/${service.id}`}
                         onMouseEnter={() => setActiveIndex(index)}
-                        className="overview-card relative block"
+                        onTouchStart={() => setActiveIndex(index)}
+                        className="overview-card relative block cursor-pointer"
                     >
                         <motion.div
-                            className="relative flex h-[440px] flex-col overflow-hidden rounded-2xl p-3"
+                            className="relative flex h-[385px] flex-col overflow-hidden rounded-2xl p-3"
                             animate={{
                                 backgroundColor: isActive ? "#FFFFFF" : "#EDEDE9",
                                 boxShadow: isActive
@@ -111,6 +111,13 @@ export default function ServicesOverviewGrid() {
                                     {service.number}
                                 </motion.span>
 
+                                {/* Title always pinned to bottom of image */}
+                                <div className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-8 bg-linear-to-t from-[#1E2E4B]/80 to-transparent">
+                                    <h3 className="font-(family-name:--font-heading) text-[16px] font-semibold leading-snug text-white sm:text-[18px]">
+                                        {service.title}
+                                    </h3>
+                                </div>
+
                                 {/* Active: icon badge - pops in from center */}
                                 <motion.div
                                     className="absolute inset-0 flex items-center justify-center"
@@ -123,41 +130,32 @@ export default function ServicesOverviewGrid() {
                                 </motion.div>
                             </motion.div>
 
-                            {/* ── Text block - title always pinned bottom, description/button slide up from below ── */}
-                            <div className="flex shrink-0 flex-col overflow-hidden px-3 pb-3 pt-4">
-                                <motion.h3
-                                    className="font-(family-name:--font-heading) text-[17px] font-semibold leading-snug sm:text-[19px]"
-                                    animate={{ color: isActive ? "#1E2E4B" : "#5C5F60" }}
-                                    transition={{ duration: 0.6, ease: EASE }}
-                                >
-                                    {service.title}
-                                </motion.h3>
-
+                            {/* ── Text block - only shown on hover ── */}
+                            <div className="flex shrink-0 flex-col overflow-hidden px-3 pb-2 pt-3">
                                 <motion.p
-                                    className="mt-3 text-sm leading-relaxed text-[#44474D]"
-                                    animate={{
-                                        opacity: isActive ? 1 : 0,
-                                        y: isActive ? 0 : 16,
-                                    }}
-                                    transition={{ duration: 0.5, delay: isActive ? 0.1 : 0, ease: EASE }}
+                                    className="text-sm leading-relaxed text-[#44474D]"
+                                    animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 16 }}
+                                    transition={{ duration: 0.5, delay: isActive ? 0.08 : 0, ease: EASE }}
                                 >
                                     {service.shortIntro}
                                 </motion.p>
 
                                 <motion.div
-                                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#576500]"
-                                    animate={{
-                                        opacity: isActive ? 1 : 0,
-                                        y: isActive ? 0 : 16,
-                                    }}
-                                    transition={{ duration: 0.5, delay: isActive ? 0.15 : 0, ease: EASE }}
+                                    animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 16 }}
+                                    transition={{ duration: 0.5, delay: isActive ? 0.13 : 0, ease: EASE }}
+                                    className="mt-2"
                                 >
-                                    Explore
-                                    <ArrowUpRight className="h-4 w-4" />
+                                    <Link
+                                        href={`/services/${service.id}`}
+                                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#576500] hover:text-[#1E2E4B] transition-colors"
+                                    >
+                                        Explore
+                                        <ArrowUpRight className="h-4 w-4" />
+                                    </Link>
                                 </motion.div>
                             </div>
                         </motion.div>
-                    </Link>
+                    </div>
                 );
             })}
             </div>

@@ -121,7 +121,7 @@ function ChallengeItem({
                         color: isOpen ? "#1E2E4B" : "rgba(30,46,75,0.35)",
                     }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="font-(family-name:--font-heading) text-[15px] font-semibold tabular-nums"
+                    className="font-(family-name:--font-heading) text-base font-semibold tabular-nums"
                 >
                     {numberLabel}
                 </motion.span>
@@ -129,7 +129,7 @@ function ChallengeItem({
                 <motion.span
                     animate={{ x: isOpen ? 4 : 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className={`flex-1 font-semibold text-[15px] sm:text-lg leading-snug transition-colors duration-300 ${
+                    className={`flex-1 font-semibold text-base sm:text-lg leading-snug transition-colors duration-300 ${
                         isOpen ? "text-[#1E2E4B]" : "text-[#1E2E4B]/80 group-hover:text-[#1E2E4B]"
                     }`}
                 >
@@ -166,7 +166,7 @@ function ChallengeItem({
                             initial={{ y: -6, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.3, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-                            className="pl-5 pr-10 pb-6 text-[#454748] text-sm sm:text-[15px] leading-relaxed max-w-2xl"
+                            className="pl-5 pr-10 pb-6 text-[#454748] text-sm sm:text-base leading-relaxed max-w-2xl"
                         >
                             {challenge.description}
                         </motion.p>

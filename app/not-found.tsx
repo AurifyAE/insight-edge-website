@@ -28,7 +28,7 @@ export default function NotFound() {
 
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-[15px] font-semibold tracking-wide transition-all duration-300 shadow-sm bg-[#8B9C32] hover:bg-[#ABBD4F] hover:-translate-y-1 hover:shadow-md text-white"
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold tracking-wide transition-all duration-300 shadow-sm bg-[#8B9C32] hover:bg-[#ABBD4F] hover:-translate-y-1 hover:shadow-md text-white"
                     >
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M19 12H5M12 19l-7-7 7-7" />

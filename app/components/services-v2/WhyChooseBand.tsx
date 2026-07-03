@@ -68,13 +68,13 @@ export default function WhyChooseBand() {
                         {whyChooseUs.map((point) => (
                             <li key={point} className="why-item flex items-start gap-3">
                                 <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#576500]" strokeWidth={2} />
-                                <span className="text-[14px] leading-relaxed text-[#44474D]">{point}</span>
+                                <span className="text-[15px] leading-relaxed text-[#44474D]">{point}</span>
                             </li>
                         ))}
                     </ul>
 
                     <div className="why-cta mt-12 flex flex-col items-start gap-4 border-t border-[#1E2E4B]/[0.06] pt-8 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="max-w-[440px] text-[15px] leading-relaxed text-[#44474D]">
+                        <p className="max-w-[440px] text-base leading-relaxed text-[#44474D]">
                             Every precious metals business is unique. Let&apos;s discuss the specific
                             audit, tax, or advisory needs of yours.
                         </p>

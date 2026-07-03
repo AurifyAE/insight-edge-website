@@ -62,7 +62,7 @@ export default function FAQSection() {
                                     className="w-full flex items-start justify-between gap-4 py-5 text-left cursor-pointer"
                                     aria-expanded={isOpen}
                                 >
-                                    <span className="text-[#1E2E4B] font-semibold text-[15px] sm:text-base leading-snug">
+                                    <span className="text-[#1E2E4B] font-semibold text-base sm:text-base leading-snug">
                                         {faq.question}
                                     </span>
                                     <ChevronDown
