@@ -943,7 +943,7 @@ function MobileNavItem({
                         <div className="pl-4 pr-2 py-1 flex flex-col gap-1 border-l-2 border-[#365693]/10 ml-3 mt-1">
                             {link.hasMega === "solutions" && (
                                 <div className="flex flex-col gap-1">
-                                    {OUR_SOLUTIONS_COLUMNS.map((col, ci) => (
+                                    {SOLUTIONS_ORDERED.map((col, ci) => (
                                         <MobileNestedDropdown
                                             key={ci}
                                             label={col.heading}
