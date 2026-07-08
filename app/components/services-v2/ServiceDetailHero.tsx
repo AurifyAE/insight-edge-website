@@ -139,7 +139,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                     ))}
                 </div>
 
-                {data.features && (
+                {/* {data.features && (
                     <div className="relative mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                         {data.features.map((feature) => (
                             <div
@@ -156,9 +156,9 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                             </div>
                         ))}
                     </div>
-                )}
+                )} */}
 
-                {data.extraSections && <ExtraSections sections={data.extraSections} />}
+                {data.extraSections && <ExtraSections sections={data.extraSections} serviceImage={data.image} />}
 
                 {data.highlights && (
                     <div className="relative mt-10 overflow-hidden rounded-lg border border-[#1E2E4B]/10 bg-gradient-to-br from-[#1E2E4B] to-[#283F67] p-6 sm:p-8">

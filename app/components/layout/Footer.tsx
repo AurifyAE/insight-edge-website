@@ -129,13 +129,19 @@ export default function Footer() {
                     <div className="flex flex-col gap-5">
                         <h3 className="text-sm font-bold text-white uppercase tracking-wider">Quick Links</h3>
                         <ul className="flex flex-col text-sm gap-3">
-                            {["Home", "About", "Services", "Contact"].map((item) => (
-                                <li key={item}>
+                            {[
+                                { label: "Home", href: "/" },
+                                { label: "About", href: "/about-us" },
+                                { label: "Services", href: "/services" },
+                                { label: "Blogs", href: "/blog" },
+                                { label: "Contact", href: "/contact" },
+                            ].map((item) => (
+                                <li key={item.label}>
                                     <Link
-                                        href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                                        href={item.href}
                                         className="text-[15px] text-gray-300 hover:text-white transition-colors"
                                     >
-                                        {item}
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -147,20 +153,22 @@ export default function Footer() {
                         <h3 className="text-sm font-bold text-white uppercase tracking-wider">Our Services</h3>
                         <ul className="flex flex-col text-sm gap-3">
                             {[
-                                "Audit & Assurance Services",
-                                "Special Audits & Risk Consulting",
-                                "CFO Services",
-                                "Accounting & MIS Services",
-                                "Financial Advisory Services",
-                                "Taxation Services",
-                                "Digital Assets & Tokenization",
+                                { label: "Audit & Assurance Services", href: "/services/audit-assurance" },
+                                { label: "Corporate Tax Advisory", href: "/services/corporate-tax" },
+                                { label: "E-Invoicing Services", href: "/services/e-invoicing" },
+                                { label: "Special Audits & Risk Consulting", href: "/services/special-audits-risk" },
+                                { label: "Compliance & Responsible Business", href: "/services/compliance-and-responsible" },
+                                { label: "Accounting & MIS Services", href: "/services/accounting-mis" },
+                                { label: "Business Strategy Advisory", href: "/services/business-advisory" },
+                                { label: "Taxation Services", href: "/services/taxation" },
+                                { label: "Digital Assets & Tokenization", href: "/services/digital-assets" },
                             ].map((item) => (
-                                <li key={item}>
+                                <li key={item.label}>
                                     <Link
-                                        href="/services"
+                                        href={item.href}
                                         className="text-[15px] text-gray-300 hover:text-white transition-colors"
                                     >
-                                        {item}
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}

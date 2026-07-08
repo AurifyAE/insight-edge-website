@@ -17,7 +17,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const VISUAL_BLOCK_INACTIVE = 360;
 const VISUAL_BLOCK_ACTIVE = 200;
 
-export default function ServicesOverviewGrid() {
+export default function ServicesOverviewGrid({ showHeader = true }: { showHeader?: boolean }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -41,17 +41,19 @@ export default function ServicesOverviewGrid() {
 
     return (
         <div className="mx-auto max-w-[1200px] px-6 pt-20 sm:px-10 lg:px-16">
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-10">
-                <h2 className="font-(family-name:--font-heading) text-[26px] font-bold text-white sm:text-4xl">
-                    Our Services
-                </h2>
-                <Link
-                    href="/services"
-                    className="inline-flex items-center justify-center rounded-xl border border-[#C6DB5A] px-7 py-3 text-sm font-semibold text-[#C6DB5A] transition-colors duration-200 hover:bg-[#C6DB5A] hover:text-white"
-                >
-                    View All Services
-                </Link>
-            </div>
+            {showHeader && (
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-10">
+                    <h2 className="font-(family-name:--font-heading) text-[26px] font-bold text-white sm:text-4xl">
+                        Our Services
+                    </h2>
+                    <Link
+                        href="/services"
+                        className="inline-flex items-center justify-center rounded-xl border border-[#C6DB5A] px-7 py-3 text-sm font-semibold text-[#C6DB5A] transition-colors duration-200 hover:bg-[#C6DB5A] hover:text-white"
+                    >
+                        View All Services
+                    </Link>
+                </div>
+            )}
 
             <div
                 ref={containerRef}

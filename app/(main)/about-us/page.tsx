@@ -4,16 +4,30 @@ import WhoWeAre from "../../components/about/WhoWeAre";
 import { TrendingUp } from "lucide-react";
 import WhySpecialist from "../../components/about/WhySpecialist";
 import { generateMetadata } from "@/seo.config";
+import Image from "next/image";
 
 export const metadata = generateMetadata("about");
 
 export default function AboutPage() {
     return (
         <div className="">
-            <div
-                className="bg-[#1E2E4B] px-8 pt-32 pb-16"
-            >
-                <div className="max-w-6xl mx-auto">
+            <div className="relative overflow-hidden px-8 pt-56 pb-16">
+                {/* Background image */}
+                <Image
+                    src="/images/home/bg-img-1.jpeg"
+                    alt=""
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover object-center"
+                    aria-hidden="true"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-[#1E2E4B]/80" />
+                {/* Bottom fade into white */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-white/10 to-transparent" />
+
+                <div className="relative z-10 max-w-6xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         About Insight Edge Global
                     </h1>

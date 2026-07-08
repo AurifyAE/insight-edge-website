@@ -22,6 +22,7 @@ export interface ServiceFeature {
 export interface ExtraSection {
     heading: string;
     body: string | string[];
+    image?: string;
 }
 
 export interface RateBand {
