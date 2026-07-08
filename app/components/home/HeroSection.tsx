@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 // ── Slides ────────────────────────────────────────────────────────────────────
 
-const SLIDES = [
+const SLIDES: Slide[] = [
     {
         bg: "/images/services/audit-and-assurance.jpg",
         title: "Specialized Financial & Compliance Solutions for the Precious Metals Industry",
@@ -37,16 +37,30 @@ const SLIDES = [
     },
     {
         bg: "/images/services/E-invoicing.jpg",
-        title: "UAE E-Invoicing is Coming to the Precious Metals Industry",
+        title: "E-Invoicing Compliance for Bullion, Refinery & Jewellery Businesses",
         description:
-            "Mandatory from 1 January 2027 for businesses with revenue above AED 50 million. Mandatory from 1 July 2027 for all other businesses in scope.",
+            "Prepare your ERP, invoicing, and VAT systems for the UAE's mandatory PEPPOL-based e-invoicing framework.",
         buttons: [
             { label: "Book Your E-Invoicing Readiness Assessment", href: "/services/e-invoicing", variant: "solid" as const },
         ],
+        sideBox: {
+            eyebrow: "Key Compliance Date",
+            headline: "Mandatory from 1 January 2027",
+            body: "For businesses with annual revenue above AED 50 million.",
+        },
     },
 ];
 
 type PenaltyItem = { amount: string; period: string; note: string };
+type SideBox = { eyebrow: string; headline: string; body: string };
+type Slide = {
+    bg: string;
+    title: string;
+    description: string | string[];
+    buttons: { label: string; href: string; variant: "solid" | "outline" }[];
+    rightPanel?: PenaltyItem[];
+    sideBox?: SideBox;
+};
 
 const PENALTY_SPANS = ["col-span-2", "col-span-3", "col-span-3", "col-span-2"];
 
@@ -234,10 +248,10 @@ export default function HeroSection() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -12 }}
                         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                        className={`w-full flex items-end mb-10 md:mb-8 lg:mb-12 gap-8 ${slide.rightPanel ? "lg:flex-row" : ""}`}
+                        className={`w-full flex items-end mb-10 md:mb-8 lg:mb-12 gap-8 ${slide.rightPanel || slide.sideBox ? "lg:flex-row" : ""}`}
                     >
                         {/* ── Text card ── */}
-                        <div className={slide.rightPanel ? "flex-1 min-w-0" : "w-full lg:w-1/2"}>
+                        <div className={slide.rightPanel || slide.sideBox ? "flex-1 min-w-0" : "w-full lg:w-1/2"}>
                             <div className="px-5 py-0 sm:px-8 lg:px-12 flex flex-col gap-3 md:gap-4">
                                 {/* Headline */}
                                 <h1 className="text-[#1E2E4B] font-bold leading-tight tracking-tight text-[20px] sm:text-[24px] lg:text-4xl text-pretty">
@@ -274,6 +288,32 @@ export default function HeroSection() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* ── Side info box (e.g. e-invoicing date, desktop only) ── */}
+                        <AnimatePresence>
+                            {slide.sideBox && (
+                                <motion.div
+                                    key="side-box"
+                                    initial={{ opacity: 0, x: 48, filter: "blur(6px)" }}
+                                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                                    exit={{ opacity: 0, x: 48, filter: "blur(6px)" }}
+                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                    className="hidden lg:flex flex-col shrink-0 w-[340px] xl:w-[380px] px-4 pb-2"
+                                >
+                                    <div className="relative overflow-hidden rounded-xl bg-[#1E2E4B]/75 backdrop-blur-sm p-6" style={{ WebkitBackdropFilter: "blur(4px)" }}>
+                                        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C6DB5A]/80 mb-3">
+                                            {slide.sideBox.eyebrow}
+                                        </p>
+                                        <p className="font-bold text-white text-[22px] leading-snug tracking-tight">
+                                            {slide.sideBox.headline}
+                                        </p>
+                                        <p className="mt-3 text-[13px] leading-relaxed text-white/75">
+                                            {slide.sideBox.body}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
 
                         {/* ── Right panel: penalty cards (slide 2 only, desktop) ── */}
                         <AnimatePresence>

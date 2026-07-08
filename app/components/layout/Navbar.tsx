@@ -32,9 +32,9 @@ const SOLUTIONS_ORDERED = [
         items: ["Standard Operating Procedures (SOPs)", "Internal Controls & Governance", "Corporate Governance", "Supply Chain Risk Management", "M&A Risk Management", "AI / Tech Governance & Risk"],
     },
     {
-        heading: "CFO Services",
-        href: "/services/cfo-services",
-        items: ["Financial Strategy & Transformation", "Treasury & Working Capital Optimization", "Debt, Credit & Financing Advisory", "Integrated Performance Management", "M&A and Business Expansion Support"],
+        heading: "Compliance & Responsible Business",
+        href: "/services/compliance-and-responsible",
+        items: ["AML / CFT Compliance", "Regulatory Compliance", "Regulatory Licensing", "AML Inspection Support", "Responsible Sourcing", "Ethical Business Conduct", "Supply Chain Due Diligence"],
     },
     {
         heading: "Accounting & MIS Services",
@@ -42,9 +42,9 @@ const SOLUTIONS_ORDERED = [
         items: ["Accounting & Financial Close", "ERP & Accounting Software", "Inventory Verification", "Payroll & IFRS Implementation"],
     },
     {
-        heading: "Financial Advisory Services",
-        href: "/services/financial-advisory",
-        items: ["Financial Due Diligence & Business Valuation", "Feasibility Studies & Business Planning", "Treasury, Hedging & Market Risk Advisory"],
+        heading: "Business Strategy Advisory",
+        href: "/services/business-advisory",
+        items: ["Sourcing & Procurement Services", "Corporate Training Services", "SCA Compliance Advisory"],
     },
     {
         heading: "Taxation Services",

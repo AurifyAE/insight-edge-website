@@ -128,6 +128,30 @@ export const servicesData: ServiceSectionData[] = [
                 ],
             },
         ],
+        highlights: [
+            "Independent & Trusted Assurance — audit is a strategic tool that strengthens governance, builds stakeholder confidence, and supports informed decision-making across precious metals, bullion, jewellery, and luxury watch businesses",
+            "Globally Recognised Methodology — every engagement is performed in line with internationally recognised auditing standards and industry best practices, meeting the expectations of regulators, financial institutions, and international stakeholders",
+            "Industry-Focused Expertise — deep, sector-specific experience in gold, bullion, jewellery, and luxury watch trading allows us to identify operational, stock, and compliance risks that general-practice firms often overlook",
+            "Beyond Compliance — our approach examines the controls, systems, and stock-handling practices behind the numbers, backing every audit opinion with practical, actionable recommendations",
+        ],
+        faqs: [
+            {
+                question: "What's the difference between internal and external audit?",
+                answer: "External audit is an independent, statutory examination of your financial statements resulting in an opinion used by shareholders, regulators, and banks. Internal audit is an ongoing, management-focused review of controls and risk areas, designed to improve operations rather than produce a public opinion. IEG provides both, structured to complement each other without compromising independence.",
+            },
+            {
+                question: "Do all UAE companies need audited financial statements?",
+                answer: "Requirements vary by jurisdiction and licence type, but most UAE companies must prepare — and in many cases file — audited financial statements, particularly for Corporate Tax filing, free zone licence renewal, bank facility requirements, and investor due diligence. IEG confirms your specific obligation based on entity type and licensing authority.",
+            },
+            {
+                question: "How long does a statutory audit typically take?",
+                answer: "For a single-branch precious metals or jewellery business, a statutory audit typically takes 3–5 weeks from receipt of complete records to signed financials, depending on stock reconciliation complexity. Multi-branch groups with consolidation requirements may take longer.",
+            },
+            {
+                question: "What makes IEG's audit approach different for gold and jewellery businesses?",
+                answer: "We understand stock valuation by purity and weight, hallmarking, making-charge structures, and the cash-intensive nature of retail bullion and jewellery sales — risk areas that general audit firms are not equipped to test properly.",
+            },
+        ],
     },
     {
         number: "02",
@@ -212,59 +236,194 @@ export const servicesData: ServiceSectionData[] = [
                 body: "We align all AML/CFT compliance solutions with the standards set by the UAE Executive Office for AML/CFT, the Central Bank of the UAE, and the Financial Action Task Force (FATF) - giving precious metals businesses a defensible, internationally recognized compliance posture.",
             },
         ],
+        highlights: [
+            "Forensic Investigation Expertise — IEG conducts forensic investigations into suspected fraud, stock shortfalls, and unrecorded transactions, a particularly high-stakes area for multi-branch gold, bullion, and jewellery businesses where physical stock and cash sales create unique exposure",
+            "Independent, Evidence-Based Approach — investigations are built on documentary evidence, stock reconciliation analysis, and transaction tracing, designed to withstand scrutiny from shareholders, boards, or, where necessary, legal proceedings",
+            "Beyond Standard Audit Scope — special audits go deeper than statutory audit materiality-based testing, covering suspected management override, related-party dealings, branch-level stock discrepancies, and cash sale irregularities",
+            "Enterprise Risk Consulting — beyond reactive investigation, we help businesses build proactive risk management frameworks including internal control reviews, fraud risk assessments, and branch-level monitoring structures",
+            "Confidential & Discreet — every engagement is handled with strict confidentiality and independence from day-to-day operational relationships",
+        ],
+        faqs: [
+            {
+                question: "What triggers the need for a forensic investigation rather than a normal audit?",
+                answer: "Common triggers include unexplained physical stock shortfalls, suspected unrecorded cash sales, shareholder disputes over financial performance, or a majority shareholder's concerns about a minority shareholder-manager's conduct. A statutory audit is not designed to investigate suspected fraud — a special/forensic engagement is scoped specifically for that purpose.",
+            },
+            {
+                question: "How does IEG investigate suspected gold stock shortfalls?",
+                answer: "We reconcile physical stock counts against book records at branch level, trace stock movements and purity/weight variances over the review period, and cross-check sales and purchase documentation against recorded cash and bank flows to identify where and how discrepancies arose.",
+            },
+            {
+                question: "Can findings from a forensic investigation be used in legal or shareholder proceedings?",
+                answer: "Our investigations are conducted on an evidence-based, documented basis so findings can support shareholder discussions, board decisions, or legal proceedings if the client chooses to pursue them — though the specific evidentiary standard required depends on the forum and should be discussed with legal counsel alongside our findings.",
+            },
+            {
+                question: "What's the difference between a special audit and risk consulting?",
+                answer: "A special audit is typically reactive — investigating a specific suspected issue after the fact. Risk consulting is proactive — building internal controls, fraud risk assessments, and monitoring frameworks designed to reduce the likelihood of similar issues arising across your branches going forward.",
+            },
+            {
+                question: "How long does a forensic investigation typically take?",
+                answer: "Timeframes depend on the number of branches, volume of transactions under review, and cooperation from operational staff, but multi-branch stock and cash investigations for jewellery businesses typically run from several weeks to a few months. We agree scope and an estimated timeline before starting.",
+            },
+        ],
     },
     {
         number: "03",
-        id: "cfo-services",
-        image: "/images/services/special-CFO-services.jpg",
-        title: "CFO Services",
+        id: "compliance-and-responsible",
+        image: "/images/services/complaince-and-responsible.jpg",
+        title: "Compliance & Responsible Business",
         shortIntro:
-            "Outsourced and part-time CFO expertise for precious metal trading, refining, logistics, and storage businesses - at a fraction of the cost of a full-time hire.",
+            "Embedding a culture of compliance and responsible conduct - protecting your business, your reputation, and your licence to operate.",
         intro:
-            "Growing businesses in the precious metals sector often reach a stage where the financial complexities of operations require strategic CFO oversight - yet a full-time hire may not be cost-effective. Our outsourced and part-time CFO services deliver full-time CFO expertise at a fraction of the cost.",
+            "The precious metals sector operates under some of the most stringent AML/CFT, responsible sourcing, and regulatory requirements in the UAE. We help businesses embed a genuine culture of compliance and responsible conduct - across AML frameworks, regulatory licensing, responsible sourcing, ethical governance, and supply chain due diligence - ensuring you are protected, trusted, and licence-ready.",
         subServices: [
             {
-                title: "Financial Strategy & Transformation",
-                icon: "TrendingUp",
+                title: "AML / CFT Compliance",
+                icon: "ShieldAlert",
                 description:
-                    "We identify gaps in your financial structure and develop a clear roadmap for improvement - from trade finance to metal inventory valuation - ensuring your finance function evolves with operational goals and regulatory obligations.",
+                    "Anti-Money Laundering & Counter-Financing of Terrorism frameworks for UAE's highest-risk DNFBP sector.",
+                checklist: [
+                    {
+                        items: [
+                            "AML policy, procedure & controls documentation",
+                            "KYC, KYT & Enhanced Due Diligence (EDD)",
+                            "Sanctions screening & TBML controls",
+                            "STR / SAR preparation & goAML submissions",
+                            "Staff AML training & awareness programmes",
+                            "Gap assessments & remediation plans",
+                        ],
+                    },
+                ],
             },
             {
-                title: "Treasury & Working Capital Optimization",
-                icon: "Wallet",
+                title: "Regulatory Compliance",
+                icon: "Scale",
                 description:
-                    "Efficient treasury and cash flow models to maintain liquidity, manage trade receivables, and optimize capital utilization - ensuring stability in a price-sensitive, margin-driven industry.",
+                    "End-to-end compliance management across all applicable UAE and international regulatory standards.",
+                checklist: [
+                    {
+                        items: [
+                            "DMCC Good Delivery Rules compliance",
+                            "UAE Central Bank & FTA regulatory alignment",
+                            "FATF & OECD Due Diligence Framework",
+                            "LBMA Responsible Gold / Silver / PGM guidance",
+                            "ESR (Economic Substance Regulations)",
+                            "Compliance health checks & readiness reviews",
+                        ],
+                    },
+                ],
             },
             {
-                title: "Debt, Credit & Financing Advisory",
-                icon: "Landmark",
+                title: "Regulatory Licensing",
+                icon: "FileSignature",
                 description:
-                    "Our specialists evaluate financing options, structure credit facilities, and advise on trade finance solutions aligned with the capital needs of your precious metals operations.",
+                    "Full lifecycle support for regulatory licensing from initial applications through renewals and ongoing obligations.",
+                checklist: [
+                    {
+                        items: [
+                            "Precious metals dealer licence applications",
+                            "DNFBP registration with UAE Ministry of Economy",
+                            "Free zone licence structuring & advisory",
+                            "Licence condition monitoring & management",
+                            "Renewal documentation & submission support",
+                            "Liaison with regulatory authorities",
+                        ],
+                    },
+                ],
             },
             {
-                title: "Integrated Performance Management",
-                icon: "Gauge",
+                title: "AML Inspection Support",
+                icon: "ClipboardCheck",
                 description:
-                    "We establish strong financial governance frameworks and performance metrics, aligning operational results with your strategic objectives for consistent growth and compliance.",
+                    "Specialist preparation and hands-on support throughout UAE regulatory AML/CFT inspection visits.",
+                checklist: [
+                    {
+                        items: [
+                            "Pre-inspection readiness & gap analysis",
+                            "Compliance file compilation & management",
+                            "Mock inspection walkthroughs & briefings",
+                            "On-site support during regulatory visits",
+                            "Response to regulatory findings & queries",
+                            "Post-inspection remediation & monitoring",
+                        ],
+                    },
+                ],
             },
             {
-                title: "M&A Support",
-                icon: "Handshake",
+                title: "Responsible Sourcing",
+                icon: "Leaf",
                 description:
-                    "Whether expanding into refining, forming a joint venture, or acquiring a trading entity, we provide expert financial due diligence and integration support for smooth, profitable transitions.",
+                    "Ensuring your precious metals supply chain meets the highest international standards for ethical and conflict-free sourcing.",
+                checklist: [
+                    {
+                        items: [
+                            "OECD Due Diligence Guidance implementation",
+                            "DMCC & LBMA responsible sourcing compliance",
+                            "Conflict mineral risk identification & assessment",
+                            "Supply chain mapping & counterparty review",
+                            "Annual responsible sourcing compliance reporting",
+                            "Supplier onboarding & due diligence frameworks",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "Ethical Business Conduct",
+                icon: "BadgeCheck",
+                description:
+                    "Building and embedding ethical business practices and governance frameworks that earn the trust of regulators, banks, and counterparties.",
+                checklist: [
+                    {
+                        items: [
+                            "Code of conduct & ethics policy development",
+                            "Anti-bribery & anti-corruption (ABAC) frameworks",
+                            "Whistleblowing policy & reporting channel design",
+                            "Board-level governance & ethics advisory",
+                            "Conflict of interest management frameworks",
+                            "Ethics training & awareness programmes",
+                        ],
+                    },
+                ],
+            },
+            {
+                title: "Supply Chain Due Diligence",
+                icon: "Search",
+                description:
+                    "Rigorous due diligence across the full precious metals supply chain - protecting your business from illicit flows and reputational risk.",
+                checklist: [
+                    {
+                        items: [
+                            "End-to-end supply chain risk mapping",
+                            "Counterparty & supplier KYC/KYB assessments",
+                            "Red flag identification & escalation procedures",
+                            "Trade-Based Money Laundering (TBML) controls",
+                            "Ongoing monitoring of supplier risk profiles",
+                            "Due diligence documentation & audit trails",
+                        ],
+                    },
+                ],
             },
         ],
         features: [
-            { title: "Cash flow analysis", description: "specific to precious metals operations" },
-            { title: "Investment decisions", description: "strategic planning & forecasting" },
-            { title: "Contract review", description: "trading agreements & supplier terms" },
-            { title: "Bank liaison", description: "advisors, insurers & regulators" },
+            { title: "AML/CFT Frameworks", description: "Built for UAE's DNFBP sector obligations" },
+            { title: "Responsible Sourcing", description: "OECD, DMCC & LBMA-aligned programmes" },
+            { title: "Regulatory Licensing", description: "Full lifecycle support from application to renewal" },
+            { title: "Ethical Governance", description: "Code of conduct, ABAC & whistleblowing frameworks" },
         ],
         extraSections: [
             {
-                heading: "CFO Services Consultation",
-                body: "Our CFO services are powered by deep industry expertise, financial acumen, and a thorough understanding of UAE regulatory frameworks - including DMCC, FTA, and AML/CFT compliance. Our CFO professionals stay ahead of evolving financial and tax trends, enabling us to deliver tailored, practical solutions to your most pressing challenges - whether you're scaling operations, restructuring, or seeking to enhance financial performance. We work alongside you as a strategic financial partner, ensuring your business operates with efficiency, foresight, and full compliance in one of the UAE's most dynamic and highly regulated industries.",
+                heading: "Why Compliance & Responsible Business Matters",
+                body: [
+                    "The UAE precious metals sector is classified as a Designated Non-Financial Business and Profession (DNFBP) - one of the highest-risk categories under UAE AML/CFT regulations. Businesses face increasing scrutiny from the Ministry of Economy, the UAE Financial Intelligence Unit, and international banking counterparties.",
+                    "Beyond regulatory obligation, genuine compliance and responsible conduct protect your banking relationships, preserve your licence to operate, and build the institutional trust that underpins long-term business growth. We help you move from compliance as a checkbox to compliance as a competitive advantage.",
+                ],
             },
+        ],
+        highlights: [
+            "Deep expertise in UAE AML/CFT frameworks for DNFBP precious metals businesses",
+            "End-to-end support from policy design to regulatory inspection defence",
+            "OECD, LBMA, and DMCC responsible sourcing frameworks implemented",
+            "Ethical governance frameworks trusted by regulators, banks, and counterparties",
+            "Practical, operational compliance - not just documentation",
         ],
     },
     {
@@ -362,37 +521,32 @@ export const servicesData: ServiceSectionData[] = [
             },
         ],
         highlights: [
-            "Built for the Precious Metals Industry - unlike general consulting firms, we focus on the unique financial, regulatory, and operational challenges of the precious metals and jewellery sector",
-            "Industry-Focused Specialists - our team understands bullion trading, refining operations, manufacturing processes, inventory controls, and industry reporting requirements",
-            "End-to-End Compliance Support - from tax registration and impact assessments to filing, audits, and ongoing advisory",
-            "Integrated Advisory Approach - Corporate Tax, VAT, IFRS, Internal Audit, ERP Advisory, E-Invoicing, and Compliance Services under one roof",
-            "Trusted Industry Partner - helping precious metals businesses navigate evolving regulations with confidence and clarity",
+            "Specialist UAE Corporate Tax Guidance — helping precious metals, bullion, jewellery, and luxury watch businesses navigate Corporate Tax with confidence, from initial registration and taxable income assessment to QFZP eligibility and ongoing filing compliance",
+            "Strategic, Not Just Compliance-Driven — our advisory covers structuring decisions, group relief and restructuring relief eligibility, related-party transaction implications, and how Corporate Tax interacts with your VAT and Transfer Pricing position",
+            "QFZP Eligibility & Free Zone Structuring — we assess and help maintain Qualifying Free Zone Person status for Shams, DMCC, and other free zone clients, including substance requirements and qualifying income tests, so you don't inadvertently lose your 0% rate",
+            "Sector-Specific Application — Corporate Tax treatment of gold trading margins, making charges, and multi-branch group structures requires specialist interpretation applied with direct reference to how precious metals businesses actually operate",
+            "Ongoing Compliance & Health Checks — we manage Corporate Tax return filing, provisional assessments, and periodic health checks to catch exposures before they become FTA queries or penalties",
         ],
         faqs: [
             {
-                question: "Does Corporate Tax apply to bullion and gold trading businesses?",
-                answer:
-                    "Yes. Corporate Tax applies to taxable income generated by bullion trading, jewellery businesses, refineries, manufacturers, wholesalers, and retailers operating in the UAE.",
+                question: "What is the UAE Corporate Tax rate and who does it apply to?",
+                answer: "Corporate Tax is levied at 9% on taxable income above AED 375,000 for most UAE businesses, with income up to that threshold taxed at 0%. Qualifying Free Zone Persons meeting specific conditions can benefit from a 0% rate on qualifying income instead. IEG assesses which regime applies to your business.",
             },
             {
-                question: "How does Corporate Tax affect precious metals inventory?",
-                answer:
-                    "Inventory valuation methods, stock movements, unrealized gains, and cost allocation practices can significantly impact taxable income calculations.",
+                question: "What is a Qualifying Free Zone Person (QFZP) and how do we maintain that status?",
+                answer: "A QFZP is a free zone entity that meets adequate substance requirements, earns qualifying income, and complies with transfer pricing and other conditions, allowing 0% tax on qualifying income. Status can be lost if conditions aren't maintained year-round — IEG monitors this continuously rather than only at filing time.",
             },
             {
-                question: "Can Free Zone precious metals businesses benefit from 0% Corporate Tax?",
-                answer:
-                    "Potentially, provided they meet the requirements applicable to Qualifying Free Zone Persons and maintain compliance with relevant regulations.",
+                question: "Does Corporate Tax apply to gold trading margins and making charges differently?",
+                answer: "Taxable income is generally based on accounting profit adjusted per Corporate Tax law, so trading margins and making-charge income both fall within taxable income unless a specific exemption or QFZP qualifying income treatment applies. IEG reviews your revenue streams individually to confirm treatment.",
             },
             {
-                question: "Are transfer pricing rules applicable to precious metals businesses?",
-                answer:
-                    "Yes. Businesses with related-party transactions must comply with UAE transfer pricing requirements and maintain appropriate documentation.",
+                question: "What happens if my business misses a Corporate Tax filing deadline?",
+                answer: "Late registration and late filing both carry fixed administrative penalties, with additional penalties accruing for late payment of tax due. IEG manages client filing calendars specifically to prevent this, and can assist with voluntary disclosures if an error is later identified.",
             },
             {
-                question: "What records should precious metals businesses maintain?",
-                answer:
-                    "Businesses should maintain complete accounting records, inventory reports, transaction documentation, sourcing records, contracts, and supporting tax documentation.",
+                question: "Do I need a Transfer Pricing study for related-party transactions?",
+                answer: "If you transact with related parties or connected persons — common in family-run precious metals groups — UAE Corporate Tax law requires arm's-length pricing, with disclosure and, in some cases, full documentation requirements. IEG determines whether a simplified disclosure or full study applies to you.",
             },
         ],
     },
@@ -566,37 +720,32 @@ export const servicesData: ServiceSectionData[] = [
             },
         ],
         highlights: [
-            "Built for the Precious Metals Industry - we understand the operational realities of bullion trading, refining, jewellery manufacturing, wholesale distribution, and retail operations",
-            "Financial & Technology Expertise - accounting, taxation, compliance, ERP, and industry expertise under one roof",
-            "End-to-End Support - from readiness assessments to implementation and ongoing compliance management",
-            "Regulatory-Focused Approach - helping businesses align with evolving UAE tax and digital compliance requirements",
-            "Industry-Specific Solutions - tailored frameworks designed around the unique requirements of precious metals businesses",
+            "Ahead of the UAE's Mandatory E-Invoicing Rollout — grounded in Ministerial Decisions 243 and 244 of 2025 and Cabinet Decision 106 of 2025, IEG helps precious metals, bullion, and jewellery businesses prepare well ahead of their compliance deadline",
+            "PINT-AE Compliant Readiness — we assess your current invoicing and ERP systems against the PINT-AE specification, identify data and format gaps, and guide you through service provider selection and integration",
+            "Full Compliance Roadmap — our engagement covers gap analysis, SOP development, staff training, and a phased implementation plan so the transition doesn't disrupt daily trading, billing, or stock movement documentation",
+            "Sector-Aware Implementation — gold and jewellery invoicing often involves purity, weight, and making-charge line items that don't map neatly onto generic templates; we ensure your structured e-invoices correctly capture these industry-specific details",
+            "End-to-End Support — from initial readiness assessment through go-live and post-implementation review, IEG stays engaged throughout your e-invoicing transition, not just at the point of system rollout",
         ],
         faqs: [
             {
-                question: "What is changing under UAE E-Invoicing?",
-                answer:
-                    "Businesses will gradually move from traditional invoices and PDFs to structured electronic invoices exchanged through approved digital channels.",
+                question: "What is UAE e-invoicing and is it mandatory?",
+                answer: "UAE e-invoicing is a structured electronic invoicing system built on the Peppol network (5-corner model), introduced under Ministerial Decisions 243/244 of 2025 and Cabinet Decision 106/2025. It is being phased in as mandatory for B2B and B2G transactions, with businesses required to issue and receive invoices through accredited service providers rather than free-form PDF or paper invoices.",
             },
             {
-                question: "Will precious metals businesses be affected?",
-                answer:
-                    "Yes. Bullion traders, refineries, manufacturers, wholesalers, and retailers should assess their readiness and system capabilities.",
+                question: "What is PINT-AE and why does it matter for our invoices?",
+                answer: "PINT-AE is the UAE-specific Peppol invoicing data specification that defines the structured fields every e-invoice must contain. Your ERP or invoicing system needs to generate data matching this specification, which is why a gap analysis against your current system is the essential first step.",
             },
             {
-                question: "Do existing ERP systems need upgrades?",
-                answer:
-                    "Many businesses will require system enhancements, integrations, or process redesigns to meet e-invoicing requirements.",
+                question: "How does e-invoicing affect gold and jewellery-specific invoice details like making charges and purity?",
+                answer: "Structured e-invoicing requires clearly defined line items, and generic templates often don't separate metal value, making charges, and purity/weight details the way jewellery invoicing requires. IEG's implementation ensures these sector-specific details are correctly structured within the PINT-AE format rather than lost in a generic conversion.",
             },
             {
-                question: "How does e-invoicing impact VAT compliance?",
-                answer:
-                    "Invoice data becomes more standardized and digitally traceable, increasing the importance of accurate VAT treatment and reporting.",
+                question: "What's involved in becoming e-invoicing ready?",
+                answer: "Typically: a gap analysis of your current invoicing system and data fields, selection of an accredited service provider, system or ERP configuration, staff training on the new process, and a parallel-run period before full go-live. IEG supports each stage.",
             },
             {
-                question: "When should businesses start preparing?",
-                answer:
-                    "Immediately. Early assessment and planning reduce implementation risks and compliance challenges.",
+                question: "What's the risk of not being ready by the compliance deadline?",
+                answer: "Businesses that aren't integrated with an accredited service provider by their applicable deadline risk being unable to issue compliant invoices for in-scope transactions, which can affect the ability to invoice B2B/B2G customers and may carry penalties once enforcement begins. Early readiness avoids a rushed, higher-risk implementation closer to the deadline.",
             },
         ],
     },
@@ -696,9 +845,11 @@ export const servicesData: ServiceSectionData[] = [
             },
         ],
         highlights: [
-            "Accurate & Timely Deliverables - precision and punctuality in financial reporting",
-            "Tailored Industry Solutions - customized frameworks for the precious metals trade",
-            "End-to-End Accounting Setup - ERP design, implementation, and process optimization",
+            "Chartered Accountants & Precious Metals Specialists — a team of qualified Chartered Accountants combining core accounting expertise with deep sector-specific knowledge of gold, bullion, and jewellery trading including stock valuation, hallmarking, and making-charge structures unique to the industry",
+            "End-to-End Accounting Solutions — from day-to-day bookkeeping and financial reporting to management information systems, we support the full accounting function so you can focus on trading and growing your business",
+            "Management Information Systems (MIS) Reporting — beyond statutory books, we build recurring MIS reports covering sales analysis, branch performance, stock movement, and profitability dashboards that give owners real-time visibility into how the business is actually performing",
+            "Customised for the Precious Metals Industry — no generic templates; we design accounting processes, chart of accounts, and reporting structures tailored to gold, bullion, jewellery, and luxury watch businesses accounting for physical stock movements, purity variances, and multi-branch operations",
+            "Multi-Branch & Group Reporting — experience consolidating financials and MIS data across multiple UAE branches and related entities, with clean intercompany reconciliations and IFRS-compliant reporting",
         ],
         extraSections: [
             {
@@ -706,77 +857,120 @@ export const servicesData: ServiceSectionData[] = [
                 body: "Unlike traditional accounting firms, we adopt an insider's perspective. Our professionals immerse themselves in your business operations to understand trading cycles, refinery processes, and metal movement, ensuring that every accounting record reflects true business reality. Our process begins with a comprehensive business assessment, leading to innovative and customized accounting strategies that enhance operational efficiency and profitability.",
             },
         ],
+        faqs: [
+            {
+                question: "What's the difference between statutory accounting and MIS reporting?",
+                answer: "Statutory accounting produces the formal financial statements required for audit, tax filing, and regulatory purposes. MIS (Management Information System) reporting is internal, operational reporting — branch-level sales, stock movement, profitability by product line — designed to help owners and managers make faster, better-informed day-to-day decisions.",
+            },
+            {
+                question: "Can IEG consolidate accounts and MIS data across multiple branches?",
+                answer: "Yes. We regularly prepare consolidated financials and branch-level MIS dashboards for multi-branch precious metals groups, including intercompany reconciliations, so ownership gets both a statutory group view and an operational branch-by-branch view.",
+            },
+            {
+                question: "How does IEG handle physical gold stock accounting differently from a general accountant?",
+                answer: "We account for stock by weight and purity, track making-charge and value-addition components separately from metal value, and reconcile physical stock counts against book records at branch level — addressing risk areas that generic accounting approaches often miss.",
+            },
+            {
+                question: "What accounting software does IEG work with?",
+                answer: "We work with major UAE-market platforms (including Tally, Zoho Books, QuickBooks, and Xero) and can design a chart of accounts and MIS reporting structure within your existing system rather than requiring a system change.",
+            },
+            {
+                question: "How often are MIS reports typically delivered?",
+                answer: "Most clients receive monthly MIS packs, though branch performance or stock movement summaries can be provided weekly for businesses that want tighter operational visibility. Reporting frequency is agreed based on your management needs.",
+            },
+        ],
     },
     {
         number: "07",
-        id: "financial-advisory",
-        image: "/images/services/financial-advisory.jpg",
-        title: "Financial Advisory Services",
+        id: "business-advisory",
+        image: "/images/services/Business-strategy-advisory.jpg",
+        title: "Business Strategy Advisory",
         shortIntro:
-            "End-to-end corporate finance, valuation, feasibility, and treasury/hedging advisory for navigating price volatility and regulatory complexity in the precious metals trade.",
+            "Strategic guidance and specialist advisory services that drive growth, operational excellence, and regulatory confidence across the precious metals industry.",
         intro:
-            "In today's dynamic regulatory and market environment, businesses in the precious metals sector face increasingly complex financial and operational challenges. Navigating volatility in global metal prices, managing liquidity, ensuring compliance with UAE regulations, and optimizing business performance require expert financial guidance and a structured advisory framework. Our advisory team offers complete, end-to-end solutions across corporate finance, business feasibility, due diligence, and valuation services - enabling clients to make well-informed strategic decisions, identify growth opportunities, mitigate financial risks, and enhance operational efficiency.",
+            "Businesses in the precious metals sector face increasingly complex strategic, operational, and regulatory challenges. Whether you need to strengthen your sourcing and procurement frameworks, build internal capability through specialist training, or navigate the requirements of UAE regulatory bodies, our Business Strategy Advisory practice delivers practical, expert-led solutions aligned with the realities of the precious metals industry.",
         subServices: [
             {
-                title: "Financial Due Diligence & Business Valuation",
-                icon: "SearchCheck",
+                title: "Sourcing & Procurement Services",
+                icon: "ShoppingCart",
                 description:
-                    "A clear and accurate assessment of your business's economic value - considering asset and inventory valuations (bullion, jewelry, refinery stock), liabilities, revenue streams, and regulatory/compliance risks. Essential for M&A, business sale, equity transfer, insurance valuation, succession planning, and shareholder disputes.",
-            },
-            {
-                title: "Feasibility Studies & Business Planning",
-                icon: "Compass",
-                description:
-                    "Comprehensive analysis covering financial, operational, and regulatory perspectives for launching a refinery, setting up a trading company, or expanding into a new GCC market - including market trends, capital requirements, ROI, and supply chain viability.",
-                chips: [
-                    "Market trends & demand projections",
-                    "Capital requirements & ROI analysis",
-                    "Operational viability & supply chain",
-                    "Regulatory & tax obligations",
-                    "Investment proposals & bank loan documentation",
+                    "End-to-end sourcing and procurement advisory for precious metals businesses ensuring competitive, compliant, and risk-managed acquisition of gold, silver, and other precious commodities.",
+                checklist: [
+                    {
+                        items: [
+                            "Supplier identification, qualification & onboarding frameworks",
+                            "Procurement policy design & tender process support",
+                            "Gold and silver supplier due diligence & KYB assessments",
+                            "Price benchmarking against LBMA and market reference rates",
+                            "Contract negotiation support and commercial terms advisory",
+                            "Responsible sourcing verification and documentation",
+                            "Procurement risk assessment and mitigation strategies",
+                            "ERP and procure-to-pay process design & optimization",
+                        ],
+                    },
                 ],
             },
             {
-                title: "Treasury, Hedging & Market Risk Advisory",
-                icon: "ShieldHalf",
+                title: "Corporate Training Services",
+                icon: "GraduationCap",
                 description:
-                    "Gold, silver, and PGM prices are influenced by macroeconomic conditions, geopolitics, and currency movements. We design structured hedging strategies aligned with physical exposure, commercial objectives, and risk appetite - with full IFRS hedge accounting alignment.",
+                    "Specialist training programmes designed to build financial, compliance, and operational capability within precious metals businesses - from frontline staff to board level.",
                 checklist: [
                     {
-                        heading: "Advisory Coverage",
                         items: [
-                            "Commodity price risk management",
-                            "Hedging strategy design & governance",
-                            "Foreign exchange (FX) risk management",
-                            "Liquidity & working capital management",
-                            "Treasury policy & control frameworks",
-                            "Market risk measurement & reporting",
+                            "AML/CFT awareness & DNFBP obligation training",
+                            "UAE Corporate Tax and VAT compliance training",
+                            "IFRS accounting standards training for finance teams",
+                            "Precious metals industry induction and operations training",
+                            "Internal audit and risk management capability building",
+                            "Responsible sourcing and OECD due diligence training",
+                            "Cybersecurity and data integrity awareness programmes",
+                            "Board-level governance & regulatory updates workshops",
                         ],
                     },
+                ],
+            },
+            {
+                title: "SCA Compliance Advisory",
+                icon: "Landmark",
+                description:
+                    "Specialist advisory for entities regulated by the Securities and Commodities Authority (SCA) navigating licensing, reporting, and compliance obligations in the UAE's commodity and capital markets framework.",
+                checklist: [
                     {
-                        heading: "Why It's Critical - Inadequate Practices Expose You To",
                         items: [
-                            "Significant earnings volatility",
-                            "Margin erosion from adverse price movements",
-                            "Liquidity shortfalls & margin call pressures",
-                            "Breaches of banking covenants & credit limits",
-                            "Increased scrutiny from auditors, lenders & regulators",
+                            "SCA regulatory framework assessment and gap analysis",
+                            "SCA licensing applications, renewals & condition management",
+                            "Commodity trading compliance advisory for gold & precious metals",
+                            "Market conduct and disclosure obligations advisory",
+                            "SCA reporting requirements design & implementation support",
+                            "Compliance monitoring and internal controls for SCA entities",
+                            "Liaison and correspondence with SCA regulatory bodies",
+                            "Training on SCA rules and regulatory expectations",
                         ],
                     },
                 ],
             },
         ],
         features: [
-            { title: "Hedging Instruments", description: "Forwards, Futures & Options" },
-            { title: "Pricing Methods", description: "LBMA feeds, Market Premiums" },
-            { title: "Risk Reporting", description: "Stress Testing & Scenario Analysis" },
-            { title: "M&A Support", description: "Due Diligence & Integration" },
+            { title: "Sourcing & Procurement", description: "LBMA-benchmarked, risk-managed acquisition frameworks" },
+            { title: "Corporate Training", description: "From AML/CFT to IFRS and board-level governance" },
+            { title: "SCA Advisory", description: "Licensing, reporting & compliance for regulated entities" },
+            { title: "Strategic Growth", description: "Operational excellence & regulatory confidence" },
         ],
         extraSections: [
             {
-                heading: "Accounting & Regulatory Alignment",
-                body: "We work closely with finance and accounting teams to ensure that treasury and hedging activities are aligned with IFRS hedge accounting requirements and regulatory expectations. This includes documentation support, hedge effectiveness testing, and alignment between economic hedging and accounting outcomes.",
+                heading: "Why Business Strategy Advisory Matters",
+                body: [
+                    "In the precious metals industry, operational excellence and regulatory compliance are inseparable from commercial success. Sourcing the wrong supplier, failing an SCA inspection, or operating with undertrained staff can expose your business to financial, regulatory, and reputational harm.",
+                    "Our Business Strategy Advisory practice bridges the gap between strategic ambition and operational reality - delivering specialist advisory, training, and regulatory support that strengthens every layer of your business.",
+                ],
             },
+        ],
+        highlights: [
+            "Procurement frameworks benchmarked to LBMA and responsible sourcing standards",
+            "Training programmes from operational staff through to board level",
+            "Specialist SCA compliance and licensing support for regulated entities",
+            "Practical, industry-specific advisory grounded in UAE regulatory realities",
         ],
     },
     {
@@ -902,6 +1096,35 @@ export const servicesData: ServiceSectionData[] = [
                 body: "Precious metals businesses operate in a high-risk tax environment due to price volatility, complex supply chains, cross-border transactions, and evolving tax regulations. Tax authorities increasingly expect organizations to demonstrate structured tax governance and proactive risk management. Without a structured approach, tax risks can escalate into disputes and litigation, disrupt operations and banking relationships, and impact investor confidence and enterprise value.",
             },
         ],
+        highlights: [
+            "Comprehensive UAE Tax Expertise — end-to-end tax advisory and compliance covering VAT, Customs, Transfer Pricing, and related indirect tax obligations, helping precious metals and jewellery businesses stay compliant while identifying opportunities for tax efficiency",
+            "VAT Specialisation for Precious Metals — VAT treatment of investment-grade metals, jewellery, and making charges involves specific rules including zero-rating conditions and reverse-charge mechanisms for registered dealers that require specialist interpretation, not generic VAT advice",
+            "Risk-Based Tax Management — our proactive approach identifies potential tax exposures before they become significant issues through regular compliance reviews and tax health assessments that strengthen internal controls and reduce financial risk",
+            "Customs & Cross-Border Advisory — for businesses importing or exporting bullion and jewellery, we advise on customs duty treatment, documentation requirements, and cross-border compliance specific to precious metals movement",
+            "Delivering Value Beyond Compliance — we combine technical expertise, industry knowledge, and strategic insight to help organisations manage tax obligations efficiently while creating long-term value",
+        ],
+        faqs: [
+            {
+                question: "How does VAT apply to gold, bullion, and jewellery sales in the UAE?",
+                answer: "Investment-grade precious metals (gold, silver, and platinum of 99% purity or higher, in tradeable form) generally qualify for VAT zero-rating under specific conditions, while jewellery and making charges are typically subject to standard-rated VAT, with a reverse-charge mechanism available for registered dealer-to-dealer transactions. Correct classification is assessed on a transaction-by-transaction basis.",
+            },
+            {
+                question: "What VAT registration threshold applies to my business?",
+                answer: "Mandatory VAT registration applies once taxable supplies and imports exceed AED 375,000 in the preceding 12 months (or are expected to in the next 30 days); voluntary registration is available above AED 187,500. IEG assesses your position and manages registration and ongoing filing.",
+            },
+            {
+                question: "Are there customs duty considerations for importing gold or jewellery into the UAE?",
+                answer: "Yes — customs treatment depends on the form and purity of the metal, its declared value, and the applicable free zone or mainland import route. IEG advises on correct customs classification and documentation to avoid delays or disputes at the point of import.",
+            },
+            {
+                question: "What are the penalties for late VAT filing or payment in the UAE?",
+                answer: "Penalties include fixed fines for late registration and late filing, plus escalating penalties for late payment of tax due. IEG manages client filing calendars specifically to avoid these exposures and can assist with voluntary disclosures where errors are identified.",
+            },
+            {
+                question: "How often should our VAT position be reviewed?",
+                answer: "We recommend at least an annual VAT health check, with more frequent reviews for businesses with high transaction volumes or frequent cross-border dealings, given how easily VAT treatment errors on gold versus jewellery transactions can compound over time.",
+            },
+        ],
     },
     {
         number: "09",
@@ -979,9 +1202,33 @@ export const servicesData: ServiceSectionData[] = [
             },
         ],
         highlights: [
-            "Exclusive focus on the precious metals industry",
-            "Strong understanding of UAE Good Delivery Rules and industry pricing mechanisms",
-            "Practical, institutionally credible frameworks for bullion-backed digital assets",
+            "Emerging Regulatory Expertise — as gold-backed tokens, digital bullion platforms, and asset tokenization gain traction in the UAE, IEG helps precious metals businesses understand the regulatory, accounting, and tax implications of entering this space, an area few traditional audit and advisory firms cover",
+            "Bridging Traditional Bullion and Digital Assets — we bring together core precious metals expertise with an understanding of how physical gold backing, custody arrangements, and digital token issuance need to align so that a tokenized gold offering remains defensible from an audit, tax, and compliance standpoint",
+            "Accounting & Financial Reporting for Digital Assets — we advise on how to account for and report digital asset holdings, gold-backed token issuance, and related transactions under applicable UAE frameworks, an area where standard guidance is still developing and specialist judgement is required",
+            "Compliance & AML Considerations — digital asset and tokenization activities carry their own AML/CFT and virtual asset regulatory considerations; we help clients assess these alongside their existing precious metals AML/CFT framework rather than treating them as a separate silo",
+            "Advisory for a Fast-Evolving Space — given how quickly this regulatory area is developing, we position ourselves as an ongoing advisory partner helping clients stay current as UAE virtual asset and digital commodity regulation matures",
+        ],
+        faqs: [
+            {
+                question: "What does \"gold tokenization\" actually mean?",
+                answer: "Gold tokenization refers to issuing a digital token that represents ownership of, or a claim on, physical gold held in custody — allowing gold to be traded, transferred, or fractionally owned digitally while (in a properly structured offering) remaining backed by real bullion held by a custodian.",
+            },
+            {
+                question: "Is tokenizing gold or digital asset activity regulated in the UAE?",
+                answer: "Yes — virtual asset activities in the UAE fall under regulatory frameworks that vary by jurisdiction (for example, VARA in Dubai, or other applicable federal and free zone regulators), and the specific licensing and compliance requirements depend on the nature of the token and the activity being carried out. IEG helps clients understand which regime applies to their specific offering before proceeding.",
+            },
+            {
+                question: "How should a business account for gold-backed tokens or digital asset holdings?",
+                answer: "Accounting treatment depends on the substance of the arrangement — whether the token represents a financial instrument, an inventory-like commodity claim, or something else — and specialist judgement is often required given that standard-setters are still developing specific guidance in this area. IEG advises on appropriate treatment based on your specific structure.",
+            },
+            {
+                question: "Do our existing AML/CFT obligations extend to digital asset or tokenization activities?",
+                answer: "In many cases, yes — and there may be additional virtual-asset-specific AML/CFT requirements layered on top of your existing DPMS obligations. IEG reviews your tokenization model against both frameworks to identify the full compliance picture rather than assuming your existing precious metals AML programme automatically covers digital asset activity.",
+            },
+            {
+                question: "Is this an area only for large bullion players, or can smaller jewellers explore digital assets too?",
+                answer: "Interest in this space is growing across business sizes, often starting with smaller pilot initiatives (e.g., a limited tokenized product line) rather than a full-scale platform launch. IEG can advise at whatever stage — from early feasibility and regulatory scoping through to full implementation support.",
+            },
         ],
     },
 ];

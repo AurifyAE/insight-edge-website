@@ -13,12 +13,6 @@ interface Challenge {
 
 const CHALLENGES: Challenge[] = [
     {
-        title: "Gold as a Currency Asset",
-        description:
-            "Managing gold-denominated transactions and valuation fluctuations creates significant accounting and reporting complexities.",
-        image: "/images/services/financial-advisory.jpg",
-    },
-    {
         title: "Unfixed Gold Trading Exposure",
         description:
             "Price volatility and unsettled contracts can impact profitability, risk management, and financial transparency.",
@@ -29,24 +23,6 @@ const CHALLENGES: Challenge[] = [
         description:
             "Traditional bookkeeping practices often fall short when dealing with precious metals inventory, valuation, and financial reporting requirements.",
         image: "/images/services/executives-preparing-meeting.jpg",
-    },
-    {
-        title: "RCM, Import & Re-Export Complexities",
-        description:
-            "Reverse Charge Mechanism (RCM), import-for-re-export transactions, dore bars, and varying purity standards create unique taxation, invoicing, and bookkeeping challenges.",
-        image: "/images/services/Business-strategy-advisory.jpg",
-    },
-    {
-        title: "Non-Standard Invoicing Practices",
-        description:
-            "Many businesses still operate with inconsistent invoicing structures, making compliance, reconciliation, and audit readiness increasingly difficult.",
-        image: "/images/services/audit-and-assurance.jpg",
-    },
-    {
-        title: "E-Invoicing Readiness",
-        description:
-            "As regulatory frameworks evolve, businesses need standardized digital invoicing systems that align with international best practices and future compliance requirements.",
-        image: "/images/services/E-invoicing.jpg",
     },
     {
         title: "OECD-Aligned Responsible Sourcing",
@@ -71,12 +47,6 @@ const CHALLENGES: Challenge[] = [
         description:
             "Disconnected trading, refining, inventory, finance, and compliance systems often result in limited visibility and inefficient decision-making.",
         image: "/images/services/digitalization-and-tokenisation.jpg",
-    },
-    {
-        title: "Audit Readiness & Documentation Control",
-        description:
-            "Maintaining accurate records and supporting documentation for audits, compliance reviews, and stakeholder reporting remains a persistent challenge.",
-        image: "/images/services/special-CFO-services.jpg",
     },
 ];
 
