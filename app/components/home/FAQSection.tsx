@@ -5,29 +5,39 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
     {
-        question: "How can I search for properties on your website?",
+        question: "How does UAE Corporate Tax apply to precious metals businesses?",
         answer:
-            "Simply use our search bar to filter properties by location, price range, property type, and other criteria.",
+            "Corporate Tax applies to eligible businesses, with industry-specific considerations for bullion trading, refining, jewellery manufacturing, and inventory valuation.",
     },
     {
-        question: "What fees are associated with using your services?",
+        question: "Can Insight Edge Global help with Corporate Tax compliance?",
         answer:
-            "Our fee structure depends on the scope of services engaged. Get in touch with our team for a tailored quote.",
+            "Yes. We provide Corporate Tax registration, advisory, return preparation, filing, and ongoing compliance support.",
     },
     {
-        question: "How can I verify the authenticity of property listings?",
+        question: "Is e-invoicing mandatory in the UAE?",
         answer:
-            "All listings are verified through our due diligence process before being published on the platform.",
+            "Yes. The UAE is introducing a mandatory PEPPOL-based e-invoicing framework. We help businesses prepare for compliance.",
     },
     {
-        question: "What is your process for international property transactions?",
+        question: "What e-invoicing services do you offer?",
         answer:
-            "We coordinate with cross-border partners and legal advisors to ensure a smooth, compliant transaction process.",
+            "We provide readiness assessments, ERP advisory, process mapping, implementation support, and compliance guidance.",
     },
     {
-        question: "How can I schedule a property viewing?",
+        question: "Why is IFRS important for precious metals businesses?",
         answer:
-            "Contact our team directly through the website or call us to arrange a viewing at a time that suits you.",
+            "IFRS ensures accurate financial reporting, improves transparency, and supports regulatory compliance.",
+    },
+    {
+        question: "Do you provide regulatory and compliance advisory?",
+        answer:
+            "Yes. We help businesses manage tax, financial reporting, governance, AML/CFT, and regulatory compliance requirements.",
+    },
+    {
+        question: "Can you support businesses during FTA audits?",
+        answer:
+            "Yes. We assist with documentation, compliance reviews, audit preparation, and responding to FTA requirements.",
     },
 ];
 
@@ -40,7 +50,7 @@ export default function FAQSection() {
                 {/* Left: heading */}
                 <div>
                     <h2 className="text-[#1E2E4B] font-bold leading-tight tracking-tight text-[32px] sm:text-[40px] lg:text-5xl">
-                        Frequently Ask a Question
+                        Frequently Asked Questions
                     </h2>
                     <p className="mt-4 text-[#454748] text-sm sm:text-base leading-relaxed max-w-sm">
                         Got a question? We&apos;ve got the answer. Check out our frequently

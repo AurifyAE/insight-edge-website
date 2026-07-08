@@ -60,7 +60,7 @@ const TrustSection: React.FC = () => {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <h2 className="text-white font-bold leading-tight tracking-tight text-[28px] sm:text-[34px] lg:text-5xl">
+                        <h2 className="text-white font-bold leading-tight tracking-tight text-2xl sm:text-3xl lg:text-4xl">
                             Your Trusted Precious Metals Advisory Partner.
                         </h2>
                         <p className="mt-4 text-[#C5C7C8] text-sm sm:text-base leading-relaxed max-w-md">

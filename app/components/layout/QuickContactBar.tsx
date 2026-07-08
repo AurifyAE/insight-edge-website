@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, type LucideIcon } from "lucide-react";
+import { Phone, Mail, MessageCircleMore, type LucideIcon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const CONTACTS: {
@@ -72,24 +72,14 @@ export default function QuickContactBar() {
                 onClick={() => setOpen((p) => !p)}
                 animate={{ backgroundColor: open ? "#C6DB5A" : "#1E2E4B" }}
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex items-center justify-center rounded-full shadow-[0_8px_28px_-8px_rgba(30,46,75,0.55)]"
+                className="relative flex items-center justify-center rounded-full shadow-[0_6px_20px_0px_rgba(30,46,75,0.65)]"
                 style={{ width: TRIGGER_SIZE, height: TRIGGER_SIZE }}
             >
-                {/* Headset / contact icon */}
-                <motion.svg
-                    viewBox="0 0 24 24"
-                    fill="none"
+                <MessageCircleMore
+                    className="h-5 w-5 transition-colors duration-200"
                     strokeWidth={1.75}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    animate={{ color: open ? "#1E2E4B" : "#ffffff" }}
-                    transition={{ duration: 0.2 }}
-                    className="h-5 w-5"
-                    stroke="currentColor"
-                >
-                    <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-                </motion.svg>
+                    style={{ color: open ? "#1E2E4B" : "#ffffff" }}
+                />
             </motion.button>
         </div>
     );

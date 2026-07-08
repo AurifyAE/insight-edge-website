@@ -52,7 +52,7 @@ export default function Home() {
           <AffiliateSection />
           </div>
         </div>
-      <Testimonials />
+      {/* <Testimonials /> */}
       <FAQSection />
       <CTASection />
     </div>
