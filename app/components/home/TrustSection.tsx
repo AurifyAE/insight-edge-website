@@ -61,15 +61,10 @@ const TrustSection: React.FC = () => {
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <h2 className="text-white font-bold leading-tight tracking-tight text-[28px] sm:text-[34px] lg:text-5xl">
-                            {/* Your Trusted Precious Metals Advisory Partner. */}
-                            Lorem ipsum dolor sit amet,
+                            Your Trusted Precious Metals Advisory Partner.
                         </h2>
                         <p className="mt-4 text-[#C5C7C8] text-sm sm:text-base leading-relaxed max-w-md">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem eligendi voluptatibus odit, laboriosam veniam mollitia officia dicta, harum adipisci provident delectus suscipit. Nostrum corporis quisquam ea id, quidem voluptatum aliquam!
-                            {/* Insight Edge Global is a UAE-based audit, assurance, tax, and
-                            advisory firm built exclusively around the precious metals
-                            industry - helping gold refiners, traders, and jewellers stay
-                            compliant and confident. */}
+                            Insight Edge Global is a UAE-registered audit and advisory firm dedicated exclusively to the precious metals industry. We help bullion traders, refineries, and jewellery businesses navigate complex tax, audit, and regulatory requirements with industry-specific expertise, strengthening compliance, reducing risk, and enabling sustainable growth.
                         </p>
                         <Link
                             href="/about-us"
