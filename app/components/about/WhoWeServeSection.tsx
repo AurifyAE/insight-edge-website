@@ -49,50 +49,114 @@ const CARD_H = 84; // card height px
 const GAP = 8;     // gap between cards px
 const STEP = CARD_H + GAP;
 
-function MobileCarousel() {
-    const [index, setIndex] = useState(0);
+const MOVE_MS = 500;  // time to glide from one card to the next
+const DWELL_MS = 900; // pause on each card before moving on
 
-    useEffect(() => {
-        const id = setInterval(() => {
-            setIndex((p) => p + 1);
-        }, 2600);
-        return () => clearInterval(id);
-    }, []);
+// easeInOutQuad
+const ease = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+function MobileCarousel() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [paused, setPaused] = useState(false);
+    const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const rafRef = useRef<number | null>(null);
+    const expectedTopRef = useRef(0);
 
     // Duplicate list so we can loop seamlessly
     const doubled = [...services, ...services];
+    const loopHeight = services.length * STEP;
+
+    useEffect(() => {
+        if (paused) return;
+        const el = containerRef.current;
+        if (!el) return;
+
+        let dwelling = true;
+        let phaseStart: number | null = null;
+        // Align to the nearest card so moves land cleanly on card boundaries
+        let fromTop = Math.round(el.scrollTop / STEP) * STEP;
+        if (fromTop >= loopHeight) fromTop -= loopHeight;
+        el.scrollTop = fromTop;
+        expectedTopRef.current = fromTop;
+
+        const tick = (ts: number) => {
+            const node = containerRef.current;
+            if (!node) return;
+            if (phaseStart === null) phaseStart = ts;
+            const elapsed = ts - phaseStart;
+
+            if (dwelling) {
+                if (elapsed >= DWELL_MS) {
+                    dwelling = false;
+                    phaseStart = ts;
+                    fromTop = expectedTopRef.current;
+                }
+            } else {
+                const t = Math.min(elapsed / MOVE_MS, 1);
+                let next = fromTop + STEP * ease(t);
+                if (next >= loopHeight) next -= loopHeight;
+                node.scrollTop = next;
+                expectedTopRef.current = next;
+                if (t >= 1) {
+                    dwelling = true;
+                    phaseStart = ts;
+                }
+            }
+
+            rafRef.current = requestAnimationFrame(tick);
+        };
+
+        rafRef.current = requestAnimationFrame(tick);
+        return () => {
+            if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        };
+    }, [paused, loopHeight]);
+
+    const handleScroll = () => {
+        const el = containerRef.current;
+        if (!el) return;
+        // Ignore scroll events triggered by our own programmatic auto-scroll
+        if (Math.abs(el.scrollTop - expectedTopRef.current) < 2) return;
+        setPaused(true);
+        if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+        scrollTimeout.current = setTimeout(() => setPaused(false), 3000);
+    };
 
     return (
-        <div className="relative overflow-hidden" style={{ height: `${VISIBLE * STEP - GAP}px` }}>
-            <motion.div
-                animate={{ y: -(index % services.length) * STEP }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col gap-2"
+        <div className="relative" style={{ height: `${VISIBLE * STEP - GAP}px` }}>
+            <div
+                ref={containerRef}
+                onScroll={handleScroll}
+                className={`h-full overflow-y-auto overscroll-contain flex flex-col gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+                    paused ? "snap-y snap-mandatory" : ""
+                }`}
             >
                 {doubled.map((service, i) => {
                     const Icon = service.icon;
                     const bgImage = service.id % 2 === 0 ? "bg-img-2.jpeg" : "bg-img-1.jpeg";
                     return (
-                        <div
+                        <motion.button
                             key={`${service.id}-${i}`}
-                            className="relative flex items-center gap-4 rounded-2xl overflow-hidden mx-1 shadow-sm shrink-0"
+                            type="button"
+                            whileTap={{ scale: 0.97 }}
+                            className="group relative flex items-center gap-4 rounded-2xl overflow-hidden mx-1 shadow-sm shrink-0 snap-start cursor-pointer select-none transition-all duration-200 ease-out active:shadow-lg active:shadow-[#C6DB5A]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C6DB5A]"
                             style={{ height: `${CARD_H}px` }}
                         >
                             <div
-                                className="absolute inset-0 bg-cover bg-center"
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-active:scale-105"
                                 style={{ backgroundImage: `url(/images/home/${bgImage})` }}
                             />
-                            <div className="absolute inset-0 bg-[#1E2E4B]/75" />
-                            <div className="relative z-10 flex items-center justify-center ml-5 shrink-0">
+                            <div className="absolute inset-0 bg-[#1E2E4B]/75 transition-colors duration-200 group-active:bg-[#1E2E4B]/85" />
+                            <div className="relative z-10 flex items-center justify-center ml-5 shrink-0 transition-transform duration-200 group-active:scale-110">
                                 <Icon className="h-7 w-7 text-[#C6DB5A]" strokeWidth={1.5} />
                             </div>
-                            <p className="relative z-10 text-sm font-semibold leading-snug text-white pr-4">
+                            <p className="relative z-10 text-sm font-semibold leading-snug text-white pr-4 text-left">
                                 {service.label}
                             </p>
-                        </div>
+                        </motion.button>
                     );
                 })}
-            </motion.div>
+            </div>
 
             {/* Top & bottom fade masks */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b from-white to-transparent z-10" />
