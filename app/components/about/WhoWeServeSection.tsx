@@ -126,6 +126,7 @@ function MobileCarousel() {
         <div className="relative" style={{ height: `${VISIBLE * STEP - GAP}px` }}>
             <div
                 ref={containerRef}
+                data-lenis-prevent
                 onScroll={handleScroll}
                 className={`h-full overflow-y-auto overscroll-contain flex flex-col gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
                     paused ? "snap-y snap-mandatory" : ""
@@ -157,10 +158,6 @@ function MobileCarousel() {
                     );
                 })}
             </div>
-
-            {/* Top & bottom fade masks */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b from-white to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-white to-transparent z-10" />
         </div>
     );
 }
@@ -175,7 +172,7 @@ const WhoWeServeSection: React.FC = () => {
         <section ref={sectionRef} className="w-full bg-white py-24 px-4">
             {/* Header */}
             <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-4xl font-bold text-[#1E2E4B] mb-3 tracking-tight">
+                <h2 className="text-2xl md:text-4xl font-bold text-[#1E2E4B] mb-3 tracking-tight">
                     Who We Serve
                 </h2>
                 <p className="text-[#4A5565] text-sm md:text-base leading-relaxed">

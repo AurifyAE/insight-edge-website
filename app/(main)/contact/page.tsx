@@ -100,7 +100,7 @@ export default function ContactPage() {
                 {/* ════════════════════════════════════
                     LEFT COLUMN
                 ════════════════════════════════════ */}
-                <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-10 order-2 lg:order-1">
 
                     <div>
                         <h2 className="text-2xl font-bold text-[#1E2E4B] mb-8">Contact Information</h2>
@@ -180,8 +180,11 @@ export default function ContactPage() {
 
                 {/* ════════════════════════════════════
                     RIGHT COLUMN - FORM (Client Component)
+                    First on mobile, right side on desktop
                 ════════════════════════════════════ */}
-                <ContactForm />
+                <div className="order-1 lg:order-2">
+                    <ContactForm />
+                </div>
             </div>
 
             {/* Bottom CTA Strip */}

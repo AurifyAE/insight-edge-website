@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { defaultMetadata } from "@/seo.config";
 import QuickContactBar from "@/app/components/layout/QuickContactBar";
+import SmoothScroll from "@/app/components/layout/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -80,6 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             src="https://www.facebook.com/tr?id=1900549650520008&ev=PageView&noscript=1"
           />
         </noscript>
+        <SmoothScroll />
         <main className="grow">{children}</main>
         <QuickContactBar />
       </body>

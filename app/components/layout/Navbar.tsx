@@ -569,8 +569,8 @@ export default function Navbar() {
 
                             {/* ── Logo ── */}
                             <a href="/" className="flex items-center gap-3 shrink-0">
-                                <img src="/images/home/logo.svg" alt="IEG Icon" className="h-8 w-auto" />
-                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" className="h-3 w-auto" />
+                                <img src="/images/home/logo.svg" alt="IEG Icon" className="h-6 md:h-8 w-auto" />
+                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" className="h-2.5 md:h-3 w-auto" />
                             </a>
 
                             {/* ── Desktop Nav ── */}
@@ -684,16 +684,16 @@ export default function Navbar() {
                                 <a
                                     href="/contact"
                                     onClick={() => setMenuOpen(false)}
-                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 shadow-sm mb-2 bg-[#8B9C32] hover:bg-[#ABBD4F] text-white"
+                                    className="flex items-center justify-center w-full px-5 py-3 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 shadow-sm mb-2 bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67]"
                                 >
-                                    Connect with an Expert
+                                    Contact Us
                                 </a>
 
                                 {/* Mobile brochure - opens upward to avoid overflow */}
                                 <div className="relative" ref={mobileBrochureRef}>
                                     <button
                                         onClick={toggleMobileBrochure}
-                                        className="flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 shadow-sm border border-[#ABBD4F] text-[#283F67] hover:bg-[#ABBD4F] hover:text-white"
+                                        className="flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full text-[15px] font-semibold tracking-wide transition-colors duration-200 shadow-sm border border-[#C6DB5A] text-[#283F67] hover:bg-[#C6DB5A] hover:text-white"
                                     >
                                         <DownloadIcon />
                                         Download Brochure
