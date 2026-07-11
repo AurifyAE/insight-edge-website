@@ -113,11 +113,15 @@ export default function ServicesOverviewGrid({ showHeader = true }: { showHeader
                                     {service.number}
                                 </motion.span>
 
-                                {/* Title always pinned to bottom of image */}
+                                {/* Title always pinned to bottom of image - big when inactive, shrinks on hover */}
                                 <div className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-8 bg-linear-to-t from-[#1E2E4B]/80 to-transparent">
-                                    <h3 className="font-(family-name:--font-heading) text-[16px] font-semibold leading-snug text-white sm:text-[18px]">
+                                    <motion.h3
+                                        className="origin-bottom-left font-(family-name:--font-heading) text-[22px] font-semibold leading-snug text-white"
+                                        animate={{ scale: isActive ? 0.75 : 1 }}
+                                        transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.9 }}
+                                    >
                                         {service.title}
-                                    </h3>
+                                    </motion.h3>
                                 </div>
 
                                 {/* Active: icon badge - pops in from center */}

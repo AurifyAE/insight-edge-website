@@ -8,54 +8,62 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const SLIDES: Slide[] = [
     {
-        bg: "/images/services/audit-and-assurance.jpg",
-        title: "Specialized Financial & Compliance Solutions for the Precious Metals Industry",
+        bg: "/images/services/special-CFO-services.jpg",
+        title: [
+            { text: "Trusted", highlight: true },
+            { text: "Financial Advisors" },
+            { text: "for", highlight: true },
+            { text: "Precious Metals" },
+        ],
         description:
             "Helping bullion traders, refineries, manufacturers, and jewellery businesses stay compliant, reduce risk, and achieve sustainable growth.",
         buttons: [
-            { label: "Book a Consultation", href: "/services", variant: "solid" as const },
+            { label: "Our Services", href: "/services", variant: "solid" as const },
             { label: "Contact Us", href: "/contact", variant: "outline" as const },
         ],
     },
     {
-        bg: "/images/services/Business-strategy-advisory.jpg",
-        title: "Corporate Tax Compliance for the Precious Metals Industry",
-        description: [
-            "Filing Deadline: 30 September 2026*",
-            "Gold traders, bullion dealers, refineries, and jewellery businesses face complex tax, inventory, and reporting obligations. Ensure your Corporate Tax return is filed accurately and on time.",
+        bg: "/images/blogs/blog-img-1.jpg",
+        bgMobile: "/images/services/financial-advisory-service.jpg",
+        title: [
+            { text: "E-Invoicing" },
+            { text: "That", highlight: true },
+            { text: "Understands the Precious Metals" },
+            { text: "Industry", highlight: true },
         ],
-        buttons: [
-            { label: "Book a Consultation", href: "/services/corporate-tax", variant: "solid" as const },
-            { label: "Contact Us", href: "/contact", variant: "outline" as const },
-        ],
-        rightPanel: [
-            { amount: "AED 500", period: "per month", note: "Late filing penalty (first 12 months)" },
-            { amount: "AED 1,000", period: "per month", note: "Late filing penalty (after 12 months)" },
-            { amount: "AED 10,000", period: "one-time", note: "Penalty for late registration" },
-            { amount: "14%", period: "per annum", note: "Annual charge on unpaid tax amounts" },
-        ],
-    },
-    {
-        bg: "/images/services/E-invoicing.jpg",
-        title: "E-Invoicing Compliance for Bullion, Refinery & Jewellery Businesses",
         description:
             "Prepare your ERP, invoicing, and VAT systems for the UAE's mandatory PEPPOL-based e-invoicing framework.",
         buttons: [
-            { label: "Book Your E-Invoicing Readiness Assessment", href: "/services/e-invoicing", variant: "solid" as const },
+            { label: "View More", href: "/services/e-invoicing", variant: "solid" as const },
+            { label: "Contact Us", href: "/contact", variant: "outline" as const },
         ],
-        sideBox: {
-            eyebrow: "Key Compliance Date",
-            headline: "Mandatory from 1 January 2027",
-            body: "For businesses with annual revenue above AED 50 million.",
-        },
+    },
+    {
+        bg: "/images/services/audit-and-assurance.jpg",
+        title: [
+            { text: "Does your" },
+            { text: "VAT", highlight: true },
+            { text: "turnover match your books and your" },
+            { text: "Corporate Tax", highlight: true },
+            { text: "turnover?" },
+        ],
+        description:
+            "Precious Metals Industry-Focused UAE Corporate Tax Advisory & Compliance",
+        buttons: [
+            { label: "View More", href: "/services/corporate-tax", variant: "solid" as const },
+            { label: "Contact Us", href: "/contact", variant: "outline" as const },
+        ],
     },
 ];
 
 type PenaltyItem = { amount: string; period: string; note: string };
 type SideBox = { eyebrow: string; headline: string; body: string };
+type TitleSegment = { text: string; highlight?: boolean };
 type Slide = {
     bg: string;
-    title: string;
+    /** Optional mobile-only background (falls back to `bg` on md+). */
+    bgMobile?: string;
+    title: TitleSegment[];
     description: string | string[];
     buttons: { label: string; href: string; variant: "solid" | "outline" }[];
     rightPanel?: PenaltyItem[];
@@ -113,7 +121,7 @@ export default function HeroSection() {
         <section className="relative w-full overflow-hidden mt-[88px] lg:mt-18">
 
             {/* ── Shared background image (mobile + desktop) ── */}
-            <div className="absolute inset-0 md:mx-4 md:rounded-t-2xl md:mt-9 overflow-hidden">
+            <div className="absolute inset-0 md:mx-4 md:rounded-2xl md:mt-9 overflow-hidden">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={active}
@@ -123,19 +131,38 @@ export default function HeroSection() {
                         transition={{ duration: 0.5 }}
                         className="absolute inset-0"
                     >
-                        <Image
-                            src={slide.bg}
-                            fill
-                            alt="Hero Background"
-                            className="object-cover object-center"
-                            priority
-                        />
+                        {slide.bgMobile ? (
+                            <>
+                                <Image
+                                    src={slide.bgMobile}
+                                    fill
+                                    alt="Hero Background"
+                                    className="object-cover object-center md:hidden"
+                                    priority
+                                />
+                                <Image
+                                    src={slide.bg}
+                                    fill
+                                    alt="Hero Background"
+                                    className="hidden object-cover object-center md:block"
+                                    priority
+                                />
+                            </>
+                        ) : (
+                            <Image
+                                src={slide.bg}
+                                fill
+                                alt="Hero Background"
+                                className="object-cover object-center"
+                                priority
+                            />
+                        )}
                     </motion.div>
                 </AnimatePresence>
                 {/* Top navy fade */}
                 <div className="absolute inset-x-0 top-0 h-48 bg-linear-to-b from-[#1E2E4B]/60 to-transparent" />
-                {/* Bottom white fade */}
-                <div className="absolute inset-x-0 bottom-0 h-96 md:h-[480px] bg-linear-to-t from-white via-white/80 to-transparent" />
+                {/* Bottom brand-blue fade */}
+                <div className="absolute inset-x-0 bottom-0 h-96 md:h-[480px] bg-linear-to-t from-[#1E2E4B]/90 via-[#1E2E4B]/60 to-transparent" />
                 {/* Subtle mid overlay for text area legibility */}
                 <div className="absolute inset-0 bg-white/10" />
             </div>
@@ -156,15 +183,20 @@ export default function HeroSection() {
                         <div className={slide.rightPanel || slide.sideBox ? "flex-1 min-w-0" : "w-full lg:w-1/2"}>
                             <div className="px-5 py-0 sm:px-8 lg:px-12 flex flex-col gap-3 md:gap-4">
                                 {/* Headline */}
-                                <h1 className="text-[#1E2E4B] font-bold leading-tight tracking-tight text-[20px] sm:text-[24px] lg:text-4xl text-pretty">
-                                    {slide.title}
+                                <h1 className="text-white font-bold leading-tight tracking-tight text-[22px] sm:text-[26px] lg:text-4xl text-pretty">
+                                    {slide.title.map((seg, i) => (
+                                        <span key={i} className={seg.highlight ? "text-[#C6DB5A]" : undefined}>
+                                            {seg.text}
+                                            {i < slide.title.length - 1 ? " " : ""}
+                                        </span>
+                                    ))}
                                 </h1>
 
                                 {/* Sub-headline */}
-                                <div className="text-[#454748] leading-relaxed text-[13px] sm:text-sm lg:text-base lg:max-w-md space-y-1.5">
+                                <div className="text-white/85 leading-relaxed text-[13px] sm:text-sm lg:text-base lg:max-w-md space-y-1.5">
                                     {Array.isArray(slide.description)
                                         ? slide.description.map((line, i) => (
-                                            <p key={i} className={i === 0 ? "font-semibold text-[#1E2E4B]" : ""}>
+                                            <p key={i} className={i === 0 ? "font-semibold text-white" : ""}>
                                                 {line}
                                             </p>
                                         ))
@@ -181,7 +213,7 @@ export default function HeroSection() {
                                             className={
                                                 btn.variant === "solid"
                                                     ? "inline-flex items-center justify-center px-5 py-2.5 md:px-7 md:py-3 rounded-xl bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
-                                                    : "inline-flex items-center justify-center px-5 py-2.5 md:px-7 md:py-3 rounded-xl border border-[#283F67] hover:bg-[#283F67]/10 text-[#283F67] text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
+                                                    : "inline-flex items-center justify-center px-5 py-2.5 md:px-7 md:py-3 rounded-xl border border-white/70 hover:bg-white/10 text-white text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
                                             }
                                         >
                                             {btn.label}
@@ -256,7 +288,7 @@ export default function HeroSection() {
                         key={i}
                         aria-label={`Go to slide ${i + 1}`}
                         onClick={() => setActive(i)}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#C6DB5A]" : "w-1.5 bg-[#1E2E4B]/60 hover:bg-[#1E2E4B]/80"
+                        className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#C6DB5A]" : "w-1.5 bg-white/50 hover:bg-white/70"
                             }`}
                     />
                 ))}

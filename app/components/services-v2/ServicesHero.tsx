@@ -51,7 +51,7 @@ export default function ServicesHero() {
     return (
         <section
             ref={containerRef}
-            className="relative flex min-h-[80vh] items-center overflow-hidden px-6 pt-32 pb-20 sm:px-10 lg:px-16"
+            className="relative flex min-h-[60vh] md:min-h-[80vh] items-center overflow-hidden px-6 pt-32 pb-10 md:pb-20 sm:px-10 lg:px-16"
         >
             {/* animated lime accent blob */}
             <div className="hero-blob pointer-events-none absolute right-[-10%] top-1/2 h-[480px] w-[480px] -translate-y-1/2 sm:h-[600px] sm:w-[600px]">

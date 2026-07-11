@@ -85,7 +85,7 @@ export default function Footer() {
 
     return (
         <footer className="bg-[#1e2e4b] text-white py-12 lg:py-16">
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
                 {/* ── Main Footer Grid ── */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
@@ -107,13 +107,13 @@ export default function Footer() {
                                 className="h-2 w-auto object-contain"
                             />
                         </Link>
-                        <p className="text-[15px] text-gray-300 leading-relaxed max-w-[240px]">
+                        <p className="text-[14px] text-gray-300 leading-relaxed max-w-[240px]">
                             Safeguarding Value Through Financial Expertise
                         </p>
 
                         {/* Social Links */}
                         <div className="flex items-center gap-4 mt-2">
-                            <span className="text-[15px] font-semibold text-white">Follow Us:</span>
+                            <span className="text-[14px] font-semibold text-white">Follow Us:</span>
                             <div className="flex items-center gap-3">
                                 <a href="#" className="text-[#ABBD4F] hover:text-white transition-colors">
                                     <FacebookIcon />
@@ -139,7 +139,7 @@ export default function Footer() {
                                 <li key={item.label}>
                                     <Link
                                         href={item.href}
-                                        className="text-[15px] text-gray-300 hover:text-white transition-colors"
+                                        className="text-[14px] text-gray-300 hover:text-[#ABBD4F] transition-colors"
                                     >
                                         {item.label}
                                     </Link>
@@ -166,7 +166,7 @@ export default function Footer() {
                                 <li key={item.label}>
                                     <Link
                                         href={item.href}
-                                        className="text-[15px] text-gray-300 hover:text-white transition-colors"
+                                        className="text-[14px] text-gray-300 hover:text-[#ABBD4F] transition-colors"
                                     >
                                         {item.label}
                                     </Link>
@@ -181,19 +181,19 @@ export default function Footer() {
                         <ul className="flex flex-col gap-4">
                             <li className="flex items-center gap-3">
                                 <EmailIcon />
-                                <a href="mailto:info@insightedge.global" className="text-[15px] text-gray-300 hover:text-white transition-colors">
+                                <a href="mailto:info@insightedge.global" className="text-[14px] text-gray-300 hover:text-[#ABBD4F] transition-colors">
                                     info@insightedge.global
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <PhoneIcon />
-                                <a href="tel:+971503708785" className="text-[15px] text-gray-300 hover:text-white transition-colors">
+                                <a href="tel:+971503708785" className="text-[14px] text-gray-300 hover:text-[#ABBD4F] transition-colors">
                                     +971 50 370 8785
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <GlobeIcon />
-                                <a href="https://www.insightedge.global" className="text-[15px] text-gray-300 hover:text-white transition-colors">
+                                <a href="https://www.insightedge.global" className="text-[14px] text-gray-300 hover:text-[#ABBD4F] transition-colors">
                                     www.insightedge.global
                                 </a>
                             </li>
@@ -203,7 +203,7 @@ export default function Footer() {
                         <div className="mt-4 relative" ref={brochureRef}>
                             <button
                                 onClick={() => setBrochureOpen((p) => !p)}
-                                className="inline-flex items-center gap-3 px-6 py-2.5 border border-white rounded-full text-[15px] font-medium hover:bg-white hover:text-[#1e2e4b] transition-all duration-300 group"
+                                className="inline-flex items-center gap-3 px-6 py-2.5 border border-white rounded-full text-[14px] font-medium hover:bg-white hover:text-[#1e2e4b] transition-all duration-300 group"
                             >
                                 <DownloadIcon />
                                 <span>Download Brochure</span>

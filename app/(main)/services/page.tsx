@@ -2,7 +2,8 @@ import { generateMetadata } from "@/seo.config";
 import GoldGlow from "@/app/components/services-v2/GoldGlow";
 import ServicesHero from "@/app/components/services-v2/ServicesHero";
 import ServicesOverviewGrid from "@/app/components/services-v2/ServicesOverviewGrid";
-import WhyChooseBand from "@/app/components/services-v2/WhyChooseBand";
+// import WhyChooseBand from "@/app/components/services-v2/WhyChooseBand";
+import WhyChoose from "@/app/components/home/WhyChoose";
 
 export const metadata = generateMetadata("services");
 
@@ -22,7 +23,7 @@ export default function ServicesPage() {
                     <ServicesOverviewGrid showHeader={false} />
                     </div>
                 </div>
-                <WhyChooseBand />
+                <WhyChoose />
             </div>
         </div>
     );
