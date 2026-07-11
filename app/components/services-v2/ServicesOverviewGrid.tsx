@@ -113,15 +113,38 @@ export default function ServicesOverviewGrid({ showHeader = true }: { showHeader
                                     {service.number}
                                 </motion.span>
 
-                                {/* Title always pinned to bottom of image - big when inactive, shrinks on hover */}
+                                {/* Title pinned to bottom - cross-fades between a big (resting)
+                                    and small (active) size for a smooth focus-pull morph.
+                                    Both copies are grid-stacked so the box height stays fixed. */}
                                 <div className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-8 bg-linear-to-t from-[#1E2E4B]/80 to-transparent">
-                                    <motion.h3
-                                        className="origin-bottom-left font-(family-name:--font-heading) text-[22px] font-semibold leading-snug text-white"
-                                        animate={{ scale: isActive ? 0.75 : 1 }}
-                                        transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.9 }}
-                                    >
-                                        {service.title}
-                                    </motion.h3>
+                                    <div className="grid items-end">
+                                        {/* Resting (big) */}
+                                        <motion.h3
+                                            className="col-start-1 row-start-1 font-(family-name:--font-heading) text-[26px] font-semibold leading-snug text-white"
+                                            animate={{
+                                                opacity: isActive ? 0 : 1,
+                                                y: isActive ? -8 : 0,
+                                                filter: isActive ? "blur(4px)" : "blur(0px)",
+                                            }}
+                                            transition={{ duration: 0.45, ease: EASE }}
+                                        >
+                                            {service.title}
+                                        </motion.h3>
+
+                                        {/* Active (small) - decorative duplicate */}
+                                        <motion.span
+                                            aria-hidden="true"
+                                            className="col-start-1 row-start-1 block font-(family-name:--font-heading) text-[17px] font-semibold leading-snug text-white"
+                                            animate={{
+                                                opacity: isActive ? 1 : 0,
+                                                y: isActive ? 0 : 8,
+                                                filter: isActive ? "blur(0px)" : "blur(4px)",
+                                            }}
+                                            transition={{ duration: 0.45, ease: EASE }}
+                                        >
+                                            {service.title}
+                                        </motion.span>
+                                    </div>
                                 </div>
 
                                 {/* Active: icon badge - pops in from center */}
