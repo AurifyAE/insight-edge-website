@@ -41,7 +41,7 @@ export default function AboutPage() {
             <WhySpecialist />
             <WhoWeServeSection />
 
-            <div className="bg-gradient-to-b from-[#1E2E4B] to-[#283F67] py-20">
+            <div className="bg-gradient-to-b from-[#1E2E4B] to-[#283F67] py-10 md:py-20">
                 <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-4">
                     <TrendingUp className="w-20 h-20 text-[#ABBD4F]" />
                     <h2 className="text-3xl sm:text-4xl font-bold text-white">

@@ -10,8 +10,8 @@ export default function NotFound() {
     return (
         <div className="min-h-screen flex flex-col bg-white">
             <Navbar />
-            <main className="grow flex items-center justify-center px-4 pt-20">
-                <div className="max-w-xl w-full text-center py-20">
+            <main className="grow flex items-center justify-center px-4 pt-10 md:pt-20">
+                <div className="max-w-xl w-full text-center py-10 md:py-20">
                     <div className="mb-8 relative">
                         <h1 className="text-[12rem] md:text-[16rem] font-black text-[#365693] opacity-5 leading-none select-none">
                             404

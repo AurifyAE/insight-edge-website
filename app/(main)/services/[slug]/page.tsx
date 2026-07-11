@@ -5,7 +5,8 @@ import { servicesData } from "@/app/lib/services-data";
 import GoldGlow from "@/app/components/services-v2/GoldGlow";
 import ServiceDetailHero from "@/app/components/services-v2/ServiceDetailHero";
 import ServicesPageNav from "@/app/components/services-v2/ServicesPageNav";
-import WhyChooseBand from "@/app/components/services-v2/WhyChooseBand";
+// import WhyChooseBand from "@/app/components/services-v2/WhyChooseBand";
+import WhyChoose from "@/app/components/home/WhyChoose";
 
 const BASE_URL = "https://insightedge.global";
 
@@ -68,7 +69,7 @@ export default async function ServiceDetailPage({
                         <ServiceDetailHero data={service} />
                     </div>
                 </div>
-                <WhyChooseBand />
+                <WhyChoose />
             </div>
         </div>
     );

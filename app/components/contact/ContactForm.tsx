@@ -58,7 +58,7 @@ export default function ContactForm() {
             <h2 className="text-2xl font-bold text-[#1E2E4B] mb-8">Send Us a Message</h2>
 
             {submitted ? (
-                <div className="flex flex-col items-center justify-center gap-6 py-20 border border-gray-100 rounded-3xl bg-[#F8FAFC] text-center shadow-sm">
+                <div className="flex flex-col items-center justify-center gap-6 py-10 md:py-20 border border-gray-100 rounded-3xl bg-[#F8FAFC] text-center shadow-sm">
                     <div className="w-20 h-20 rounded-full bg-[#ABBD4F] flex items-center justify-center shadow-lg shadow-[#ABBD4F]/20">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
                             stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">

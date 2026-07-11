@@ -45,7 +45,7 @@ export default function WhyChoose() {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section ref={sectionRef} className="w-full bg-white py-16 md:py-20 lg:py-24">
+        <section ref={sectionRef} className="w-full bg-white py-10 md:py-20 lg:py-24">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-center">
                     {/* ── Left: image ── */}

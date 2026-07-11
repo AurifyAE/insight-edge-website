@@ -110,7 +110,7 @@ export default function HeroSection() {
     const slide = SLIDES[active];
 
     return (
-        <section className="relative w-full overflow-hidden mt-15 lg:mt-18">
+        <section className="relative w-full overflow-hidden mt-[88px] lg:mt-18">
 
             {/* ── Shared background image (mobile + desktop) ── */}
             <div className="absolute inset-0 md:mx-4 md:rounded-t-2xl md:mt-9 overflow-hidden">

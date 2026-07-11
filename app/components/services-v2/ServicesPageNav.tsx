@@ -1,12 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { servicesData } from "@/app/lib/services-data";
 
 export default function ServicesPageNav({ activeId }: { activeId: string }) {
     const [isOpen, setIsOpen] = useState(false);
+    const mobileNavRef = useRef<HTMLElement>(null);
+    const activePillRef = useRef<HTMLLIElement>(null);
+
+    // Center the active pill within the mobile horizontal bar (container scroll
+    // only, so the page never scrolls vertically).
+    useEffect(() => {
+        const container = mobileNavRef.current;
+        const active = activePillRef.current;
+        if (!container || !active) return;
+
+        const cRect = container.getBoundingClientRect();
+        const aRect = active.getBoundingClientRect();
+        const delta =
+            aRect.left - cRect.left - (container.clientWidth - active.clientWidth) / 2;
+
+        container.scrollTo({ left: container.scrollLeft + delta, behavior: "smooth" });
+    }, [activeId]);
 
     return (
         <>
@@ -67,6 +84,7 @@ export default function ServicesPageNav({ activeId }: { activeId: string }) {
 
             {/* Mobile horizontal pill bar */}
             <nav
+                ref={mobileNavRef}
                 aria-label="Service pages"
                 className="sticky top-16 z-30 -mx-6 mb-4 overflow-x-auto border-b border-[#1E2E4B]/6 bg-[#F8F9FA]/90 px-6 py-3 backdrop-blur-lg lg:hidden"
             >
@@ -74,7 +92,7 @@ export default function ServicesPageNav({ activeId }: { activeId: string }) {
                     {servicesData.map((service) => {
                         const isActive = activeId === service.id;
                         return (
-                            <li key={service.id}>
+                            <li key={service.id} ref={isActive ? activePillRef : undefined}>
                                 <Link
                                     href={`/services/${service.id}`}
                                     className={`flex items-center gap-1.5 whitespace-nowrap rounded-sm border px-3.5 py-1.5 text-[12px] transition-colors ${

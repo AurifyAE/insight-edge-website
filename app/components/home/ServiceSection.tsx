@@ -224,7 +224,7 @@ export default function ServicesSection() {
     return (
         <section
             ref={ref}
-            className="relative w-full overflow-hidden overflow-x-hidden py-20 bg-white">
+            className="relative w-full overflow-hidden overflow-x-hidden py-10 md:py-20 bg-white">
             {/* Background image */}
             <div className="absolute inset-0 z-0">
                 <Image

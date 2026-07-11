@@ -77,6 +77,10 @@ const NAV_LINKS = [
 
 const MARQUEE_SERVICES = SOLUTIONS_ORDERED.map((col) => col.heading);
 
+// Toggle the expandable sub-items under "Our Solutions" in the mobile menu.
+// Set to true to bring the nested sub-item lists back.
+const SHOW_MOBILE_SOLUTION_SUBITEMS = false;
+
 // ── Animation variants ────────────────────────────────────────────────────────
 
 const megaVariants: Variants = {
@@ -98,8 +102,6 @@ const megaVariants: Variants = {
 // ── Mega Menu: Our Solutions ──────────────────────────────────────────────────
 
 function SolutionsMegaMenu() {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
     return (
         <motion.div
             key="solutions-mega"
@@ -110,72 +112,23 @@ function SolutionsMegaMenu() {
             className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-[900px] bg-white border-t-2 border-[#8B9C32] shadow-2xl z-50 origin-top"
             style={{ boxShadow: "0 16px 48px 0 rgba(30,50,90,0.13)" }}
         >
-            <div className="flex">
-                {/* Service title list */}
-                <ul className="w-64 shrink-0 border-r border-gray-100 py-3">
-                    {SOLUTIONS_ORDERED.map((service, i) => (
-                        <li key={service.heading}>
-                            <Link
-                                href={service.href}
-                                className={`flex items-center justify-between px-5 py-2.5 text-[13px] font-medium transition-colors duration-150 ${hoveredIndex === i ? "bg-[#f4f7ec] text-[#1E2E4B]" : "text-[#44474D] hover:bg-[#f4f7ec] hover:text-[#1E2E4B]"}`}
-                                onMouseEnter={() => setHoveredIndex(i)}
-                                onMouseLeave={() => setHoveredIndex(null)}
-                            >
-                                <span className="flex items-center gap-3">
-                                    <span className={`text-[10px] font-semibold tabular-nums transition-colors ${hoveredIndex === i ? "text-[#576500]" : "text-[#1E2E4B]/25"}`}>
-                                        {String(i + 1).padStart(2, "0")}
-                                    </span>
-                                    {service.heading}
-                                </span>
-                                <svg className={`h-3 w-3 shrink-0 transition-opacity ${hoveredIndex === i ? "opacity-100 text-[#576500]" : "opacity-0"}`} viewBox="0 0 14 14" fill="none">
-                                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-
-                {/* Sub-items panel */}
-                <div className="flex-1 px-8 py-6 min-h-[300px] flex flex-col justify-start">
-                    <AnimatePresence mode="wait">
-                        {hoveredIndex !== null ? (
-                            <motion.div
-                                key={hoveredIndex}
-                                initial={{ opacity: 0, x: 8 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.15, ease: "easeOut" }}
-                            >
-                                <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#576500] mb-4">
-                                    {SOLUTIONS_ORDERED[hoveredIndex].heading}
-                                </p>
-                                <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
-                                    {SOLUTIONS_ORDERED[hoveredIndex].items.map((item) => (
-                                        <li key={item}>
-                                            <Link
-                                                href={SOLUTIONS_ORDERED[hoveredIndex].href}
-                                                className="flex items-center gap-2 text-[12.5px] text-[#44474D] hover:text-[#1E2E4B] transition-colors duration-150 py-0.5"
-                                            >
-                                                <span className="w-1 h-1 rounded-full bg-[#C6DB5A] shrink-0" />
-                                                {item}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        ) : (
-                            <motion.p
-                                key="placeholder"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="text-[12px] text-[#1E2E4B]/25 mt-1"
-                            >
-                                Hover a service to explore
-                            </motion.p>
-                        )}
-                    </AnimatePresence>
-                </div>
+            {/* Main service headings in a 3-column grid */}
+            <div className="grid grid-cols-3 gap-x-4 gap-y-1 px-6 py-6">
+                {SOLUTIONS_ORDERED.map((service, i) => (
+                    <Link
+                        key={service.heading}
+                        href={service.href}
+                        className="group flex items-center gap-3 rounded-lg px-4 py-3 text-[13px] font-medium text-[#44474D] transition-colors duration-150 hover:bg-[#f4f7ec] hover:text-[#1E2E4B]"
+                    >
+                        <span className="text-[10px] font-semibold tabular-nums text-[#1E2E4B]/25 transition-colors group-hover:text-[#576500]">
+                            {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="flex-1 leading-snug">{service.heading}</span>
+                        <svg className="h-3 w-3 shrink-0 text-[#576500] opacity-0 transition-opacity group-hover:opacity-100" viewBox="0 0 14 14" fill="none">
+                            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </Link>
+                ))}
             </div>
 
             <div className="border-t border-gray-100 px-6 py-3 flex items-center justify-between bg-gray-50/60">
@@ -401,7 +354,26 @@ function TopBanner() {
                         ))}
                     </div>
                 </div>
-                
+
+            </div>
+        </div>
+    );
+}
+
+// ── Mobile Top Banner (marquee only) ─────────────────────────────────────────
+
+function MobileTopBanner() {
+    return (
+        <div className="lg:hidden bg-[#1e3a6b]">
+            <div className="relative h-8 flex items-center overflow-hidden mask-fade-x">
+                <div className="flex w-max animate-marquee gap-8 whitespace-nowrap">
+                    {[...MARQUEE_SERVICES, ...MARQUEE_SERVICES].map((service, i) => (
+                        <span key={i} className="flex items-center gap-2 text-[12px] text-white/85">
+                            <span className="w-1 h-1 rounded-full bg-[#ABBD4F] shrink-0" />
+                            {service}
+                        </span>
+                    ))}
+                </div>
             </div>
         </div>
     );
@@ -563,6 +535,7 @@ export default function Navbar() {
                 className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${scrolled || activeMega ? "shadow-md" : ""}`}
             >
                 <TopBanner />
+                <MobileTopBanner />
                 <div className="relative">
                     <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-[70px]">
@@ -574,7 +547,7 @@ export default function Navbar() {
                             </a>
 
                             {/* ── Desktop Nav ── */}
-                            <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+                            <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1 lg:ml-10 xl:ml-20">
                                 {NAV_LINKS.map(({ label, href, hasMega }) => {
                                     const isPathActive = pathname === href;
                                     const isMegaActive = hasMega ? activeMega === hasMega : false;
@@ -943,14 +916,32 @@ function MobileNavItem({
                         <div className="pl-4 pr-2 py-1 flex flex-col gap-1 border-l-2 border-[#365693]/10 ml-3 mt-1">
                             {link.hasMega === "solutions" && (
                                 <div className="flex flex-col gap-1">
-                                    {SOLUTIONS_ORDERED.map((col, ci) => (
-                                        <MobileNestedDropdown
-                                            key={ci}
-                                            label={col.heading}
-                                            items={col.items}
-                                            onCloseMenu={onCloseMenu}
-                                        />
-                                    ))}
+                                    {/* Main headings only — sub-items hidden (toggle via SHOW_MOBILE_SOLUTION_SUBITEMS) */}
+                                    {!SHOW_MOBILE_SOLUTION_SUBITEMS &&
+                                        SOLUTIONS_ORDERED.map((col, ci) => (
+                                            <Link
+                                                key={ci}
+                                                href={col.href}
+                                                onClick={onCloseMenu}
+                                                className="flex items-center justify-between py-2 text-sm font-semibold text-gray-700 hover:text-[#365693] transition-colors"
+                                            >
+                                                {col.heading}
+                                                <svg width="10" height="10" viewBox="0 0 14 14" fill="none" className="opacity-40 shrink-0">
+                                                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </Link>
+                                        ))}
+
+                                    {/* Sub-items version — hidden, kept for future use */}
+                                    {SHOW_MOBILE_SOLUTION_SUBITEMS &&
+                                        SOLUTIONS_ORDERED.map((col, ci) => (
+                                            <MobileNestedDropdown
+                                                key={ci}
+                                                label={col.heading}
+                                                items={col.items}
+                                                onCloseMenu={onCloseMenu}
+                                            />
+                                        ))}
                                     {/* View All Solutions Button */}
                                     <div className="pt-4 mt-2 border-t border-gray-100" >
                                         <a

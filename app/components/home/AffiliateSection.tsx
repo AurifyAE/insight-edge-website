@@ -31,7 +31,7 @@ const affiliates = [
 
 export default function AffiliateSection() {
     return (
-        <section className="w-full py-16">
+        <section className="w-full py-10 md:py-16">
             <div className="max-w-6xl mx-auto px-4 text-center">
 
                 {/* Title */}

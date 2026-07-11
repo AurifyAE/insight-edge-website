@@ -74,7 +74,7 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative overflow-hidden px-6 py-20 sm:px-10 lg:px-16">
+        <section ref={sectionRef} className="relative overflow-hidden px-6 py-10 md:py-20 sm:px-10 lg:px-16">
             <div
                 className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-right-top opacity-[0.07]"
                 style={{ backgroundImage: "url(/images/home/service-bg-img.png)" }}

@@ -40,7 +40,7 @@ export default function ServicesOverviewGrid({ showHeader = true }: { showHeader
     }, []);
 
     return (
-        <div className="mx-auto max-w-[1200px] px-6 pt-20 sm:px-10 lg:px-16">
+        <div className="mx-auto max-w-[1200px] px-6 pt-10 md:pt-20 sm:px-10 lg:px-16">
             {showHeader && (
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-10">
                     <h2 className="font-(family-name:--font-heading) text-[26px] font-bold text-white sm:text-4xl">
@@ -57,7 +57,7 @@ export default function ServicesOverviewGrid({ showHeader = true }: { showHeader
 
             <div
                 ref={containerRef}
-                className="relative grid grid-cols-1 gap-5 pb-20 sm:grid-cols-2 lg:grid-cols-3"
+                className="relative grid grid-cols-1 gap-5 pb-10 md:pb-20 sm:grid-cols-2 lg:grid-cols-3"
             >
                 {servicesData.map((service, index) => {
                 const Icon =

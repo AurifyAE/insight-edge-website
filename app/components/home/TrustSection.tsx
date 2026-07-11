@@ -51,7 +51,7 @@ const TrustSection: React.FC = () => {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     return (
-        <section ref={sectionRef} className="w-full py-16 md:py-20 lg:py-24">
+        <section ref={sectionRef} className="w-full py-10 md:py-20 lg:py-24">
             <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
                     {/* ── Left: heading + CTA ── */}
