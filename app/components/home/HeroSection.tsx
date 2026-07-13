@@ -37,6 +37,11 @@ const SLIDES: Slide[] = [
             { label: "View More", href: "/services/e-invoicing", variant: "solid" as const },
             { label: "Contact Us", href: "/contact", variant: "outline" as const },
         ],
+        sideBox: {
+            eyebrow: "Key Compliance Date",
+            headline: "Mandatory from 1 January 2027",
+            body: "For businesses with annual revenue above AED 50 million.",
+        },
     },
     {
         bg: "/images/services/audit-and-assurance.jpg",
@@ -52,6 +57,12 @@ const SLIDES: Slide[] = [
         buttons: [
             { label: "View More", href: "/services/corporate-tax", variant: "solid" as const },
             { label: "Contact Us", href: "/contact", variant: "outline" as const },
+        ],
+        rightPanel: [
+            { amount: "AED 500", period: "per month", note: "Late filing penalty (first 12 months)" },
+            { amount: "AED 1,000", period: "per month", note: "Late filing penalty (after 12 months)" },
+            { amount: "AED 10,000", period: "one-time", note: "Penalty for late registration" },
+            { amount: "14%", period: "per annum", note: "Annual charge on unpaid tax amounts" },
         ],
     },
 ];
@@ -79,7 +90,7 @@ function PenaltyCard({ item, index }: { item: PenaltyItem; index: number }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.12 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: "easeOut" } }}
-            className={`group relative overflow-hidden rounded-xl bg-[#1E2E4B]/75 backdrop-blur-sm p-4 cursor-default ${PENALTY_SPANS[index]}`}
+            className={`group relative overflow-hidden rounded-xl border border-white/10 bg-linear-to-br from-[#1E2E4B]/65 to-[#283F67]/25 backdrop-blur-sm p-4 cursor-default ${PENALTY_SPANS[index]}`}
             style={{ WebkitBackdropFilter: "blur(4px)" }}
         >
             {/* shimmer sweep on hover */}
@@ -162,7 +173,7 @@ export default function HeroSection() {
                 {/* Top navy fade */}
                 <div className="absolute inset-x-0 top-0 h-48 bg-linear-to-b from-[#1E2E4B]/60 to-transparent" />
                 {/* Bottom brand-blue fade */}
-                <div className="absolute inset-x-0 bottom-0 h-96 md:h-[480px] bg-linear-to-t from-[#1E2E4B]/90 via-[#1E2E4B]/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-96 md:h-[480px] bg-linear-to-t from-[#1E2E4B] via-[#1E2E4B]/70 to-transparent" />
                 {/* Subtle mid overlay for text area legibility */}
                 <div className="absolute inset-0 bg-white/10" />
             </div>
@@ -234,7 +245,7 @@ export default function HeroSection() {
                                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                     className="hidden lg:flex flex-col shrink-0 w-[340px] xl:w-[380px] px-4 pb-2"
                                 >
-                                    <div className="relative overflow-hidden rounded-xl bg-[#1E2E4B]/75 backdrop-blur-sm p-6" style={{ WebkitBackdropFilter: "blur(4px)" }}>
+                                    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-linear-to-br from-[#1E2E4B]/65 to-[#283F67]/25 backdrop-blur-sm p-6" style={{ WebkitBackdropFilter: "blur(4px)" }}>
                                         <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C6DB5A]/80 mb-3">
                                             {slide.sideBox.eyebrow}
                                         </p>
@@ -265,7 +276,7 @@ export default function HeroSection() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -6 }}
                                         transition={{ duration: 0.3, delay: 0.1 }}
-                                        className="text-[10px] font-semibold uppercase tracking-widest text-[#1E2E4B]/50 mb-3"
+                                        className="text-[10px] font-semibold uppercase tracking-widest text-white/60 mb-3"
                                     >
                                         Non-compliance penalties
                                     </motion.p>
