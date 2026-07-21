@@ -1,0 +1,34 @@
+# Insight Edge Global
+
+> Insight Edge Global LLC is a UAE-registered and approved audit, assurance, tax, and advisory firm based in Dubai, dedicated exclusively to the precious metals industry. We serve gold and silver refiners, bullion traders, jewellery manufacturers, wholesalers and retailers, luxury watch dealers, and other businesses across the precious metals and luxury assets value chain.
+
+Insight Edge Global's services cover statutory audit and assurance, forensic and internal audit, AML/CFT and regulatory compliance, UAE Corporate Tax and VAT/taxation, e-invoicing readiness, accounting and MIS, business strategy advisory, and digital assets/bullion tokenization governance — all built around UAE regulatory frameworks (FTA, DMCC, Central Bank of the UAE, SCA) and international standards (IFRS, LBMA, OECD, FATF).
+
+## Company
+
+- [Home](https://insightedge.global/): Firm overview and summary of audit, assurance, tax, and advisory services for the UAE precious metals industry.
+- [About Us](https://insightedge.global/about-us): Firm background and specialization in the precious metals sector.
+- [Who We Serve](https://insightedge.global/who-we-serve): Client segments served — refiners, bullion traders, jewellery wholesalers/retailers/manufacturers, luxury watch dealers, international precious metal traders, family-owned trading houses, and online luxury asset marketplaces.
+- [Contact](https://insightedge.global/contact): Office location (Oud Metha, Dubai, UAE), phone, email, and inquiry form.
+
+## Services
+
+- [Services overview](https://insightedge.global/services): Full list of audit, tax, compliance, and advisory services for the precious metals industry.
+- [Audit & Assurance Services](https://insightedge.global/services/audit-assurance): Statutory/external audits, reviews, and agreed-upon procedures tailored to gold, silver, and precious metal transactions.
+- [Special Audits & Risk Consulting](https://insightedge.global/services/special-audits-risk): Internal audit, forensic investigation, SOP design, and AML/CFT compliance.
+- [Compliance & Responsible Business](https://insightedge.global/services/compliance-and-responsible): AML/CFT compliance, regulatory licensing, AML inspection support, responsible sourcing, ethical business conduct, and supply chain due diligence.
+- [Corporate Tax Services](https://insightedge.global/services/corporate-tax): UAE Corporate Tax registration, health checks, return filing, transfer pricing, and Free Zone (QFZP) advisory for precious metals businesses.
+- [E-Invoicing Services](https://insightedge.global/services/e-invoicing): Readiness assessment, ERP evaluation, and implementation support for the UAE's mandatory Peppol/PINT-AE e-invoicing framework.
+- [Accounting & MIS Services](https://insightedge.global/services/accounting-mis): Bookkeeping, financial close and reporting, ERP implementation, inventory verification, payroll, and IFRS support.
+- [Business Strategy Advisory](https://insightedge.global/services/business-advisory): Sourcing & procurement advisory, corporate training programmes, and SCA compliance advisory.
+- [Taxation Services](https://insightedge.global/services/taxation): Corporate tax advisory, VAT compliance, BEPS/international tax, transfer pricing, permanent establishment (PE) risk, and tax dispute support.
+- [Digital Assets, Bullion Tokenization & Technology Governance](https://insightedge.global/services/digital-assets): Bullion tokenization advisory, blockchain custody & governance frameworks, AI governance, and cybersecurity & data integrity assessments.
+
+## Insights
+
+- [Blog](https://insightedge.global/blog): Articles on UAE regulatory developments affecting the precious metals industry.
+- [How the UAE E-Invoicing System Impacts Gold and Diamond Traders](https://insightedge.global/blog/uae-e-invoicing-gold-diamond-traders): What jewellers, bullion dealers, and diamond wholesalers need to do before the UAE e-invoicing deadline.
+
+## Optional
+
+- [Sitemap](https://insightedge.global/sitemap.xml): Full XML sitemap of the site.
