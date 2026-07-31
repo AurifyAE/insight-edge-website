@@ -39,6 +39,8 @@ export default function ContactForm() {
         message: "",
     });
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -46,9 +48,29 @@ export default function ContactForm() {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSubmitted(true);
+        setError(null);
+        setSubmitting(true);
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (!res.ok) {
+                const data = await res.json().catch(() => null);
+                throw new Error(data?.error || "Something went wrong. Please try again.");
+            }
+
+            setSubmitted(true);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
@@ -151,12 +173,16 @@ export default function ContactForm() {
                     </div>
 
                     <div className="pt-2">
+                        {error && (
+                            <p className="text-center text-sm text-red-600 mb-4">{error}</p>
+                        )}
                         <button
                             type="submit"
-                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98]"
+                            disabled={submitting}
+                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
                         >
-                            Send Message
-                            <IconSend />
+                            {submitting ? "Sending..." : "Send Message"}
+                            {!submitting && <IconSend />}
                         </button>
                         <p className="text-center text-[12px] text-gray-400 mt-4 italic">
                             * Required fields. We'll respond to your inquiry within 24 hours.
