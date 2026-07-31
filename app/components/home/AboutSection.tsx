@@ -185,8 +185,10 @@ export default function AboutSection() {
                                     src="/images/home/world-map.svg"
                                     alt="World Map"
                                     fill
+                                    sizes="100vw"
                                     className="object-contain object-center"
-                                    priority
+                                    fetchPriority="high"
+                                    loading="eager"
                                 />
                             </div>
                             {/* 100% Stat */}
@@ -288,8 +290,10 @@ export default function AboutSection() {
                                     src="/images/home/world-map.svg"
                                     alt="World Map"
                                     fill
+                                    sizes="100vw"
                                     className="object-contain object-center"
-                                    priority
+                                    fetchPriority="high"
+                                    loading="eager"
                                 />
                             </div>
                             <p

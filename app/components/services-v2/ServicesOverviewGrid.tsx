@@ -5,11 +5,10 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
-import * as Icons from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { servicesData } from "@/app/lib/services-data";
+import { servicesSummary } from "@/app/lib/services-summary";
+import { getServiceIcon } from "@/app/lib/service-icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,10 +58,8 @@ export default function ServicesOverviewGrid({ showHeader = true }: { showHeader
                 ref={containerRef}
                 className="relative grid grid-cols-1 gap-5 pb-10 md:pb-20 sm:grid-cols-2 lg:grid-cols-3"
             >
-                {servicesData.map((service, index) => {
-                const Icon =
-                    (Icons[service.subServices[0]?.icon as keyof typeof Icons] as LucideIcon) ??
-                    Icons.Sparkle;
+                {servicesSummary.map((service, index) => {
+                const Icon = getServiceIcon(service.icon);
                 const isActive = activeIndex === index;
 
                 return (

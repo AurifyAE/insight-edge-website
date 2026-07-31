@@ -59,6 +59,7 @@ export default function WhyChoose() {
                             src="/images/services/audit-and-assurance.jpg"
                             alt="Insight Edge Global - precious metals advisory"
                             fill
+                            sizes="(max-width: 1024px) 100vw, 40vw"
                             className="object-cover"
                         />
                         <div className="absolute inset-0 bg-[#1E2E4B]/20" />

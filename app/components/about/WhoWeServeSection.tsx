@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useInView, Variants } from "framer-motion";
 import {
     Coins,
@@ -143,9 +144,13 @@ function MobileCarousel() {
                             className="group relative flex items-center gap-4 rounded-2xl overflow-hidden mx-1 shadow-sm shrink-0 snap-start cursor-pointer select-none transition-all duration-200 ease-out active:shadow-lg active:shadow-[#C6DB5A]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C6DB5A]"
                             style={{ height: `${CARD_H}px` }}
                         >
-                            <div
-                                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-active:scale-105"
-                                style={{ backgroundImage: `url(/images/home/${bgImage})` }}
+                            <Image
+                                src={`/images/home/${bgImage}`}
+                                alt=""
+                                fill
+                                sizes="384px"
+                                className="object-cover object-center transition-transform duration-300 group-active:scale-105"
+                                aria-hidden="true"
                             />
                             <div className="absolute inset-0 bg-[#1E2E4B]/75 transition-colors duration-200 group-active:bg-[#1E2E4B]/85" />
                             <div className="relative z-10 flex items-center justify-center ml-5 shrink-0 transition-transform duration-200 group-active:scale-110">
@@ -202,9 +207,13 @@ const WhoWeServeSection: React.FC = () => {
                             className="group relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl cursor-pointer select-none shadow-sm transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-[#C6DB5A]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C6DB5A]"
                             style={{ minHeight: "220px" }}
                         >
-                            <div
-                                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                                style={{ backgroundImage: `url(/images/home/${bgImage})` }}
+                            <Image
+                                src={`/images/home/${bgImage}`}
+                                alt=""
+                                fill
+                                sizes="(max-width: 1024px) 25vw, 300px"
+                                className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                                aria-hidden="true"
                             />
                             <div className="absolute inset-0 bg-[#1E2E4B]/75 transition-colors duration-200 group-hover:bg-[#1E2E4B]/85" />
                             <div className="relative z-10 flex items-center justify-center rounded-xl p-2 transition-transform duration-200 group-hover:scale-110">

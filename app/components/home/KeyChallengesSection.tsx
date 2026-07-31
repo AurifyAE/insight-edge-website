@@ -88,7 +88,7 @@ function ChallengeItem({
                 <motion.span
                     animate={{
                         scale: isOpen ? 1.08 : 1,
-                        color: isOpen ? "#1E2E4B" : "rgba(30,46,75,0.35)",
+                        color: isOpen ? "#1E2E4B" : "#5B6B85",
                     }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="font-(family-name:--font-heading) text-base font-semibold tabular-nums"
@@ -235,7 +235,7 @@ export default function KeyChallengesSection() {
                                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             />
                         </div>
-                        <p className="text-white/50 text-xs mt-2 tabular-nums">
+                        <p className="text-white/70 text-xs mt-2 tabular-nums">
                             {openIndex === null ? "0" : openIndex + 1} / {total}
                         </p>
                     </div>

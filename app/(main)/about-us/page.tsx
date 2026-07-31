@@ -17,7 +17,8 @@ export default function AboutPage() {
                     src="/images/home/bg-img-1.jpeg"
                     alt=""
                     fill
-                    priority
+                    fetchPriority="high"
+                    loading="eager"
                     sizes="100vw"
                     className="object-cover object-center"
                     aria-hidden="true"

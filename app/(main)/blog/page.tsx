@@ -60,7 +60,8 @@ export default function BlogPage() {
                     src="/images/services/audit-and-assurance.jpg"
                     alt=""
                     fill
-                    priority
+                    fetchPriority="high"
+                    loading="eager"
                     sizes="100vw"
                     className="object-cover object-center"
                     aria-hidden="true"

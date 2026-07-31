@@ -1,16 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import * as Icons from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import type { SubService } from "@/app/lib/services-data";
+import { getServiceIcon } from "@/app/lib/service-icons";
 import ChipGroup from "./ChipGroup";
 import ChecklistGrid from "./ChecklistGrid";
 
 export default function SubServiceCard({ item }: { item: SubService }) {
     const cardRef = useRef<HTMLDivElement>(null);
 
-    const Icon = (Icons[item.icon as keyof typeof Icons] as LucideIcon) ?? Icons.Sparkle;
+    const Icon = getServiceIcon(item.icon);
 
     return (
         <div

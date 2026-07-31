@@ -115,10 +115,10 @@ export default function Footer() {
                         <div className="flex items-center gap-4 mt-2">
                             <span className="text-[14px] font-semibold text-white">Follow Us:</span>
                             <div className="flex items-center gap-3">
-                                <a href="#" className="text-[#ABBD4F] hover:text-white transition-colors">
+                                <a href="#" aria-label="Facebook" className="text-[#ABBD4F] hover:text-white transition-colors">
                                     <FacebookIcon />
                                 </a>
-                                <a href="#" className="text-[#ABBD4F] hover:text-white transition-colors">
+                                <a href="#" aria-label="Instagram" className="text-[#ABBD4F] hover:text-white transition-colors">
                                     <InstagramIcon />
                                 </a>
                             </div>
@@ -326,7 +326,7 @@ export default function Footer() {
                     <p className="text-sm text-gray-400">
                         &copy; 2026 Insight Edge Global LLC. All rights reserved.
                     </p>
-                    <p className="text-[12px] text-gray-500 font-medium">
+                    <p className="text-[12px] text-gray-300 font-medium">
                         Exclusive Financial & Compliance Advisory for the Precious Metals Industry
                     </p>
                 </div>

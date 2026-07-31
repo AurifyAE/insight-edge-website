@@ -542,8 +542,8 @@ export default function Navbar() {
 
                             {/* ── Logo ── */}
                             <a href="/" className="flex items-center gap-3 shrink-0">
-                                <img src="/images/home/logo.svg" alt="IEG Icon" className="h-6 md:h-8 w-auto" />
-                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" className="h-2.5 md:h-3 w-auto" />
+                                <img src="/images/home/logo.svg" alt="IEG Icon" width={64} height={29} className="h-6 md:h-8 w-auto" />
+                                <img src="/images/home/logo-text.svg" alt="Insight Edge Global" width={256} height={16} className="h-2.5 md:h-3 w-auto" />
                             </a>
 
                             {/* ── Desktop Nav ── */}

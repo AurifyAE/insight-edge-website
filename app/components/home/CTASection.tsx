@@ -10,7 +10,7 @@ export default function CTASection() {
                     <h2 className="text-2xl md:text-3xl font-semibold text-[#1E2E4B] mb-4">
                         Ready to Safeguard Your Value?
                     </h2>
-                    <p className="text-sm md:text-base text-[#1E2E4B]/70 max-w-2xl mx-auto">
+                    <p className="text-sm md:text-base text-[#1E2E4B]/85 max-w-2xl mx-auto">
                         Let's discuss how we can support your precious metals business with
                         expert financial and compliance advisory
                     </p>

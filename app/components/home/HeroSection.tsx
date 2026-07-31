@@ -149,14 +149,18 @@ export default function HeroSection() {
                                     fill
                                     alt="Hero Background"
                                     className="object-cover object-center md:hidden"
-                                    priority
+                                    sizes="100vw"
+                                    fetchPriority="high"
+                                    loading="eager"
                                 />
                                 <Image
                                     src={slide.bg}
                                     fill
                                     alt="Hero Background"
                                     className="hidden object-cover object-center md:block"
-                                    priority
+                                    sizes="100vw"
+                                    fetchPriority="high"
+                                    loading="eager"
                                 />
                             </>
                         ) : (
@@ -165,7 +169,9 @@ export default function HeroSection() {
                                 fill
                                 alt="Hero Background"
                                 className="object-cover object-center"
-                                priority
+                                sizes="100vw"
+                                fetchPriority="high"
+                                loading="eager"
                             />
                         )}
                     </motion.div>
@@ -299,9 +305,13 @@ export default function HeroSection() {
                         key={i}
                         aria-label={`Go to slide ${i + 1}`}
                         onClick={() => setActive(i)}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#C6DB5A]" : "w-1.5 bg-white/50 hover:bg-white/70"
-                            }`}
-                    />
+                        className="group flex h-6 w-6 items-center justify-center"
+                    >
+                        <span
+                            className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-[#C6DB5A]" : "w-1.5 bg-white/50 group-hover:bg-white/70"
+                                }`}
+                        />
+                    </button>
                 ))}
             </div>
         </section>

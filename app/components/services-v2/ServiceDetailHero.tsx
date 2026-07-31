@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -8,11 +9,13 @@ import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import type { ServiceSectionData } from "@/app/lib/services-data";
 import SubServiceCard from "./SubServiceCard";
-import ExtraSections from "./ExtraSections";
-import HedgingChartAnimation from "./HedgingChartAnimation";
 import RateBands from "./RateBands";
-import ServiceFaqs from "./ServiceFaqs";
 import ServiceTimeline from "./ServiceTimeline";
+
+// Below the primary hero/subservices content: code-split out of the
+// initial hydration bundle.
+const ExtraSections = dynamic(() => import("./ExtraSections"));
+const ServiceFaqs = dynamic(() => import("./ServiceFaqs"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,7 +119,8 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                         src={data.image}
                         alt={data.title}
                         fill
-                        priority
+                        fetchPriority="high"
+                        loading="eager"
                         sizes="(max-width: 1024px) 100vw, 1200px"
                         className="object-cover"
                     />
@@ -128,8 +132,6 @@ export default function ServiceDetailHero({ data }: { data: ServiceSectionData }
                 <p className="section-intro mt-8 text-[14.5px] leading-relaxed text-[#44474D] sm:text-base max-w-[1200px]">
                     {data.intro}
                 </p>
-
-                {data.id === "financial-advisory" && <HedgingChartAnimation />}
 
                 {data.rateBands && <RateBands bands={data.rateBands} />}
 

@@ -231,8 +231,10 @@ export default function ServicesSection() {
                     src="/images/home/service-bg-img.png"
                     alt=""
                     fill
+                    sizes="100vw"
                     className="object-cover object-center bg-blend-multiply"
-                    priority
+                    fetchPriority="high"
+                    loading="eager"
                 />
             </div>
 

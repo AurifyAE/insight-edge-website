@@ -158,7 +158,7 @@ export default function ContactForm() {
                             Send Message
                             <IconSend />
                         </button>
-                        <p className="text-center text-[12px] text-gray-400 mt-4 italic">
+                        <p className="text-center text-[12px] text-gray-600 mt-4 italic">
                             * Required fields. We'll respond to your inquiry within 24 hours.
                         </p>
                     </div>

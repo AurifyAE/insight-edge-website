@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
-import { servicesData } from "@/app/lib/services-data";
+import { servicesSummary } from "@/app/lib/services-summary";
 
 export default function ServicesPageNav({ activeId }: { activeId: string }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +44,7 @@ export default function ServicesPageNav({ activeId }: { activeId: string }) {
                             </button>
                         </div>
                         <ul className="space-y-1 border-l border-[#1E2E4B]/10 pl-5">
-                            {servicesData.map((service) => {
+                            {servicesSummary.map((service) => {
                                 const isActive = activeId === service.id;
                                 return (
                                     <li key={service.id}>
@@ -89,7 +89,7 @@ export default function ServicesPageNav({ activeId }: { activeId: string }) {
                 className="sticky top-16 z-30 -mx-6 mb-4 overflow-x-auto border-b border-[#1E2E4B]/6 bg-[#F8F9FA]/90 px-6 py-3 backdrop-blur-lg lg:hidden"
             >
                 <ul className="flex w-max gap-2">
-                    {servicesData.map((service) => {
+                    {servicesSummary.map((service) => {
                         const isActive = activeId === service.id;
                         return (
                             <li key={service.id} ref={isActive ? activePillRef : undefined}>

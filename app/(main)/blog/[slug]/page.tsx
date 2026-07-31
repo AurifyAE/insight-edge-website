@@ -151,7 +151,8 @@ export default async function BlogPostPage({
                     src={`${post.image}.jpg`}
                     alt={post.title}
                     fill
-                    priority
+                    fetchPriority="high"
+                    loading="eager"
                     sizes="100vw"
                     className="object-cover"
                 />
