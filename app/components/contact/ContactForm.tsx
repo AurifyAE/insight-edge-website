@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 /* ─────────────────────────────────────────────
    ICONS
@@ -30,6 +31,7 @@ function Label({ children, required }: { children: React.ReactNode; required?: b
    CONTACT FORM
 ───────────────────────────────────────────── */
 export default function ContactForm() {
+    const router = useRouter();
     const [form, setForm] = useState({
         fullName: "",
         email: "",
@@ -38,7 +40,8 @@ export default function ContactForm() {
         service: "",
         message: "",
     });
-    const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -46,9 +49,29 @@ export default function ContactForm() {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSubmitted(true);
+        setError(null);
+        setSubmitting(true);
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (!res.ok) {
+                const data = await res.json().catch(() => null);
+                throw new Error(data?.error || "Something went wrong. Please try again.");
+            }
+
+            router.push("/contact/thank-you");
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
@@ -57,114 +80,101 @@ export default function ContactForm() {
         <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold text-[#1E2E4B] mb-8">Send Us a Message</h2>
 
-            {submitted ? (
-                <div className="flex flex-col items-center justify-center gap-6 py-10 md:py-20 border border-gray-100 rounded-3xl bg-[#F8FAFC] text-center shadow-sm">
-                    <div className="w-20 h-20 rounded-full bg-[#ABBD4F] flex items-center justify-center shadow-lg shadow-[#ABBD4F]/20">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                    </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <h3 className="text-2xl font-bold text-[#1E2E4B] mb-2">Message Sent!</h3>
-                        <p className="text-gray-600">We'll respond to your inquiry within 24 hours.</p>
-                    </div>
-                </div>
-            ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <Label required>Full Name</Label>
-                            <input
-                                type="text"
-                                name="fullName"
-                                value={form.fullName}
-                                onChange={handleChange}
-                                placeholder="Your name"
-                                required
-                                className={inputCls}
-                            />
-                        </div>
-                        <div>
-                            <Label required>Email Address</Label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleChange}
-                                placeholder="your@email.com"
-                                required
-                                className={inputCls}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <Label>Phone Number</Label>
-                            <input
-                                type="tel"
-                                name="phone"
-                                value={form.phone}
-                                onChange={handleChange}
-                                placeholder="+971 XX XXX XXXX"
-                                className={inputCls}
-                            />
-                        </div>
-                        <div>
-                            <Label>Company Name</Label>
-                            <input
-                                type="text"
-                                name="company"
-                                value={form.company}
-                                onChange={handleChange}
-                                placeholder="Your company"
-                                className={inputCls}
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <Label>Service of Interest</Label>
+                        <Label required>Full Name</Label>
                         <input
                             type="text"
-                            name="service"
-                            value={form.service}
+                            name="fullName"
+                            value={form.fullName}
                             onChange={handleChange}
-                            placeholder="e.g. AML Compliance, Audit"
+                            placeholder="Your name"
+                            required
                             className={inputCls}
                         />
                     </div>
-
                     <div>
-                        <Label required>Message</Label>
-                        <textarea
-                            name="message"
-                            value={form.message}
+                        <Label required>Email Address</Label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
                             onChange={handleChange}
-                            placeholder="Tell us about your requirements..."
+                            placeholder="your@email.com"
                             required
-                            rows={5}
-                            className={`${inputCls} resize-none`}
+                            className={inputCls}
                         />
                     </div>
+                </div>
 
-                    <div className="pt-2">
-                        <button
-                            type="submit"
-                            className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98]"
-                        >
-                            Send Message
-                            <IconSend />
-                        </button>
-                        <p className="text-center text-[12px] text-gray-600 mt-4 italic">
-                            * Required fields. We'll respond to your inquiry within 24 hours.
-                        </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <Label>Phone Number</Label>
+                        <input
+                            type="tel"
+                            name="phone"
+                            value={form.phone}
+                            onChange={handleChange}
+                            placeholder="+971 XX XXX XXXX"
+                            className={inputCls}
+                        />
                     </div>
+                    <div>
+                        <Label>Company Name</Label>
+                        <input
+                            type="text"
+                            name="company"
+                            value={form.company}
+                            onChange={handleChange}
+                            placeholder="Your company"
+                            className={inputCls}
+                        />
+                    </div>
+                </div>
 
-                </form>
-            )}
+                <div>
+                    <Label>Service of Interest</Label>
+                    <input
+                        type="text"
+                        name="service"
+                        value={form.service}
+                        onChange={handleChange}
+                        placeholder="e.g. AML Compliance, Audit"
+                        className={inputCls}
+                    />
+                </div>
+
+                <div>
+                    <Label required>Message</Label>
+                    <textarea
+                        name="message"
+                        value={form.message}
+                        onChange={handleChange}
+                        placeholder="Tell us about your requirements..."
+                        required
+                        rows={5}
+                        className={`${inputCls} resize-none`}
+                    />
+                </div>
+
+                <div className="pt-2">
+                    {error && (
+                        <p className="text-center text-sm text-red-600 mb-4">{error}</p>
+                    )}
+                    <button
+                        type="submit"
+                        disabled={submitting}
+                        className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
+                    >
+                        {submitting ? "Sending..." : "Send Message"}
+                        {!submitting && <IconSend />}
+                    </button>
+                    <p className="text-center text-[12px] text-gray-400 mt-4 italic">
+                        * Required fields. We&apos;ll respond to your inquiry within 24 hours.
+                    </p>
+                </div>
+            </form>
         </div>
     );
 }
