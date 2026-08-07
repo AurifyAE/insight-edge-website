@@ -54,9 +54,22 @@ export default function QuickContactBar() {
                         >
                             {Icon ? (
                                 <Icon className="h-4 w-4" strokeWidth={1.75} />
-                            ) : (
-                                <img src={iconSrc} alt="" className="h-4 w-4" />
-                            )}
+                            ) : iconSrc ? (
+                                <span
+                                    aria-hidden="true"
+                                    className="h-4 w-4 bg-[#C7DB5D] transition-colors duration-200 group-hover:bg-[#1E2E4B]"
+                                    style={{
+                                        WebkitMaskImage: `url(${iconSrc})`,
+                                        maskImage: `url(${iconSrc})`,
+                                        WebkitMaskPosition: "center",
+                                        maskPosition: "center",
+                                        WebkitMaskRepeat: "no-repeat",
+                                        maskRepeat: "no-repeat",
+                                        WebkitMaskSize: "contain",
+                                        maskSize: "contain",
+                                    }}
+                                />
+                            ) : null}
                             {/* Tooltip */}
                             <span className="pointer-events-none absolute right-12 whitespace-nowrap rounded-md bg-[#1E2E4B] px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100">
                                 {label}
