@@ -73,6 +73,7 @@ const NAV_LINKS = [
     { label: "About Us", href: "/about-us" },
     { label: "Our Solutions", href: "", hasMega: "solutions" as const },
     { label: "Who We Serve", href: "/who-we-serve" },
+    { label: "Blogs", href: "/blog" },
 ];
 
 const MARQUEE_SERVICES = SOLUTIONS_ORDERED.map((col) => col.heading);
@@ -559,7 +560,7 @@ export default function Navbar() {
                                                 onMouseEnter={() => hasMega ? openMega(hasMega) : scheduleClose()}
                                                 onMouseLeave={scheduleClose}
                                                 onClick={() => hasMega && setActiveMega(isMegaActive ? null : hasMega)}
-                                                className={`relative flex items-center gap-1 px-3 py-2 text-base tracking-wide transition-colors duration-200 rounded-sm cursor-pointer select-none ${isActive ? "text-[#365693] font-bold" : "text-[#4A5565] font-medium hover:text-[#365693]"
+                                                className={`relative flex items-center gap-1 px-3 py-2 text-sm tracking-wide transition-colors duration-200 rounded-sm cursor-pointer select-none ${isActive ? "text-[#365693] font-bold" : "text-[#4A5565] font-medium hover:text-[#365693]"
                                                     }`}
                                             >
                                                 {label}
@@ -586,7 +587,7 @@ export default function Navbar() {
                             <div className="hidden lg:flex items-center gap-3">
                                 <a
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-base font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67]"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm bg-[#C6DB5A] hover:bg-[#D8ED6A] text-[#283F67]"
                                 >
                                     Contact Us
                                 </a>
@@ -595,7 +596,7 @@ export default function Navbar() {
                                 <div className="relative" ref={desktopBrochureRef}>
                                     <button
                                         onClick={toggleDesktopBrochure}
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-base font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#283F67] text-[#283F67] hover:bg-[#283F67] hover:text-white"
+                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-colors duration-200 whitespace-nowrap shadow-sm border border-[#283F67] text-[#283F67] hover:bg-[#283F67] hover:text-white"
                                     >
                                         <DownloadIcon />
                                         Download Brochure
@@ -873,7 +874,7 @@ function MobileNavItem({
                 <Link
                     href={link.href}
                     onClick={onCloseMenu}
-                    className={`block px-3 py-2.5 rounded-md text-[15px] transition-colors duration-200 ${isActive
+                    className={`block px-3 py-2.5 rounded-md text-sm transition-colors duration-200 ${isActive
                         ? "font-bold text-[#365693] bg-[#f0f4fb]"
                         : "font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb]"
                         }`}
@@ -888,7 +889,7 @@ function MobileNavItem({
         <li>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-[15px] transition-colors duration-200 ${isOpen || isActive
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm transition-colors duration-200 ${isOpen || isActive
                     ? "font-bold text-[#365693] bg-[#f0f4fb]"
                     : "font-medium text-[#3a3a3a] hover:text-[#1b3a6b] hover:bg-[#f0f4fb]"
                     }`}

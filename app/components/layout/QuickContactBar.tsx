@@ -25,7 +25,7 @@ export default function QuickContactBar() {
 
     return (
         <div
-            className="fixed right-4 top-1/2 z-50 -translate-y-1/2"
+            className="fixed bottom-4 right-4 z-50"
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
         >
@@ -85,7 +85,7 @@ export default function QuickContactBar() {
                 onClick={() => setOpen((p) => !p)}
                 animate={{ backgroundColor: open ? "#C6DB5A" : "#1E2E4B" }}
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex items-center justify-center rounded-full shadow-[0_6px_20px_0px_rgba(30,46,75,0.65)]"
+                className="relative flex items-center justify-center rounded-full border border-[#C6DB5A] shadow-[0_6px_20px_0px_rgba(30,46,75,0.65)]"
                 style={{ width: TRIGGER_SIZE, height: TRIGGER_SIZE }}
             >
                 <MessageCircleMore

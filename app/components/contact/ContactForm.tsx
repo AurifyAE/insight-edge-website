@@ -21,7 +21,7 @@ function IconSend() {
 ───────────────────────────────────────────── */
 function Label({ children, required }: { children: React.ReactNode; required?: boolean }) {
     return (
-        <label className="block text-sm font-bold text-[#1E2E4B] mb-1.5 uppercase tracking-wide">
+        <label className="block text-xs font-semibold text-[#1E2E4B] mb-1 leading-tight">
             {children} {required && <span className="text-red-500">*</span>}
         </label>
     );
@@ -74,16 +74,16 @@ export default function ContactForm() {
         }
     };
 
-    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
+    const inputCls = "w-full border border-gray-200 rounded-lg px-3.5 py-2.5 text-sm text-gray-800 focus:outline-none focus:border-[#1E2E4B] focus:ring-2 focus:ring-[#1E2E4B]/10 transition-all bg-white";
 
     return (
-        <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-[#1E2E4B] mb-8">Send Us a Message</h2>
+        <div className="flex flex-col gap-3">
+            <h2 className="text-xl font-bold text-[#1E2E4B] mb-5">Send Us a Message</h2>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <Label required>Full Name</Label>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div className="grid min-w-0 grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="min-w-0">
+                        <Label required>Full name</Label>
                         <input
                             type="text"
                             name="fullName"
@@ -94,8 +94,8 @@ export default function ContactForm() {
                             className={inputCls}
                         />
                     </div>
-                    <div>
-                        <Label required>Email Address</Label>
+                    <div className="min-w-0">
+                        <Label required>Email address</Label>
                         <input
                             type="email"
                             name="email"
@@ -108,9 +108,9 @@ export default function ContactForm() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <Label>Phone Number</Label>
+                <div className="grid min-w-0 grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="min-w-0">
+                        <Label>Phone number</Label>
                         <input
                             type="tel"
                             name="phone"
@@ -120,8 +120,8 @@ export default function ContactForm() {
                             className={inputCls}
                         />
                     </div>
-                    <div>
-                        <Label>Company Name</Label>
+                    <div className="min-w-0">
+                        <Label>Company name</Label>
                         <input
                             type="text"
                             name="company"
@@ -134,7 +134,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                    <Label>Service of Interest</Label>
+                    <Label>Service of interest</Label>
                     <input
                         type="text"
                         name="service"
@@ -153,24 +153,24 @@ export default function ContactForm() {
                         onChange={handleChange}
                         placeholder="Tell us about your requirements..."
                         required
-                        rows={5}
+                        rows={4}
                         className={`${inputCls} resize-none`}
                     />
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-1">
                     {error && (
                         <p className="text-center text-sm text-red-600 mb-4">{error}</p>
                     )}
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-base font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
+                        className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#1E2E4B] hover:bg-[#283F67] text-white text-sm font-bold tracking-wide transition-all duration-300 shadow-lg shadow-[#1E2E4B]/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
                     >
                         {submitting ? "Sending..." : "Send Message"}
                         {!submitting && <IconSend />}
                     </button>
-                    <p className="text-center text-[12px] text-gray-400 mt-4 italic">
+                    <p className="text-center text-[12px] text-gray-400 mt-3 italic">
                         * Required fields. We&apos;ll respond to your inquiry within 24 hours.
                     </p>
                 </div>

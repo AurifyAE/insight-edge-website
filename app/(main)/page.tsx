@@ -8,6 +8,7 @@ import AboutSection from "@/app/components/home/AboutSection";
 import { generateMetadata } from "@/seo.config";
 import WhoWeServeSection from "../components/about/WhoWeServeSection";
 import FAQSection from "@/app/components/home/FAQSection";
+import BlogSection from "@/app/components/home/BlogSection";
 
 // Below-the-fold, animation-heavy sections: code-split out of the initial
 // hydration bundle. Still server-rendered (ssr defaults to true) for content/
@@ -74,6 +75,7 @@ export default function Home() {
         </div>
       </div>
       {/* <Testimonials /> */}
+      <BlogSection />
       <FAQSection />
       <CTASection />
     </div>
