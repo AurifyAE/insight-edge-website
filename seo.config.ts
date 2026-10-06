@@ -34,6 +34,9 @@ export const defaultMetadata: Metadata = {
         card: "summary_large_image",
         site: "@InsightEdgeGlobal",
     },
+    verification: {
+        google: "d6kfqU5IL09nEjewg9xU4okoZY9bdAZsewpqmQzTomM",
+    },
 };
 
 export type PageSEO = {
