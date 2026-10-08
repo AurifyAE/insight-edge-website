@@ -44,6 +44,9 @@ export type PageSEO = {
     url: string;
     keywords: string[];
     title: string;
+    // Render the title exactly as written, skipping the root layout's
+    // "%s | Insight Edge Global" template.
+    absoluteTitle?: boolean;
     description: string;
 };
 
@@ -80,9 +83,10 @@ export const pageSEO: Record<string, PageSEO> = {
             "executive coaching",
             "corporate training solutions",
         ],
-        title: "Best Audit and Advisory Firm For Precious Metals Industry in UAE",
+        title: "E-invoicing for gold and jewellery | Audit firm for gold traders UAE",
+        absoluteTitle: true,
         description:
-            "Insight Edge Global delivers best audit company for precious metals industry in UAE. We also provide all Financial Advisory, Taxation and Accounting Services.",
+            "E-invoicing for gold and jewellery businesses in the UAE. Get expert e-invoicing, VAT and audit support from experienced audit firms for gold traders.",
     },
 
     about: {
@@ -196,7 +200,7 @@ export function generateMetadata(pageKey: keyof typeof pageSEO): Metadata {
 
     return {
         ...defaultMetadata,
-        title: page.title,
+        title: page.absoluteTitle ? { absolute: page.title } : page.title,
         description: page.description,
         keywords: page.keywords,
         alternates: {

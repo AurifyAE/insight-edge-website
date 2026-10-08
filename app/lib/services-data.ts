@@ -54,6 +54,9 @@ export interface ServiceSectionData {
     rateBands?: RateBand[];
     faqs?: Faq[];
     timeline?: Milestone[];
+    // SEO overrides; fall back to title / shortIntro when omitted.
+    seoTitle?: string;
+    seoDescription?: string;
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -556,6 +559,9 @@ export const servicesData: ServiceSectionData[] = [
         id: "e-invoicing",
         image: "/images/services/E-invoicing.jpg",
         title: "E-Invoicing Services",
+        seoTitle: "E-invoicing ERP integration for bullion traders UAE",
+        seoDescription:
+            "E-invoicing ERP integration for UAE bullion traders—streamline VAT-compliant invoicing, automate transactions, and improve reporting with seamless ERP connectivity.",
         shortIntro:
             "Readiness assessment, ERP evaluation, and implementation support for the UAE's mandatory Peppol-based e-invoicing framework, tailored to bullion, refining, and jewellery operations.",
         intro:

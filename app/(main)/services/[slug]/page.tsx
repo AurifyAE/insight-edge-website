@@ -27,13 +27,15 @@ export async function generateMetadata({
 
     if (!service) return defaultMetadata;
 
-    const title = `${service.title} | Insight Edge Global`;
-    const description = service.shortIntro;
+    const title = service.seoTitle ?? `${service.title} | Insight Edge Global`;
+    const description = service.seoDescription ?? service.shortIntro;
     const url = `${BASE_URL}/services/${service.id}`;
 
     return {
         ...defaultMetadata,
-        title,
+        // Absolute: the brand suffix is already handled above, so skip the
+        // root layout's title template (it would otherwise be appended twice).
+        title: { absolute: title },
         description,
         alternates: {
             canonical: url,
