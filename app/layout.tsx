@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 
 import { defaultMetadata } from "@/seo.config";
-import QuickContactBar from "@/app/components/layout/QuickContactBar";
 import SmoothScroll from "@/app/components/layout/SmoothScroll";
 
 const inter = Inter({
@@ -93,7 +92,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <SmoothScroll />
         <main className="grow">{children}</main>
-        <QuickContactBar />
       </body>
     </html>
   );
