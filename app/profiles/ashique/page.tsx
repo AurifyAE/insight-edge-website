@@ -69,12 +69,12 @@ export default function AshiquePage() {
 
     const handleFacebookClick = () => {
         handleIconTap();
-        window.open("https://www.facebook.com/", "_blank");
+        window.open("https://www.facebook.com/people/Insight-Edge-Global/61590938762734/", "_blank");
     };
 
     const handleInstagramClick = () => {
         handleIconTap();
-        window.open("https://www.instagram.com/ashiq_abubaker", "_blank");
+        window.open("https://www.instagram.com/ieg.global_", "_blank");
     };
 
     const handleWebClick = () => {
